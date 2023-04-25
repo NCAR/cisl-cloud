@@ -1,7 +1,13 @@
 # CISL Cloud Pilot Documentation
 
-[MkDocs](https://www.mkdocs.org/getting-started/) has an easy to use implementation to create professional documentation pages <br/>
-We can host this documentation on the on-prem cloud
+[MkDocs](https://www.mkdocs.org/getting-started/) has an easy to use implementation to create professional documentation pages. <br/>
+We can host this documentation on the on-prem cloud. <br/>
+
+## Running MkDocs from this repo
+
+* `git clone https://github.com/NCAR/cisl-cloud.git` - Clone the github repo.
+* `cd docs` - Change directory to docs.
+* `mkdocs serve` - Start the live-reloading docs server on http://127.0.0.1:8000
 
 ## MkDocs Commands
 
