@@ -2,6 +2,11 @@
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
 
+## Repo Overview
+
+    docs/       # Potential Documentation website information
+    README.md   # The file you are reading now
+
 ## Goals
 * Improve understanding of how scientific community might use and benefit from an on-prem cloud
     * Which services fit on-prem better than traditional HPC and/or public cloud
