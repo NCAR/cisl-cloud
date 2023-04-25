@@ -8,4 +8,7 @@ nav:
   - Features: features.md
   - Layout: layout.md
   - Services: services.md
-theme: readthedocs
+theme: 
+  name: readthedocs
+  features:
+    - content.code.copy
