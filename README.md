@@ -4,6 +4,7 @@ Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapi
 
 ## Repo Overview
 
+    configs/    # Configuration files for different services implemented
     docs/       # Potential Documentation website information
     README.md   # The file you are reading now
 
