@@ -2,6 +2,7 @@
 
 [MkDocs](https://www.mkdocs.org/getting-started/) has an easy to use implementation to create professional documentation pages. <br/>
 We can host this documentation on the on-prem cloud. <br/>
+MkDocs utilizes markdown syntax to display the page. A good reference can be found [here](https://www.markdownguide.org/)
 
 ## Running MkDocs from this repo
 
