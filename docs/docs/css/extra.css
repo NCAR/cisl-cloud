@@ -23,6 +23,17 @@ pre code {
     padding: 16px;
     border-radius: 8px;
     position: relative;
+    background-color: #f8f8f8;
+}
+
+code, .rst-content tt, .rst-content code {
+    color: inherit;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+}
+.rst-content tt.literal,.rst-content tt.literal,.rst-content code.literal {
+    color: inherit;
 }
 
 .clipboard {
