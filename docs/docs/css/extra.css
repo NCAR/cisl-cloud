@@ -1,6 +1,9 @@
 /* Hide "Edit On GitHub" section*/
 .wy-breadcrumbs-aside { display: none !important;}
 
+/* Gets rid of the top breadcrumb */
+.wy-breadcrumbs { display: none; }
+
 body {
     font-family: 'Poppins', sans-serif;
 }

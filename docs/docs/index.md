@@ -1,5 +1,6 @@
-![image info](images/CirrusCISL.png)
-
+<p align="center">
+    <img src="images/CISL-NCAR-Cirrus.png">
+</p>
 # Welcome to CCPP
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
