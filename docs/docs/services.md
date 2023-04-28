@@ -1,7 +1,6 @@
 # Potential Services offered
 
 ## Virtual Machines
-`git clone`
 
 * T-Shirt sizing
     * Small, Meidum, Large, ETC. 
