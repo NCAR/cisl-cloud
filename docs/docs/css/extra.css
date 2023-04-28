@@ -1,3 +1,10 @@
+/* Hide "Edit On GitHub" section*/
+.wy-breadcrumbs-aside { display: none !important;}
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
 .wy-side-nav-search {
     background-color: #1A658F;
 }
@@ -10,6 +17,27 @@
     background-color: #53565A;
 }
 
-body {
-    font-family: 'Poppins', sans-serif;
+/* style code blocks */
+pre code {
+    overflow: auto;
+    padding: 16px;
+    border-radius: 8px;
+    position: relative;
+}
+
+.clipboard {
+    position: relative;
+    display: block;
+    float: right;
+}
+
+.btn-clipboard {
+    position: relative;
+    top: 16px;
+    right: 10px;
+    z-index: 10;
+    border-radius: 8px;
+    display: block;
+    padding: .25rem .5rem;
+    cursor: pointer;
 }
