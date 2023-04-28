@@ -1,7 +1,7 @@
 $(document).ready(function() {
     // https://clipboardjs.com/
     var selectors = document.querySelectorAll('code');
-    var copyButton = '<div class="clipboard"><span class="btn btn-neutral btn-clipboard" title="Copy to clipboard">Copy</span></div>';
+    var copyButton = '<div class="clipboard"><span class="btn btn-neutral btn-clipboard" title="Copy to clipboard"><span class="icon fa-clone fa-2x" aria-hidden="true"></span></span></div>';
     Array.prototype.forEach.call(selectors, function(selector){
       selector.insertAdjacentHTML('beforebegin', copyButton);
     });

@@ -27,10 +27,14 @@ pre code {
 }
 
 code, .rst-content tt, .rst-content code {
+    overflow: auto;
     color: inherit;
     padding: 5px;
     border-radius: 8px;
     background-color: #f8f8f8;
+    display: inline-block;
+    white-space: nowrap;
+    width: 92%;
 }
 .rst-content tt.literal,.rst-content tt.literal,.rst-content code.literal {
     color: inherit;
