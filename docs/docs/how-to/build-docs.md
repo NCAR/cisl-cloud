@@ -17,6 +17,7 @@
         css/
            extra.css # Contains extra sytling for the site. 
         how-to/
+        agile.md # A description of the teams current Agile practices and policies
             build-docs.md # A how-to on building the documentation website
         images/
             * # All custom images used in the site
@@ -28,6 +29,7 @@
             popper.min.js # Used to have the Copied pop up on click
             tippy-bundle.umd.js # Used to have the Copied pop up on click
         about.md # The project about trading
+        contact.md # How to interact with the team
         features.md # A list of potential features for the project
         index.md  # The documentation homepage.
         layout.md # Outline of site directories and files

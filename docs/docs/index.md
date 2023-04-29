@@ -1,9 +1,17 @@
 <p align="center">
     <img src="images/CISL-NCAR-Cirrus.png">
 </p>
+
 # Welcome to CCPP
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
+
+## Vision
+
+*Provide and operate an on-premise cloud offering for the scientific community to supplement traditional HPC services and public cloud offerings while utilizing 2i2c to host a JupyterHub instance in the public cloud.*
+
+#### What is an on-premise cloud?
+NCAR | CISL has Compute & Storage hardware that users should be able to utilize for approved use cases. This includes access to routable network space and UCAR Domain Name Systems (DNS). These resources would be provided to supplement computing needs that aren't fulfilled by the HPC offering, public cloud, or what is available to you locally. 
 
 ## Goals
 * Improve understanding of how scientific community might use and benefit from an on-prem cloud

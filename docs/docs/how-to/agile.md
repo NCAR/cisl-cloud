@@ -1,10 +1,16 @@
 # Agile Interaction
 
-The ***CCPP*** team is utilizing Agile Project Management strategies (Kanban) to manage development.
+The ***CCPP*** team is utilizing hybrid Agile Project Management strategies (Kanban & Waterfall) to manage development.
 
 ## What is Agile Project Management?
 
 At a high level Agile is a framework that focuses on interaction, collaboration, and visibility in order to predictably deliver working product that meets all customer requirements. 
+
+## What is Waterfall?
+
+Waterfall methodology is a project management approach that maps out a project into distinct phases. The CCPP team will be utilizing Waterfall to manage overall project status and track deliverables. 
+
+The current Waterfall smartsheet rollup can be viewed [here](https://app.smartsheet.com/sheets/5mfXWXXfQ7wHR3J5vvpwjW2W4M4hvpvJH5P37G91).
 
 ## What is Kanban?
 
@@ -40,7 +46,13 @@ The CCPP Kanban board currently implements the follow story states:
         In Review # PO will check to make sure the Story Acceptance Criteria is met
         Done # Acceptance Criteria has been verified successfully and the Story is complete
 
-### Demonstration
+User Stories are self-assigned by a team member who wants to accomplish the task. A User Story will move from a status of ***To Do*** &rarr; ***In Progress*** when it is the at the top of the Assignee's ***To Do*** list and they are ready to start. Kanban utilizes Work In Progress (WIP) limits to help identify bottlenecks and promoting moving tasks to ***Done***. The CCPP has implemented the following WIP limits:
+
+        Stalled : 4
+        In Progress : 6
+        In Review : 4
+
+### Demonstrations
 
 As new functionality is rolled out we will be taking advantage of different platforms to demonstrate working products to our stakeholders. Feedback is strongly desired during these demonstrations in order to ensure what the team is delivering is accurately meeting the user requirements. These interactions make sure the team is continuously improving.
 
