@@ -13,7 +13,10 @@
 
 ### 2i2c
 * Authentication
-* Auto mounts
+    * [GitHub Teams](https://github.com/orgs/NCAR/teams/2i2c-cloud-users)
+    * Has to be member of NCAR GitHub organization to join this team
+    * Create public team as well?
+* [User Home Directories](https://infrastructure.2i2c.org/topic/infrastructure/storage-layer.html)
 * GLADE RO (?)
 * Kernels
 * Customizations
@@ -22,15 +25,19 @@
 
 ## BinderHub
 ### Container Registry
-* Only for repo2docker & images we need?
+* Private
+    * Only for repo2docker & images we need?
+    * Faster to pull images
+* Public
+    * No maintenance
 ### Helm
-* secrets.yml
-* config.yml
-* Helm Install Documentation
-### Connect to JupyterHub
+* [secrets.yml](https://binderhub.readthedocs.io/en/latest/zero-to-binderhub/setup-binderhub.html#create-secret-yaml-file)
+* [config.yml](https://binderhub.readthedocs.io/en/latest/zero-to-binderhub/setup-binderhub.html#create-config-yaml)
+* [Helm Install](https://binderhub.readthedocs.io/en/latest/zero-to-binderhub/setup-binderhub.html#install-binderhub)
+### [Connect to JupyterHub](https://binderhub.readthedocs.io/en/latest/zero-to-binderhub/setup-binderhub.html#connect-binderhub-and-jupyterhub)
 * config.yml
 * Helm Upgrade Documentation
-* Customizations
+### [Customizations](https://binderhub.readthedocs.io/en/latest/zero-to-binderhub/setup-binderhub.html#customizing-your-deployment)
 
 ## Visualization
 ### Templates
