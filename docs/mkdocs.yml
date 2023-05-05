@@ -4,13 +4,18 @@ site_description: Documentation for the CISL Cloud Pilot Program
 repo_url: https://github.com/NCAR/cisl-cloud/tree/main/docs
 nav:
   - Home: index.md
-  - About: about.md
-  - Features: features.md
-  - Services: services.md
-  - Contact Us: contact.md
+  - About: overview/about.md
+  - Use Cases: overview/use-cases.md
+  - Availability:
+    - Current Offering: overview/availability.md
+    - Potential Features: overview/features.md
+    - Potential Services: overview/services.md
+  - Contact Us: overview/contact.md
   - How-Tos: 
-      - "Agile Interaction": how-to/agile.md
-      - "Documentation Site Build": how-to/build-docs.md
+      - Agile Interaction: how-to/agile.md
+      - Documentation Site Build: how-to/build-docs.md
+      - Kubernetes (k8s) JupyterHub:
+        - Install JupyterHub on k8s: how-to/k8sJH/install.md
 theme: 
   name: readthedocs
   logo: 'images/ncar-cisl-white.png'

@@ -4,7 +4,9 @@ CISL is currently deploying a ***pilot*** on-premise prototype cloud environment
 2i2c is ***potentially*** going to deploy a JupyterHub instance in AWS for us as well. 
 We would utilize this experience to leverage 2i2c knowledge for our own education. 
 
-## On-prem cloud
+## On-premise cloud
+
+An on-premise (on-prem) cloud consists of storage, compute, and networking resources hosted on fully redundant hardware installed in personal/organizational facilities available to users 
 ### Kubernetes (k8s)
 We will utilize a k8s cluster to host JupyterHub. Dask will be installed to enable parallel computing. A JupyterHub Spawner will create single user environments with access to a shared and personal storage space. The Spawned user environments will come in different sizes with a GPU option. 
 

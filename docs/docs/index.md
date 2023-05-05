@@ -2,9 +2,13 @@
     <img src="images/CISL-NCAR-Cirrus.png">
 </p>
 
-# Welcome to CCPP
+# Welcome to the CISL Cloud Pilot Project (CCPP)
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
+
+## ***Pilot***
+
+***This is currently a Pilot project. Determining long term feasibility is one of the objectives we have in the rollout of the Pilot.*** 
 
 ## Vision
 
