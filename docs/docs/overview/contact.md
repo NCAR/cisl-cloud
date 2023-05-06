@@ -2,7 +2,7 @@
 
 ## New requests
 
-Any new request should be submitted via a [Jira Ticket](https://jira.ucar.edu/secure/CreateIssue!default.jspa). It will then follow our [Kanban workflow](how-to/agile.md#kanban-board). 
+Any new request should be submitted via a [Jira Ticket](https://jira.ucar.edu/secure/CreateIssue!default.jspa). It will then follow our [Kanban workflow](../how-to/agile.md#kanban-board). 
 
 ## Technical Product Owner
 

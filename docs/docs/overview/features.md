@@ -2,139 +2,24 @@
 
 ## JupyterHub
 
-### On-Prem
-* [Authentication](https://z2jh.jupyter.org/en/stable/administrator/authentication.html)
-    * [ACCESS](https://allocations.access-ci.org/)
-* Auto mounts
-* Spawner
-* GLADE RO
-* Kernels
-* Customizations
+* #### On-Prem
 
-### 2i2c
-* Authentication
-    * [GitHub Teams](https://github.com/orgs/NCAR/teams/2i2c-cloud-users)
-    * Has to be member of NCAR GitHub organization to join this team
-    * Create public team as well?
-* [User Home Directories](https://infrastructure.2i2c.org/topic/infrastructure/storage-layer.html)
-* GLADE RO (?)
-* Kernels
-* Customizations
-
-[nbgitpuller](https://github.com/jupyterhub/nbgitpuller) (?)
+* #### 2i2c Provided AWS Instance
 
 ## BinderHub
-### Container Registry
-* Private
-    * Only for repo2docker & images we need?
-    * Faster to pull images
-* Public
-    * No maintenance
-### Helm
-* [secrets.yml](https://binderhub.readthedocs.io/en/latest/zero-to-binderhub/setup-binderhub.html#create-secret-yaml-file)
-* [config.yml](https://binderhub.readthedocs.io/en/latest/zero-to-binderhub/setup-binderhub.html#create-config-yaml)
-* [Helm Install](https://binderhub.readthedocs.io/en/latest/zero-to-binderhub/setup-binderhub.html#install-binderhub)
-### [Connect to JupyterHub](https://binderhub.readthedocs.io/en/latest/zero-to-binderhub/setup-binderhub.html#connect-binderhub-and-jupyterhub)
-* config.yml
-* Helm Upgrade Documentation
-### [Customizations](https://binderhub.readthedocs.io/en/latest/zero-to-binderhub/setup-binderhub.html#customizing-your-deployment)
 
-## Visualization
-### Templates
-* Containers
-    * Ingress config
-* VM’s
-    * Terraform
-    * Ansible
-* Examples
-    * https://visgallery.ucar.edu/
-    * https://ncar.github.io/psif2020ar/
-    * https://carbonplan.org/
-    * webext.cgd.ucar.edu
+## Web Hosting
+
+## Tutorials
 
 ## Data Access
-### GLADE
-* Read Only Access for ease of access to datasets
-### Stratus
-* Object Storage
-* On-prem S3 target (?)
-### API
-* Research Data Archive
-* Geoscience Data Exchange
 
 ## Logging/Metrics
-### JupyterHub
-* Number of interactions
-    * username
-    * action
-### BinderHub
-* Prometheus
-* Launch Events
-    * Whenever new repo is launched
-### Data Access
-* Specific sets
-* Number of times queried
-### Visualizations
-* User
-* Number of requests
-* System requirements
-* OS
 
 ## Documentation
-* Implementation instructions
-* Configurations (GitHub)
-* SLAs
-* Backups/DR policies
-* User How-To
 
 ## Backups/DR
-* Define policies
-* Implement for each use case
 
 ## RFE’s
-* Link/email for user enhancement request
-* Jira ticket opened for team triage
-* Priority assigned
-* Due dates negotiated
 
 ## SLA’s 
-* Based on Jira ticket priority?
-* JupyterHub
-    * Uptime
-    * Backup policy
-    * DR policy
-    * Service Outage
-        * P1
-    * User issues
-        * Priority 1-5
-    * User RFE
-        * Project is P5
-        * Due date for P5
-* BinderHub
-    * Uptime
-    * Backup policy
-    * DR policy
-    * Service Outage
-        * P1
-    * User issues
-        * Priority 1-5
-    * User RFE
-        * Project is P5
-        * Due date for P5
-* Visualizations
-    * Uptime
-    * Backup policy
-    * DR policy
-    * Service Outage
-        * P1 or not?
-    * User issues
-        * Priority 1-5
-    * User RFE
-        * Project is P5
-        * Due date for P5
-* Data Access
-    * Inherit storage SLA
-    * API
-        * Uptime
-        * RFE
-        * User issues
