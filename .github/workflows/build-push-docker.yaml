@@ -33,5 +33,5 @@ jobs:
           context: .
           file: configs/jupyter/base-notebook/Dockerfile
           push: true
-          tags: latest
+          tags: ncote/cisl-cloud-base:latest
           labels: ${{ steps.meta.outputs.labels }}
