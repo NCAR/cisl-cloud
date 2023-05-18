@@ -43,6 +43,6 @@ RUN mamba install --quiet --yes \
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
-COPY .condarc /
+COPY configs/jupyter/base-notebook/.condarc /
 
 USER $NB_UID
