@@ -16,4 +16,3 @@ dependencies:
   - dask-gateway
   - python-graphviz
   - jupyter-server-proxy
-  - flask
