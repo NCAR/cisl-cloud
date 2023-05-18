@@ -12,7 +12,7 @@ We can provide VMs to users as needed for tasks that aren't well suited for runn
 We can provide general shared storage in the form of an NFS volume. Access to these systems is restricted by IP address and mounting is limited to on-premise machines. NFS mounting across wide area networks is not recommended.  
 
 #### Object Storage
-Object Storage is available and our admins can create new buckets and assign user permissions. 
+Object Storage is available and our admins can create new buckets and assign user permissions for S3 interactions. 
 
 ## Network Services
 Our systems will have routable IP addresses assigned and configured via DHCP. DNS records can also be added to provide full name resolution for systems provided. 

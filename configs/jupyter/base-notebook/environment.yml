@@ -1,0 +1,18 @@
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.6,<3.8
+  - matplotlib
+  - cartopy
+  - jupyter
+  - metpy
+  - siphon
+  - pip
+  - xarray
+  - ipywidgets
+  - jupyter
+  - python-awips
+  - dask-jobqueue
+  - dask-gateway
+  - python-graphviz
+  - jupyter-server-proxy

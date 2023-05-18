@@ -8,6 +8,7 @@ nav:
   - Use Cases: overview/use-cases.md
   - Availability:
     - Current Offering: overview/availability.md
+    - Hardware: overview/hw-resources.md
     - Potential Features: overview/features.md
     - Potential Services: overview/services.md
   - Contact Us: overview/contact.md
