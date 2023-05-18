@@ -32,8 +32,8 @@ COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
 
 RUN mamba install --quiet --yes \
     'conda-forge::nb_conda_kernels' && \
-    mamba env update --name cisl-cloud-base -f configs/jupyter/base-notebook/environment.yml && \
-    rm configs/jupyter/base-notebook/environment.yml && \
+    mamba env update --name cisl-cloud-base -f environment.yml && \
+    rm environment.yml && \
     pip install --no-cache-dir nbgitpuller && \
     mamba clean --all -f -y && \
     jupyter lab clean -y && \
