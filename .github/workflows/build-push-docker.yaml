@@ -33,5 +33,5 @@ jobs:
           context: .
           file: configs/jupyter/base-notebook/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: latest
           labels: ${{ steps.meta.outputs.labels }}
