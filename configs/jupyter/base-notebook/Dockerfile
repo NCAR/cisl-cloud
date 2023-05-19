@@ -16,7 +16,7 @@ USER root
 RUN apt-get update --yes && \
 # Install required OS packages and force yes to any installation prompts
     apt-get install --yes --no-install-recommends \
-# List of 
+# List of OS packages to be installed
     vim \
     curl \
     emacs && \
@@ -25,25 +25,39 @@ RUN apt-get update --yes && \
 # Remove lists of available packages to save space
     rm -rf /var/lib/apt/lists/*
 
-# Switch to local user for installing user level packages
+# Copy environment.yml file with list of python packages to be installed to the user home directory
 COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
 
+# Switch to local user for installing user level packages
 USER $NB_UID
 
+# Run a list of commands in user space to install packages and clean up environment
+# mamba is used instead of conda to speed up the installation
 RUN mamba install --quiet --yes \
+# nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
     'conda-forge::nb_conda_kernels' && \
+# Create a kernel named cisl-cloud-base from the environment.yml file
     mamba env update --name cisl-cloud-base -f environment.yml && \
+# Install nbgitpuller via pip 
     pip install --no-cache-dir nbgitpuller && \
+# Use mamba to remove unused packages and caches including writable packages and do no ask to confirm
     mamba clean --all -f -y && \
+# Use jupyter lab to remove unused packages and caches and do no ask to confirm
     jupyter lab clean -y && \
+# Use npm to remove data in cache and do no ask to confirm
     npm cache clean --force && \
+# Remove unneeded cache files
     rm -rf /home/$NB_USER/.cache/yarn && \
     rm -rf /home/$NB_USER/.node-gyp && \
+# Remove the environment.yml file to allow permissions to be correct
     rm environment.yml && \
+# Run jupyter fix-permissions script to make sure all files are writable
     fix-permissions $CONDA_DIR && \
     fix-permissions /home/$NB_USER
 
+# Copy the .condarc file to allow for saving of user custom conda environments
 COPY configs/jupyter/base-notebook/.condarc /
-COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
+COPY configs/jupyter/base-notebook/environment.yml /
 
+# Make sure the notebook user is set to be the default
 USER $NB_UID
