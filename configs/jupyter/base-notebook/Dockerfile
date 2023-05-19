@@ -33,7 +33,6 @@ COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
 RUN conda install --quiet --yes \
     'conda-forge::nb_conda_kernels' && \
     conda env update --name cisl-cloud-base -f environment.yml && \
-    rm environment.yml && \
     pip install --no-cache-dir nbgitpuller && \
     conda clean --all -f -y && \
     jupyter lab clean -y && \
