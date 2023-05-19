@@ -1,18 +1,17 @@
 channels:
   - conda-forge
 dependencies:
-  - python>=3.6,<3.8
-  - matplotlib
   - cartopy
-  - jupyter
-  - metpy
-  - siphon
-  - pip
-  - xarray
+  - dask-gateway
+  - dask-jobqueue
   - ipywidgets
   - jupyter
-  - python-awips
-  - dask-jobqueue
-  - dask-gateway
-  - python-graphviz
   - jupyter-server-proxy
+  - matplotlib
+  - metpy
+  - pip
+  - python>=3.6,<3.8
+  - python-awips
+  - python-graphviz
+  - siphon
+  - xarray
