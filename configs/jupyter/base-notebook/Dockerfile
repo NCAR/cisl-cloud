@@ -30,12 +30,12 @@ USER $NB_UID
 
 COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
 
-RUN mamba install --quiet --yes \
+RUN conda install --quiet --yes \
     'conda-forge::nb_conda_kernels' && \
-    mamba env update --name cisl-cloud-base -f environment.yml && \
+    conda env update --name cisl-cloud-base -f environment.yml && \
     rm environment.yml && \
     pip install --no-cache-dir nbgitpuller && \
-    mamba clean --all -f -y && \
+    conda clean --all -f -y && \
     jupyter lab clean -y && \
     npm cache clean --force && \
     rm -rf /home/$NB_USER/.cache/yarn && \
