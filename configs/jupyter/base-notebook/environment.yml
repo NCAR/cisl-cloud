@@ -6,12 +6,12 @@ dependencies:
   - dask-jobqueue
   - ipywidgets
   - jupyter
-  - jupyter-server-proxy
   - matplotlib
   - metpy
   - pip
   - python>=3.6,<3.8
   - python-awips
   - python-graphviz
+  - s3fs
   - siphon
   - xarray

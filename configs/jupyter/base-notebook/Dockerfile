@@ -40,6 +40,7 @@ RUN mamba install --quiet --yes \
     mamba env update --name cisl-cloud-base -f environment.yml && \
 # Install nbgitpuller via pip 
     pip install --no-cache-dir nbgitpuller && \
+    pip install --no-cache-dir jupyter-server-proxy && \
 # Use mamba to remove unused packages and caches including writable packages and do no ask to confirm
     mamba clean --all -f -y && \
 # Use jupyter lab to remove unused packages and caches and do no ask to confirm
