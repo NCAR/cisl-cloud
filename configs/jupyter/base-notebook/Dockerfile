@@ -59,8 +59,8 @@ RUN mamba install --quiet --yes \
 # Copy the .condarc file to allow for saving of user custom conda environments
 COPY configs/jupyter/base-notebook/.condarc /
 COPY configs/jupyter/base-notebook/environment.yml /
-ADD configs/jupyter/base-notebook/dask-dashboard.yml /home/$NB_USER/.config/dask/distributed.yaml
-ADD configs/jupyter/base-notebook/dask-dashboard.yml /home/$NB_USER/.config/dask/jobqueue.yaml
+
+COPY configs/jupyter/base-notebook/distributed.yml /home/$NB_USER/.config/dask/
 
 # Make sure the notebook user is set to be the default
 USER $NB_UID
