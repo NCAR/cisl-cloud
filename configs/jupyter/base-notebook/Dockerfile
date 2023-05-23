@@ -28,7 +28,7 @@ RUN apt-get update --yes && \
 # Copy environment.yml file with list of python packages to be installed to the user home directory
 COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
 COPY configs/jupyter/base-notebook/post-deploy.sh /
-RUN chmod +x ./post-deploy.sh
+
 # Switch to local user for installing user level packages
 USER $NB_UID
 
