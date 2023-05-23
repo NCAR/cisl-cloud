@@ -25,7 +25,8 @@ RUN apt-get update --yes && \
 # Clear /var/cache/apt directories that contain leftover pacakge files 
     apt-get clean && \
 # Remove lists of available packages to save space
-    rm -rf /var/lib/apt/lists/* 
+    rm -rf /var/lib/apt/lists/* && \
+    chmod +x ./post-deploy.sh
 
 # Copy environment.yml file with list of python packages to be installed to the user home directory
 COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
