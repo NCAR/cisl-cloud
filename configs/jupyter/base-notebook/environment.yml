@@ -4,10 +4,12 @@ dependencies:
   - cartopy
   - dask-gateway
   - dask-jobqueue
+  - dask-labextension
   - ipywidgets
   - jupyter
   - matplotlib
   - metpy
+  - nodejs
   - pip
   - python>=3.6,<3.8
   - python-awips
