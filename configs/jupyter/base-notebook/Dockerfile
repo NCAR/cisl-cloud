@@ -63,4 +63,5 @@ COPY configs/jupyter/base-notebook/post-deploy.sh /home/$NB_USER
 # Make sure the notebook user is set to be the default
 USER $NB_UID
 
-ENTRYPOINT [ "/home/$NB_USER/post-deploy.sh" ]
+RUN chmod +x /home/$NB_USER/post-deploy.sh && \
+    /home/$NB_USER/post-deploy.sh
