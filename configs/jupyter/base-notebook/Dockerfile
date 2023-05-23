@@ -58,8 +58,9 @@ RUN mamba install --quiet --yes \
 
 # Copy the .condarc file to allow for saving of user custom conda environments
 COPY configs/jupyter/base-notebook/.condarc /
+COPY configs/jupyter/base-notebook/post-deploy.sh /home/$NB_USER
 
 # Make sure the notebook user is set to be the default
 USER $NB_UID
 
-ENV DASK_DISTRIBUTED__DASHBOARD__LINK="/user/$JUPYTERHUB_USER/proxy/8787/status"
+ENTRYPOINT [ "/home/$NB_USER/post-deploy.sh" ]
