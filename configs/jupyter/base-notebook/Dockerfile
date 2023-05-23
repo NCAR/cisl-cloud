@@ -12,8 +12,6 @@ LABEL maintainer="Nick Cote <ncote@ucar.edu>"
 # Set to root user for apt-get commands to follow
 USER root
 
-COPY configs/jupyter/base-notebook/post-deploy.sh /
-
 # Update to the latest package version list
 RUN apt-get update --yes && \
 # Install required OS packages and force yes to any installation prompts
@@ -25,8 +23,7 @@ RUN apt-get update --yes && \
 # Clear /var/cache/apt directories that contain leftover pacakge files 
     apt-get clean && \
 # Remove lists of available packages to save space
-    rm -rf /var/lib/apt/lists/* && \
-    chmod +x ./post-deploy.sh
+    rm -rf /var/lib/apt/lists/* 
 
 # Copy environment.yml file with list of python packages to be installed to the user home directory
 COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
