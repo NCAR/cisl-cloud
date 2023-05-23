@@ -4,7 +4,6 @@ dependencies:
   - cartopy
   - dask-gateway
   - dask-jobqueue
-  - dask-labextension
   - ipywidgets
   - jupyter
   - matplotlib
