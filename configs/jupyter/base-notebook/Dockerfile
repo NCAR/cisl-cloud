@@ -27,11 +27,11 @@ RUN apt-get update --yes && \
 
 # Copy environment.yml file with list of python packages to be installed to the user home directory
 COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
-COPY configs/jupyter/base-notebook/.bash_profile /home/$NB_USER
 COPY configs/jupyter/base-notebook/.bash_profile /
 
 # Switch to local user for installing user level packages
 USER $NB_UID
+COPY configs/jupyter/base-notebook/.bash_profile /home/$NB_USER
 
 # Run a list of commands in user space to install packages and clean up environment
 # mamba is used instead of conda to speed up the installation
