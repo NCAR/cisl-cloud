@@ -61,8 +61,7 @@ RUN mamba install --quiet --yes \
 COPY configs/jupyter/base-notebook/.condarc /
 COPY configs/jupyter/base-notebook/.bash_profile /home/$NB_USER/
 
-USER root
-ADD configs/jupyter/base-notebook/.bash_profile /home/$NB_USER/
+RUN echo -e "if [ -f ~/.bashrc ]; then\n   source ~/.bashrc\nfi" >  /home/$NB_USER/.bash_profile
 
 # Make sure the notebook user is set to be the default
 USER $NB_UID
