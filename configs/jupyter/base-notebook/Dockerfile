@@ -27,6 +27,8 @@ RUN apt-get update --yes && \
 
 # Copy environment.yml file with list of python packages to be installed to the user home directory
 COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
+COPY configs/jupyter/base-notebook/.bash_profile /home/$NB_USER
+COPY configs/jupyter/base-notebook/.bash_profile /
 
 # Switch to local user for installing user level packages
 USER $NB_UID
@@ -59,9 +61,6 @@ RUN mamba install --quiet --yes \
 
 # Copy the .condarc file to allow for saving of user custom conda environments
 COPY configs/jupyter/base-notebook/.condarc /
-
-USER root
-COPY configs/jupyter/base-notebook/.bash_profile /home/$NB_USER
 
 # Make sure the notebook user is set to be the default
 USER $NB_UID
