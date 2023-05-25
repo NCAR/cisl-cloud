@@ -1,3 +1,10 @@
+# How to Customize a Jupyter Docker Image for Single Users
+
+The Jupyter environment spun up for the users can be customized by building on top of the base Jupyter Docker image. For this use case the scipy-notebook image from Jupyter is used. That image is built upon other customized images with the base using the ubuntu:22.04 image. 
+
+This example Dockerfile has comments inline to explain what the lines are doing
+
+```
 # NCAR CISL Customized version of the Jupyter scipy-notebook Docker image
 # https://github.com/jupyter/docker-stacks/blob/main/scipy-notebook/
 # This is built on a collection of Docker images from jupyter but the base image is ubuntu:22.04
@@ -23,7 +30,7 @@ RUN apt-get update --yes && \
 # Clear /var/cache/apt directories that contain leftover pacakge files 
     apt-get clean && \
 # Remove lists of available packages to save space
-    rm -rf /var/lib/apt/lists/* 
+    rm -rf /var/lib/apt/lists/*
 
 # Copy environment.yml file with list of python packages to be installed to the user home directory
 COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
@@ -40,8 +47,6 @@ RUN mamba install --quiet --yes \
     mamba env update --name cisl-cloud-base -f environment.yml && \
 # Install nbgitpuller via pip 
     pip install --no-cache-dir nbgitpuller && \
-    pip install --no-cache-dir jupyter-server-proxy && \
-    pip install --no-cache-dir dask-labextension && \
 # Use mamba to remove unused packages and caches including writable packages and do no ask to confirm
     mamba clean --all -f -y && \
 # Use jupyter lab to remove unused packages and caches and do no ask to confirm
@@ -59,7 +64,8 @@ RUN mamba install --quiet --yes \
 
 # Copy the .condarc file to allow for saving of user custom conda environments
 COPY configs/jupyter/base-notebook/.condarc /
-COPY configs/jupyter/base-notebook/.bash_profile /home/$NB_USER
+COPY configs/jupyter/base-notebook/environment.yml /
 
 # Make sure the notebook user is set to be the default
 USER $NB_UID
+```
