@@ -27,7 +27,6 @@ RUN apt-get update --yes && \
 
 # Copy environment.yml file with list of python packages to be installed to the user home directory
 COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
-COPY configs/jupyter/base-notebook/.bash_profile /
 
 # Switch to local user for installing user level packages
 USER $NB_UID
@@ -63,8 +62,9 @@ COPY configs/jupyter/base-notebook/.condarc /
 COPY configs/jupyter/base-notebook/.bash_profile /home/$NB_USER/
 
 USER root
+COPY configs/jupyter/base-notebook/.bash_profile /
 RUN cp /.bash_profile /home/$NB_USER/ && \
-    chown $NB_USER:users /home/$NB_USER/bash_profile
+    chown $NB_USER:users /home/$NB_USER/.bash_profile
 
 # Make sure the notebook user is set to be the default
 USER $NB_UID
