@@ -31,7 +31,6 @@ COPY configs/jupyter/base-notebook/.bash_profile /
 
 # Switch to local user for installing user level packages
 USER $NB_UID
-COPY configs/jupyter/base-notebook/.bash_profile /home/$NB_USER
 
 # Run a list of commands in user space to install packages and clean up environment
 # mamba is used instead of conda to speed up the installation
@@ -62,5 +61,6 @@ RUN mamba install --quiet --yes \
 # Copy the .condarc file to allow for saving of user custom conda environments
 COPY configs/jupyter/base-notebook/.condarc /
 
+RUN cp /.bash_profile /home/$NB_USER/
 # Make sure the notebook user is set to be the default
 USER $NB_UID
