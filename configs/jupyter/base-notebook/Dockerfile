@@ -59,7 +59,7 @@ RUN mamba install --quiet --yes \
 
 # Copy the .condarc file to allow for saving of user custom conda environments
 COPY configs/jupyter/base-notebook/.condarc /
-COPY configs/jupyter/base-notebook/.bash_profile /
+COPY configs/jupyter/base-notebook/.bash_profile ~/
 
 # Make sure the notebook user is set to be the default
 USER $NB_UID
