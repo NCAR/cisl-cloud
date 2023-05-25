@@ -62,9 +62,7 @@ COPY configs/jupyter/base-notebook/.condarc /
 COPY configs/jupyter/base-notebook/.bash_profile /home/$NB_USER/
 
 USER root
-COPY configs/jupyter/base-notebook/.bash_profile /
-RUN cp /.bash_profile /home/$NB_USER/ && \
-    chown $NB_USER:users /home/$NB_USER/.bash_profile
+ADD configs/jupyter/base-notebook/.bash_profile /home/$NB_USER/
 
 # Make sure the notebook user is set to be the default
 USER $NB_UID
