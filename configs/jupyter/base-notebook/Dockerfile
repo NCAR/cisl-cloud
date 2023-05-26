@@ -65,6 +65,5 @@ COPY configs/jupyter/base-notebook/.condarc /
 COPY configs/jupyter/base-notebook/.bash_profile /
 COPY configs/jupyter/base-notebook/distributed.yml /
 
-RUN mkdir /home/$NB_USER/.config/dask
 # Make sure the notebook user is set to be the default
 USER $NB_UID
