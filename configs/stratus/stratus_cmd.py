@@ -97,14 +97,3 @@ def user_try():
     iam_resource = stratus_iam_resource()
     response = iam_resource.User('cisl-cloud')
     print(response.user_name)
-
-#user_try()
-#create_user('test')
-#list_all_buckets()
-#list_bucket_acl('terraform-test')
-#delete_object('terraform-test','test.txt')
-list_bucket_objs('terraform-test')
-
-
-#s3 = boto3.resource('s3', endpoint_url = endpoint)
-#client = boto3.client('s3')
