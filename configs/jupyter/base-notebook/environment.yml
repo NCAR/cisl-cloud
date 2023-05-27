@@ -1,6 +1,7 @@
 channels:
   - conda-forge
 dependencies:
+  - boto3
   - cartopy
   - dask-gateway
   - dask-jobqueue
@@ -10,6 +11,7 @@ dependencies:
   - matplotlib
   - metpy
   - nodejs
+  - panel
   - pip
   - python>=3.6,<3.8
   - python-awips

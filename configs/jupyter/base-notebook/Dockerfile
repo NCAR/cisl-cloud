@@ -36,7 +36,7 @@ USER $NB_UID
 
 # Run a list of commands in user space to install packages and clean up environment
 # mamba is used instead of conda to speed up the installation
-RUN mamba uninstall jupyterlab --yes && \
+RUN mamba remove jupyterlab --force --yes && \
     mamba install --quiet --yes \
 # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
     'conda-forge::nb_conda_kernels' && \
