@@ -13,7 +13,7 @@ LABEL maintainer="Nick Cote <ncote@ucar.edu>"
 USER root
 
 # Used to allow folder deletions
-# RUN sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' /etc/jupyter/jupyter_server_config.py
+RUN sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' /etc/jupyter/jupyter_server_config.py
 
 # Update to the latest package version list
 RUN apt-get update --yes && \
@@ -36,8 +36,7 @@ USER $NB_UID
 
 # Run a list of commands in user space to install packages and clean up environment
 # mamba is used instead of conda to speed up the installation
-RUN mamba remove jupyterlab --force --yes && \
-    mamba install --quiet --yes \
+RUN mamba install --quiet --yes \
 # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
     'conda-forge::nb_conda_kernels' && \
 # Create a kernel named cisl-cloud-base from the environment.yml file
