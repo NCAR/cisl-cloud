@@ -13,7 +13,7 @@ LABEL maintainer="Nick Cote <ncote@ucar.edu>"
 USER root
 
 # Used to allow folder deletions
-RUN sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' /etc/jupyter/jupyter_server_config.py
+# RUN sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' /etc/jupyter/jupyter_server_config.py
 
 # Update to the latest package version list
 RUN apt-get update --yes && \
