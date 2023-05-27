@@ -5,7 +5,7 @@ dependencies:
   - dask-gateway
   - dask-jobqueue
   - ipywidgets
-  - jupyterlab
+  - jupyterlab>=3,<4
   - jupyterlab-git
   - matplotlib
   - metpy
