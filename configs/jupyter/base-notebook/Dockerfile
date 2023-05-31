@@ -1,70 +1,109 @@
-# NCAR CISL Customized version of the Jupyter scipy-notebook Docker image
-# https://github.com/jupyter/docker-stacks/blob/main/scipy-notebook/
-# This is built on a collection of Docker images from jupyter but the base image is ubuntu:22.04
+# Borrowed heavily from the base-notebook Dockerfile by Jupyter
+# https://github.com/jupyter/docker-stacks/blob/main/base-notebook/Dockerfile
+# The shell scripts and python modules were developed by the Jupyter Development Team
+# This image provides a custom environment.yml and requirements.txt as well as
+# having some customizations injected into this Dockerfile 
+# The base image used is the docker-stacks-foundation by Jupyter
 # https://github.com/jupyter/docker-stacks/blob/main/docker-stacks-foundation/Dockerfile
 
-ARG BASE_CONTAINER=jupyter/scipy-notebook:latest
-FROM $BASE_CONTAINER
+FROM jupyter/docker-stacks-foundation:latest
 
-# Replace with team name and email
-LABEL maintainer="Nick Cote <ncote@ucar.edu>"
+LABEL maintainer="CISL On-Prem Cloud Team <cisl-on-prem-cloud@ucar.edu>"
 
-# Set to root user for apt-get commands to follow
+# Fix: https://github.com/hadolint/hadolint/wiki/DL4006
+# Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
+
 USER root
 
-# Used to allow folder deletions
-RUN sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' /etc/jupyter/jupyter_server_config.py
-
-# Update to the latest package version list
+# Install all OS dependencies for notebook server that starts but lacks all
+# features (e.g., download as all possible file formats)
 RUN apt-get update --yes && \
-# Install required OS packages and force yes to any installation prompts
     apt-get install --yes --no-install-recommends \
-# List of OS packages to be installed
-    vim \
+    fonts-liberation \
     curl \
-    emacs && \
-# Clear /var/cache/apt directories that contain leftover pacakge files 
-    apt-get clean && \
-# Remove lists of available packages to save space
-    rm -rf /var/lib/apt/lists/* 
+    emacs \
+    nodejs \
+    npm \
+    git \
+    vim \
+    # - pandoc is used to convert notebooks to html files
+    #   it's not present in aarch64 ubuntu image, so we install it here
+    pandoc \
+    # - run-one - a wrapper script that runs no more
+    #   than one unique  instance  of  some  command with a unique set of arguments,
+    #   we use `run-one-constantly` to support `RESTARTABLE` option
+    run-one && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Copy environment.yml file with list of python packages to be installed to the user home directory
-COPY configs/jupyter/base-notebook/environment.yml /home/$NB_USER/
+USER ${NB_UID}
 
-# Switch to local user for installing user level packages
-USER $NB_UID
+# Install Jupyter Notebook, Lab, and Hub
+# Generate a notebook server config
+# Cleanup temporary files
+# Correct permissions
+# Do all this in a single RUN command to avoid duplicating all of the
+# files across image layers when the permissions change
+COPY environment.yml requirements.txt /tmp/
 
-# Run a list of commands in user space to install packages and clean up environment
-# mamba is used instead of conda to speed up the installation
+WORKDIR /tmp
 RUN mamba install --quiet --yes \
-# nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
+    # NodeJS >= 18.0 is required for `jupyter lab build` command
+    # https://github.com/jupyter/docker-stacks/issues/1901
+    'nodejs>=18.0' \
+    'notebook' \
+    'jupyterhub' \
+    'jupyterlab==3.6.3' \
     'conda-forge::nb_conda_kernels' && \
+    # Pin NodeJS
+    echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
+    # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
 # Create a kernel named cisl-cloud-base from the environment.yml file
     mamba env update --name cisl-cloud-base -f environment.yml && \
 # Install nbgitpuller via pip 
-    pip install --no-cache-dir nbgitpuller && \
-    pip install --no-cache-dir jupyter-server-proxy && \
-    pip install --no-cache-dir dask-labextension && \
-# Use mamba to remove unused packages and caches including writable packages and do no ask to confirm
+    pip install -r requirements.txt && \
+    jupyter notebook --generate-config && \
     mamba clean --all -f -y && \
-# Use jupyter lab to remove unused packages and caches and do no ask to confirm
-    jupyter lab clean -y && \
-# Use npm to remove data in cache and do no ask to confirm
     npm cache clean --force && \
-# Remove unneeded cache files
-    rm -rf /home/$NB_USER/.cache/yarn && \
-    rm -rf /home/$NB_USER/.node-gyp && \
-# Remove the environment.yml file to allow permissions to be correct
-    rm environment.yml && \
-# Run jupyter fix-permissions script to make sure all files are writable
-    fix-permissions $CONDA_DIR && \
-    fix-permissions /home/$NB_USER
+    jupyter lab clean && \
+    rm -rf "/home/${NB_USER}/.cache/yarn" && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+ENV JUPYTER_PORT=8888
+EXPOSE $JUPYTER_PORT
+
+# Configure container startup
+CMD ["start-notebook.sh"]
+
+# Copy local files as late as possible to avoid cache busting
+COPY start-notebook.sh start-singleuser.sh /usr/local/bin/
+# Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
+COPY jupyter_server_config.py docker_healthcheck.py /etc/jupyter/
+
+# Fix permissions on /etc/jupyter as root
+USER root
+
+RUN rm -rf /tmp/environment.yml && \
+    rm -rf /tmp/requirements.txt
+# Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
+RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
+    /etc/jupyter/jupyter_server_config.py > /etc/jupyter/jupyter_notebook_config.py && \
+    fix-permissions /etc/jupyter/
+
+# HEALTHCHECK documentation: https://docs.docker.com/engine/reference/builder/#healthcheck
+# This healtcheck works well for `lab`, `notebook`, `nbclassic`, `server` and `retro` jupyter commands
+# https://github.com/jupyter/docker-stacks/issues/915#issuecomment-1068528799
+HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
+    CMD /etc/jupyter/docker_healthcheck.py || exit 1
 
 # Copy the .condarc file to allow for saving of user custom conda environments
-COPY configs/jupyter/base-notebook/.condarc /
-COPY configs/jupyter/base-notebook/.bash_profile /
-COPY configs/jupyter/base-notebook/.bashrc /
-COPY configs/jupyter/base-notebook/distributed.yml /
+COPY .condarc /
+COPY .bash_profile /
+COPY .bashrc /
+COPY distributed.yml /
 
-# Make sure the notebook user is set to be the default
-USER $NB_UID
+# Switch back to jovyan to avoid accidental container runs as root
+USER ${NB_UID}
+
+WORKDIR "${HOME}"

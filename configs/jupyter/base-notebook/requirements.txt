@@ -1,0 +1,4 @@
+nbgitpuller
+jupyterlab-git
+jupyter-server-proxy
+dask-labextension
