@@ -44,7 +44,7 @@ USER ${NB_UID}
 # Correct permissions
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
-COPY environment.yml requirements.txt /tmp/
+COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt /tmp/
 
 WORKDIR /tmp
 RUN mamba install --quiet --yes \
@@ -77,9 +77,9 @@ EXPOSE $JUPYTER_PORT
 CMD ["start-notebook.sh"]
 
 # Copy local files as late as possible to avoid cache busting
-COPY start-notebook.sh start-singleuser.sh /usr/local/bin/
+COPY configs/jupyter/base-notebook/start-notebook.sh configs/jupyter/base-notebook/start-singleuser.sh /usr/local/bin/
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-COPY jupyter_server_config.py docker_healthcheck.py /etc/jupyter/
+COPY configs/jupyter/base-notebook/jupyter_server_config.py configs/jupyter/base-notebook/docker_healthcheck.py /etc/jupyter/
 
 # Fix permissions on /etc/jupyter as root
 USER root
@@ -98,10 +98,10 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
     CMD /etc/jupyter/docker_healthcheck.py || exit 1
 
 # Copy the .condarc file to allow for saving of user custom conda environments
-COPY .condarc /
-COPY .bash_profile /
-COPY .bashrc /
-COPY distributed.yml /
+COPY configs/jupyter/base-notebook/.condarc /
+COPY configs/jupyter/base-notebook/.bash_profile /
+COPY configs/jupyter/base-notebook/.bashrc /
+COPY configs/jupyter/base-notebook/distributed.yml /
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}
