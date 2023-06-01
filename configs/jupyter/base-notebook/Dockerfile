@@ -93,6 +93,9 @@ RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
     /etc/jupyter/jupyter_server_config.py > /etc/jupyter/jupyter_notebook_config.py && \
     fix-permissions /etc/jupyter/
 
+# Used to allow folder deletions
+RUN sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' /etc/jupyter/jupyter_server_config.py
+
 # HEALTHCHECK documentation: https://docs.docker.com/engine/reference/builder/#healthcheck
 # This healtcheck works well for `lab`, `notebook`, `nbclassic`, `server` and `retro` jupyter commands
 # https://github.com/jupyter/docker-stacks/issues/915#issuecomment-1068528799
