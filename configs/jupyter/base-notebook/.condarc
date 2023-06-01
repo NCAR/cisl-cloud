@@ -5,4 +5,4 @@ show_channel_urls: true
 channels:
   - conda-forge
 envs_dirs:
-  - /home/jovyan/my-conda-envs
+  - /opt/conda/my-conda-envs
