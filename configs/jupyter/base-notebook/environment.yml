@@ -124,7 +124,7 @@ dependencies:
   - ipywidgets
 # Allows embedding of Jupyter widgets in Bokeh layouts.
 # https://pypi.org/project/ipywidgets-bokeh/
-  - ipywidgets_bokeh
+  - ipywidgets-bokeh
 # A Jupyter extension for rendering Bokeh content.
 # https://pypi.org/project/jupyter-bokeh/
   - jupyter_bokeh
