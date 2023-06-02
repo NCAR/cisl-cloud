@@ -26,6 +26,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-if [ -f ~/.bashrc ]; then
-   source ~/.bashrc
+if [ -f /etc/skel/.bashrc ]; then
+   source /etc/skel/.bashrc
 fi
