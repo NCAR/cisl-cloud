@@ -79,9 +79,9 @@ EXPOSE $JUPYTER_PORT
 CMD ["start-notebook.sh"]
 
 # Copy local files as late as possible to avoid cache busting
-COPY configs/jupyter/base-notebook/start-notebook.sh configs/jupyter/base-notebook/start-singleuser.sh /usr/local/bin/
+COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-COPY configs/jupyter/base-notebook/jupyter_server_config.py configs/jupyter/base-notebook/docker_healthcheck.py /etc/jupyter/
+COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 
 # Fix permissions on /etc/jupyter as root
 USER root
@@ -103,13 +103,13 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
     CMD /etc/jupyter/docker_healthcheck.py || exit 1
 
 # Copy the .condarc file to allow for saving of user custom conda environments
-COPY configs/jupyter/base-notebook/.condarc /
-COPY configs/jupyter/base-notebook/.condarc /opt/conda/
-COPY configs/jupyter/base-notebook/.profile /.bash_profile
-COPY configs/jupyter/base-notebook/.profile /etc/skel
-COPY configs/jupyter/base-notebook/.bashrc /
-COPY configs/jupyter/base-notebook/.bashrc /etc/skel
-COPY configs/jupyter/base-notebook/distributed.yml /
+COPY configs/jupyter/base-notebook/config/.condarc /
+COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
+COPY configs/jupyter/base-notebook/config/.profile /etc/skel
+COPY configs/jupyter/base-notebook/config/.bashrc /
+COPY configs/jupyter/base-notebook/config/.bashrc /etc/skel
+COPY configs/jupyter/base-notebook/config/distributed.yml /
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}
