@@ -105,8 +105,10 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 # Copy the .condarc file to allow for saving of user custom conda environments
 COPY configs/jupyter/base-notebook/.condarc /
 COPY configs/jupyter/base-notebook/.condarc /opt/conda/
-COPY configs/jupyter/base-notebook/.bash_profile /
+COPY configs/jupyter/base-notebook/.profile /.bash_profile
+COPY configs/jupyter/base-notebook/.profile /etc/skel
 COPY configs/jupyter/base-notebook/.bashrc /
+COPY configs/jupyter/base-notebook/.bashrc /etc/skel
 COPY configs/jupyter/base-notebook/distributed.yml /
 
 # Switch back to jovyan to avoid accidental container runs as root
