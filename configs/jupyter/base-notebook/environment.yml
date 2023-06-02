@@ -122,6 +122,12 @@ dependencies:
 # Jupyter interactive widgets
 # https://pypi.org/project/ipywidgets/
   - ipywidgets
+# Allows embedding of Jupyter widgets in Bokeh layouts.
+# https://pypi.org/project/ipywidgets-bokeh/
+  - ipywidgets_bokeh
+# A Jupyter extension for rendering Bokeh content.
+# https://pypi.org/project/jupyter-bokeh/
+  - jupyter_bokeh
 # Jupyter Server Proxy for Panel applications
 # https://pypi.org/project/jupyter-panel-proxy/
   - jupyter-panel-proxy
