@@ -8,7 +8,7 @@
 
 FROM jupyter/docker-stacks-foundation:latest
 
-LABEL maintainer="CISL On-Prem Cloud Team <cisl-on-prem-cloud@ucar.edu>"
+LABEL maintainer="CISL Cloud Pilot Team <cisl-cloud-pilot@ucar.edu>"
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
