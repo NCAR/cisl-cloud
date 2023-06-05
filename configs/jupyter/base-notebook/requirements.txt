@@ -2,3 +2,4 @@ nbgitpuller
 jupyterlab-git
 jupyter-server-proxy
 dask-labextension
+bash_kernel

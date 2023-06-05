@@ -86,8 +86,6 @@ COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupy
 # Fix permissions on /etc/jupyter as root
 USER root
 
-RUN jupyter-kernelspec install bash
-
 RUN rm -rf /tmp/environment.yml && \
     rm -rf /tmp/requirements.txt
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
