@@ -111,7 +111,6 @@ COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
 COPY configs/jupyter/base-notebook/config/.bashrc /
 COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
 COPY configs/jupyter/base-notebook/config/distributed.yml /
-COPY configs/jupyter/base-notebook/scripts/jupyter_notebook_config.py /etc/jupyter
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}

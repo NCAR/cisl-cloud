@@ -57,3 +57,8 @@ if "GEN_CERT" in os.environ:
 # the environment
 if "NB_UMASK" in os.environ:
     os.umask(int(os.environ["NB_UMASK"], 8))
+
+
+# Configure nb_conda_kernels to avoid registering jupyter kernels in our conda
+# environment again.
+c.CondaKernelSpecManager.env_filter = '/opt/conda/my-conda-envs'
