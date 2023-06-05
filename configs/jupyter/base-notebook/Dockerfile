@@ -35,7 +35,7 @@ RUN apt-get update --yes && \
     #   we use `run-one-constantly` to support `RESTARTABLE` option
     run-one && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
-    mkdir - p /etc/jupyter
+    mkdir -p /etc/jupyter
 
 COPY configs/jupyter/base-notebook/scripts/jupyter_notebook_config.py /etc/jupyter
 USER ${NB_UID}
