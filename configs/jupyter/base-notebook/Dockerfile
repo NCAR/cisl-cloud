@@ -55,6 +55,7 @@ RUN mamba install --quiet --yes \
     'jupyterhub' \
     'jupyterlab==3.6.3' \
     'r-irkernel' \
+    'julia' \
     'conda-forge::nb_conda_kernels' && \
     # Pin NodeJS
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
