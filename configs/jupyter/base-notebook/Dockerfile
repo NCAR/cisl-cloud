@@ -34,10 +34,8 @@ RUN apt-get update --yes && \
     #   than one unique  instance  of  some  command with a unique set of arguments,
     #   we use `run-one-constantly` to support `RESTARTABLE` option
     run-one && \
-    apt-get clean && rm -rf /var/lib/apt/lists/* && \
-    mkdir -p /etc/jupyter
-
-COPY configs/jupyter/base-notebook/scripts/jupyter_notebook_config.py /etc/jupyter
+    apt-get clean && rm -rf /var/lib/apt/lists/* 
+    
 USER ${NB_UID}
 
 # Install Jupyter Notebook, Lab, and Hub
@@ -84,7 +82,7 @@ CMD ["start-notebook.sh"]
 # Copy local files as late as possible to avoid cache busting
 COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py configs/jupyter/base-notebook/scripts/jupyter_notebook_config.py /etc/jupyter/
 
 # Fix permissions on /etc/jupyter as root
 USER root
