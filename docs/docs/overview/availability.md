@@ -1,5 +1,12 @@
 # Available Services and Status
 
+## JupyterHub
+#### On-premise
+[https://jupyter.k8s.ucar.edu/](https://jupyter.k8s.ucar.edu/)
+
+#### AWS instance supported by 2i2c
+[https://ncar-cisl.2i2c.cloud/](https://ncar-cisl.2i2c.cloud/)
+
 ## Virtualization
 #### Kubernetes (k8s)
 We have a kubernetes cluster that we can utilize to host containers. We can provide users a private namespace to deploy to. We can also provision full kubernetes clusters for users via Rancher. Users would be administrators of their own k8s clusters but would have more freedom to customize to their needs and requirements.  

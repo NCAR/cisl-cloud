@@ -54,6 +54,7 @@ RUN mamba install --quiet --yes \
     'notebook' \
     'jupyterhub' \
     'jupyterlab==3.6.3' \
+    'r-irkernel' \
     'conda-forge::nb_conda_kernels' && \
     # Pin NodeJS
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
@@ -85,9 +86,6 @@ COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupy
 
 # Fix permissions on /etc/jupyter as root
 USER root
-
-RUN mamba install --quiet --yes \
-    'r-irkernel'
 
 RUN rm -rf /tmp/environment.yml && \
     rm -rf /tmp/requirements.txt
