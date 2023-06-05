@@ -34,8 +34,10 @@ RUN apt-get update --yes && \
     #   than one unique  instance  of  some  command with a unique set of arguments,
     #   we use `run-one-constantly` to support `RESTARTABLE` option
     run-one && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-get clean && rm -rf /var/lib/apt/lists/* && \
+    mkdir - p /etc/jupyter
 
+COPY configs/jupyter/base-notebook/scripts/jupyter_notebook_config.py /etc/jupyter
 USER ${NB_UID}
 
 # Install Jupyter Notebook, Lab, and Hub
