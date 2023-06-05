@@ -35,7 +35,7 @@ RUN apt-get update --yes && \
     #   we use `run-one-constantly` to support `RESTARTABLE` option
     run-one && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 
-    
+
 USER ${NB_UID}
 
 # Install Jupyter Notebook, Lab, and Hub
@@ -82,7 +82,7 @@ CMD ["start-notebook.sh"]
 # Copy local files as late as possible to avoid cache busting
 COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py configs/jupyter/base-notebook/scripts/jupyter_notebook_config.py /etc/jupyter/
+COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 
 # Fix permissions on /etc/jupyter as root
 USER root
@@ -110,6 +110,7 @@ COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
 COPY configs/jupyter/base-notebook/config/.bashrc /
 COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
 COPY configs/jupyter/base-notebook/config/distributed.yml /
+COPY configs/jupyter/base-notebook/scripts/jupyter_notebook_config.py /etc/jupyter
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}
