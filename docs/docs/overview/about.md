@@ -12,16 +12,19 @@ We will utilize a k8s cluster to host JupyterHub. Dask will be installed to enab
 
 k8s can also be used to host containers or containerized virtual machines for individual use cases.
 
+#### JupyterHub on k8s
+There is a JupyterHub instance hosted on-prem at NWSC on a RKE2 provisioned k8s cluster. This JupyterHub is going to have a customized Docker image that enables packages, kernels, and extensions the scientific research community utilizes to increase productivity in data analysis. The custom environment will also provide users read-only access to the campaign and collections directories on GLADE as well as a shared directory whose specific use case is still being fleshed out. Access to this JupyterHub will be handled via GitHub authentication and a team under the NCAR organization in GitHub. 
+
 ### Storage
 #### GLADE
-NFS will be utilized to provide at least RO only access to GLADE on the Spawned JupyterHub user environments.
+NFS will be utilized to provide RO only access to GLADE on the Spawned JupyterHub user environments. Currently the collections and campaign directories on GLADE are available as read only.  
 
 #### STRATUS
 S3 will be provided via CISLs object storage platform [STRATUS](https://arc.ucar.edu/knowledge_base/70549594). 
 
 ## 2i2c
 #### JupyterHub
-2i2c will ***potentially*** deploy a JupyterHub instance in AWS. Access to this JupyterHub instance will be provided by GitHub Teams. 
+2i2c deployed a JupyterHub instance in AWS. Access to this JupyterHub instance is provided by [GitHub Teams](https://github.com/orgs/NCAR/teams/2i2c-cloud-users). Costs will be incurred for any AWS compute resources utilized by users. At this point in time the 2i2c deployed JupyterHub will be used to validate the 2i2c notebook configuration for the research community users. These validations will be orchestrated to develop an estimate of potential costs to use at scale. 
 
 #### Storage
 Data Storage for the 2i2c JupyterHub instance is provided by AWS Elastic File System ([EFS](https://aws.amazon.com/efs/))
