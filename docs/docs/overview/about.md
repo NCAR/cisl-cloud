@@ -1,8 +1,8 @@
 # About this Project
 CISL is currently deploying a ***pilot*** on-premise prototype cloud environment for compute and storage.
 
-2i2c is ***potentially*** going to deploy a JupyterHub instance in AWS for us as well. 
-We would utilize this experience to leverage 2i2c knowledge for our own education. 
+2i2c deployed a JupyterHub instance in AWS. 
+We would utilize this experience to leverage 2i2c knowledge for our own education. This instance can be utilized to run calculated tests to help determine costs associated with users running on AWS. 
 
 ## On-premise cloud
 

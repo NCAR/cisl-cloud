@@ -453,6 +453,7 @@ dependencies:
 ```
 
 ## requirements.txt
+pip is used to install the following Jupyter extensions so they are available in the base image irregardless of the conda enviornment that is active. 
 
 ```
 nbgitpuller
