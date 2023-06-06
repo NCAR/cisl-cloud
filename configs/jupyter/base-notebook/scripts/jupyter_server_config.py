@@ -61,4 +61,4 @@ if "NB_UMASK" in os.environ:
 
 # Configure nb_conda_kernels to avoid registering jupyter kernels in our conda
 # environment again.
-c.CondaKernelSpecManager.env_filter = 'matlab_connect$|ir$'
+c.CondaKernelSpecManager.env_filter = '/opt/conda.*'
