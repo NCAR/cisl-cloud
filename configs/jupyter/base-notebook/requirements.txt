@@ -4,4 +4,3 @@ jupyter-server-proxy
 dask-labextension
 bash_kernel
 matlab_kernel
-jupyter-matlab-proxy
