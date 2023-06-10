@@ -2,8 +2,13 @@
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
 
+## This Repository
+
+This repository is a place for the CCPP team to push code for configurations and documentation.
+
 ## Repo Overview
 
+    .github/    # GitHub Actions and Workflows
     configs/    # Configuration files for different services implemented
     docs/       # Potential Documentation website information
     README.md   # The file you are reading now
