@@ -37,14 +37,9 @@ jobs:
           images: ncote/cisl-cloud-base
           flavor: |
             latest=true
-      - name: Dump value
-        env:
-          LABEL_VALUE: ${{ steps.meta.outputs.labels }}
-        run: echo "$LABEL_VALUE"
-      - name: Print value
+      - name: Print Metadata output json
         id: print
         run: |
-          echo "$LABEL_VALUE"
           echo "$DOCKER_METADATA_OUTPUT_JSON"
       # Build and push the docker image
       - name: Build and push Docker image
