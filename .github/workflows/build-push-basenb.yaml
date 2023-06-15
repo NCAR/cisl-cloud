@@ -35,6 +35,7 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ncote/cisl-cloud-base
+          tags: type=semver,pattern={{version}}
       # Build and push the docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -46,6 +47,6 @@ jobs:
           # Enable the push to docker hub
           push: true
           # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: ncote/cisl-cloud-base:latest
+          tags: ${{ steps.meta.outputs.tags }}
           # Apply labels as defined in the Docker image metadata
           labels: ${{ steps.meta.outputs.labels }}
