@@ -45,6 +45,7 @@ jobs:
         id: print
         run: |
           echo "$LABEL_VALUE"
+          echo "$DOCKER_METADATA_OUTPUT_JSON"
       # Build and push the docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
