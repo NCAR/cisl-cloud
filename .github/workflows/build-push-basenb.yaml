@@ -48,6 +48,6 @@ jobs:
           # Enable the push to docker hub
           push: true
           # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ncote/cisl-cloud-base:${{ github.run_number }}
           # Apply labels as defined in the Docker image metadata
           labels: ${{ steps.meta.outputs.labels }}
