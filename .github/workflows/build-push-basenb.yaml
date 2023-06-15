@@ -40,7 +40,7 @@ jobs:
       - name: Print Metadata output json
         id: print
         run: |
-          echo "$DOCKER_METADATA_OUTPUT_JSON" | jq -c 'map(select( .labels[] | contains("version")))'
+          echo "$DOCKER_METADATA_OUTPUT_JSON" | jq -c 'map(select( .[].labels[] | contains("version")))'
       # Build and push the docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
