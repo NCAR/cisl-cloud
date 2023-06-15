@@ -40,6 +40,7 @@ jobs:
       - name: Dump value
         env:
           LABEL_VALUE: ${{ steps.meta.outputs.labels }}
+        run: echo "$LABEL_VALUE"
       - name: Print value
         id: print
         run: |
