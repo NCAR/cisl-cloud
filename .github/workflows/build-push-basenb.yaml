@@ -37,6 +37,10 @@ jobs:
           images: ncote/cisl-cloud-base
           flavor: |
             latest=true
+      - name: Get labels
+        id: labels
+        run: |
+          echo "image_version=$(echo '${{ steps.meta.outputs.labels }}' | jq -r '.labels."org.opencontainers.image.version"')" >> $GITHUB_OUTPUT
       # Build and push the docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -48,6 +52,6 @@ jobs:
           # Enable the push to docker hub
           push: true
           # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: ${{ steps.meta.outputs.labels.org.opencontainers.image.version }}
+          tags: ${{ steps.labels.outputs.image_version }}
           # Apply labels as defined in the Docker image metadata
           labels: ${{ steps.meta.outputs.labels }}
