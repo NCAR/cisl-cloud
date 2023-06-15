@@ -114,7 +114,8 @@ RUN mamba install --yes \
 # C++ Kernel
 
 RUN mamba install --yes \
-    'xeus-cling'
+    'xeus-cling' \
+    'bash_kernel'
 
 RUN mamba install --quiet --yes \
     # NodeJS >= 18.0 is required for `jupyter lab build` command
