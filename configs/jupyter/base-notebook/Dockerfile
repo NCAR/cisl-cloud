@@ -111,6 +111,11 @@ RUN mamba install --yes \
     'unixodbc' && \
     mamba clean --all -f -y
 
+# C++ Kernel
+
+RUN mamba install --yes \
+    'xeus-cling'
+
 RUN mamba install --quiet --yes \
     # NodeJS >= 18.0 is required for `jupyter lab build` command
     # https://github.com/jupyter/docker-stacks/issues/1901
