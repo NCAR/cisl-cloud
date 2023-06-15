@@ -48,6 +48,6 @@ jobs:
           # Enable the push to docker hub
           push: true
           # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: ${{ steps.meta.outputs.labels == "org.opencontainers.image.version" }}
+          tags: ${{ steps.meta.outputs.labels.org.opencontainers.image.version }}
           # Apply labels as defined in the Docker image metadata
           labels: ${{ steps.meta.outputs.labels }}
