@@ -37,6 +37,10 @@ jobs:
           images: ncote/cisl-cloud-base
           flavor: |
             latest=true
+      - name: Print value
+        id: print
+        run: |
+          echo ${{ steps.meta.outputs.labels }}
       # Build and push the docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
