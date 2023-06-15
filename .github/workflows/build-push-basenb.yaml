@@ -35,11 +35,6 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: ncote/cisl-cloud-base
-          tags: |
-            type=ref,event=branch
-            type=semver,pattern={{version}}
-            type=semver,pattern={{major}}.{{minor}}
-            type=semver,pattern={{major}}
           flavor: |
             latest=true
       # Build and push the docker image
