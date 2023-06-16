@@ -74,12 +74,12 @@ RUN mkdir /etc/julia && \
     chown "${NB_USER}" "${JULIA_PKGDIR}" && \
     fix-permissions "${JULIA_PKGDIR}"
 
-# Install Spack
-RUN git clone -c feature.manyFiles=true https://github.com/spack/spack.git && \
-    cd spack/bin && \
-    ./spack install zlib && \
-    cd /tmp && \
-    rm -r spack
+# Install SPERR
+RUN git clone https://github.com/NCAR/SPERR.git && \
+    cmake SPERR && \
+    make -j 4 && \
+    ctest . && \
+    make install
 
 USER ${NB_UID}
 
