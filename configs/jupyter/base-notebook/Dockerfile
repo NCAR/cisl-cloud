@@ -175,7 +175,7 @@ USER root
 RUN git clone https://github.com/NCAR/SPERR.git && \
     cmake SPERR  \
         -DOpenMP_C_FLAGS=-fopenmp=lomp \
-        -DOpenMP_CXX_FLAGS=-fopenmp=lomp \
+        -DOpenMP_CXX_FLAGS=-std=c++11 \
         -DOpenMP_C_LIB_NAMES="libomp" \
         -DOpenMP_CXX_LIB_NAMES="libomp" \
         -DOpenMP_libomp_LIBRARY="/opt/local/lib/libomp.dylib" \
