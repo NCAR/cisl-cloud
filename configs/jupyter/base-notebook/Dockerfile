@@ -8,6 +8,7 @@
 
 FROM jupyter/docker-stacks-foundation:latest
 
+# Update version here and on the .github/workflow/build-push-basenb.yaml before pushing changes to the repo
 LABEL maintainer="CISL Cloud Pilot Team <cisl-cloud-pilot@ucar.edu>" version="v1.0.1"
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
