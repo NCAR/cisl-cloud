@@ -74,13 +74,6 @@ RUN mkdir /etc/julia && \
     chown "${NB_USER}" "${JULIA_PKGDIR}" && \
     fix-permissions "${JULIA_PKGDIR}"
 
-# Install SPERR
-RUN git clone https://github.com/NCAR/SPERR.git && \
-    cmake SPERR && \
-    make -j 4 && \
-    ctest . && \
-    make install
-
 USER ${NB_UID}
 
 # Install Jupyter Notebook, Lab, and Hub
@@ -177,8 +170,16 @@ COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupy
 # Fix permissions on /etc/jupyter as root
 USER root
 
+# Install SPERR
+RUN git clone https://github.com/NCAR/SPERR.git && \
+    cmake SPERR && \
+    make -j 4 && \
+    ctest . && \
+    make install
+
 RUN rm -rf /tmp/environment.yml && \
-    rm -rf /tmp/requirements.txt
+    rm -rf /tmp/requirements.txt && \
+    rm -rf SPERR
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
 RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
     /etc/jupyter/jupyter_server_config.py > /etc/jupyter/jupyter_notebook_config.py && \
