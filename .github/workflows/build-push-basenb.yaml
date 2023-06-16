@@ -29,7 +29,6 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN  }}
       # Pull relevant metadata out of the docker image used
-      # This can be expanded upon
       - name: Extract metadata for Docker
         id: meta
         uses: docker/metadata-action@v4
@@ -37,10 +36,6 @@ jobs:
           images: ncote/cisl-cloud-base
           flavor: |
             latest=true
-      - name: Print Metadata output json
-        id: print
-        run: |
-          echo "$DOCKER_METADATA_OUTPUT_JSON" | jq '.labels."org.opencontainers.image.version"'
       # Build and push the docker image
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
@@ -52,6 +47,6 @@ jobs:
           # Enable the push to docker hub
           push: true
           # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: ${{ steps.meta.outputs.labels.org.opencontainers.image.version }}
+          tags: echo "$DOCKER_METADATA_OUTPUT_JSON" | jq '.labels."org.opencontainers.image.version"'
           # Apply labels as defined in the Docker image metadata
           labels: ${{ steps.meta.outputs.labels }}
