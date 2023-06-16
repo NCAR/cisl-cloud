@@ -36,6 +36,7 @@ RUN apt-get update --yes && \
     gfortran \
     gcc \
     libstdc++-12-dev \
+    libperl-dev \
     # - pandoc is used to convert notebooks to html files
     #   it's not present in aarch64 ubuntu image, so we install it here
     pandoc \
