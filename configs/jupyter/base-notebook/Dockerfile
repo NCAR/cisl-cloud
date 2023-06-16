@@ -74,6 +74,13 @@ RUN mkdir /etc/julia && \
     chown "${NB_USER}" "${JULIA_PKGDIR}" && \
     fix-permissions "${JULIA_PKGDIR}"
 
+# Install Spack
+RUN git clone -c feature.manyFiles=true https://github.com/spack/spack.git && \
+    cd spack/bin && \
+    ./spack install zlib && \
+    cd /tmp && \
+    rm -r spack
+
 USER ${NB_UID}
 
 # Install Jupyter Notebook, Lab, and Hub
