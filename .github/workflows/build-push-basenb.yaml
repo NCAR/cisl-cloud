@@ -47,6 +47,6 @@ jobs:
           # Enable the push to docker hub
           push: true
           # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: echo "$DOCKER_METADATA_OUTPUT_JSON" | jq '.labels."org.opencontainers.image.version"'
+          tags: ncote/cisl-cloud-base:v1.0.1
           # Apply labels as defined in the Docker image metadata
           labels: ${{ steps.meta.outputs.labels }}
