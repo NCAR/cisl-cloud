@@ -1,3 +1,4 @@
+cmake
 dask-labextension
 jupyterlab-git
 jupyter-matlab-proxy
