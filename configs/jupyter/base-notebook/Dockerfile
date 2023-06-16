@@ -25,6 +25,7 @@ RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
     fonts-liberation \
     curl \
+    csh \
     emacs \
     nodejs \
     npm \
@@ -170,17 +171,6 @@ COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupy
 
 # Fix permissions on /etc/jupyter as root
 USER root
-
-# Install SPERR
-RUN git clone https://github.com/NCAR/SPERR.git && \
-    cmake SPERR \
-        -DOpenMP_CXX_FLAGS="-Xpreprocessor -fopenmp /opt/local/lib/libomp.dylib -I/opt/local/include" \
-        -DOpenMP_CXX_LIB_NAMES="libomp" \
-        -DOpenMP_libomp_LIBRARY="/opt/local/lib/libomp.dylib" \
-        -DOpenMP_C_FLAGS="-Xpreprocessor -fopenmp /opt/local/lib/libomp.dylib -I/opt/local/include" && \
-    make -j 4 && \
-    ctest . && \
-    make install
 
 RUN rm -rf /tmp/environment.yml && \
     rm -rf /tmp/requirements.txt && \
