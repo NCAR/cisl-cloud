@@ -146,6 +146,8 @@ dependencies:
 # Collection of tools for reading, visualizing and performing calculations with weather data.
 # https://pypi.org/project/MetPy/
   - metpy
+# Search notebooks  
+  - nb_search
 # Strips outputs from Jupyter and IPython notebooks
 # https://pypi.org/project/nbstripout/
   - nbstripout

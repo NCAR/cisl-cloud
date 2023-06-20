@@ -4,4 +4,3 @@ jupyterlab-git
 jupyter-matlab-proxy
 jupyter-server-proxy
 nbgitpuller
-nb_search
