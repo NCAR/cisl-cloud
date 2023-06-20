@@ -192,7 +192,6 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 
 # Copy the .condarc file to allow for saving of user custom conda environments
 COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
-COPY configs/jupyter/base-notebook/config/.condarc /
 COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
 COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
 
