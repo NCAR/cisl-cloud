@@ -63,4 +63,4 @@ if "NB_UMASK" in os.environ:
 # environment again.
 c.CondaKernelSpecManager.env_filter = '/opt/conda/share/jupyter/kernels/*'
 
-c.KubeSpawner.default_url = '/lab/tree/shared/test.txt'
+c.KubeSpawner.default_url = '~/shared/test.txt'
