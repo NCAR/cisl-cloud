@@ -23,23 +23,27 @@ ARG julia_version="1.9.1"
 # features (e.g., download as all possible file formats)
 RUN apt-get update --yes && \
     apt-get install --yes --no-install-recommends \
-    fonts-liberation \
     curl \
+    cmake \
     csh \
     emacs \
+    fonts-dejavu \
+    fonts-liberation \
+    g++ \
+    gcc \
+    gfortran \
+    git \
+    # R pre-requisites
+    libperl-dev \
+    libsnappy-dev \
+    libstdc++-12-dev \
+    make \
     nodejs \
     npm \
-    git \
+    pandoc \
     vim \
-    # R pre-requisites
-    fonts-dejavu \
-    gfortran \
-    gcc \
-    libstdc++-12-dev \
-    libperl-dev \
     # - pandoc is used to convert notebooks to html files
     #   it's not present in aarch64 ubuntu image, so we install it here
-    pandoc \
     # - run-one - a wrapper script that runs no more
     #   than one unique  instance  of  some  command with a unique set of arguments,
     #   we use `run-one-constantly` to support `RESTARTABLE` option
@@ -147,7 +151,6 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 
 # Copy the .condarc file to allow for saving of user custom conda environments
 COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
-COPY configs/jupyter/base-notebook/config/.condarc /
 COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
 COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
 
