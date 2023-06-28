@@ -1,0 +1,21 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: incommon  # The name of an Issuer
+spec:
+  acme:
+    email: sis@ucar.edu # A valid email address
+    # for certificate expiry alerts
+    server: https://acme.sectigo.com/v2/InCommonRSAOV # The ACME server URL
+    externalAccountBinding:
+      keyID: 
+      keySecretRef:
+        name: eab-secret # The name of the Kubernetes Secret
+        # created with your HMAC
+        key: secret
+    privateKeySecretRef:
+      name: incommon-account-key # The private key created by Cert-Manager
+    solvers:
+    - http01:
+        ingress:
+          class: nginx
