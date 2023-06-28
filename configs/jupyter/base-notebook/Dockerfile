@@ -134,7 +134,7 @@ USER root
 
 RUN rm -rf /tmp/environment.yml && \
     rm -rf /tmp/requirements.txt && \
-    rm -rf SPERR
+    
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
 RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
     /etc/jupyter/jupyter_server_config.py > /etc/jupyter/jupyter_notebook_config.py && \

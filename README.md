@@ -9,6 +9,7 @@ This repository is a place for the CCPP team to push code for configurations and
 ## Repo Overview
 
     .github/    # GitHub Actions and Workflows
+    cluster/    # Kubernetes cluster & JupyterHub deployment config files
     configs/    # Configuration files for different services implemented
     docs/       # Potential Documentation website information
     README.md   # The file you are reading now
