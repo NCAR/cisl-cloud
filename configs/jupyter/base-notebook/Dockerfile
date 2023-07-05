@@ -17,8 +17,6 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
 USER root
 
-ARG julia_version="1.9.1"
-
 # Install all OS dependencies for notebook server that starts but lacks all
 # features (e.g., download as all possible file formats)
 RUN apt-get update --yes && \
@@ -50,37 +48,6 @@ RUN apt-get update --yes && \
     run-one && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 
 
-# Julia dependencies
-# install Julia packages in /opt/julia instead of ${HOME}
-ENV JULIA_DEPOT_PATH=/opt/julia \
-    JULIA_PKGDIR=/opt/julia \
-    JULIA_VERSION="${julia_version}"
-
-WORKDIR /tmp
-
-# hadolint ignore=SC2046
-RUN set -x && \
-    julia_arch=$(uname -m) && \
-    julia_short_arch="${julia_arch}" && \
-    if [ "${julia_short_arch}" == "x86_64" ]; then \
-      julia_short_arch="x64"; \
-    fi; \
-    julia_installer="julia-${JULIA_VERSION}-linux-${julia_arch}.tar.gz" && \
-    julia_major_minor=$(echo "${JULIA_VERSION}" | cut -d. -f 1,2) && \
-    mkdir "/opt/julia-${JULIA_VERSION}" && \
-    wget -q "https://julialang-s3.julialang.org/bin/linux/${julia_short_arch}/${julia_major_minor}/${julia_installer}" && \
-    tar xzf "${julia_installer}" -C "/opt/julia-${JULIA_VERSION}" --strip-components=1 && \
-    rm "${julia_installer}" && \
-    ln -fs /opt/julia-*/bin/julia /usr/local/bin/julia
-
-# Show Julia where conda libraries are \
-RUN mkdir /etc/julia && \
-    echo "push!(Libdl.DL_LOAD_PATH, \"${CONDA_DIR}/lib\")" >> /etc/julia/juliarc.jl && \
-    # Create JULIA_PKGDIR \
-    mkdir "${JULIA_PKGDIR}" && \
-    chown "${NB_USER}" "${JULIA_PKGDIR}" && \
-    fix-permissions "${JULIA_PKGDIR}"
-
 USER ${NB_UID}
 
 # Install Jupyter Notebook, Lab, and Hub
@@ -89,7 +56,8 @@ USER ${NB_UID}
 # Correct permissions
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
-COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt /tmp/
+#COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt /tmp/
+COPY environment.yml requirements.txt /tmp/
 
 WORKDIR /tmp
 
@@ -125,15 +93,17 @@ EXPOSE $JUPYTER_PORT
 CMD ["start-notebook.sh"]
 
 # Copy local files as late as possible to avoid cache busting
-COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
+#COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
+COPY scripts/start-notebook.sh scripts/start-singleuser.sh /usr/local/bin/
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+#COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
 
 # Fix permissions on /etc/jupyter as root
 USER root
 
 RUN rm -rf /tmp/environment.yml && \
-    rm -rf /tmp/requirements.txt && \
+    rm -rf /tmp/requirements.txt 
     
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
 RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
@@ -150,57 +120,15 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
     CMD /etc/jupyter/docker_healthcheck.py || exit 1
 
 # Copy the .condarc file to allow for saving of user custom conda environments
-COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
-COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
-COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
+#COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+#COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
+#COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
+
+COPY config/.condarc /opt/conda/
+COPY config/.profile /.bash_profile
+COPY config/.bashrc /etc/bash.bashrc
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}
-
-# R packages including IRKernel which gets installed globally.
-# r-e1071: dependency of the caret R package
-RUN mamba install --yes \
-    'r-base' \
-    'r-caret' \
-    'r-crayon' \
-    'r-devtools' \
-    'r-e1071' \
-    'r-forecast' \
-    'r-hexbin' \
-    'r-htmltools' \
-    'r-htmlwidgets' \
-    'r-irkernel' \
-    'r-nycflights13' \
-    'r-randomforest' \
-    'r-rcurl' \
-    'r-rmarkdown' \
-    'r-rodbc' \
-    'r-rsqlite' \
-    'r-shiny' \
-    'r-tidymodels' \
-    'r-tidyverse' \
-    'rpy2' \
-    'unixodbc' && \
-    mamba clean --all -f -y
-
-# C++ Kernel
-
-RUN mamba install --yes \
-    'xeus-cling' \
-    'bash_kernel'
-
-# Add Julia packages.
-# Install IJulia as jovyan and then move the kernelspec out
-# to the system share location. Avoids problems with runtime UID change not
-# taking effect properly on the .local folder in the jovyan home dir.
-RUN julia -e 'import Pkg; Pkg.update()' && \
-    julia -e 'import Pkg; Pkg.add("HDF5")' && \
-    julia -e 'using Pkg; pkg"add IJulia"; pkg"precompile"' && \
-    # move kernelspec out of home \
-    mv "${HOME}/.local/share/jupyter/kernels/julia"* "${CONDA_DIR}/share/jupyter/kernels/" && \
-    chmod -R go+rx "${CONDA_DIR}/share/jupyter" && \
-    rm -rf "${HOME}/.local" && \
-    fix-permissions "${JULIA_PKGDIR}" "${CONDA_DIR}/share/jupyter"
-
 
 WORKDIR "${HOME}"
