@@ -56,8 +56,7 @@ USER ${NB_UID}
 # Correct permissions
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
-#COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt /tmp/
-COPY environment.yml requirements.txt /tmp/
+COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt /tmp/
 
 WORKDIR /tmp
 
@@ -93,11 +92,9 @@ EXPOSE $JUPYTER_PORT
 CMD ["start-notebook.sh"]
 
 # Copy local files as late as possible to avoid cache busting
-#COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
-COPY scripts/start-notebook.sh scripts/start-singleuser.sh /usr/local/bin/
+COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-#COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
-COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 
 # Fix permissions on /etc/jupyter as root
 USER root
@@ -120,13 +117,9 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
     CMD /etc/jupyter/docker_healthcheck.py || exit 1
 
 # Copy the .condarc file to allow for saving of user custom conda environments
-#COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
-#COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
-#COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
-
-COPY config/.condarc /opt/conda/
-COPY config/.profile /.bash_profile
-COPY config/.bashrc /etc/bash.bashrc
+COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
+COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}
