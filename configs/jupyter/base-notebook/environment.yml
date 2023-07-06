@@ -125,6 +125,8 @@ dependencies:
 # Allows embedding of Jupyter widgets in Bokeh layouts.
 # https://pypi.org/project/ipywidgets-bokeh/
   - ipywidgets-bokeh
+  - jupyterhub
+  - jupyterlab==3.6.3
 # A Jupyter extension for rendering Bokeh content.
 # https://pypi.org/project/jupyter-bokeh/
   - jupyter_bokeh
@@ -146,6 +148,7 @@ dependencies:
 # Collection of tools for reading, visualizing and performing calculations with weather data.
 # https://pypi.org/project/MetPy/
   - metpy
+  - nb_conda_kernels
 # Strips outputs from Jupyter and IPython notebooks
 # https://pypi.org/project/nbstripout/
   - nbstripout
@@ -155,6 +158,10 @@ dependencies:
 # Provides an object-oriented python interface to the netCDF version 4 library
 # https://pypi.org/project/netCDF4/
   - netcdf4
+# NodeJS >= 18.0 is required for `jupyter lab build` command
+# https://github.com/jupyter/docker-stacks/issues/1901
+  - nodejs>=18.0
+  - notebook
 # compiling Python code using LLVM
 # https://pypi.org/project/numba/
   - numba
