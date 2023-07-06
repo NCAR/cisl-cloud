@@ -1,0 +1,22 @@
+prometheus:
+  prometheusSpec: 
+    scrapeInterval: 30s
+    evaluationInterval: 30s 
+    storageSpec: 
+     volumeClaimTemplate:
+       spec:
+         storageClassName: nwscssd001
+         accessModes: ["ReadWriteOnce"]
+         resources:
+           requests:
+             storage: 50Gi
+alertmanager:
+  alertmanagerSpec:
+      storage: 
+        volumeClaimTemplate:
+          spec:
+            storageClassName: nwscssd001
+            accessModes: ["ReadWriteOnce"]
+            resources:
+                requests:
+                  storage: 50Gi
