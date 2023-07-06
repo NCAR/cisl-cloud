@@ -132,4 +132,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-conda activate cisl-cloud-base
+conda activate base

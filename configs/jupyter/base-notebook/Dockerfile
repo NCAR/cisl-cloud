@@ -56,31 +56,25 @@ USER ${NB_UID}
 # Correct permissions
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
-COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt /tmp/
+###
+# GitHub Build
+###
+#COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt /tmp/
+
+###
+# Local Build
+###
+COPY environment.yml requirements.txt /tmp/
 
 WORKDIR /tmp
 
-RUN mamba install --quiet --yes \
-    # NodeJS >= 18.0 is required for `jupyter lab build` command
-    # https://github.com/jupyter/docker-stacks/issues/1901
-    'nodejs>=18.0' \
-    'notebook' \
-    'jupyterhub' \
-    'jupyterlab==3.6.3' \
-    'conda-forge::nb_conda_kernels' && \
-    # Pin NodeJS
+RUN mamba env update --name base -f environment.yml && \
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
-    # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
-# Create a kernel named cisl-cloud-base from the environment.yml file
-    mamba env update --name cisl-cloud-base -f environment.yml && \
-# Install nbgitpuller via pip 
     pip install -r requirements.txt && \
     jupyter notebook --generate-config && \
     mamba clean --all -f -y && \
     npm cache clean --force && \
     jupyter lab clean && \
-    mkdir -p .config/ && \
-    mkdir -p .config/dask/ && \
     rm -rf "/home/${NB_USER}/.cache/yarn" && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
@@ -91,10 +85,19 @@ EXPOSE $JUPYTER_PORT
 # Configure container startup
 CMD ["start-notebook.sh"]
 
+###
+# GitHub Actions Build
+###
 # Copy local files as late as possible to avoid cache busting
-COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
+#COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+#COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+
+###
+# Local Build
+###
+COPY scripts/start-notebook.sh scripts/start-singleuser.sh /usr/local/bin/
+COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
 
 # Fix permissions on /etc/jupyter as root
 USER root
@@ -116,10 +119,20 @@ RUN sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManage
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
     CMD /etc/jupyter/docker_healthcheck.py || exit 1
 
+###
+# GitHub Build
+###
 # Copy the .condarc file to allow for saving of user custom conda environments
-COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
-COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
-COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
+#COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+#COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
+#COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
+
+###
+# Local Build
+###
+COPY config/.condarc /opt/conda/
+COPY config/.profile /.bash_profile
+COPY config/.bashrc /etc/bash.bashrc
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}
