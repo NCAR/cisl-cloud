@@ -84,7 +84,6 @@ dependencies:
   - pyqt
   - pyspharm
   - pytables
-  - python=3.10
   - python-awips
   - python-graphviz
   - python-wget
@@ -103,7 +102,6 @@ dependencies:
   - stackstac
   - tobac
   - widgetsnbextension
-  - windspharm
   - wrf-python
   - xarray
   - xesmf
