@@ -3,3 +3,4 @@ jupyterlab-git
 jupyter-server-proxy
 nbgitpuller
 nb_search
+jupyterlab-s3-browser>=0.12
