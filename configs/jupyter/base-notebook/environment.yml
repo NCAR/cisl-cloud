@@ -82,7 +82,6 @@ dependencies:
   - pystac-client
   - pytables
   - pyqt
-  - pyspharm
   - pytables
   - python-awips
   - python-graphviz
