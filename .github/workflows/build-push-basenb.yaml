@@ -46,7 +46,7 @@ jobs:
           push: true
           # Provide the tags to apply to the image, this example uses the latest image tag 
           tags: |
-            ncote/cisl-cloud-base:v1.0.1
+            ncote/cisl-cloud-base:v1-stable
             ncote/cisl-cloud-base:latest
           # Apply labels as defined in the Docker image metadata
           labels: ${{ steps.meta.outputs.labels }}
