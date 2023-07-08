@@ -16,8 +16,6 @@ parts:
         file: overview/hw-resources
       - title: Potential Services
         file: overview/services
-      - title: Contact Us
-        file: overview/contact
   - caption: How-Tos 
     chapters:
       - title: Agile Interaction
@@ -51,3 +49,7 @@ parts:
     chapters:
       - title: GLADE
         file: slas/glade
+  - caption: Contact Us
+    chapters: 
+      - title: Information
+        file: overview/contact
