@@ -8,48 +8,48 @@ parts:
     - file: overview/about
     - file: overview/use-cases
     - file: overview/goals
+    - file: overview/services
   - caption: Availability
     chapters:
       - title: Current Offering
-        file: overview/availability
+        file: availability/availability
       - title: Hardware
-        file: overview/hw-resources
-      - title: Potential Services
-        file: overview/services
+        file: availability/hw-resources
   - caption: How-Tos 
     chapters:
+      - title: 2i2c JupyterHub 
+        file: how-to/2i2cJH/2i2cJH-intro
+        sections:
+        - file: how-to/2i2cJH/access
+        - file: how-to/2i2cJH/user-info
       - title: Agile Interaction
         file: how-to/agile
       - title: Jupyter Book
         file: how-to/jupyter-book/jb-intro
         sections:
           - file: how-to/jupyter-book/create-jb
+          - file: how-to/jupyter-book/add-jb
+      - title: Kubernetes (k8s)
+        file: how-to/K8s/k8s-intro
+        sections:
+        - file: how-to/K8s/customize-docker
+        - file: how-to/K8s/setup-gh-act
+        - title: Rancher (K8s)
+          file: how-to/K8s/Rancher/rancher-intro
+        - title: Terraform
+          file: how-to/K8s/Terraform/tf-intro
+          sections:
+          - file: how-to/K8s/Terraform/tf-namespace
       - title: NCAR JupyterHub 
         file: how-to/k8sJH/k8sJH-intro
         sections:
         - file: how-to/k8sJH/access
         - file: how-to/k8sJH/user-info
-      - title: 2i2c JupyterHub 
-        file: how-to/2i2cJH/2i2cJH-intro
-        sections:
-        - file: how-to/2i2cJH/access
-        - file: how-to/2i2cJH/user-info
-      - title: JupyterHub on Kubernetes
-        file: how-to/k8sJH/jh-custom
-        sections:
-        - file: how-to/k8sJH/customize-docker
-        - file: how-to/k8sJH/setup-gh-act
-      - title: Rancher (K8s)
-        file: how-to/Rancher/rancher-intro
-      - title: Terraform
-        file: how-to/K8s/tf-intro
-        sections:
-        - file: how-to/K8s/tf-namespace
+      - title: Virtual Machines
+        file: how-to/vm/vm-intro
   - caption: SLA's
     chapters:
       - title: GLADE
         file: slas/glade
-  - caption: Contact Us
-    chapters: 
-      - title: Information
-        file: overview/contact
+  - chapters:
+    - file: contact

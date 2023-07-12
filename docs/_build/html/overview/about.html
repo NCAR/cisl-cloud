@@ -127,6 +127,10 @@ const thebe_selector_output = ".output, .cell_output"
                         Rancher
                     </a><br>
                 
+                    <a class="dropdown-link" href="https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17">
+                        Request VM
+                    </a><br>
+                
             </div>
         </div>
     
@@ -192,6 +196,11 @@ const thebe_selector_output = ".output, .cell_output"
    Goals
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="services.html">
+   Potential Services
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -200,18 +209,13 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="availability.html">
+  <a class="reference internal" href="../availability/availability.html">
    Current Offering
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hw-resources.html">
+  <a class="reference internal" href="../availability/hw-resources.html">
    Hardware
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="services.html">
-   Potential Services
   </a>
  </li>
 </ul>
@@ -221,56 +225,12 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../how-to/agile.html">
-   Agile Interaction
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/jupyter-book/jb-intro.html">
-   Jupyter Book
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/jupyter-book/create-jb.html">
-     Create CCCPP Docs
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/k8sJH/k8sJH-intro.html">
-   NCAR JupyterHub
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/access.html">
-     Requesting Access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/user-info.html">
-     User Information
-    </a>
-   </li>
-  </ul>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../how-to/2i2cJH/2i2cJH-intro.html">
    2i2c JupyterHub
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -287,36 +247,80 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/k8sJH/jh-custom.html">
-   JupyterHub on Kubernetes
+ <li class="toctree-l1">
+  <a class="reference internal" href="../how-to/agile.html">
+   Agile Interaction
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../how-to/jupyter-book/jb-intro.html">
+   Jupyter Book
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/customize-docker.html">
-     How to Customize a Jupyter Docker Image for Single Users
+    <a class="reference internal" href="../how-to/jupyter-book/create-jb.html">
+     Create CCPP Docs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/setup-gh-act.html">
-     Setup GitHub actions to Build Docker image automatically
+    <a class="reference internal" href="../how-to/jupyter-book/add-jb.html">
+     Add content
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../how-to/Rancher/rancher-intro.html">
-   Rancher (K8s)
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../how-to/K8s/k8s-intro.html">
+   Kubernetes (k8s)
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../how-to/K8s/customize-docker.html">
+     How to Customize a Jupyter Docker Image for Single Users
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../how-to/K8s/setup-gh-act.html">
+     Setup GitHub actions to Build Docker image automatically
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../how-to/K8s/Rancher/rancher-intro.html">
+     Rancher (K8s)
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../how-to/K8s/Terraform/tf-intro.html">
+     Terraform
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../how-to/K8s/Terraform/tf-namespace.html">
+       Example: Creating a kubernetes namespace
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/K8s/tf-intro.html">
-   Terraform
+  <a class="reference internal" href="../how-to/k8sJH/k8sJH-intro.html">
+   NCAR JupyterHub
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -325,11 +329,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/tf-namespace.html">
-     Example: Creating a kubernetes namespace
+    <a class="reference internal" href="../how-to/k8sJH/access.html">
+     Requesting Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../how-to/k8sJH/user-info.html">
+     User Information
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../how-to/vm/vm-intro.html">
+   Virtual Machines
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -344,15 +358,10 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Contact Us
- </span>
-</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="contact.html">
-   Information
+  <a class="reference internal" href="../contact.html">
+   Contact Us
   </a>
  </li>
 </ul>
@@ -412,11 +421,11 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/NicholasCote/CCPPdocs"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/NCAR/cisl-cloud"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/NicholasCote/CCPPdocs/issues/new?title=Issue%20on%20page%20%2Foverview/about.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Foverview/about.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -449,12 +458,16 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#kubernetes-k8s">
-     Kubernetes (k8s)
+     <span class="xref myst">
+      Kubernetes (k8s)
+     </span>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#jupyterhub-on-k8s">
-     JupyterHub on k8s
+     <span class="xref myst">
+      JupyterHub on k8s
+     </span>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -469,7 +482,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#stratus">
-       STRATUS
+       Stratus
       </a>
      </li>
     </ul>
@@ -483,7 +496,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#jupyterhub">
-     JupyterHub
+     <span class="xref myst">
+      JupyterHub
+     </span>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -523,7 +538,7 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
 <h2>On-premise cloud<a class="headerlink" href="#on-premise-cloud" title="Permalink to this headline">¶</a></h2>
 <p>An on-premise (on-prem) cloud consists of storage, compute, and networking resources hosted on fully redundant hardware installed in personal/organizational facilities available to users</p>
 <div class="section" id="kubernetes-k8s">
-<h3>Kubernetes (k8s)<a class="headerlink" href="#kubernetes-k8s" title="Permalink to this headline">¶</a></h3>
+<h3><a class="reference internal" href="../how-to/K8s/k8s-intro.html"><span class="doc std std-doc">Kubernetes (k8s)</span></a><a class="headerlink" href="#kubernetes-k8s" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This page does not cover what kubernetes is. If you are unsure exactly what kubernetes is take a look at these <a class="reference external" href="https://letmegooglethat.com/?q=What+is+kubernetes">search results</a> or visit the kubernetes <a class="reference external" href="https://kubernetes.io/">home page</a>.</p>
@@ -532,7 +547,7 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
 <p>k8s can also be used to host containers or containerized virtual machines for individual use cases.</p>
 </div>
 <div class="section" id="jupyterhub-on-k8s">
-<h3>JupyterHub on k8s<a class="headerlink" href="#jupyterhub-on-k8s" title="Permalink to this headline">¶</a></h3>
+<h3><a class="reference internal" href="../how-to/k8sJH/k8sJH-intro.html"><span class="doc std std-doc">JupyterHub on k8s</span></a><a class="headerlink" href="#jupyterhub-on-k8s" title="Permalink to this headline">¶</a></h3>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The NCAR deployment utilized the Zero to JupyterHub <a class="reference external" href="https://z2jh.jupyter.org/en/stable/">dcoumentation</a> to get started with customizing the environment.</p>
@@ -543,23 +558,23 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
 <h3>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="glade">
 <h4>GLADE<a class="headerlink" href="#glade" title="Permalink to this headline">¶</a></h4>
-<p>NFS will be utilized to provide RO only access to GLADE on the Spawned JupyterHub user environments. Currently the collections and campaign directories on GLADE are available as read only.</p>
+<p>NFS is utilized to provide read only (RO) only access to <a class="reference external" href="https://arc.ucar.edu/knowledge_base/68878466">GLADE</a> on the Spawned JupyterHub user environments. Currently the collections and campaign directories on GLADE are available as RO.</p>
 </div>
 <div class="section" id="stratus">
-<h4>STRATUS<a class="headerlink" href="#stratus" title="Permalink to this headline">¶</a></h4>
-<p>S3 will be provided via CISLs object storage platform <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549594">STRATUS</a>.</p>
+<h4>Stratus<a class="headerlink" href="#stratus" title="Permalink to this headline">¶</a></h4>
+<p>S3 buckets are provided via CISLs object storage platform <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549594">Stratus</a>.</p>
 </div>
 </div>
 </div>
 <div class="section" id="i2c">
 <h2>2i2c<a class="headerlink" href="#i2c" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="jupyterhub">
-<h3>JupyterHub<a class="headerlink" href="#jupyterhub" title="Permalink to this headline">¶</a></h3>
+<h3><a class="reference internal" href="../how-to/2i2cJH/2i2cJH-intro.html"><span class="doc std std-doc">JupyterHub</span></a><a class="headerlink" href="#jupyterhub" title="Permalink to this headline">¶</a></h3>
 <p>2i2c deployed a JupyterHub instance in AWS. Access to this JupyterHub instance is provided by <a class="reference external" href="https://github.com/orgs/NCAR/teams/2i2c-cloud-users">GitHub Teams</a>. Costs will be incurred for any AWS compute resources utilized by users. At this point in time the 2i2c deployed JupyterHub will be used to validate the 2i2c notebook configuration for the research community users. These validations will be orchestrated to develop an estimate of potential costs to use at scale.</p>
 </div>
 <div class="section" id="id1">
 <h3>Storage<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>Data Storage for the 2i2c JupyterHub instance is provided by AWS Elastic File System (<a class="reference external" href="https://aws.amazon.com/efs/">EFS</a>)</p>
+<p>Data Storage for the 2i2c JupyterHub instance is provided by AWS Elastic File System (<a class="reference external" href="https://aws.amazon.com/efs/">EFS</a>). NCAR internal data from GLADE and Stratus will not be available from the 2i2c JupyterHub instance.</p>
 </div>
 </div>
 <div class="section" id="data-access">
@@ -655,7 +670,7 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 8 July 2023.
+          Last updated on 12 July 2023.
         </p>
       </div>
     </div>

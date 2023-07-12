@@ -126,6 +126,10 @@ const thebe_selector_output = ".output, .cell_output"
                         Rancher
                     </a><br>
                 
+                    <a class="dropdown-link" href="https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17">
+                        Request VM
+                    </a><br>
+                
             </div>
         </div>
     
@@ -191,6 +195,11 @@ const thebe_selector_output = ".output, .cell_output"
    Goals
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="overview/services.html">
+   Potential Services
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -199,18 +208,13 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="overview/availability.html">
+  <a class="reference internal" href="availability/availability.html">
    Current Offering
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="overview/hw-resources.html">
+  <a class="reference internal" href="availability/hw-resources.html">
    Hardware
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="overview/services.html">
-   Potential Services
   </a>
  </li>
 </ul>
@@ -220,56 +224,12 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="how-to/agile.html">
-   Agile Interaction
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="how-to/jupyter-book/jb-intro.html">
-   Jupyter Book
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="how-to/jupyter-book/create-jb.html">
-     Create CCCPP Docs
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="how-to/k8sJH/k8sJH-intro.html">
-   NCAR JupyterHub
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="how-to/k8sJH/access.html">
-     Requesting Access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="how-to/k8sJH/user-info.html">
-     User Information
-    </a>
-   </li>
-  </ul>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="how-to/2i2cJH/2i2cJH-intro.html">
    2i2c JupyterHub
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -286,36 +246,80 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="how-to/k8sJH/jh-custom.html">
-   JupyterHub on Kubernetes
+ <li class="toctree-l1">
+  <a class="reference internal" href="how-to/agile.html">
+   Agile Interaction
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="how-to/jupyter-book/jb-intro.html">
+   Jupyter Book
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="how-to/k8sJH/customize-docker.html">
-     How to Customize a Jupyter Docker Image for Single Users
+    <a class="reference internal" href="how-to/jupyter-book/create-jb.html">
+     Create CCPP Docs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="how-to/k8sJH/setup-gh-act.html">
-     Setup GitHub actions to Build Docker image automatically
+    <a class="reference internal" href="how-to/jupyter-book/add-jb.html">
+     Add content
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="how-to/Rancher/rancher-intro.html">
-   Rancher (K8s)
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="how-to/K8s/k8s-intro.html">
+   Kubernetes (k8s)
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to/K8s/customize-docker.html">
+     How to Customize a Jupyter Docker Image for Single Users
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to/K8s/setup-gh-act.html">
+     Setup GitHub actions to Build Docker image automatically
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to/K8s/Rancher/rancher-intro.html">
+     Rancher (K8s)
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="how-to/K8s/Terraform/tf-intro.html">
+     Terraform
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="how-to/K8s/Terraform/tf-namespace.html">
+       Example: Creating a kubernetes namespace
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="how-to/K8s/tf-intro.html">
-   Terraform
+  <a class="reference internal" href="how-to/k8sJH/k8sJH-intro.html">
+   NCAR JupyterHub
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -324,11 +328,21 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="how-to/K8s/tf-namespace.html">
-     Example: Creating a kubernetes namespace
+    <a class="reference internal" href="how-to/k8sJH/access.html">
+     Requesting Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to/k8sJH/user-info.html">
+     User Information
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="how-to/vm/vm-intro.html">
+   Virtual Machines
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -343,15 +357,10 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Contact Us
- </span>
-</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="overview/contact.html">
-   Information
+  <a class="reference internal" href="contact.html">
+   Contact Us
   </a>
  </li>
 </ul>
@@ -411,11 +420,11 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="https://github.com/NicholasCote/CCPPdocs"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/NCAR/cisl-cloud"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/NicholasCote/CCPPdocs/issues/new?title=Issue%20on%20page%20%2Findex.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Findex.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -431,29 +440,6 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/NicholasCote/CCPPdocs/master?urlpath=lab/tree/index.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        <a class="jupyterhub-button" href="https://jupyter.k8s.ucar.edu//hub/user-redirect/git-pull?repo=https://github.com/NicholasCote/CCPPdocs&urlpath=lab/tree/CCPPdocs/index.ipynb&branch=master"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch JupyterHub" data-toggle="tooltip"
-                data-placement="left"><img class="jupyterhub-button-logo"
-                    src="_static/images/logo_jupyterhub.svg"
-                    alt="Interact on JupyterHub">JupyterHub</button></a>
-        
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -466,7 +452,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#resources">
-   Resources
+   <span class="xref myst">
+    Resources
+   </span>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -475,14 +463,21 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#ncar-rancher">
-     NCAR Rancher
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#i2c-jupyterhub">
      2i2c JupyterHub
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ncar-rancher">
+     NCAR Rancher
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#virtual-machines-vms">
+       Virtual Machines (VMs)
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -511,10 +506,10 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 
   <center style="font-size: 2.5rem;font-weight: 700;text-decoration: underline;">This site is in ACTIVE DEVELOPMENT</center><div class="tex2jax_ignore mathjax_ignore section" id="cisl-cloud-pilot">
 <h1>CISL Cloud Pilot<a class="headerlink" href="#cisl-cloud-pilot" title="Permalink to this headline">¶</a></h1>
-<p><em><strong>This is currently a Pilot project with an objective to determine long-term feasibility.</strong></em><hr>
-Welcome to the NCAR | CISL Cloud Pilot documentation page. Below is a collection of useful information and links to help utilize resources provided by NCAR for interactive scientific analysis.</p>
+<p><em><strong>This is currently a Pilot project with an objective to determine long-term feasibility.</strong></em><hr></p>
+<p>Welcome to the NCAR | CISL Cloud Pilot documentation page. Below is a collection of useful information and links to help utilize resources provided by NCAR for interactive scientific analysis.</p>
 <div class="section" id="resources">
-<h2>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference internal" href="availability/availability.html"><span class="doc std std-doc">Resources</span></a><a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="ncar-jupyterhub">
 <h3>NCAR JupyterHub<a class="headerlink" href="#ncar-jupyterhub" title="Permalink to this headline">¶</a></h3>
 <p>NCAR operates a JupyterHub instance on Kubernetes. The main documentation page for this service can be found <a class="reference internal" href="how-to/k8sJH/k8sJH-intro.html"><span class="doc std std-doc">here</span></a></p>
@@ -525,16 +520,6 @@ Welcome to the NCAR | CISL Cloud Pilot documentation page. Below is a collection
 <p>Access is currently granted to members of the <a class="reference external" href="https://github.com/orgs/NCAR/teams/2i2c-cloud-users">NCAR/2i2c-cloud-users</a> Github Team. If you require access please follow these <a class="reference internal" href="how-to/k8sJH/access.html"><span class="doc std std-doc">instructions</span></a></p>
 </div>
 </div>
-<div class="section" id="ncar-rancher">
-<h3>NCAR Rancher<a class="headerlink" href="#ncar-rancher" title="Permalink to this headline">¶</a></h3>
-<p>NCAR operates an instance of Rancher to provide a container management platform to the community. The main documentation page for this service can be found <a class="reference internal" href="how-to/Rancher/rancher-intro.html"><span class="doc std std-doc">here</span></a></p>
-<p>A link to the NCAR Rancher instance can always be found on this documentation page under the Resources tab at the top. It can also be found below:</p>
-<p><a class="reference external" href="https://rancher.k8s.ucar.edu/">Login to NCAR Rancher</a></p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><a class="reference external" href="https://www.rancher.com/">Rancher</a> is an open source container management platform built for organizations that deploy containers in production.</p>
-</div>
-</div>
 <div class="section" id="i2c-jupyterhub">
 <h3>2i2c JupyterHub<a class="headerlink" href="#i2c-jupyterhub" title="Permalink to this headline">¶</a></h3>
 <p>2i2c operates a JupyterHub instance for NCAR use on AWS. The main documentation page for this service can be found <a class="reference internal" href="how-to/2i2cJH/2i2cJH-intro.html"><span class="doc std std-doc">here</span></a></p>
@@ -543,6 +528,21 @@ Welcome to the NCAR | CISL Cloud Pilot documentation page. Below is a collection
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Access is currently granted to members of the <a class="reference external" href="https://github.com/orgs/NCAR/teams/2i2c-cloud-users">NCAR/2i2c-cloud-users</a> Github Team. If you require access please follow these <a class="reference internal" href="how-to/2i2cJH/access.html"><span class="doc std std-doc">instructions</span></a></p>
+</div>
+</div>
+<div class="section" id="ncar-rancher">
+<h3>NCAR Rancher<a class="headerlink" href="#ncar-rancher" title="Permalink to this headline">¶</a></h3>
+<p>NCAR operates an instance of Rancher to provide a container management platform to the community. The main documentation page for this service can be found <a class="reference internal" href="how-to/K8s/Rancher/rancher-intro.html"><span class="doc std std-doc">here</span></a></p>
+<p>A link to the NCAR Rancher instance can always be found on this documentation page under the Resources tab at the top. It can also be found below:</p>
+<p><a class="reference external" href="https://rancher.k8s.ucar.edu/">Login to NCAR Rancher</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference external" href="https://www.rancher.com/">Rancher</a> is an open source container management platform built for organizations that deploy containers in production.</p>
+</div>
+<div class="section" id="virtual-machines-vms">
+<h4>Virtual Machines (VMs)<a class="headerlink" href="#virtual-machines-vms" title="Permalink to this headline">¶</a></h4>
+<p>Virtual machines can be provided if containers aren’t the best use case for the solution. Right now the process to get a VM is to submit a ticket with the NCAR/UCAR Service Desk <a class="reference external" href="https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17">here</a>. A link to the NCAR/UCAR service desk to request a VM can always be found on this documention page under the Resources tab at the top.</p>
+<p>In your request please provide the number of CPUs, amount of memory (GB), required disk size (GB), and the operating system you want to run. If you have any other special requests or requirements please provide them here.</p>
 </div>
 </div>
 </div>
@@ -641,7 +641,7 @@ Welcome to the NCAR | CISL Cloud Pilot documentation page. Below is a collection
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 8 July 2023.
+          Last updated on 12 July 2023.
         </p>
       </div>
     </div>
