@@ -13,6 +13,7 @@ execute:
   exclude_patterns:
     - '*tf-namespace*'
     - '*create-jb*'
+    - '*stratus-cmd*'
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -63,6 +64,8 @@ sphinx:
             url: https://rancher.k8s.ucar.edu/
           - name: Request VM
             url: https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17
+          - name: Stratus
+            url: https://stratus-admin.ucar.edu:10443/asview
         - name: CISL Home
           url: https://www2.cisl.ucar.edu/
         - name: Report issue

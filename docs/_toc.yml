@@ -45,11 +45,21 @@ parts:
         sections:
         - file: how-to/k8sJH/access
         - file: how-to/k8sJH/user-info
+      - title: Stratus
+        file: how-to/Stratus/stratus-intro
+        sections:
+        - file: how-to/Stratus/stratus-access
+        - file: how-to/Stratus/jupyter-extension
+        - file: how-to/Stratus/stratus-cmd
       - title: Virtual Machines
         file: how-to/vm/vm-intro
   - caption: SLA's
     chapters:
       - title: GLADE
         file: slas/glade
-  - chapters:
-    - file: contact
+      - title: Stratus
+        file: slas/stratus
+  - caption: Contact Us
+    chapters:
+      - title: Information
+        file: contact

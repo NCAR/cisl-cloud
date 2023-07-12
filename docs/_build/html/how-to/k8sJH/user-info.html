@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Virtual Machines (VMs)" href="../vm/vm-intro.html" />
+    <link rel="next" title="Introduction to Stratus" href="../Stratus/stratus-intro.html" />
     <link rel="prev" title="Requesting Access" href="access.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -129,6 +129,10 @@ const thebe_selector_output = ".output, .cell_output"
                 
                     <a class="dropdown-link" href="https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17">
                         Request VM
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://stratus-admin.ucar.edu:10443/asview">
+                        Stratus
                     </a><br>
                 
             </div>
@@ -340,6 +344,33 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../Stratus/stratus-intro.html">
+   Stratus
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Stratus/stratus-access.html">
+     Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Stratus/jupyter-extension.html">
+     Jupyter S3 Extension
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../Stratus/stratus-cmd.html">
+     Python Examples
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../vm/vm-intro.html">
    Virtual Machines
@@ -357,11 +388,21 @@ const thebe_selector_output = ".output, .cell_output"
    GLADE
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../slas/stratus.html">
+   Stratus
+  </a>
+ </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contact Us
+ </span>
+</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../../contact.html">
-   Contact Us
+   Information
   </a>
  </li>
 </ul>
@@ -478,7 +519,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <div class="section" id="server-options">
 <h2>Server Options<a class="headerlink" href="#server-options" title="Permalink to this headline">¶</a></h2>
 <p>Once logged in the first page displayed is titled <code class="docutils literal notranslate"><span class="pre">Server</span> <span class="pre">Options</span></code> and is also known as the spawn page. It’s from here where the desired environment is selected and spun up for the user. There’s a number of different options for different resources available. Right now this menu is still in development but currently looks like the following:</p>
-<img src="_static/jhub-spawn.png"/>
+<img src="https://ncar.github.io/cisl-cloud/_static/jhub-spawn.png"/>
 <p>The small, medium, and large sizes currently utilize the Pangeo <a class="reference external" href="https://github.com/pangeo-data/pangeo-docker-images/tree/master/pangeo-notebook">pangeo-notebook</a> docker image. The Test NCAR Custom image is built and maintained by the CCPP team. It is currently still in development and testing. The goal is to make this the primary image for the environment. The following discussion will be based on what is offered in the Test NCAR Custom image.</p>
 <ul class="simple">
 <li><p>Note: Right now there is no GPU image. We will provide a GPU image and are currently working towards configuring and implementing a solution.</p></li>
@@ -490,10 +531,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <li><p>The following is based on what is offered as part of the Test NCAR Custom image</p></li>
 </ul>
 <p>Once logged in the default start up page for everyone will look like this:</p>
-<img src="_static/jhub-main.png"/>
-<ul class="simple">
-<li><p>Note: Image from local. Update</p></li>
-</ul>
+<img src="https://ncar.github.io/cisl-cloud/_static/jhub-main.png"/>
 </div>
 </div>
 
@@ -527,10 +565,10 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
             <p class="prev-next-title">Requesting Access</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../vm/vm-intro.html" title="next page">
+    <a class='right-next' id="next-link" href="../Stratus/stratus-intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Virtual Machines (VMs)</p>
+        <p class="prev-next-title">Introduction to Stratus</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

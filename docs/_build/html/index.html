@@ -130,6 +130,10 @@ const thebe_selector_output = ".output, .cell_output"
                         Request VM
                     </a><br>
                 
+                    <a class="dropdown-link" href="https://stratus-admin.ucar.edu:10443/asview">
+                        Stratus
+                    </a><br>
+                
             </div>
         </div>
     
@@ -339,6 +343,33 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="how-to/Stratus/stratus-intro.html">
+   Stratus
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to/Stratus/stratus-access.html">
+     Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to/Stratus/jupyter-extension.html">
+     Jupyter S3 Extension
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="how-to/Stratus/stratus-cmd.html">
+     Python Examples
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="how-to/vm/vm-intro.html">
    Virtual Machines
@@ -356,11 +387,21 @@ const thebe_selector_output = ".output, .cell_output"
    GLADE
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="slas/stratus.html">
+   Stratus
+  </a>
+ </li>
 </ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contact Us
+ </span>
+</p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="contact.html">
-   Contact Us
+   Information
   </a>
  </li>
 </ul>
@@ -471,13 +512,16 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
     <a class="reference internal nav-link" href="#ncar-rancher">
      NCAR Rancher
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#virtual-machines-vms">
-       Virtual Machines (VMs)
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stratus-object-storage">
+     Stratus Object Storage
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#virtual-machines-vms">
+     Virtual Machines (VMs)
+    </a>
    </li>
   </ul>
  </li>
@@ -504,7 +548,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               
               <div>
                 
-  <center style="font-size: 2.5rem;font-weight: 700;text-decoration: underline;">This site is in ACTIVE DEVELOPMENT</center><div class="tex2jax_ignore mathjax_ignore section" id="cisl-cloud-pilot">
+  <center style="font-size: 2.5rem;font-weight: 700;text-decoration: underline;color: red;">This site is in ACTIVE DEVELOPMENT</center><div class="tex2jax_ignore mathjax_ignore section" id="cisl-cloud-pilot">
 <h1>CISL Cloud Pilot<a class="headerlink" href="#cisl-cloud-pilot" title="Permalink to this headline">¶</a></h1>
 <p><em><strong>This is currently a Pilot project with an objective to determine long-term feasibility.</strong></em><hr></p>
 <p>Welcome to the NCAR | CISL Cloud Pilot documentation page. Below is a collection of useful information and links to help utilize resources provided by NCAR for interactive scientific analysis.</p>
@@ -539,11 +583,25 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <p class="admonition-title">Note</p>
 <p><a class="reference external" href="https://www.rancher.com/">Rancher</a> is an open source container management platform built for organizations that deploy containers in production.</p>
 </div>
+</div>
+<div class="section" id="stratus-object-storage">
+<h3>Stratus Object Storage<a class="headerlink" href="#stratus-object-storage" title="Permalink to this headline">¶</a></h3>
+<p>NCAR has an object storage solution on premise called Stratus. Stratus can be accessed via API calls in a similar fashion to Amazon AWS S3. The main documentation page for this service can be found <a class="reference internal" href="how-to/Stratus/stratus-intro.html"><span class="doc std std-doc">here</span></a></p>
+<p>A link to the Stratus Web UI can always be found on this documentation page under the Resources tab at the top. It can also be found below:</p>
+<p><a class="reference external" href="https://stratus-admin.ucar.edu:10443/asview">Login to Stratus</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Stratus is hosted on NCAR internal networks and VPN or internal network access is required for access.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Stratus Web UI requires an Access ID and Secret Key to browse. If you do not have an Access ID and Secret Key please follow the <a class="reference internal" href="how-to/Stratus/stratus-access.html"><span class="doc std std-doc">access documentation</span></a></p>
+</div>
+</div>
 <div class="section" id="virtual-machines-vms">
-<h4>Virtual Machines (VMs)<a class="headerlink" href="#virtual-machines-vms" title="Permalink to this headline">¶</a></h4>
+<h3>Virtual Machines (VMs)<a class="headerlink" href="#virtual-machines-vms" title="Permalink to this headline">¶</a></h3>
 <p>Virtual machines can be provided if containers aren’t the best use case for the solution. Right now the process to get a VM is to submit a ticket with the NCAR/UCAR Service Desk <a class="reference external" href="https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17">here</a>. A link to the NCAR/UCAR service desk to request a VM can always be found on this documention page under the Resources tab at the top.</p>
 <p>In your request please provide the number of CPUs, amount of memory (GB), required disk size (GB), and the operating system you want to run. If you have any other special requests or requirements please provide them here.</p>
-</div>
 </div>
 </div>
 <div class="section" id="vision">
