@@ -344,12 +344,12 @@ const thebe_selector_output = ".output, .cell_output"
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="customize-docker.html">
-       Customize a Jupyter Docker Image
+       Docker Image
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="setup-gh-act.html">
-       Setup GitHub actions to Build Docker image automatically
+       GitHub Actions
       </a>
      </li>
     </ul>
@@ -509,7 +509,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="customize-user-environment">
 <h1>Customize User Environment<a class="headerlink" href="#customize-user-environment" title="Permalink to this headline">¶</a></h1>
-<p>The JupyterHub environment spun up for the users is actually a containerized version of JupyterLab that gets some common configuration values from the JupyterHub helm chart values. This containerized version of JupyterLab can be <a class="reference external" href="https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-environment.html">customized</a> extensively to fit a variety of different user needs and requirements. The initial CCPP image is based off the Jupyter <code class="docutils literal notranslate"><span class="pre">[docker-stacks-foundation](https://github.com/jupyter/docker-stacks/tree/main/docker-stacks-foundation)</span></code> image. This Jupyter image is the base image where the initial configuration takes place. It provides a minimal base image that we can then take and add our own customizations while not having to setup the OS and configure the base for JupyterHub.</p>
+<p>The JupyterHub environment spun up for the users is actually a containerized version of JupyterLab that gets some common configuration values from the JupyterHub helm chart values. This containerized version of JupyterLab can be <a class="reference external" href="https://z2jh.jupyter.org/en/stable/jupyterhub/customizing/user-environment.html">customized</a> extensively to fit a variety of different user needs and requirements. The initial CCPP image is based off the Jupyter <code class="docutils literal notranslate"><span class="pre">&lt;a</span> <span class="pre">href=&quot;https://github.com/jupyter/docker-stacks/tree/main/docker-stacks-foundation&quot;&gt;docker-stacks-foundation&lt;a&gt;</span></code> image. This Jupyter image is the base image where the initial configuration takes place. It provides a minimal base image that we can then take and add our own customizations while not having to setup the OS and configure the base for JupyterHub.</p>
 <p>The documentation in this section walks through how we customized the Docker image used for the NCAR JupyterHub, what packages we install in the base Anaconda environment, and how we utilize GitHub actions to build our image and push it to the Docker Hub repository for the project.</p>
 <div class="toctree-wrapper compound">
 </div>
