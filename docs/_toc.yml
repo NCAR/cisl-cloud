@@ -32,8 +32,6 @@ parts:
       - title: Kubernetes (k8s)
         file: how-to/K8s/k8s-intro
         sections:
-        - file: how-to/K8s/customize-docker
-        - file: how-to/K8s/setup-gh-act
         - title: Rancher (K8s)
           file: how-to/K8s/Rancher/rancher-intro
         - title: Terraform
@@ -45,6 +43,11 @@ parts:
         sections:
         - file: how-to/k8sJH/access
         - file: how-to/k8sJH/user-info
+        - title: Customize
+          file: how-to/k8sJH/custom
+          sections:
+            - file: how-to/k8sJH/customize-docker
+            - file: how-to/k8sJH/setup-gh-act
       - title: Stratus
         file: how-to/Stratus/stratus-intro
         sections:

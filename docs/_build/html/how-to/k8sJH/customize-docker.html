@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How to Customize a Jupyter Docker Image for Single Users &#8212; CISL Cloud Pilot</title>
+    <title>Customize a Jupyter Docker Image &#8212; CISL Cloud Pilot</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Setup GitHub actions to Build Docker image automatically" href="setup-gh-act.html" />
-    <link rel="prev" title="Using the NCAR kubernetes (k8s) clusters" href="k8s-intro.html" />
+    <link rel="prev" title="Customize User Environment" href="custom.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -278,33 +278,23 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="k8s-intro.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../K8s/k8s-intro.html">
    Kubernetes (k8s)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     How to Customize a Jupyter Docker Image for Single Users
-    </a>
-   </li>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="setup-gh-act.html">
-     Setup GitHub actions to Build Docker image automatically
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Rancher/rancher-intro.html">
+    <a class="reference internal" href="../K8s/Rancher/rancher-intro.html">
      Rancher (K8s)
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="Terraform/tf-intro.html">
+    <a class="reference internal" href="../K8s/Terraform/tf-intro.html">
      Terraform
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -314,7 +304,7 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="Terraform/tf-namespace.html">
+      <a class="reference internal" href="../K8s/Terraform/tf-namespace.html">
        Example: Creating a kubernetes namespace
       </a>
      </li>
@@ -322,25 +312,47 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../k8sJH/k8sJH-intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="k8sJH-intro.html">
    NCAR JupyterHub
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../k8sJH/access.html">
+    <a class="reference internal" href="access.html">
      Requesting Access
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../k8sJH/user-info.html">
+    <a class="reference internal" href="user-info.html">
      User Information
     </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="custom.html">
+     Customize
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Customize a Jupyter Docker Image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="setup-gh-act.html">
+       Setup GitHub actions to Build Docker image automatically
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -348,8 +360,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../Stratus/stratus-intro.html">
    Stratus
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -446,7 +458,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/how-to/K8s/customize-docker.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/how-to/k8sJH/customize-docker.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -466,7 +478,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/K8s/customize-docker.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/k8sJH/customize-docker.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -518,8 +530,8 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="how-to-customize-a-jupyter-docker-image-for-single-users">
-<h1>How to Customize a Jupyter Docker Image for Single Users<a class="headerlink" href="#how-to-customize-a-jupyter-docker-image-for-single-users" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="customize-a-jupyter-docker-image">
+<h1>Customize a Jupyter Docker Image<a class="headerlink" href="#customize-a-jupyter-docker-image" title="Permalink to this headline">¶</a></h1>
 <p>The Jupyter environment spun up for the users can be customized by building on top of the base Jupyter Docker image. For this use case the docker-stacks-foundation image from Jupyter is used. That image is built from ubuntu:22.04.</p>
 <p>This example Dockerfile has comments inline to explain what the lines are doing</p>
 <div class="section" id="dockerfile">
@@ -993,7 +1005,7 @@ WORKDIR &quot;${HOME}&quot;
         },
         kernelOptions: {
             name: "python3",
-            path: "./how-to/K8s"
+            path: "./how-to/k8sJH"
         },
         predefinedOutput: true
     }
@@ -1003,11 +1015,11 @@ WORKDIR &quot;${HOME}&quot;
               </div>
               <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="k8s-intro.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="custom.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Using the NCAR kubernetes (k8s) clusters</p>
+            <p class="prev-next-title">Customize User Environment</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="setup-gh-act.html" title="next page">
