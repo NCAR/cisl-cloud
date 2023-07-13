@@ -288,17 +288,29 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul>
-   <li class="toctree-l2">
+   <li class="toctree-l2 has-children">
     <a class="reference internal" href="Rancher/rancher-intro.html">
      Rancher (K8s)
     </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="Rancher/get-kubeconfig.html">
+       Get a kubeconfig
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toctree-l2 has-children">
     <a class="reference internal" href="Terraform/tf-intro.html">
      Terraform
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -316,8 +328,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../k8sJH/k8sJH-intro.html">
    NCAR JupyterHub
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -336,20 +348,20 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../k8sJH/custom.html">
      Customize
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
      <li class="toctree-l3">
       <a class="reference internal" href="../k8sJH/customize-docker.html">
-       Customize a Jupyter Docker Image
+       Docker Image
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../k8sJH/setup-gh-act.html">
-       Setup GitHub actions to Build Docker image automatically
+       GitHub Actions
       </a>
      </li>
     </ul>
@@ -360,8 +372,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../Stratus/stratus-intro.html">
    Stratus
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -529,7 +541,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <h1>Using the NCAR kubernetes (k8s) clusters<a class="headerlink" href="#using-the-ncar-kubernetes-k8s-clusters" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>NCAR runs a central kubernetes (k8s) cluster and has <a class="reference internal" href="Rancher/rancher-intro.html"><span class="doc std std-doc">Rancher</span></a> running for additional k8s cluster provisioning. It currently is available inside the NCAR network so you must either be <em><strong>onsite</strong></em> or connected to the <em><strong>VPN</strong></em>.</p>
+<p>NCAR runs a central kubernetes (k8s) cluster and has <a class="reference internal" href="Rancher/rancher-intro.html"><span class="doc std std-doc">Rancher</span></a> running for additional k8s cluster provisioning. It currently is available inside the NCAR network so you must either be <em><strong>onsite</strong></em> or connected to the <em><strong>VPN</strong></em>. K8s utilizes a command line tool named <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> to interact with clusters. Installing <a class="reference external" href="https://kubernetes.io/docs/tasks/tools/"><code class="docutils literal notranslate"><span class="pre">kubectl</span></code></a> is a requirement to following the rest of this documentation.</p>
 </div>
 <div class="section" id="access">
 <h2>Access<a class="headerlink" href="#access" title="Permalink to this headline">¶</a></h2>

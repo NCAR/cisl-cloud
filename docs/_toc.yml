@@ -34,6 +34,8 @@ parts:
         sections:
         - title: Rancher (K8s)
           file: how-to/K8s/Rancher/rancher-intro
+          sections:
+          - file: how-to/K8s/Rancher/get-kubeconfig
         - title: Terraform
           file: how-to/K8s/Terraform/tf-intro
           sections:

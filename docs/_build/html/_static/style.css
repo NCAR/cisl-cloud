@@ -191,6 +191,15 @@ code, .rst-content tt, .rst-content code {
     white-space: nowrap;
 }
 
+.pre {
+    overflow: scroll;
+    background-color: #e9ecef;
+    display: inline;
+    padding: 4px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
 .clipboard {
     position: relative;
     display: block;
