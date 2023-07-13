@@ -496,11 +496,18 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
   <a class="reference internal nav-link" href="#server-options">
    Server Options
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#user-environment">
-   User Environment
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cpu-only-options">
+     CPU only options
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cpu-gpu-options">
+     CPU &amp; GPU options
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -519,19 +526,14 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <div class="section" id="server-options">
 <h2>Server Options<a class="headerlink" href="#server-options" title="Permalink to this headline">¶</a></h2>
 <p>Once logged in the first page displayed is titled <code class="docutils literal notranslate"><span class="pre">Server</span> <span class="pre">Options</span></code> and is also known as the spawn page. It’s from here where the desired environment is selected and spun up for the user. There’s a number of different options for different resources available. Right now this menu is still in development but currently looks like the following:</p>
-<img src="https://ncar.github.io/cisl-cloud/_static/jhub-spawn.png"/>
-<p>The small, medium, and large sizes currently utilize the Pangeo <a class="reference external" href="https://github.com/pangeo-data/pangeo-docker-images/tree/master/pangeo-notebook">pangeo-notebook</a> docker image. The Test NCAR Custom image is built and maintained by the CCPP team. It is currently still in development and testing. The goal is to make this the primary image for the environment. The following discussion will be based on what is offered in the Test NCAR Custom image.</p>
-<ul class="simple">
-<li><p>Note: Right now there is no GPU image. We will provide a GPU image and are currently working towards configuring and implementing a solution.</p></li>
-</ul>
+<img src="https://ncar.github.io/cisl-cloud/_static/2i2c-serv-opts.png"/><div class="section" id="cpu-only-options">
+<h3>CPU only options<a class="headerlink" href="#cpu-only-options" title="Permalink to this headline">¶</a></h3>
+<p>The small, medium, and large sizes currently utilize the Pangeo <a class="reference external" href="https://github.com/pangeo-data/pangeo-docker-images/tree/master/pangeo-notebook">pangeo-notebook</a> docker image. Each of the sizes contain a handful of specific resource allocations. Please pick the image that best fits your analysis requirements. There is a cost associated with increasing the resources used and users should do their own due diligence to make sure they select enough resources to perform the work required, but not so many that costs are incurred for resources that were never used.</p>
 </div>
-<div class="section" id="user-environment">
-<h2>User Environment<a class="headerlink" href="#user-environment" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>The following is based on what is offered as part of the Test NCAR Custom image</p></li>
-</ul>
-<p>Once logged in the default start up page for everyone will look like this:</p>
-<img src="https://ncar.github.io/cisl-cloud/_static/jhub-main.png"/>
+<div class="section" id="cpu-gpu-options">
+<h3>CPU &amp; GPU options<a class="headerlink" href="#cpu-gpu-options" title="Permalink to this headline">¶</a></h3>
+<p>The NVIDIA Tesla option provides GPU resources. There are two images to choose from under this option. Both images are from Pangeo. One is the Pangeo PyTorch ML image and relevant code for that image can be found on the Pangeo GitHub repository <a class="reference external" href="https://github.com/pangeo-data/pangeo-docker-images/tree/master/pytorch-notebook">here</a>. The other image is the Pangeo Tensorflow ML Notebook and relevant code for that image can be found on the Pangeo GitHub repository <a class="reference external" href="https://github.com/pangeo-data/pangeo-docker-images/tree/master/ml-notebook">here</a>.</p>
+</div>
 </div>
 </div>
 
