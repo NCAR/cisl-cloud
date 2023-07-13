@@ -507,6 +507,31 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
    Stratus S3 Resource
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-bucket">
+   Create a bucket
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-all-buckets">
+   List all buckets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-all-object-in-a-bucket">
+   List all object in a bucket
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#upload-a-file">
+   Upload a file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-a-file">
+   Download a file
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -601,6 +626,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="create-a-bucket">
+<h2>Create a bucket<a class="headerlink" href="#create-a-bucket" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to create a new S3 bucket with a name set by the bucket_name argument</span>
@@ -613,6 +641,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="list-all-buckets">
+<h2>List all buckets<a class="headerlink" href="#list-all-buckets" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to list all buckets in the space</span>
@@ -628,6 +659,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="list-all-object-in-a-bucket">
+<h2>List all object in a bucket<a class="headerlink" href="#list-all-object-in-a-bucket" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to list all the objects stored in a bucket</span>
@@ -643,9 +677,16 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="upload-a-file">
+<h2>Upload a file<a class="headerlink" href="#upload-a-file" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please check and make sure the file being uploaded has a unique and descriptive filename that won’t conflict with any existing data.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to upload a file/object to a bucket</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to upload a file/object to a bucket, specify the filename to upload and the bucket name to be placed in</span>
 <span class="k">def</span> <span class="nf">upload_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">bucketname</span><span class="p">):</span>
     <span class="c1"># Use the S3 client already defined to make the call</span>
     <span class="n">s3_client</span> <span class="o">=</span> <span class="n">stratus_s3_client</span><span class="p">()</span>
@@ -656,6 +697,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="download-a-file">
+<h2>Download a file<a class="headerlink" href="#download-a-file" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to download a file/object to a bucket</span>

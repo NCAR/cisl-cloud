@@ -507,6 +507,11 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
    Update _toc.yml
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#build-and-test-updates">
+   Build and test updates
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -536,15 +541,24 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <div class="section" id="add-new-notebooks">
 <h2>Add new notebooks<a class="headerlink" href="#add-new-notebooks" title="Permalink to this headline">¶</a></h2>
 <p>Create new notebooks that contain the content that needs to be shared with the user base. Right now there are a few different folders to store these documents. Here is a breakdown of what folders are and the content they host:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">how</span><span class="o">-</span><span class="n">to</span><span class="o">/</span>             <span class="c1"># All How-To do content</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">_static</span><span class="o">/</span>            <span class="c1"># Place any images, custom css, or javascript here</span>
+<span class="n">_templates</span><span class="o">/</span>         <span class="c1"># Custom HTML pages to overwrite the templates used by Project Pythia</span>
+<span class="n">availability</span><span class="o">/</span>       <span class="c1"># Content related to available services and hardware </span>
+<span class="n">how</span><span class="o">-</span><span class="n">to</span><span class="o">/</span>             <span class="c1"># All How-To do content</span>
     <span class="mi">2</span><span class="n">i2cJH</span><span class="o">/</span>         <span class="c1"># Any information relating to use of the 2i2c hosted JupyterHub</span>
     <span class="n">jupyter</span><span class="o">-</span><span class="n">book</span><span class="o">/</span>   <span class="c1"># Details about this documentation website and how to maintain</span>
     <span class="n">K8s</span><span class="o">/</span>            <span class="c1"># General kubernetes information</span>
     <span class="n">k8sJH</span><span class="o">/</span>          <span class="c1"># Information relating directly to the use of the NCAR JupyterHub running on k8s</span>
-    <span class="n">Rancher</span><span class="o">/</span>        <span class="c1"># How-to use Rancher for valid use cases</span>
+    <span class="n">Stratus</span><span class="o">/</span>        <span class="c1"># How-to utilize Stratus for object storage</span>
+    <span class="n">vm</span><span class="o">/</span>             <span class="c1"># Brief intro to VMs and how to get one</span>
+<span class="n">images</span><span class="o">/</span>             <span class="c1"># Only used for the navbar icon and favicon.</span>
 <span class="n">overview</span><span class="o">/</span>           <span class="c1"># General information about the project and services</span>
 <span class="n">slas</span><span class="o">/</span>               <span class="c1"># Service Level Agreement policies</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Place any images used in notebooks directly in the <code class="docutils literal notranslate"><span class="pre">_static/</span></code> directory and reference them using a URL like <code class="docutils literal notranslate"><span class="pre">https://ncar.github.io/cisl-cloud/_static/my-new-image.png</span></code>. Images places in the <code class="docutils literal notranslate"><span class="pre">images</span></code> directory are not copied correctly.</p>
 </div>
 <p>When adding content please place the files in a directory that makes sense. If one does not exist please create a directory for it that is descriptive for others.</p>
 <div class="admonition note">
@@ -584,6 +598,10 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </div>
 <p>The final main section of the yaml file we are using is for <code class="docutils literal notranslate"><span class="pre">parts</span></code>. This is where all the different content is laid out and organized. There’s a few different ways to outline all of this, as shown in the above layout, and we will cover each one.</p>
 <p>The most straightforward way to display content is by pairing the <code class="docutils literal notranslate"><span class="pre">chapters</span></code> entry with the <code class="docutils literal notranslate"><span class="pre">file</span></code> entry.</p>
+</div>
+<div class="section" id="build-and-test-updates">
+<h2>Build and test updates<a class="headerlink" href="#build-and-test-updates" title="Permalink to this headline">¶</a></h2>
+<p>Once all the changes are in place it’s time to build the new book and test it locally. This procedure is already outlined in the Create CCPP docs page, specifically starting <a class="reference external" href="https://ncar.github.io/cisl-cloud/how-to/jupyter-book/create-jb.html#build-the-html-files">here</a>. Please use that documentation to build, test, push, and deploy the changes made to the documentation.</p>
 </div>
 </div>
 
