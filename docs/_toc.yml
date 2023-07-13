@@ -46,8 +46,10 @@ parts:
         - title: Customize
           file: how-to/k8sJH/custom
           sections:
-            - file: how-to/k8sJH/customize-docker
-            - file: how-to/k8sJH/setup-gh-act
+            - title: Docker Image
+              file: how-to/k8sJH/customize-docker
+            - title: GitHub Actions
+              file: how-to/k8sJH/setup-gh-act
       - title: Stratus
         file: how-to/Stratus/stratus-intro
         sections:
