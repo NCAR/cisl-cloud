@@ -7,3 +7,5 @@ FROM cislcloudpilot/cisl-cloud-base:latest
 # Bash Kernel
 RUN mamba install --yes \
     'bash_kernel'
+
+USER ${NB_UID}

@@ -29,3 +29,5 @@ RUN mamba install --yes \
     'rpy2' \
     'unixodbc' && \
     mamba clean --all -f -y
+
+USER ${NB_UID}

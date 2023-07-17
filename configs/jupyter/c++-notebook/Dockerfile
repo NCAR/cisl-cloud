@@ -6,6 +6,7 @@ FROM ncote/cisl-cloud-base:latest
 
 COPY environment.yml /home/jovyan
 
-
 # C++ Kernel
 RUN mamba env update --name base -f environment.yml
+
+USER ${NB_UID}
