@@ -4,6 +4,8 @@
 
 FROM ncote/cisl-cloud-base:latest
 
+COPY environment.yml /home/jovyan
+
+
 # C++ Kernel
-RUN mamba install --yes \
-    'xeus-cling'
+RUN mamba env update --name base -f environment.yml

@@ -1,0 +1,8 @@
+name: cisl-cloud-base
+channels:
+  - conda-forge
+dependencies:
+  - xeus-cling
+  - _openmp_mutex
+  - alembic
+  - alabaster

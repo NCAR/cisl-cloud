@@ -4,5 +4,7 @@
 
 FROM ncote/cisl-cloud-base:latest
 
+COPY requirements.txt .
+
 # MatLab Kernel
 RUN pip install -r requirements.txt
