@@ -7,7 +7,6 @@ FROM ncote/cisl-cloud-base:latest
 COPY configs/jupyter/matlab-notebook/requirements.txt /tmp/
 
 # MatLab Kernel
-RUN pip install -r /tmp/requirements.txt \
-    rm /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
 
 USER ${NB_UID}
