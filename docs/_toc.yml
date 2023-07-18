@@ -24,6 +24,8 @@ parts:
         - file: how-to/2i2cJH/user-info
       - title: Agile Interaction
         file: how-to/agile
+        sections:
+        - file: how-to/create-tickets
       - title: Jupyter Book
         file: how-to/jupyter-book/jb-intro
         sections:

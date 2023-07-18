@@ -196,7 +196,6 @@ code, .rst-content tt, .rst-content code {
     background-color: #e9ecef;
     display: inline;
     border-radius: 4px;
-    white-space: nowrap;
 }
 
 .clipboard {
