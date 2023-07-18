@@ -6,3 +6,4 @@ channels:
   - conda-forge
 envs_dirs:
   - /opt/conda/my-conda-envs
+  - /srv/conda/envs

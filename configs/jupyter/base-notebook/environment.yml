@@ -4,7 +4,7 @@ channels:
 dependencies:
   - argopy
   - beautifulsoup4
-  - bokeh
+  - bokeh==2.4.3
   - boto3
   - bottleneck
   - ca-certificates
