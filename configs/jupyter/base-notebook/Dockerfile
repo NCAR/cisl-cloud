@@ -69,8 +69,19 @@ COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook
 
 WORKDIR /tmp
 
-RUN mamba env update --name base -f environment.yml && \
+RUN mamba install --quiet --yes \
+    # NodeJS >= 18.0 is required for `jupyter lab build` command
+    # https://github.com/jupyter/docker-stacks/issues/1901
+    'nodejs>=18.0' \
+    'notebook' \
+    'jupyterhub' \
+    'jupyterlab==3.6.3' \
+    'conda-forge::nb_conda_kernels' && \
+    # Pin NodeJS
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
+    # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
+    # Create a kernel named cisl-cloud-base from the environment.yml file
+    mamba env update --name cisl-cloud-base -f environment.yml && \
     pip install -r requirements.txt && \
     jupyter notebook --generate-config && \
     mamba clean --all -f -y && \
