@@ -8,7 +8,7 @@ name: Deploy c++-notebook
 on:
   push:
     paths:
-      - configs/jupyter/c++-notebook/**
+      - configs/jupyter/cplusplus-notebook/**
 
 # Define the actions that are going to take place as part of this workflow    
 jobs:
