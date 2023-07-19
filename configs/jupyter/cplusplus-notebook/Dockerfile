@@ -4,7 +4,7 @@
 
 FROM ncote/cisl-cloud-base:latest
 
-COPY configs/cplusplus-notebook/environment.yml /home/jovyan
+COPY configs/jupyter/cplusplus-notebook/environment.yml /home/jovyan
 
 # C++ Kernel
 RUN mamba env create -f environment.yml
