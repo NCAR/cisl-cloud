@@ -5,5 +5,5 @@ show_channel_urls: true
 channels:
   - conda-forge
 envs_dirs:
-  - /opt/conda/my-conda-envs
+  - /opt/conda/envs
   - /srv/conda/envs
