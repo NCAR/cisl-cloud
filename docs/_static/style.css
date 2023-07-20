@@ -224,3 +224,11 @@ code, .rst-content tt, .rst-content code {
 .admonition {
     background-color: #ffffff;
 }
+
+.sd-summary-title {
+    background-color: #ffffff;
+}
+
+.sd-summary-content {
+    background-color: #ffffff;
+}
