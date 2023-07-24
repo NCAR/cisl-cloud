@@ -1,6 +1,8 @@
 dask-labextension
-jupyterlab-git
+ipywidgets
 jupyter-server-proxy
-nbgitpuller
-nb_search
+jupyterlab_widgets
+jupyterlab-git
 jupyterlab-s3-browser>=0.12
+nb_search
+nbgitpuller

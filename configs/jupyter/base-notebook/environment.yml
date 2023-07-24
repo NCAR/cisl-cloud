@@ -45,7 +45,6 @@ dependencies:
   - intake-xarray
   - ipykernel>=6.21.2
   - ipympl
-  - ipywidgets
   - ipywidgets-bokeh
   - jupyterhub
   - jupyterlab==3.6.3

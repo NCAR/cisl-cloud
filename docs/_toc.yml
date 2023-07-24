@@ -50,12 +50,14 @@ parts:
         - file: how-to/k8sJH/access
         - file: how-to/k8sJH/user-info
         - title: Customize
-          file: how-to/k8sJH/custom
+          file: how-to/k8sJH/customize/custom
           sections:
+            - title: Conda Environments
+              file: how-to/k8sJH/customize/env
             - title: Docker Image
-              file: how-to/k8sJH/customize-docker
+              file: how-to/k8sJH/customize/customize-docker
             - title: GitHub Actions
-              file: how-to/k8sJH/setup-gh-act
+              file: how-to/k8sJH/customize/setup-gh-act
       - title: Stratus
         file: how-to/Stratus/stratus-intro
         sections:
