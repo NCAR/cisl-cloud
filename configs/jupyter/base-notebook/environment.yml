@@ -15,9 +15,9 @@ dependencies:
   - cf-units
   - click
   - cmocean
-  - dask
+  - dask>=2023.4.0
   - dask-gateway
-  - dask-jobqueue
+  - dask-jobqueue>=0.8.1
   - datashader
   - descartes
   - docopt
@@ -40,8 +40,8 @@ dependencies:
   - h5py
   - holoviews
   - hvplot
-  - intake
-  - intake-esm
+  - intake>=0.6.8
+  - intake-esm>=2020.8.15
   - intake-xarray
   - ipykernel>=6.21.2
   - ipympl
@@ -102,7 +102,7 @@ dependencies:
   - tobac
   - widgetsnbextension
   - wrf-python
-  - xarray
+  - xarray>=2023.4.2
   - xesmf
   - xgcm
   - xrft

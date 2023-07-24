@@ -558,6 +558,13 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#rancher">
+     <span class="xref myst">
+      Rancher
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#storage">
      Storage
     </a>
@@ -630,8 +637,8 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
 <p class="admonition-title">Note</p>
 <p>This page does not cover what kubernetes is. If you are unsure exactly what kubernetes is take a look at these <a class="reference external" href="https://letmegooglethat.com/?q=What+is+kubernetes">search results</a> or visit the kubernetes <a class="reference external" href="https://kubernetes.io/">home page</a>.</p>
 </div>
-<p>We will utilize a k8s cluster to host JupyterHub. Dask will be installed to enable parallel computing. A JupyterHub Spawner will create single user environments with access to a shared and personal storage space. The Spawned user environments will come in different sizes with a GPU option.</p>
-<p>k8s can also be used to host containers or containerized virtual machines for individual use cases.</p>
+<p>We utilize a k8s cluster to host JupyterHub. Dask gateway is installed to enable scalable parallel computing. JupyterHub Spawner creates single user environments with access to shared and personal storage space. The Spawned user environments come in different sizes with a GPU option.</p>
+<p>This cluster is configured with an ingress controller and certificate manager to offer HTTPS access to user workloads via unique URLs. Documentation on how to utilize this offering will be provided.</p>
 </div>
 <div class="section" id="jupyterhub-on-k8s">
 <h3><a class="reference internal" href="../how-to/k8sJH/k8sJH-intro.html"><span class="doc std std-doc">JupyterHub on k8s</span></a><a class="headerlink" href="#jupyterhub-on-k8s" title="Permalink to this headline">¶</a></h3>
@@ -640,6 +647,14 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
 <p>The NCAR deployment utilized the Zero to JupyterHub <a class="reference external" href="https://z2jh.jupyter.org/en/stable/">dcoumentation</a> to get started with customizing the environment.</p>
 </div>
 <p>There is a JupyterHub instance hosted on-prem at NWSC on a RKE2 provisioned k8s cluster. This JupyterHub is going to have a customized Docker image that enables packages, kernels, and extensions the scientific research community utilizes to increase productivity in data analysis. The custom environment will also provide users read-only access to the campaign and collections directories on GLADE as well as a shared directory whose specific use case is still being fleshed out. Access to this JupyterHub will be handled via GitHub authentication and a team under the NCAR organization in GitHub.</p>
+</div>
+<div class="section" id="rancher">
+<h3><a class="reference internal" href="../how-to/K8s/Rancher/rancher-intro.html"><span class="doc std std-doc">Rancher</span></a><a class="headerlink" href="#rancher" title="Permalink to this headline">¶</a></h3>
+<div class="admonition-rancher admonition">
+<p class="admonition-title">Rancher</p>
+<p><a class="reference external" href="https://www.rancher.com/">Rancher</a>  is an open source container management platform built for organizations that deploy containers in production.</p>
+</div>
+<p>CISL operates a Rancher cluster to help manage k8s clusters. It provides the ability to manage multiple clusters and services</p>
 </div>
 <div class="section" id="storage">
 <h3>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h3>
@@ -757,7 +772,7 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 20 July 2023.
+          Last updated on 21 July 2023.
         </p>
       </div>
     </div>

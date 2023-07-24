@@ -11,6 +11,8 @@ FROM jupyter/docker-stacks-foundation:latest
 # Update version here and on the .github/workflow/build-push-basenb.yaml before pushing changes to the repo
 LABEL maintainer="CISL Cloud Pilot Team <cisl-cloud-pilot@ucar.edu>" version="v1-stable"
 
+ENV CONDA_ENV=cisl-cloud-base
+
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -81,7 +83,7 @@ RUN mamba install --quiet --yes \
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
     # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
     # Create a kernel named cisl-cloud-base from the environment.yml file
-    mamba env update --name cisl-cloud-base -f environment.yml && \
+    mamba env update --name "${CONDA_ENV}" -f environment.yml && \
     pip install -r requirements.txt && \
     jupyter notebook --generate-config && \
     mamba clean --all -f -y && \
