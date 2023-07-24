@@ -64,3 +64,9 @@ if "NB_UMASK" in os.environ:
 c.CondaKernelSpecManager.env_filter = '/opt/conda/share/jupyter/.*'
 
 c.KubeSpawner.default_url = 'WELCOME.ipynb'
+
+# Add in resource limits for Dask Gateway
+
+c.ClusterConfig.cluster_max_cores = 4
+c.ClusterConfig.cluster_max_memory = "8 G"
+c.ClusterConfig.cluster_max_workers = 10
