@@ -54,6 +54,8 @@ parts:
           sections:
             - title: Conda Environments
               file: how-to/k8sJH/customize/env
+            - title: Utilizing GitHub
+              file: how-to/k8sJH/customize/github
             - title: Docker Image
               file: how-to/k8sJH/customize/customize-docker
             - title: GitHub Actions

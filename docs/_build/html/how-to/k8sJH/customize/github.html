@@ -5,58 +5,58 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Setup GitHub actions to Build Docker image automatically &#8212; CISL Cloud Pilot</title>
+    <title>Utilizing GitHub &#8212; CISL Cloud Pilot</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
-    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
     
       
 
     
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-pythia-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
-    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
-    <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Introduction to Stratus" href="../Stratus/stratus-intro.html" />
-    <link rel="prev" title="Customize a Jupyter Docker Image" href="customize-docker.html" />
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Customize a Jupyter Docker Image" href="customize-docker.html" />
+    <link rel="prev" title="Conda environments" href="env.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -73,8 +73,8 @@ const thebe_selector_output = ".output, .cell_output"
     
     
 
-<a class="navbar-brand" href="../../index.html">
-  <img src="../../_static/CISL-contemp-logo-blue.png" class="logo" alt="logo">
+<a class="navbar-brand" href="../../../index.html">
+  <img src="../../../_static/CISL-contemp-logo-blue.png" class="logo" alt="logo">
 </a>
 
 
@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
             
         
         <li class="nav-item">
-            <a class="nav-link nav-internal" href="../../index.html">Cloud Docs</a>
+            <a class="nav-link nav-internal" href="../../../index.html">Cloud Docs</a>
         </li>    
     
     
@@ -179,29 +179,29 @@ const thebe_selector_output = ".output, .cell_output"
         
 <div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
     
-        <form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+        <form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../overview/about.html">
+  <a class="reference internal" href="../../../overview/about.html">
    About this Project
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../overview/use-cases.html">
+  <a class="reference internal" href="../../../overview/use-cases.html">
    Use Cases
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../overview/goals.html">
+  <a class="reference internal" href="../../../overview/goals.html">
    Goals
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../overview/services.html">
+  <a class="reference internal" href="../../../overview/services.html">
    Potential Services
   </a>
  </li>
@@ -213,12 +213,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../availability/availability.html">
+  <a class="reference internal" href="../../../availability/availability.html">
    Current Offering
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../availability/hw-resources.html">
+  <a class="reference internal" href="../../../availability/hw-resources.html">
    Hardware
   </a>
  </li>
@@ -230,7 +230,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../2i2cJH/2i2cJH-intro.html">
+  <a class="reference internal" href="../../2i2cJH/2i2cJH-intro.html">
    2i2c JupyterHub
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -240,19 +240,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../2i2cJH/access.html">
+    <a class="reference internal" href="../../2i2cJH/access.html">
      Requesting Access
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../2i2cJH/user-info.html">
+    <a class="reference internal" href="../../2i2cJH/user-info.html">
      User Information
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../agile.html">
+  <a class="reference internal" href="../../agile.html">
    Agile Interaction
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
@@ -262,14 +262,14 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../create-tickets.html">
+    <a class="reference internal" href="../../create-tickets.html">
      Create tickets
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../jupyter-book/jb-intro.html">
+  <a class="reference internal" href="../../jupyter-book/jb-intro.html">
    Jupyter Book
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -279,19 +279,19 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../jupyter-book/create-jb.html">
+    <a class="reference internal" href="../../jupyter-book/create-jb.html">
      Create CCPP Docs
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../jupyter-book/add-jb.html">
+    <a class="reference internal" href="../../jupyter-book/add-jb.html">
      Add content
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../K8s/k8s-intro.html">
+  <a class="reference internal" href="../../K8s/k8s-intro.html">
    Kubernetes (k8s)
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -301,7 +301,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../K8s/Rancher/rancher-intro.html">
+    <a class="reference internal" href="../../K8s/Rancher/rancher-intro.html">
      Rancher (K8s)
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -311,24 +311,24 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../K8s/Rancher/get-kubeconfig.html">
+      <a class="reference internal" href="../../K8s/Rancher/get-kubeconfig.html">
        Get a kubeconfig
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../K8s/Rancher/cluster-access.html">
+      <a class="reference internal" href="../../K8s/Rancher/cluster-access.html">
        Accessing a k8s Cluster
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../K8s/Rancher/permissions.html">
+      <a class="reference internal" href="../../K8s/Rancher/permissions.html">
        Permissions
       </a>
      </li>
     </ul>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../K8s/Terraform/tf-intro.html">
+    <a class="reference internal" href="../../K8s/Terraform/tf-intro.html">
      Terraform
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -338,7 +338,7 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../K8s/Terraform/tf-namespace.html">
+      <a class="reference internal" href="../../K8s/Terraform/tf-namespace.html">
        Example: Creating a kubernetes namespace
       </a>
      </li>
@@ -347,7 +347,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="k8sJH-intro.html">
+  <a class="reference internal" href="../k8sJH-intro.html">
    NCAR JupyterHub
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -357,12 +357,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="access.html">
+    <a class="reference internal" href="../access.html">
      Requesting Access
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="user-info.html">
+    <a class="reference internal" href="../user-info.html">
      User Information
     </a>
    </li>
@@ -377,12 +377,22 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul class="current">
      <li class="toctree-l3">
-      <a class="reference internal" href="customize-docker.html">
-       Docker Image
+      <a class="reference internal" href="env.html">
+       Conda Environments
       </a>
      </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
+       Utilizing GitHub
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="customize-docker.html">
+       Docker Image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="setup-gh-act.html">
        GitHub Actions
       </a>
      </li>
@@ -391,7 +401,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../Stratus/stratus-intro.html">
+  <a class="reference internal" href="../../Stratus/stratus-intro.html">
    Stratus
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
@@ -401,24 +411,24 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Stratus/stratus-access.html">
+    <a class="reference internal" href="../../Stratus/stratus-access.html">
      Access
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Stratus/jupyter-extension.html">
+    <a class="reference internal" href="../../Stratus/jupyter-extension.html">
      Jupyter S3 Extension
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Stratus/stratus-cmd.html">
+    <a class="reference internal" href="../../Stratus/stratus-cmd.html">
      Python Examples
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../vm/vm-intro.html">
+  <a class="reference internal" href="../../vm/vm-intro.html">
    Virtual Machines
   </a>
  </li>
@@ -430,12 +440,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../slas/glade.html">
+  <a class="reference internal" href="../../../slas/glade.html">
    GLADE
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../../slas/stratus.html">
+  <a class="reference internal" href="../../../slas/stratus.html">
    Stratus
   </a>
  </li>
@@ -447,7 +457,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../contact.html">
+  <a class="reference internal" href="../../../contact.html">
    Information
   </a>
  </li>
@@ -492,7 +502,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/how-to/k8sJH/setup-gh-act.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/how-to/k8sJH/customize/github.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -512,7 +522,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/k8sJH/setup-gh-act.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/k8sJH/customize/github.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -539,13 +549,18 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-github-workflows-build-push-basenb-yaml">
-   Example
-   <em>
-    <strong>
-     .github/workflows/build-push-basenb.yaml
-    </strong>
-   </em>
+  <a class="reference internal nav-link" href="#configure-git">
+   Configure git
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#github-tokens">
+   GitHub Tokens
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cloning-a-repository">
+   Cloning a repository
   </a>
  </li>
 </ul>
@@ -559,68 +574,35 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="setup-github-actions-to-build-docker-image-automatically">
-<h1>Setup GitHub actions to Build Docker image automatically<a class="headerlink" href="#setup-github-actions-to-build-docker-image-automatically" title="Permalink to this headline">¶</a></h1>
-<p>As part of having a continuous integration workflow GitHub actions is utilized to rebuild Docker images whenever new code is pushed to a specific directory.</p>
-<p>In order to utilize GitHub actions a directory named <em><strong>.github</strong></em> needs to be created in the base directory of the repository.
-The <em><strong>.github</strong></em> directory should also contain a directory named <em><strong>workflows</strong></em> in order to store and run the different <a class="reference external" href="https://docs.github.com/en/actions/using-workflows/about-workflows">workflows</a> created.
-The workflow itself is a <a class="reference external" href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions"><em><strong>yaml</strong></em></a> file that defines the actions that <a class="reference external" href="https://docs.github.com/en/actions/using-workflows/triggering-a-workflow">trigger</a> and execute what is required for the continuous integration application.</p>
-<div class="section" id="example-github-workflows-build-push-basenb-yaml">
-<h2>Example <em><strong>.github/workflows/build-push-basenb.yaml</strong></em><a class="headerlink" href="#example-github-workflows-build-push-basenb-yaml" title="Permalink to this headline">¶</a></h2>
-<p>This example workflow utilizes a few different github actions to build a docker image and push it to a container registry. Each step is explained in detail via inline comments.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># This workflow builds docker images and pushes them to a Docker Hub Repository
-# This workflow is specific to the base-notebook directory and image
-# Set the workflow name
-name: Deploy base-notebook
-
-# Define the trigger that starts the action
-# For this workflow the trigger is on a push that changes anything in the configs/jupyter/base-notebook/ path
-on:
-  push:
-    paths:
-      - configs/jupyter/base-notebook/**
-
-# Define the actions that are going to take place as part of this workflow    
-jobs:
-  # Name the job(s)
-  deploy-docker-base-notebook:
-    # Define where the job should run in this case it will be run on the latest ubuntu image
-    runs-on: ubuntu-latest
-    # Set the steps to take in order
-    steps:
-      # Step 1 is to checkout the github repo used to build the Dockerfile
-      - name: Check out the repo
-        uses: actions/checkout@v3
-      # Step 2 is to login to docker hub so the image can be pushed
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        # GitHub secrets are used to provide login information to docker hub
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN  }}
-      # Pull relevant metadata out of the docker image used
-      # This can be expanded upon
-      - name: Extract metadata for Docker
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: ncote/cisl-cloud-base
-      # Build and push the docker image
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          # Provide the current directory as build context 
-          context: .
-          # Specify where the Dockerfile is located in relation to the repo base path
-          file: configs/jupyter/base-notebook/Dockerfile
-          # Enable the push to docker hub
-          push: true
-          # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: ncote/cisl-cloud-base:latest
-          # Apply labels as defined in the Docker image metadata
-          labels: ${{ steps.meta.outputs.labels }}
+  <div class="tex2jax_ignore mathjax_ignore section" id="utilizing-github">
+<h1>Utilizing GitHub<a class="headerlink" href="#utilizing-github" title="Permalink to this headline">¶</a></h1>
+<p>Shared code repositories, specifically GitHub in this example, are arguably the most important tool in code development. They offer so many benefits such as version control, change history, and an ease to collaborate with others to name a few. This document will cover a few of the beginning steps to utilize GitHub on a JupyterHub instance.</p>
+<div class="section" id="configure-git">
+<h2>Configure git<a class="headerlink" href="#configure-git" title="Permalink to this headline">¶</a></h2>
+<p>Git is installed in the <a class="reference external" href="https://jupyter.k8s.ucar.edu/">NCAR JupyterHub</a> user environment by default. Although it is installed there’s a few configuration options that need to be setup before interacting with GitHub directly. Open the Terminal from the Launcher pane in JupyterHub by clicking the Terminal box shown in the image below.</p>
+<img src="https://ncar.github.io/cisl-cloud/_static/jh-terminal.png">
+<p>Once the terminal is open it’s time to use the commands below to set your email address and name for GitHub.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">email</span> <span class="s2">&quot;you@example.com&quot;</span>
+<span class="n">git</span> <span class="n">config</span> <span class="o">--</span><span class="k">global</span> <span class="n">user</span><span class="o">.</span><span class="n">name</span> <span class="s2">&quot;Your Name&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="github-tokens">
+<h2>GitHub Tokens<a class="headerlink" href="#github-tokens" title="Permalink to this headline">¶</a></h2>
+<p>When trying to push changes to GitHub repositories it’s likely you will encounter an ask for authentication. This prompts for your username or email and a password, but the option to use your actual password has been disabled and you need to use an access token here instead. Create a token <a class="reference external" href="https://github.com/settings/tokens">here</a>. There’s a dropdown box at the top to <code class="docutils literal notranslate"><span class="pre">Generate</span> <span class="pre">new</span> <span class="pre">token</span></code> with two options, a fine-grained token or a general use token. These options can be seen in the image below:</p>
+<img src="https://ncar.github.io/cisl-cloud/_static/github-token.png">
+<p>The general use token can be scoped to only allow certain access but it is against all repositories you have access to. A fine grained token can be narrowed down in scope to allow access to where you want while limiting what actions can be performed.</p>
+<div class="admonition-expiration admonition">
+<p class="admonition-title">Expiration</p>
+<p>Both tokens have you select an expiration date for your token. Best practice is to keep this time as short as possible to help mitigate risks if your token was ever publicly exposed. You can also revoke a token at any time.</p>
+</div>
+<p>Once you have created your access token store it somewhere safe and encrypted. You will not get access to this token again.</p>
+</div>
+<div class="section" id="cloning-a-repository">
+<h2>Cloning a repository<a class="headerlink" href="#cloning-a-repository" title="Permalink to this headline">¶</a></h2>
+<p>The JupyterHub instance has a Git Clone extension that can be used to copy code in to your user environment. It is suggested to create a folder in your base directory (/home/jovyan or ~/) to keep all code repositories organized. This can be done by right clicking in the <code class="docutils literal notranslate"><span class="pre">File</span> <span class="pre">Browser</span></code> and selecting <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Folder</span></code> or by using <code class="docutils literal notranslate"><span class="pre">mkdir</span></code> from the Terminal. Once the new folder is created it’s time to clone a repository in to it. Enter your new directory and select the <code class="docutils literal notranslate"><span class="pre">Git</span> <span class="pre">Clone</span></code> button as seen highlighted in the following image:</p>
+<img src="https://ncar.github.io/cisl-cloud/_static/jhub-git.png">
+<p>This will open a window where you can input the URL for the repo you want to clone. If you don’t know where to get this URL the easiest place to get is from the main page of the repository you’re interested in. There’s a green <code class="docutils literal notranslate"><span class="pre">&lt;&gt;</span> <span class="pre">Code</span></code> box that when clicked will display and HTTPS URL that ends in .git. Copy this URL and paste it in to the JupyterHub Git window and select clone. You should now see a folder in your new directory that contains all repository content.</p>
 </div>
 </div>
 
@@ -637,7 +619,7 @@ jobs:
         },
         kernelOptions: {
             name: "python3",
-            path: "./how-to/k8sJH"
+            path: "./how-to/k8sJH/customize"
         },
         predefinedOutput: true
     }
@@ -647,17 +629,17 @@ jobs:
               </div>
               <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="customize-docker.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="env.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Customize a Jupyter Docker Image</p>
+            <p class="prev-next-title">Conda environments</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../Stratus/stratus-intro.html" title="next page">
+    <a class='right-next' id="next-link" href="customize-docker.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Stratus</p>
+        <p class="prev-next-title">Customize a Jupyter Docker Image</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -669,7 +651,7 @@ jobs:
       </div>
     </div>
   
-  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
 <footer class="footer">
   <div class="container-fluid m-0 p-0">
@@ -706,7 +688,7 @@ jobs:
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 21 July 2023.
+          Last updated on 25 July 2023.
         </p>
       </div>
     </div>
@@ -728,7 +710,7 @@ jobs:
       <div class="row">
         <p class="m-0">
           <img
-            src="../../_static/footer-logo-nsf.png"
+            src="../../../_static/footer-logo-nsf.png"
             style="float: left; width: 60px; height: 60px; margin-right: 1rem"
           />
           This material is based upon work supported by the National Science
