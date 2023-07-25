@@ -362,6 +362,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../base-conda.html">
+     Base Conda Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../user-info.html">
      User Information
     </a>
@@ -554,11 +559,6 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#environment-yml">
-   environment.yml
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#requirements-txt">
    requirements.txt
   </a>
@@ -579,8 +579,16 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <p>The Jupyter environment spun up for the users can be customized by building on top of the base Jupyter Docker image. For this use case the docker-stacks-foundation image from Jupyter is used. That image is built from ubuntu:22.04.</p>
 <p>This example Dockerfile has comments inline to explain what the lines are doing</p>
 <div class="section" id="dockerfile">
-<h2>Dockerfile<a class="headerlink" href="#dockerfile" title="Permalink to this headline">¶</a></h2>
-<p>The following Dockerfile is built automatically anytime there is a push to the directory where it is stored via GitHub actions. Setting up a GitHub action to build and push a Docker image to Docker Hub can be viewed at the <a class="reference internal" href="setup-gh-act.html"><span class="doc std std-doc">Setup GitHub Action</span></a> section.</p>
+<h2><a class="reference external" href="https://github.com/NCAR/cisl-cloud/blob/main/configs/jupyter/base-notebook/Dockerfile">Dockerfile</a><a class="headerlink" href="#dockerfile" title="Permalink to this headline">¶</a></h2>
+<p>The following Dockerfile is built automatically anytime there is a push to the directory where it is stored via GitHub actions. Setting up a GitHub action to build and push a Docker image to Docker Hub can be viewed at the <a class="reference internal" href="setup-gh-act.html"><span class="doc std std-doc">Setup GitHub Action</span></a> section. It also installs a base conda environment that you can read more about <a class="reference internal" href="../base-conda.html"><span class="doc std std-doc">here</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Along with the environment.yml and requirements.txt files this also copies <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>, <code class="docutils literal notranslate"><span class="pre">.condarc</span></code>, and <code class="docutils literal notranslate"><span class="pre">.profile</span></code>. This is to activate the <code class="docutils literal notranslate"><span class="pre">cisl-cloud-base</span></code> conda environment, setup conda to place new environments on persistent storage on <code class="docutils literal notranslate"><span class="pre">~/.conda/</span></code>, and to utilize bashrc respectively.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are <a class="reference external" href="https://github.com/NCAR/cisl-cloud/tree/main/configs/jupyter/base-notebook/scripts">scripts</a> that are also copied to the container. These were all taken directly from the <a class="reference external" href="https://github.com/jupyter/docker-stacks/tree/main/base-notebook">jupyter/base-notebook</a> repository. The only changes have been to the <code class="docutils literal notranslate"><span class="pre">jupyter_server_config.py</span></code> file in order to make some additional customizations.</p>
+</div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Borrowed heavily from the base-notebook Dockerfile by Jupyter
 # https://github.com/jupyter/docker-stacks/blob/main/base-notebook/Dockerfile
 # The shell scripts and python modules were developed by the Jupyter Development Team
@@ -738,130 +746,18 @@ WORKDIR &quot;${HOME}&quot;
 </pre></div>
 </div>
 </div>
-<div class="section" id="environment-yml">
-<h2>environment.yml<a class="headerlink" href="#environment-yml" title="Permalink to this headline">¶</a></h2>
-<p>The environment.yml file is where most of the python packages will be installed from via mamba. The following are the packages installed currently in the cisl-cloud-base conda kernel.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">name</span><span class="p">:</span> <span class="n">cisl</span><span class="o">-</span><span class="n">cloud</span><span class="o">-</span><span class="n">base</span>
-<span class="n">channels</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">conda</span><span class="o">-</span><span class="n">forge</span>
-<span class="n">dependencies</span><span class="p">:</span>
-  <span class="o">-</span> <span class="n">argopy</span>
-  <span class="o">-</span> <span class="n">beautifulsoup4</span>
-  <span class="o">-</span> <span class="n">bokeh</span><span class="o">==</span><span class="mf">2.4.3</span>
-  <span class="o">-</span> <span class="n">boto3</span>
-  <span class="o">-</span> <span class="n">bottleneck</span>
-  <span class="o">-</span> <span class="n">ca</span><span class="o">-</span><span class="n">certificates</span>
-  <span class="o">-</span> <span class="n">cartopy</span> 
-  <span class="o">-</span> <span class="n">cdsapi</span>
-  <span class="o">-</span> <span class="n">celluloid</span>
-  <span class="o">-</span> <span class="n">cfgrib</span>
-  <span class="o">-</span> <span class="n">cf</span><span class="o">-</span><span class="n">units</span>
-  <span class="o">-</span> <span class="n">click</span>
-  <span class="o">-</span> <span class="n">cmocean</span>
-  <span class="o">-</span> <span class="n">dask</span><span class="o">&gt;=</span><span class="mf">2023.4.0</span>
-  <span class="o">-</span> <span class="n">dask</span><span class="o">-</span><span class="n">gateway</span>
-  <span class="o">-</span> <span class="n">dask</span><span class="o">-</span><span class="n">jobqueue</span><span class="o">&gt;=</span><span class="mf">0.8.1</span>
-  <span class="o">-</span> <span class="n">datashader</span>
-  <span class="o">-</span> <span class="n">descartes</span>
-  <span class="o">-</span> <span class="n">docopt</span>
-  <span class="o">-</span> <span class="n">earthaccess</span>
-  <span class="o">-</span> <span class="n">erddapy</span>
-  <span class="o">-</span> <span class="n">esmpy</span>
-  <span class="o">-</span> <span class="n">flox</span>
-  <span class="o">-</span> <span class="n">fiona</span>
-  <span class="o">-</span> <span class="n">gdal</span>
-  <span class="o">-</span> <span class="n">geocat</span><span class="o">-</span><span class="n">comp</span>
-  <span class="o">-</span> <span class="n">geocat</span><span class="o">-</span><span class="n">viz</span>
-  <span class="o">-</span> <span class="n">geocube</span>
-  <span class="o">-</span> <span class="n">geopandas</span>
-  <span class="o">-</span> <span class="n">geopy</span>
-  <span class="o">-</span> <span class="n">geoviews</span><span class="o">-</span><span class="n">core</span>
-  <span class="o">-</span> <span class="n">ghp</span><span class="o">-</span><span class="kn">import</span>
-  <span class="o">-</span> <span class="n">globus</span><span class="o">-</span><span class="n">cli</span>
-  <span class="o">-</span> <span class="n">gsw</span>
-  <span class="o">-</span> <span class="n">h5netcdf</span>
-  <span class="o">-</span> <span class="n">h5py</span>
-  <span class="o">-</span> <span class="n">holoviews</span>
-  <span class="o">-</span> <span class="n">hvplot</span>
-  <span class="o">-</span> <span class="n">intake</span><span class="o">&gt;=</span><span class="mf">0.6.8</span>
-  <span class="o">-</span> <span class="n">intake</span><span class="o">-</span><span class="n">esm</span><span class="o">&gt;=</span><span class="mf">2020.8.15</span>
-  <span class="o">-</span> <span class="n">intake</span><span class="o">-</span><span class="n">xarray</span>
-  <span class="o">-</span> <span class="n">ipykernel</span><span class="o">&gt;=</span><span class="mf">6.21.2</span>
-  <span class="o">-</span> <span class="n">ipympl</span>
-  <span class="o">-</span> <span class="n">ipywidgets</span>
-  <span class="o">-</span> <span class="n">ipywidgets</span><span class="o">-</span><span class="n">bokeh</span>
-  <span class="o">-</span> <span class="n">jupyterhub</span>
-  <span class="o">-</span> <span class="n">jupyterlab</span><span class="o">==</span><span class="mf">3.6.3</span>
-  <span class="o">-</span> <span class="n">jupyter_bokeh</span>
-  <span class="o">-</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">panel</span><span class="o">-</span><span class="n">proxy</span>
-  <span class="o">-</span> <span class="n">jupyter</span><span class="o">-</span><span class="n">resource</span><span class="o">-</span><span class="n">usage</span>
-  <span class="o">-</span> <span class="n">ldcpy</span>
-  <span class="o">-</span> <span class="n">matplotlib</span>
-  <span class="o">-</span> <span class="n">metpy</span>
-  <span class="o">-</span> <span class="n">mpi4py</span>
-  <span class="o">-</span> <span class="n">nb_conda_kernels</span>
-  <span class="o">-</span> <span class="n">nbstripout</span>
-  <span class="o">-</span> <span class="n">nc</span><span class="o">-</span><span class="n">time</span><span class="o">-</span><span class="n">axis</span>
-  <span class="o">-</span> <span class="n">netcdf4</span>
-  <span class="o">-</span> <span class="n">nodejs</span><span class="o">&gt;=</span><span class="mf">18.0</span>
-  <span class="o">-</span> <span class="n">notebook</span>
-  <span class="o">-</span> <span class="n">numba</span>
-  <span class="o">-</span> <span class="n">numcodecs</span>
-  <span class="o">-</span> <span class="n">numexpr</span>
-  <span class="o">-</span> <span class="n">numpy</span>
-  <span class="o">-</span> <span class="n">ocgis</span>
-  <span class="o">-</span> <span class="n">pandas</span>
-  <span class="o">-</span> <span class="n">panel</span>
-  <span class="o">-</span> <span class="n">papermill</span>
-  <span class="o">-</span> <span class="n">pillow</span>
-  <span class="o">-</span> <span class="n">pop</span><span class="o">-</span><span class="n">tools</span>
-  <span class="o">-</span> <span class="n">pydap</span>
-  <span class="o">-</span> <span class="n">pygrib</span>
-  <span class="o">-</span> <span class="n">pyhdf</span>
-  <span class="o">-</span> <span class="n">pylint</span>
-  <span class="o">-</span> <span class="n">pynco</span>
-  <span class="o">-</span> <span class="n">pyngl</span>
-  <span class="o">-</span> <span class="n">pystac</span>
-  <span class="o">-</span> <span class="n">pystac</span><span class="o">-</span><span class="n">client</span>
-  <span class="o">-</span> <span class="n">pytables</span>
-  <span class="o">-</span> <span class="n">pyqt</span>
-  <span class="o">-</span> <span class="n">pytables</span>
-  <span class="o">-</span> <span class="n">python</span><span class="o">-</span><span class="n">awips</span>
-  <span class="o">-</span> <span class="n">python</span><span class="o">-</span><span class="n">graphviz</span>
-  <span class="o">-</span> <span class="n">python</span><span class="o">-</span><span class="n">wget</span>
-  <span class="o">-</span> <span class="n">rasterio</span>
-  <span class="o">-</span> <span class="n">rechunker</span>
-  <span class="o">-</span> <span class="n">rio</span><span class="o">-</span><span class="n">cogeo</span>
-  <span class="o">-</span> <span class="n">rioxarray</span>
-  <span class="o">-</span> <span class="n">satpy</span>
-  <span class="o">-</span> <span class="n">scikit</span><span class="o">-</span><span class="n">image</span>
-  <span class="o">-</span> <span class="n">scikit</span><span class="o">-</span><span class="n">learn</span>
-  <span class="o">-</span> <span class="n">scipy</span>
-  <span class="o">-</span> <span class="n">seaborn</span>
-  <span class="o">-</span> <span class="n">seawater</span>
-  <span class="o">-</span> <span class="n">shapely</span>
-  <span class="o">-</span> <span class="n">statsmodels</span>
-  <span class="o">-</span> <span class="n">stackstac</span>
-  <span class="o">-</span> <span class="n">tobac</span>
-  <span class="o">-</span> <span class="n">widgetsnbextension</span>
-  <span class="o">-</span> <span class="n">wrf</span><span class="o">-</span><span class="n">python</span>
-  <span class="o">-</span> <span class="n">xarray</span><span class="o">&gt;=</span><span class="mf">2023.4.2</span>
-  <span class="o">-</span> <span class="n">xesmf</span>
-  <span class="o">-</span> <span class="n">xgcm</span>
-  <span class="o">-</span> <span class="n">xrft</span>
-  <span class="o">-</span> <span class="n">zarr</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="requirements-txt">
-<h2>requirements.txt<a class="headerlink" href="#requirements-txt" title="Permalink to this headline">¶</a></h2>
+<h2><a class="reference external" href="https://github.com/NCAR/cisl-cloud/blob/main/configs/jupyter/base-notebook/requirements.txt">requirements.txt</a><a class="headerlink" href="#requirements-txt" title="Permalink to this headline">¶</a></h2>
 <p>pip is used to install the following Jupyter extensions so they are available in the base image irregardless of the conda enviornment that is active.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dask</span><span class="o">-</span><span class="n">labextension</span>
-<span class="n">jupyterlab</span><span class="o">-</span><span class="n">git</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bokeh</span><span class="o">==</span><span class="mf">2.4.3</span>
+<span class="n">dask</span><span class="o">-</span><span class="n">labextension</span>
+<span class="n">ipywidgets</span>
 <span class="n">jupyter</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">proxy</span>
-<span class="n">nbgitpuller</span>
-<span class="n">nb_search</span>
+<span class="n">jupyterlab_widgets</span>
+<span class="n">jupyterlab</span><span class="o">-</span><span class="n">git</span>
 <span class="n">jupyterlab</span><span class="o">-</span><span class="n">s3</span><span class="o">-</span><span class="n">browser</span><span class="o">&gt;=</span><span class="mf">0.12</span>
+<span class="n">nb_search</span>
+<span class="n">nbgitpuller</span>
 </pre></div>
 </div>
 </div>

@@ -48,6 +48,7 @@ parts:
         file: how-to/k8sJH/k8sJH-intro
         sections:
         - file: how-to/k8sJH/access
+        - file: how-to/k8sJH/base-conda
         - file: how-to/k8sJH/user-info
         - title: Customize
           file: how-to/k8sJH/customize/custom
