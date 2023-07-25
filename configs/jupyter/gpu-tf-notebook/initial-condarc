@@ -4,5 +4,6 @@ auto_update_conda: false
 show_channel_urls: true
 channels:
   - conda-forge
+# ~/ is on persistent storage, where / gets wiped out and does not allow for persistent envs. 
 envs_dirs:
-  - /opt/conda/envs
+  - ~/.conda
