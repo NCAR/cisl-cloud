@@ -3,9 +3,9 @@
 
 FROM nvcr.io/nvidia/tensorflow:22.04-tf2-py3
 
-COPY requirements.txt /tmp
+COPY configs/jupyter/gpu-tf-notebook/requirements.txt /tmp
 
-COPY fix-permissions /usr/local/bin/fix-permissions
+COPY configs/jupyter/gpu-tf-notebook/fix-permissions /usr/local/bin/fix-permissions
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
 ARG NB_USER="jovyan"
@@ -61,7 +61,7 @@ ENV PATH="${CONDA_DIR}/bin:${PATH}" \
 # Correct permissions
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
-COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
+COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-tf-notebook/initial-condarc "${CONDA_DIR}/.condarc"
 WORKDIR /tmp
 RUN set -x && \
     arch=$(uname -m) && \
