@@ -34,6 +34,7 @@ parts:
       - title: Kubernetes (k8s)
         file: how-to/K8s/k8s-intro
         sections:
+        - file: how-to/K8s/web-hosting
         - title: Rancher (K8s)
           file: how-to/K8s/Rancher/rancher-intro
           sections:
