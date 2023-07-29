@@ -615,6 +615,10 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <div class="section" id="create-a-k8s-yml-manifest">
 <h2>Create a k8s .yml manifest<a class="headerlink" href="#create-a-k8s-yml-manifest" title="Permalink to this headline">¶</a></h2>
 <p>3 different kinds of k8s objects need to be used in order to deploy a web application that is accessible publicly on your browser. A <a class="reference external" href="https://kubernetes.io/docs/concepts/workloads/controllers/deployment/">Deployment</a>, a <a class="reference external" href="https://kubernetes.io/docs/concepts/services-networking/service/">Service</a>, and an <a class="reference external" href="https://kubernetes.io/docs/concepts/services-networking/ingress/">Ingress</a>. The previous links will cover each one of these objects in much greater detail.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>All of these objects can be defined in a single YAML file. This document breaks them up to explain each individually to discuss each in more detail. Use <code class="docutils literal notranslate"><span class="pre">---</span></code> on a line by itself to divide different k8s objects defined in a single YAML file.</p>
+</div>
 <div class="section" id="deployment">
 <h3>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h3>
 <p>A Deployment is where the state of <a class="reference external" href="https://kubernetes.io/docs/concepts/workloads/pods/">Pods</a> are provided and maintained to the specifications declared in the object definition. The following example will touch on the fields needed in the <code class="docutils literal notranslate"><span class="pre">Deployment</span></code> section of the <code class="docutils literal notranslate"><span class="pre">.yml</span></code> file</p>
@@ -729,14 +733,94 @@ ports:<div class="sd-summary-down docutils">
 <p class="sd-card-text">Define the ports that are exposed in the container and what ports to expose to k8s.</p>
 </div>
 </details></div>
-<p>There’s a few important parts of the Deployment manifest to call out in more detail.</p>
+<p>There’s a few important parts of the Deployment manifest to call out in more detail. The first is the <code class="docutils literal notranslate"><span class="pre">namespace:</span></code> field. This is an isolated space in k8s to group applications. You should have a dedicated namespace to deploy your applications to. If you do not have a dedicated namespace see the creating a namespace documentation <a class="reference internal" href="Terraform/tf-namespace.html"><span class="doc std std-doc">here</span></a>. The second is the <code class="docutils literal notranslate"><span class="pre">name:</span></code> field. This is where you define a unique and descriptive name for your Deployment. The third is the <code class="docutils literal notranslate"><span class="pre">image:</span></code> field and it’s where you select the image to use in your deployment. The image will be pulled from Docker Hub by default but a different repository can be provided. The final field is the <code class="docutils literal notranslate"><span class="pre">containerPort:</span></code> field. This is very important to make sure the correct port to access the application is exposed to k8s for access. You typically can set this to a specific port in your applications settings, or use the default port opened by the application that is running your web service. If you are unsure what this is, typically you will see it in the output when you run your service locally i.e. <code class="docutils literal notranslate"><span class="pre">http://localhost:5001</span></code>. In this case 5001 is the <code class="docutils literal notranslate"><span class="pre">containerPort:</span></code> to expose.</p>
 </div>
 <div class="section" id="service">
 <h3>Service<a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h3>
-<img src="https://ncar.github.io/cisl-cloud/_static/k8s-service.png" width="133%"></div>
+<img src="https://ncar.github.io/cisl-cloud/_static/k8s-service.png" width="133%"><p>The fields in the Service specification are mostly the same as in the Deployment. Use the same <code class="docutils literal notranslate"><span class="pre">namespace:</span></code> and <code class="docutils literal notranslate"><span class="pre">port:</span></code> as used previously. Set a unique name for your Service. Use the <code class="docutils literal notranslate"><span class="pre">selector:</span></code> field to provide the <code class="docutils literal notranslate"><span class="pre">app:</span></code> name defined in Deployments to connect the Service to the application.</p>
+</div>
 <div class="section" id="ingress">
 <h3>Ingress<a class="headerlink" href="#ingress" title="Permalink to this headline">¶</a></h3>
-<img src="https://ncar.github.io/cisl-cloud/_static/k8s-ingress.png" width="133%"></div>
+<img src="https://ncar.github.io/cisl-cloud/_static/k8s-ingress.png" width="133%"><div class="margin sidebar">
+<p class="sidebar-title"></p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+annotations:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><a class="reference external" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/">Annotations</a> are used to attach non-identifying metadata to the object. This means that annotations are not used to identify and select objects. In this example annotations are used to declare a configuration option to apply to the object.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+<a class="reference external" href="http://cert-manager.io">cert-manager.io</a>:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><a class="reference external" href="http://cert-manager.io/cluster-issuer">cert-manager.io/cluster-issuer</a> is used to provide the Ingress object information on how to request and obtain certificates as configured in the cluster. The cluster we use has a certificate issuer named <code class="docutils literal notranslate"><span class="pre">incommon</span></code> that is used to provide certificates for web applications in the <code class="docutils literal notranslate"><span class="pre">*.k8s.ucar.edu</span></code> domain.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+ingressClassName:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">This is where the name of the ingress controller is provided. The cluster we use has a ingress controller named <code class="docutils literal notranslate"><span class="pre">nginx</span></code> and that is used to control the different Ingress objects deployed.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+tls:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">tls:</span></code> field is where we define the hostname, in <code class="docutils literal notranslate"><span class="pre">hosts:</span></code>, to use in the TLS certificate provided as well as set a <code class="docutils literal notranslate"><span class="pre">secretName</span></code> for the certificate issued.</p>
+</div>
+</details><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The secretName field needs to be unique for the fully qualified domain name (FQDN) used since it is tied to the TLS certificate that is tied to the same FQDN.</p>
+</div>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+host:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">This is the FQDN for the application being deployed. This name needs to be unique and also has to be in the <code class="docutils literal notranslate"><span class="pre">.k8s.ucar.edu</span></code> subdomain. The cluster utilizes <a class="reference external" href="https://github.com/bitnami/charts/tree/main/bitnami/external-dns">ExternalDNS</a> to provision new DNS records but it is limited to the <code class="docutils literal notranslate"><span class="pre">.k8s.ucar.edu</span></code> domain.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+http:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Define how to expose the service to HTTP(S) traffic.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+paths:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text"><a class="reference external" href="https://kubernetes.io/docs/concepts/services-networking/ingress/#path-types">Paths</a> are where endpoints are defined in order to access the applications. A hostname can have multiple paths defined by multiple ingresses running multiple applications.</p>
+</div>
+</details><details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+backend:<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<p class="sd-card-text">Define the Service to connect the Ingress to by providing the Service name and the port exposed by the Service. This should match exactly what was included in the Service manifest.</p>
+</div>
+</details></div>
+</div>
 </div>
 </div>
 
