@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpu-test
+  namespace: ncote-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gpu-test
+  template:
+    metadata:
+      labels:
+        app: gpu-test
+    spec:
+      runtimeClassName: nvidia
+      containers:
+      - name: gpu-test
+        image: cislcloudpilot/cisl-cloud-gpu-tf
+        volumeMounts:
+           - mountPath: /dev/shm
+             name: dshm
+        resources:
+          limits:
+            memory: "16G"
+            cpu: "4"
+        ports:
+        - containerPort: 8888
+      volumes:
+        - name: dshm
+          emptyDir:
+            medium: Memory

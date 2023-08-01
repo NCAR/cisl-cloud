@@ -3,6 +3,9 @@
 
 FROM nvcr.io/nvidia/tensorflow:22.04-tf2-py3
 
+RUN pip install --no-cache-dir jupyterhub
+RUN pip install --no-cache-dir --upgrade jupyterlab==3.6.3 notebook 
+
 COPY configs/jupyter/gpu-tf-notebook/requirements.txt /tmp
 
 COPY configs/jupyter/gpu-tf-notebook/fix-permissions /usr/local/bin/fix-permissions
@@ -90,8 +93,6 @@ RUN set -x && \
 
 RUN mamba install --quiet --yes conda-forge::nb_conda_kernels
 
-RUN pip install --no-cache-dir jupyterhub
-RUN pip install --no-cache-dir --upgrade jupyterlab==3.6.3 notebook 
 RUN pip install --no-cache-dir -r /tmp/requirements.txt
 
 ENV HOME="/home/${NB_USER}"
