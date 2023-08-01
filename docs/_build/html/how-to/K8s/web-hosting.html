@@ -610,6 +610,10 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </div>
 <div class="section" id="kubectl-and-yaml">
 <h2><code class="docutils literal notranslate"><span class="pre">kubectl</span></code> and YAML<a class="headerlink" href="#kubectl-and-yaml" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">kubectl</span></code> is required to deploy the application. Documentation on installing <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> for your OS can be found on the kubernetes website <a class="reference external" href="https://kubernetes.io/docs/tasks/tools/">here</a>.</p>
+</div>
 <p><code class="docutils literal notranslate"><span class="pre">kubectl</span></code> can deploy k8s objects that are defined in .yaml (.yml) file(s). <code class="docutils literal notranslate"><span class="pre">kubectl</span></code> converts the YAML syntax into JSON when making requests to the k8s API so both formats can be used. For the examples provided in this documentation we will focus on YAML syntax as it’s more human readable than JSON. The <a class="reference external" href="https://kubernetes.io/docs/concepts/overview/working-with-objects/">Objects in Kubernetes</a> documentation goes in to much greater detail. This document will focus only on what is required to host a web application on the NCAR | CISL K8s cluster.</p>
 </div>
 <div class="section" id="create-a-k8s-yml-manifest">
@@ -820,6 +824,7 @@ backend:<div class="sd-summary-down docutils">
 <p class="sd-card-text">Define the Service to connect the Ingress to by providing the Service name and the port exposed by the Service. This should match exactly what was included in the Service manifest.</p>
 </div>
 </details></div>
+<p>There’s important fields to call out in the Ingress manifest as well. To start the <code class="docutils literal notranslate"><span class="pre">cert-manager.io/cluster-issuer:</span></code> is very important to make sure your application gets a valid certificate. This carries down to the <code class="docutils literal notranslate"><span class="pre">tls:</span></code> section and the <code class="docutils literal notranslate"><span class="pre">secretName:</span></code> field. The <code class="docutils literal notranslate"><span class="pre">secretName:</span></code> should be unique for the <code class="docutils literal notranslate"><span class="pre">hosts:</span></code> FQDN specified. If you are using the same FQDN with different prefixes the <code class="docutils literal notranslate"><span class="pre">secretName:</span></code> should be the one used for the initial certificate issue for the FQDN requested. Speaking of <code class="docutils literal notranslate"><span class="pre">hosts:</span></code> this is defined in two places, under <code class="docutils literal notranslate"><span class="pre">tls:</span></code> and <code class="docutils literal notranslate"><span class="pre">rules:</span></code>. The hostname used should be unique and has to be under the <code class="docutils literal notranslate"><span class="pre">*.k8s.ucar.edu</span></code> domain. The k8s cluster utilizes ExternalDNS to create new DNS records for the hostname provided and it is configured to only deploy under <code class="docutils literal notranslate"><span class="pre">*.k8s.ucar.edu</span></code>. The certificates that are issued are also only valid for FQDN’s in <code class="docutils literal notranslate"><span class="pre">*.k8s.ucar.edu</span></code>. The final piece that is important to call out is the <code class="docutils literal notranslate"><span class="pre">port:</span></code> field. This should be the same in the Deployment, Service, and Ingress configuration.</p>
 </div>
 </div>
 </div>
@@ -906,7 +911,7 @@ backend:<div class="sd-summary-down docutils">
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 28 July 2023.
+          Last updated on 1 August 2023.
         </p>
       </div>
     </div>
