@@ -16,6 +16,7 @@ jupyterhub:
           - kcote-ncar # Ken Cote, Initial adminstrator
           - NicholasCote # Nicholas Cote, Initial adminstrator
           - nwehrheim # Nick Wehrheim, Community representative
+          - barkathaliucar # Barkath Mir, Initial adminstrator
   proxy:
     secretToken: ''
     service:
