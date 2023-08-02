@@ -36,6 +36,7 @@ parts:
           file: how-to/K8s/Terraform/tf-intro
           sections:
           - file: how-to/K8s/Terraform/tf-namespace
+          - file: how-to/K8s/Terraform/tf-web-app
         - title: Customize JupyterHub
           file: how-to/k8sJH/customize/custom
           sections:
@@ -64,6 +65,8 @@ parts:
           file: how-to/k8sJH/customize/github
         - file: how-to/k8sJH/base-conda
         - file: how-to/k8sJH/user-info
+      - title: Hosting web applications 
+        file: how-to/K8s/Hosting/web-intro
       - title: Stratus
         file: how-to/Stratus/stratus-intro
         sections:
