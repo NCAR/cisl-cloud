@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rancher &#8212; CISL Cloud Pilot</title>
+    <title>Deploy Web Application &#8212; CISL Cloud Pilot</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,8 +55,6 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Get a kubeconfig" href="get-kubeconfig.html" />
-    <link rel="prev" title="Host a web application" href="../web-hosting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -228,7 +226,7 @@ const thebe_selector_output = ".output, .cell_output"
   How-Tos
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../2i2cJH/2i2cJH-intro.html">
    2i2c JupyterHub
@@ -290,50 +288,50 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../k8s-intro.html">
    Kubernetes (k8s)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../web-hosting.html">
      Host a web application
     </a>
    </li>
-   <li class="toctree-l2 current active has-children">
-    <a class="current reference internal" href="#">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../Rancher/rancher-intro.html">
      Rancher (K8s)
     </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
     <label for="toctree-checkbox-5">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="get-kubeconfig.html">
+      <a class="reference internal" href="../Rancher/get-kubeconfig.html">
        Get a kubeconfig
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="cluster-access.html">
+      <a class="reference internal" href="../Rancher/cluster-access.html">
        Accessing a k8s Cluster
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="permissions.html">
+      <a class="reference internal" href="../Rancher/permissions.html">
        Permissions
       </a>
      </li>
     </ul>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../Terraform/tf-intro.html">
+    <a class="reference internal" href="tf-intro.html">
      Terraform
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -343,7 +341,7 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../Terraform/tf-namespace.html">
+      <a class="reference internal" href="tf-namespace.html">
        Example: Creating a kubernetes namespace
       </a>
      </li>
@@ -512,7 +510,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/how-to/K8s/Rancher/rancher-intro.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/how-to/K8s/Terraform/tf-web-app.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -532,7 +530,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/K8s/Rancher/rancher-intro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/K8s/Terraform/tf-web-app.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -561,16 +559,8 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="rancher">
-<h1>Rancher<a class="headerlink" href="#rancher" title="Permalink to this headline">¶</a></h1>
-<p><a class="reference external" href="https://www.rancher.com/">Rancher</a> is an open source container management platform built for organizations that deploy containers in production.</p>
-<p>CISL operates a Rancher cluster to help manage k8s clusters. It is accessible via the link <a class="reference external" href="https://rancher.k8s.ucar.edu/">here</a> or always via the Resources drop down tab at the top of this documentation site.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Access to the Rancher UI requires internal NCAR access either via VPN or an onsite network connection.</p>
-</div>
-<div class="toctree-wrapper compound">
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="deploy-web-application">
+<h1>Deploy Web Application<a class="headerlink" href="#deploy-web-application" title="Permalink to this headline">¶</a></h1>
 </div>
 
     <script type="text/x-thebe-config">
@@ -586,7 +576,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         },
         kernelOptions: {
             name: "python3",
-            path: "./how-to/K8s/Rancher"
+            path: "./how-to/K8s/Terraform"
         },
         predefinedOutput: true
     }
@@ -595,21 +585,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 
               </div>
               <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../web-hosting.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Host a web application</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="get-kubeconfig.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Get a kubeconfig</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+<div class='prev-next-area'>
 </div>
             </div>
           </div>
