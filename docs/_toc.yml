@@ -67,6 +67,9 @@ parts:
         - file: how-to/k8sJH/user-info
       - title: Hosting web applications 
         file: how-to/K8s/Hosting/web-intro
+        sections:
+        - file: how-to/K8s/Hosting/containerize
+          title: Containerize Python app
       - title: Stratus
         file: how-to/Stratus/stratus-intro
         sections:
