@@ -15,17 +15,8 @@ parts:
         file: availability/availability
       - title: Hardware
         file: availability/hw-resources
-  - caption: How-Tos 
+  - caption: Administer the CISL Cloud 
     chapters:
-      - title: 2i2c JupyterHub 
-        file: how-to/2i2cJH/2i2cJH-intro
-        sections:
-        - file: how-to/2i2cJH/access
-        - file: how-to/2i2cJH/user-info
-      - title: Agile Interaction
-        file: how-to/agile
-        sections:
-        - file: how-to/create-tickets
       - title: Jupyter Book
         file: how-to/jupyter-book/jb-intro
         sections:
@@ -45,13 +36,7 @@ parts:
           file: how-to/K8s/Terraform/tf-intro
           sections:
           - file: how-to/K8s/Terraform/tf-namespace
-      - title: NCAR JupyterHub 
-        file: how-to/k8sJH/k8sJH-intro
-        sections:
-        - file: how-to/k8sJH/access
-        - file: how-to/k8sJH/base-conda
-        - file: how-to/k8sJH/user-info
-        - title: Customize
+        - title: Customize JupyterHub
           file: how-to/k8sJH/customize/custom
           sections:
             - title: Conda Environments
@@ -62,6 +47,23 @@ parts:
               file: how-to/k8sJH/customize/customize-docker
             - title: GitHub Actions
               file: how-to/k8sJH/customize/setup-gh-act
+  - caption: Use the CISL Cloud 
+    chapters:
+      - title: 2i2c JupyterHub 
+        file: how-to/2i2cJH/2i2cJH-intro
+        sections:
+        - file: how-to/2i2cJH/access
+        - file: how-to/2i2cJH/user-info
+      - title: Agile Interaction
+        file: how-to/agile
+        sections:
+        - file: how-to/create-tickets
+      - title: NCAR JupyterHub 
+        file: how-to/k8sJH/k8sJH-intro
+        sections:
+        - file: how-to/k8sJH/access
+        - file: how-to/k8sJH/base-conda
+        - file: how-to/k8sJH/user-info
       - title: Stratus
         file: how-to/Stratus/stratus-intro
         sections:
