@@ -39,10 +39,6 @@ parts:
         - title: Customize JupyterHub
           file: how-to/k8sJH/customize/custom
           sections:
-            - title: Conda Environments
-              file: how-to/k8sJH/customize/env
-            - title: Utilizing GitHub
-              file: how-to/k8sJH/customize/github
             - title: Docker Image
               file: how-to/k8sJH/customize/customize-docker
             - title: GitHub Actions
@@ -62,6 +58,10 @@ parts:
         file: how-to/k8sJH/k8sJH-intro
         sections:
         - file: how-to/k8sJH/access
+        - title: Conda Environments
+          file: how-to/k8sJH/customize/env
+        - title: Utilizing GitHub
+          file: how-to/k8sJH/customize/github
         - file: how-to/k8sJH/base-conda
         - file: how-to/k8sJH/user-info
       - title: Stratus
