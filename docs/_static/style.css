@@ -192,6 +192,9 @@ code, .rst-content tt, .rst-content code {
     overflow: scroll;
     background-color: #e9ecef;
     display: inline;
+    padding: 4px 0px;
+    padding-left: 8px;
+    padding-right: 8px;
     border-radius: 4px;
     white-space: nowrap;
 }
@@ -201,8 +204,9 @@ code, .rst-content tt, .rst-content code {
     background-color: #e9ecef;
     color: #222222;
     display: inline;
-    padding: 4px 8px;
+    padding: 4px 0px;
     border-radius: 4px;
+    white-space: normal;
 }
 
 .clipboard {

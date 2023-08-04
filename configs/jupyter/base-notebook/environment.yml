@@ -81,6 +81,7 @@ dependencies:
   - pytables
   - pyqt
   - pytables
+  - python=3.10
   - python-awips
   - python-graphviz
   - python-wget
