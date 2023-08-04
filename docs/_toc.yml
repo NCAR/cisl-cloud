@@ -25,7 +25,11 @@ parts:
       - title: Kubernetes (k8s)
         file: how-to/K8s/k8s-intro
         sections:
-        - file: how-to/K8s/web-hosting
+        - file: how-to/K8s/Hosting/web-hosting
+          title: Host web applications
+          sections:
+            - file: how-to/K8s/Hosting/web-kubectl
+            - file: how-to/K8s/Hosting/web-helm
         - title: Rancher (K8s)
           file: how-to/K8s/Rancher/rancher-intro
           sections:
@@ -77,12 +81,18 @@ parts:
         - file: how-to/Stratus/stratus-cmd
       - title: Virtual Machines
         file: how-to/vm/vm-intro
-  - caption: SLA's
+  - caption: Support Agreements
     chapters:
-      - title: GLADE
-        file: slas/glade
-      - title: Stratus
-        file: slas/stratus
+      - file: slas/slas
+        sections:
+        - title: GLADE
+          file: slas/glade
+        - title: Stratus
+          file: slas/stratus
+        - title: NCAR JupyterHub
+          file: slas/ncar-jh
+        - title: 2i2c JupyterHub
+          url: https://docs.2i2c.org/support/
   - caption: Contact Us
     chapters:
       - title: Information

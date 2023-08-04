@@ -161,6 +161,12 @@ body {
     background-color: #dbe2e9;
 }
 
+/* Main Content */
+
+#main-content {
+    background-color: #ffffff !important;
+}
+
 /* HEADERS */
 /* WORKING */
 
@@ -186,7 +192,6 @@ code, .rst-content tt, .rst-content code {
     overflow: scroll;
     background-color: #e9ecef;
     display: inline;
-    padding: 4px 8px;
     border-radius: 4px;
     white-space: nowrap;
 }
@@ -194,7 +199,9 @@ code, .rst-content tt, .rst-content code {
 .pre {
     overflow: scroll;
     background-color: #e9ecef;
+    color: #222222;
     display: inline;
+    padding: 4px 8px;
     border-radius: 4px;
 }
 
