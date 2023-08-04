@@ -304,6 +304,11 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="../Rancher/create-namespace.html">
+       Create namespace
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../Rancher/cluster-access.html">
        Accessing a k8s Cluster
       </a>
@@ -435,6 +440,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="containerize.html">
      Containerize Python app
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deploy.html">
+     Deploy your application
     </a>
    </li>
   </ul>
@@ -619,7 +629,6 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <p class="admonition-title">Note</p>
 <p>This documentation assumes that you have a working containerized web application. You are able to run it on your personal computer and access via <code class="docutils literal notranslate"><span class="pre">http://localhost:{PORT}/</span></code>.</p>
 </div>
-<p>The fields in the Service specification are mostly the same as in the Deployment. Use the same <code class="docutils literal notranslate"><span class="pre">namespace:</span></code> and <code class="docutils literal notranslate"><span class="pre">port:</span></code> as used previously. Set a unique name for your Service. Use the <code class="docutils literal notranslate"><span class="pre">selector:</span></code> field to provide the <code class="docutils literal notranslate"><span class="pre">app:</span></code> name defined in Deployments to connect the Service to the application.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>

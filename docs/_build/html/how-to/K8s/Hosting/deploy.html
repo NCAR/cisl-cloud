@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Setup GitHub actions to Build Docker image automatically &#8212; CISL Cloud Pilot</title>
+    <title>Deploy your application &#8212; CISL Cloud Pilot</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Using the 2i2c JupyterHub" href="../../2i2cJH/2i2cJH-intro.html" />
-    <link rel="prev" title="Customize a Jupyter Docker Image" href="customize-docker.html" />
+    <link rel="next" title="Introduction to Stratus" href="../../Stratus/stratus-intro.html" />
+    <link rel="prev" title="How do I containerize my application?" href="containerize.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -228,7 +228,7 @@ const thebe_selector_output = ".output, .cell_output"
   Administer the CISL Cloud
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../jupyter-book/jb-intro.html">
    Jupyter Book
@@ -251,18 +251,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../../K8s/k8s-intro.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../k8s-intro.html">
    Kubernetes (k8s)
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../../K8s/Hosting/web-hosting.html">
+    <a class="reference internal" href="web-hosting.html">
      Host web applications
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -272,7 +272,7 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Hosting/web-kubectl.html">
+      <a class="reference internal" href="web-kubectl.html">
        Deploy with
        <code class="docutils literal notranslate">
         <span class="pre">
@@ -282,14 +282,14 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Hosting/web-helm.html">
+      <a class="reference internal" href="web-helm.html">
        Deploy with Helm
       </a>
      </li>
     </ul>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../../K8s/Rancher/rancher-intro.html">
+    <a class="reference internal" href="../Rancher/rancher-intro.html">
      Rancher (K8s)
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
@@ -299,44 +299,44 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Rancher/get-kubeconfig.html">
+      <a class="reference internal" href="../Rancher/get-kubeconfig.html">
        Get a kubeconfig
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Rancher/create-namespace.html">
+      <a class="reference internal" href="../Rancher/create-namespace.html">
        Create namespace
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Rancher/cluster-access.html">
+      <a class="reference internal" href="../Rancher/cluster-access.html">
        Accessing a k8s Cluster
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Rancher/permissions.html">
+      <a class="reference internal" href="../Rancher/permissions.html">
        Permissions
       </a>
      </li>
     </ul>
    </li>
-   <li class="toctree-l2 current active has-children">
-    <a class="reference internal" href="custom.html">
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../k8sJH/customize/custom.html">
      Customize JupyterHub
     </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
     <label for="toctree-checkbox-5">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul class="current">
+    <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="customize-docker.html">
+      <a class="reference internal" href="../../k8sJH/customize/customize-docker.html">
        Docker Image
       </a>
      </li>
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../k8sJH/customize/setup-gh-act.html">
        GitHub Actions
       </a>
      </li>
@@ -350,7 +350,7 @@ const thebe_selector_output = ".output, .cell_output"
   Use the CISL Cloud
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../2i2cJH/2i2cJH-intro.html">
    2i2c JupyterHub
@@ -391,7 +391,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../k8sJH-intro.html">
+  <a class="reference internal" href="../../k8sJH/k8sJH-intro.html">
    NCAR JupyterHub
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
@@ -401,49 +401,49 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../access.html">
+    <a class="reference internal" href="../../k8sJH/access.html">
      Requesting Access
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="env.html">
+    <a class="reference internal" href="../../k8sJH/customize/env.html">
      Conda Environments
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="github.html">
+    <a class="reference internal" href="../../k8sJH/customize/github.html">
      Utilizing GitHub
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../base-conda.html">
+    <a class="reference internal" href="../../k8sJH/base-conda.html">
      Base Conda Environment
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../user-info.html">
+    <a class="reference internal" href="../../k8sJH/user-info.html">
      User Information
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../K8s/Hosting/web-intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="web-intro.html">
    Hosting web applications
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/Hosting/containerize.html">
+    <a class="reference internal" href="containerize.html">
      Containerize Python app
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/Hosting/deploy.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Deploy your application
     </a>
    </li>
@@ -573,7 +573,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/how-to/k8sJH/customize/setup-gh-act.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/how-to/K8s/Hosting/deploy.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -593,7 +593,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/k8sJH/customize/setup-gh-act.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/K8s/Hosting/deploy.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -614,24 +614,6 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> On this page
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-github-workflows-build-push-basenb-yaml">
-   Example
-   <em>
-    <strong>
-     .github/workflows/build-push-basenb.yaml
-    </strong>
-   </em>
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -640,69 +622,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="setup-github-actions-to-build-docker-image-automatically">
-<h1>Setup GitHub actions to Build Docker image automatically<a class="headerlink" href="#setup-github-actions-to-build-docker-image-automatically" title="Permalink to this headline">¶</a></h1>
-<p>As part of having a continuous integration workflow GitHub actions is utilized to rebuild Docker images whenever new code is pushed to a specific directory.</p>
-<p>In order to utilize GitHub actions a directory named <em><strong>.github</strong></em> needs to be created in the base directory of the repository.
-The <em><strong>.github</strong></em> directory should also contain a directory named <em><strong>workflows</strong></em> in order to store and run the different <a class="reference external" href="https://docs.github.com/en/actions/using-workflows/about-workflows">workflows</a> created.
-The workflow itself is a <a class="reference external" href="https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions"><em><strong>yaml</strong></em></a> file that defines the actions that <a class="reference external" href="https://docs.github.com/en/actions/using-workflows/triggering-a-workflow">trigger</a> and execute what is required for the continuous integration application.</p>
-<div class="section" id="example-github-workflows-build-push-basenb-yaml">
-<h2>Example <em><strong>.github/workflows/build-push-basenb.yaml</strong></em><a class="headerlink" href="#example-github-workflows-build-push-basenb-yaml" title="Permalink to this headline">¶</a></h2>
-<p>This example workflow utilizes a few different github actions to build a docker image and push it to a container registry. Each step is explained in detail via inline comments.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># This workflow builds docker images and pushes them to a Docker Hub Repository
-# This workflow is specific to the base-notebook directory and image
-# Set the workflow name
-name: Deploy base-notebook
-
-# Define the trigger that starts the action
-# For this workflow the trigger is on a push that changes anything in the configs/jupyter/base-notebook/ path
-on:
-  push:
-    paths:
-      - configs/jupyter/base-notebook/**
-
-# Define the actions that are going to take place as part of this workflow    
-jobs:
-  # Name the job(s)
-  deploy-docker-base-notebook:
-    # Define where the job should run in this case it will be run on the latest ubuntu image
-    runs-on: ubuntu-latest
-    # Set the steps to take in order
-    steps:
-      # Step 1 is to checkout the github repo used to build the Dockerfile
-      - name: Check out the repo
-        uses: actions/checkout@v3
-      # Step 2 is to login to docker hub so the image can be pushed
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        # GitHub secrets are used to provide login information to docker hub
-        with:
-          username: ${{ secrets.CCP_DOCKERHUB_USERNAME }}
-          password: ${{ secrets.CCP_DOCKERHUB_TOKEN  }}
-      # Pull relevant metadata out of the docker image used
-      - name: Extract metadata for Docker
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: cislcloudpilot/cisl-cloud-base
-      # Build and push the docker image
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          # Provide the current directory as build context 
-          context: .
-          # Specify where the Dockerfile is located in relation to the repo base path
-          file: configs/jupyter/base-notebook/Dockerfile
-          # Enable the push to docker hub
-          push: true
-          # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: |
-            cislcloudpilot/cisl-cloud-base:latest
-          # Apply labels as defined in the Docker image metadata
-          labels: ${{ steps.meta.outputs.labels }}
-</pre></div>
-</div>
-</div>
+  <div class="tex2jax_ignore mathjax_ignore section" id="deploy-your-application">
+<h1>Deploy your application<a class="headerlink" href="#deploy-your-application" title="Permalink to this headline">¶</a></h1>
+<p>Right now we are still determining the best way to allow users to deploy their applications. If you have a containerized version of your application and want to host it on the CISL cloud currently the best way to accomplish this is by <a class="reference internal" href="../../create-tickets.html"><span class="doc std std-doc">submitting a ticket</span></a> to the CISL Cloud Pilot team. We have a few methods identified on deploying with <a class="reference internal" href="web-kubectl.html"><span class="doc std std-doc">kubectl</span></a> and with <a class="reference internal" href="web-helm.html"><span class="doc std std-doc">Helm</span></a> but as of right now they require a few permissions that only administrators of the cloud have. This will change and a user friendly method to deploy these applications will be identified and documented for the user base.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -718,7 +640,7 @@ jobs:
         },
         kernelOptions: {
             name: "python3",
-            path: "./how-to/k8sJH/customize"
+            path: "./how-to/K8s/Hosting"
         },
         predefinedOutput: true
     }
@@ -728,17 +650,17 @@ jobs:
               </div>
               <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="customize-docker.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="containerize.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Customize a Jupyter Docker Image</p>
+            <p class="prev-next-title">How do I containerize my application?</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../2i2cJH/2i2cJH-intro.html" title="next page">
+    <a class='right-next' id="next-link" href="../../Stratus/stratus-intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using the 2i2c JupyterHub</p>
+        <p class="prev-next-title">Introduction to Stratus</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

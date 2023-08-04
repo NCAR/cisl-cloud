@@ -304,6 +304,11 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="../Rancher/create-namespace.html">
+       Create namespace
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../Rancher/cluster-access.html">
        Accessing a k8s Cluster
       </a>
@@ -435,6 +440,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="containerize.html">
      Containerize Python app
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deploy.html">
+     Deploy your application
     </a>
    </li>
   </ul>
@@ -774,7 +784,7 @@ ports:<div class="sd-summary-down docutils">
 <div class="section" id="service">
 <h3>Service<a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h3>
 <p>A Service in k8s is a method to expose a network application that is running in one or more Pods.</p>
-<p>There’s a few important parts of the Deployment manifest to call out in more detail. The first is the <code class="docutils literal notranslate"><span class="pre">namespace:</span></code> field. This is an isolated space in k8s to group applications. You should have a dedicated namespace to deploy your applications to. If you do not have a dedicated namespace see the creating a namespace documentation <span class="xref myst">here</span>. The second is the <code class="docutils literal notranslate"><span class="pre">name:</span></code> field. This is where you define a unique and descriptive name for your Deployment. The third is the <code class="docutils literal notranslate"><span class="pre">image:</span></code> field and it’s where you select the image to use in your deployment. The image will be pulled from Docker Hub by default but a different repository can be provided. The final field is the <code class="docutils literal notranslate"><span class="pre">containerPort:</span></code> field. This is very important to make sure the correct port to access the application is exposed to k8s for access. You typically can set this to a specific port in your applications settings, or use the default port opened by the application that is running your web service. If you are unsure what this is, typically you will see it in the output when you run your service locally i.e. <code class="docutils literal notranslate"><span class="pre">http://localhost:5001</span></code>. In this case 5001 is the <code class="docutils literal notranslate"><span class="pre">containerPort:</span></code> to expose.</p>
+<p>There’s a few important parts of the Deployment manifest to call out in more detail. The first is the <code class="docutils literal notranslate"><span class="pre">namespace:</span></code> field. This is an isolated space in k8s to group applications. You should have a dedicated namespace to deploy your applications to. If you do not have a dedicated namespace see the creating a namespace documentation <a class="reference internal" href="../Rancher/create-namespace.html"><span class="doc std std-doc">here</span></a>. The second is the <code class="docutils literal notranslate"><span class="pre">name:</span></code> field. This is where you define a unique and descriptive name for your Deployment. The third is the <code class="docutils literal notranslate"><span class="pre">image:</span></code> field and it’s where you select the image to use in your deployment. The image will be pulled from Docker Hub by default but a different repository can be provided. The final field is the <code class="docutils literal notranslate"><span class="pre">containerPort:</span></code> field. This is very important to make sure the correct port to access the application is exposed to k8s for access. You typically can set this to a specific port in your applications settings, or use the default port opened by the application that is running your web service. If you are unsure what this is, typically you will see it in the output when you run your service locally i.e. <code class="docutils literal notranslate"><span class="pre">http://localhost:5001</span></code>. In this case 5001 is the <code class="docutils literal notranslate"><span class="pre">containerPort:</span></code> to expose.</p>
 <img src="https://ncar.github.io/cisl-cloud/_static/k8s-service.png" width="133%"></div>
 <div class="section" id="ingress">
 <h3>Ingress<a class="headerlink" href="#ingress" title="Permalink to this headline">¶</a></h3>

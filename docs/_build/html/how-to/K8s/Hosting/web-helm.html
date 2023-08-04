@@ -304,6 +304,11 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toctree-l3">
+      <a class="reference internal" href="../Rancher/create-namespace.html">
+       Create namespace
+      </a>
+     </li>
+     <li class="toctree-l3">
       <a class="reference internal" href="../Rancher/cluster-access.html">
        Accessing a k8s Cluster
       </a>
@@ -435,6 +440,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="containerize.html">
      Containerize Python app
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="deploy.html">
+     Deploy your application
     </a>
    </li>
   </ul>
@@ -676,7 +686,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <p><a class="reference external" href="https://helm.sh/">Helm</a> is a package manager for k8s. It refers to k8s packages as charts. Charts are a bundle of YAML definitions required to create an instance of a k8s application. Values can be set as variables in the YAML files which allow for more customization of charts and easier sharing and reproducibility. A chart has been created to deploy web based visualization applications and it can be used to define custom deployments based on user input.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>For web based applications hosted on the CISL cloud there is a Helm chart example <a class="reference external" href="https://github.com/NicholasCote/web-app-helm">here</a> you can clone and utilize to create a chart for your application quickly. The included Jupyter Notebook file contains code that will create a custom <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file based on user input. It will also run the <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">install</span></code> command for you as well. You do need a <a class="reference internal" href="../Rancher/get-kubeconfig.html"><span class="doc std std-doc">kubeconfig file</span></a> and a namespace to run the example.</p>
+<p>For web based applications hosted on the CISL cloud there is a Helm chart example <a class="reference external" href="https://github.com/NicholasCote/web-app-helm">here</a> you can clone and utilize to create a chart for your application quickly. The included Jupyter Notebook file contains code that will create a custom <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file based on user input. It will also run the <code class="docutils literal notranslate"><span class="pre">helm</span> <span class="pre">install</span></code> command for you as well. You do need a <a class="reference internal" href="../Rancher/get-kubeconfig.html"><span class="doc std std-doc">kubeconfig file</span></a> and a <a class="reference internal" href="../Rancher/create-namespace.html"><span class="doc std std-doc">namespace</span></a> to run the example.</p>
 </div>
 <div class="section" id="creating-helm-charts">
 <h2>Creating Helm Charts<a class="headerlink" href="#creating-helm-charts" title="Permalink to this headline">¶</a></h2>

@@ -34,6 +34,7 @@ parts:
           file: how-to/K8s/Rancher/rancher-intro
           sections:
           - file: how-to/K8s/Rancher/get-kubeconfig
+          - file: how-to/K8s/Rancher/create-namespace
           - file: how-to/K8s/Rancher/cluster-access
           - file: how-to/K8s/Rancher/permissions
         - title: Customize JupyterHub
@@ -69,6 +70,7 @@ parts:
         sections:
         - file: how-to/K8s/Hosting/containerize
           title: Containerize Python app
+        - file: how-to/K8s/Hosting/deploy
       - title: Stratus
         file: how-to/Stratus/stratus-intro
         sections:
