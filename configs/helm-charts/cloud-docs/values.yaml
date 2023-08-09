@@ -1,0 +1,14 @@
+replicaCount: 1
+
+webapp:
+  name: cloud-docs
+  group: cloud-docs
+  path: /
+  tls:
+    fqdn: cloud-docs.k8s.ucar.edu
+    secretName: incommon-cert-cloud-docs
+  container: 
+    image: cislcloudpilot/docs:Aug.8.23
+    port: 80
+    memory: 1G
+    cpu: 2
