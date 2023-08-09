@@ -1,3 +1,3 @@
 FROM httpd:2.4
 
-COPY _build/html/ /usr/local/apache2/htdocs/
+COPY docs/_build/html/ /usr/local/apache2/htdocs/
