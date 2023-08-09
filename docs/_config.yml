@@ -54,7 +54,7 @@ sphinx:
         - name: Cloud Docs
           url: index
         - name: Resources
-          url: overview/services.html
+          url: overview/services
           dropdown: true 
           dropdown_links:
           - name: 'NCAR JupyterHub'

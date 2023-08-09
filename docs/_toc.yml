@@ -71,6 +71,8 @@ parts:
         sections:
         - file: how-to/K8s/Hosting/containerize
           title: Containerize Python app
+        - file: how-to/K8s/Hosting/book-image
+          title: Containerize Jupyter Book
         - file: how-to/K8s/Hosting/deploy
       - title: Stratus
         file: how-to/Stratus/stratus-intro

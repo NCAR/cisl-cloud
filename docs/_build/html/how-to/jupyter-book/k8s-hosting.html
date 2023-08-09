@@ -108,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
         
             <li class="nav-item">
                 <button class="dropbtn">
-                    <a class="nav-link nav-internal" href="overview/services.html">
+                    <a class="nav-link nav-internal" href="../../overview/services.html">
                         Resources <i class="fa fa-chevron-down" style="color: #000000;"></i>
                     </a>
                 </button>
@@ -448,6 +448,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/Hosting/book-image.html">
+     Containerize Jupyter Book
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../K8s/Hosting/deploy.html">
      Deploy your application
     </a>
@@ -659,7 +664,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="hosting-on-k8s">
 <h1>Hosting on k8s<a class="headerlink" href="#hosting-on-k8s" title="Permalink to this headline">¶</a></h1>
-<p>A containerized version of the documentation is hosted on the NCAR | CISL k8s cluster and can be viewed at [<a class="reference external" href="https://cloud-docs.k8s.ucar.edu/">https://cloud-docs.k8s.ucar.edu/</a>].</p>
+<p>A containerized version of the documentation is hosted on the NCAR | CISL k8s cluster and can be viewed at <a class="reference external" href="https://cloud-docs.k8s.ucar.edu/">https://cloud-docs.k8s.ucar.edu/</a>.</p>
 <div class="section" id="updating-the-image">
 <h2>Updating the image<a class="headerlink" href="#updating-the-image" title="Permalink to this headline">¶</a></h2>
 <p>By default any changes pushed to the <code class="docutils literal notranslate"><span class="pre">docs/_build/html/</span></code> directory will trigger a GitHub action that will build a new image, named <code class="docutils literal notranslate"><span class="pre">docs:latest</span></code>, and push it to the cislcloudpilot Docker Hub repository. You should test any changes to this image locally before making changes to the hosted version with the following command:</p>
