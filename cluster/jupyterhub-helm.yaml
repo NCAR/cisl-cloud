@@ -22,6 +22,41 @@ jupyterhub:
     service:
       type: ClusterIP
   singleuser:
+    extraEnv:
+      # About DASK_ prefixed variables we set:
+      #
+      # 1. k8s native variable expansion is applied with $(MY_ENV) syntax. The
+      #    order variables are defined matters though and we are under the
+      #    mercy of how KubeSpawner renders our passed dictionaries.
+      #
+      # 2. Dask loads local YAML config.
+      #
+      # 3. Dask loads environment variables prefixed DASK_.
+      #    - DASK_ is stripped
+      #    - Capitalization is ignored
+      #    - Double underscore means a nested configuration
+      #    - `ast.literal_eval` is used to parse values
+      #
+      # 4. dask-gateway and dask-distributed looks at its config and expands
+      #    expressions in {} again, sometimes only with the environment
+      #    variables as context but sometimes also with additional variables.
+      #
+      # References:
+      # - K8s expansion:     https://kubernetes.io/docs/tasks/inject-data-application/define-interdependent-environment-variables/
+      # - KubeSpawner issue: https://github.com/jupyterhub/kubespawner/issues/491
+      # - Dask config:       https://docs.dask.org/en/latest/configuration.html
+      # - Exploration issue: https://github.com/2i2c-org/infrastructure/issues/442
+      #
+      # DASK_GATEWAY__CLUSTER__OPTIONS__IMAGE makes the default worker image
+      # match the singleuser image.
+      DASK_GATEWAY__CLUSTER__OPTIONS__IMAGE: "$(JUPYTER_IMAGE_SPEC)"
+      # DASK_GATEWAY__CLUSTER__OPTIONS__ENVIRONMENT makes some environment
+      # variables be copied over to the worker nodes from the user nodes.
+      #DASK_GATEWAY__CLUSTER__OPTIONS__ENVIRONMENT: '$"SCRATCH_BUCKET": "$(SCRATCH_BUCKET)", "PANGEO_SCRATCH": "$(PANGEO_SCRATCH)"'
+      # DASK_DISTRIBUTED__DASHBOARD__LINK makes the suggested link to the
+      # dashboard account for the /user/<username>/<server-name> prefix in the path.
+      # JUPYTERHUB_SERVICE_PREFIX has leading and trailing slashes as appropriate
+      DASK_DISTRIBUTED__DASHBOARD__LINK: "$(JUPYTERHUB_SERVICE_PREFIX)proxy/{port}/status"
     storage:
       extraVolumes:
           - name: nfs-volume
@@ -288,3 +323,130 @@ jupyterhub:
           - jupyter.k8s.ucar.edu
         secretName: https-auto-incommon
 dask-gateway:
+  enabled: true # Enabling dask-gateway will install Dask Gateway as a dependency.
+  # Futher Dask Gateway configuration goes here
+  # See https://github.com/dask/dask-gateway/blob/master/resources/helm/dask-gateway/values.yaml
+  gateway:
+    backend:
+      scheduler:
+        extraPodConfig:
+#          serviceAccountName: user-sa
+#          tolerations:
+#            # Let's put schedulers on notebook nodes, since they aren't ephemeral
+#            # dask can recover from dead workers, but not dead schedulers
+#            - key: "hub.jupyter.org/dedicated"
+#              operator: "Equal"
+#              value: "user"
+#              effect: "NoSchedule"
+#            - key: "hub.jupyter.org_dedicated"
+#              operator: "Equal"
+#              value: "user"
+#              effect: "NoSchedule"
+#          nodeSelector:
+#            k8s.dask.org/node-purpose: scheduler
+        cores:
+          request: 0.01
+          limit: 1
+        memory:
+          request: 128M
+          limit: 1G
+      worker:
+        extraContainerConfig:
+          securityContext:
+            runAsGroup: 1000
+            runAsUser: 1000
+        extraPodConfig:
+#          serviceAccountName: user-sa
+          securityContext:
+            fsGroup: 1000
+#          tolerations:
+#            - key: "k8s.dask.org/dedicated"
+#              operator: "Equal"
+#              value: "worker"
+#              effect: "NoSchedule"
+#            - key: "k8s.dask.org_dedicated"
+#              operator: "Equal"
+#              value: "worker"
+#              effect: "NoSchedule"
+#          nodeSelector:
+#            # Dask workers get their own pre-emptible pool
+#            k8s.dask.org/node-purpose: worker
+
+    # TODO: figure out a replacement for userLimits.
+    extraConfig:
+      optionHandler: |
+        from dask_gateway_server.options import Options, Integer, Float, String, Mapping
+        import string
+
+        # Escape a string to be dns-safe in the same way that KubeSpawner does it.
+        # Reference https://github.com/jupyterhub/kubespawner/blob/616f72c4aee26c3d2127c6af6086ec50d6cda383/kubespawner/spawner.py#L1828-L1835
+        # Adapted from https://github.com/minrk/escapism to avoid installing the package
+        # in the dask-gateway api pod which would have been problematic.
+        def escape_string_label_safe(to_escape):
+            safe_chars = set(string.ascii_lowercase + string.digits)
+            escape_char = "-"
+            chars = []
+            for c in to_escape:
+                if c in safe_chars:
+                    chars.append(c)
+                else:
+                    # escape one character
+                    buf = []
+                    # UTF-8 uses 1 to 4 bytes per character, depending on the Unicode symbol
+                    # so we need to transform each byte to its hex value
+                    for byte in c.encode("utf8"):
+                        buf.append(escape_char)
+                        # %X is the hex value of the byte
+                        buf.append('%X' % byte)
+                    escaped_hex_char = "".join(buf)
+                    chars.append(escaped_hex_char)
+            return u''.join(chars)
+
+        def cluster_options(user):
+            safe_username = escape_string_label_safe(user.name)
+            def option_handler(options):
+                if ":" not in options.image:
+                    raise ValueError("When specifying an image you must also provide a tag")
+                scheduler_extra_pod_annotations = {
+                    "hub.jupyter.org/username": safe_username,
+                    "prometheus.io/scrape": "true",
+                    "prometheus.io/port": "8787",
+                }
+                extra_labels = {
+                    "hub.jupyter.org/username": safe_username,
+                }
+                return {
+                    "worker_cores_limit": options.worker_cores,
+                    "worker_cores": options.worker_cores,
+                    "worker_memory": "%fG" % options.worker_memory,
+                    "image": options.image,
+                    "scheduler_extra_pod_annotations": scheduler_extra_pod_annotations,
+                    "scheduler_extra_pod_labels": extra_labels,
+                    "worker_extra_pod_labels": extra_labels,
+                    "environment": options.environment,
+                }
+            return Options(
+                Integer("worker_cores", 4, min=1, label="Worker Cores"),
+                Float("worker_memory", 8, min=1, label="Worker Memory (GiB)"),
+                # The default image is set via DASK_GATEWAY__CLUSTER__OPTIONS__IMAGE env variable
+                String("image", label="Image"),
+                Mapping("environment", {}, label="Environment Variables"),
+                handler=option_handler,
+            )
+        c.Backend.cluster_options = cluster_options
+      idle: |
+        # timeout after 30 minutes of inactivity
+        c.KubeClusterConfig.idle_timeout = 1800
+    prefix: "/services/dask-gateway" # Users connect to the Gateway through the JupyterHub service.
+    auth:
+      type: jupyterhub # Use JupyterHub to authenticate with Dask Gateway
+  traefik:
+#    nodeSelector:
+#      k8s.dask.org/node-purpose: core
+    service:
+      type: ClusterIP # Access Dask Gateway through JupyterHub. To access the Gateway from outside JupyterHub, this must be changed to a `LoadBalancer`.
+
+# A placeholder as global values that can be referenced from the same location
+# of any chart should be possible to provide, but aren't necessarily provided or
+# used.
+#global: {}
