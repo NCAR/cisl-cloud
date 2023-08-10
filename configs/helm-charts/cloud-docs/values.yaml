@@ -9,6 +9,7 @@ webapp:
     secretName: incommon-cert-cloud-docs
   container: 
     image: cislcloudpilot/docs:Aug.9.23
+    imagePullPolicy: Always
     port: 80
     memory: 1G
     cpu: 2
