@@ -8,7 +8,7 @@ webapp:
     fqdn: cloud-docs.k8s.ucar.edu
     secretName: incommon-cert-cloud-docs
   container: 
-    image: cislcloudpilot/docs:Aug.9.23
+    image: cislcloudpilot/docs:Aug.14.23
     imagePullPolicy: Always
     port: 80
     memory: 1G

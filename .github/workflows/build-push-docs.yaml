@@ -47,6 +47,6 @@ jobs:
           # Provide the tags to apply to the image, this example uses the latest image tag 
           tags: |
             cislcloudpilot/docs:latest
-            cislcloudpilot/docs:Aug.10.23
+            cislcloudpilot/docs:Aug.14.23
           # Apply labels as defined in the Docker image metadata
           labels: ${{ steps.meta.outputs.labels }}
