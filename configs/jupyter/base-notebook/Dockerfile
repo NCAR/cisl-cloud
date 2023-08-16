@@ -93,6 +93,11 @@ RUN mamba install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
+# Ask dask to read config from ${CONDA_DIR}/etc rather than
+# the default of /etc, since the non-root jovyan user can write
+# to ${CONDA_DIR}/etc but not to /etc
+ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
+
 ENV JUPYTER_PORT=8888
 EXPOSE $JUPYTER_PORT
 
