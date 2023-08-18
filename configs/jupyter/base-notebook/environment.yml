@@ -5,6 +5,7 @@ dependencies:
   - argopy
   - beautifulsoup4
   - boto3
+  - bokeh
   - bottleneck
   - ca-certificates
   - cartopy 
@@ -45,8 +46,6 @@ dependencies:
   - ipykernel>=6.21.2
   - ipympl
   - ipywidgets-bokeh
-  - jupyterhub
-  - jupyterlab==3.6.3
   - jupyter_bokeh
   - jupyter-panel-proxy
   - jupyter-resource-usage
