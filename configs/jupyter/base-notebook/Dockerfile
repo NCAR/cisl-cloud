@@ -50,6 +50,9 @@ RUN apt-get update --yes && \
     run-one && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 
 
+RUN mamba install --quiet --yes \
+    'jupyterhub'
+
 USER ${NB_UID}
 
 # Install Jupyter Notebook, Lab, and Hub
@@ -76,7 +79,6 @@ RUN mamba install --quiet --yes \
     # https://github.com/jupyter/docker-stacks/issues/1901
     'nodejs>=18.0' \
     'notebook' \
-    'jupyterhub' \
     'conda-forge::nb_conda_kernels' && \
     # Pin NodeJS
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
@@ -99,6 +101,9 @@ ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
 ENV JUPYTER_PORT=8888
 EXPOSE $JUPYTER_PORT
+
+# Configure container startup
+ENTRYPOINT ["start-singleuser.sh"]
 
 ###
 # GitHub Actions Build
@@ -154,5 +159,3 @@ USER ${NB_UID}
 
 WORKDIR "${HOME}"
 
-# Configure container startup
-ENTRYPOINT ["start-notebook.sh"]
