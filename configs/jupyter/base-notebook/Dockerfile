@@ -50,11 +50,6 @@ RUN apt-get update --yes && \
     run-one && \
     apt-get clean && rm -rf /var/lib/apt/lists/* 
 
-RUN mamba install --quiet --yes \
-    'jupyterhub'
-
-USER ${NB_UID}
-
 # Install Jupyter Notebook, Lab, and Hub
 # Generate a notebook server config
 # Cleanup temporary files
@@ -79,6 +74,7 @@ RUN mamba install --quiet --yes \
     # https://github.com/jupyter/docker-stacks/issues/1901
     'nodejs>=18.0' \
     'notebook' \
+    'jupyterhub' \
     'conda-forge::nb_conda_kernels' && \
     # Pin NodeJS
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
@@ -120,7 +116,6 @@ COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupy
 #COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
 
 # Fix permissions on /etc/jupyter as root
-USER root
 
 RUN rm -rf /tmp/environment.yml && \
     rm -rf /tmp/requirements.txt 
