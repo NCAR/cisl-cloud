@@ -99,7 +99,7 @@ ENV JUPYTER_PORT=8888
 EXPOSE $JUPYTER_PORT
 
 # Configure container startup
-ENTRYPOINT ["start-singleuser.sh"]
+ENTRYPOINT ["start-notebook.sh"]
 
 ###
 # GitHub Actions Build
