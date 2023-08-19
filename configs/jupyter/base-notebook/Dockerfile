@@ -72,6 +72,7 @@ WORKDIR /tmp
 RUN mamba install --quiet --yes \
     # NodeJS >= 18.0 is required for `jupyter lab build` command
     # https://github.com/jupyter/docker-stacks/issues/1901
+    'dask-gateway' \
     'nodejs>=18.0' \
     'notebook' \
     'jupyterhub' \
