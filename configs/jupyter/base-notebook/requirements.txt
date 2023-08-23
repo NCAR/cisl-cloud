@@ -1,5 +1,6 @@
 jupyterlab==3.6.3
 dask-labextension
+dask-gateway
 ipywidgets
 jupyter-server-proxy
 jupyterlab_widgets
