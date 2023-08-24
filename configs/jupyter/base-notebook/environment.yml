@@ -18,6 +18,7 @@ dependencies:
   - dask>=2023.4.0
   - dask-gateway
   - dask-jobqueue>=0.8.1
+  - dask-ml
   - datashader
   - descartes
   - docopt

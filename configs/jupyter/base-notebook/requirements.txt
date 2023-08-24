@@ -3,6 +3,7 @@ dask-labextension
 dask-gateway
 ipywidgets
 jupyter-server-proxy
+jupyter_bokeh
 jupyterlab_widgets
 jupyterlab-git
 jupyterlab-s3-browser>=0.12

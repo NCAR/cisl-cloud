@@ -13,6 +13,10 @@ LABEL maintainer="CISL Cloud Pilot Team <cisl-cloud-pilot@ucar.edu>" version="v1
 
 ENV CONDA_ENV=cisl-cloud-base
 
+# Add User conda directory to path
+ENV NB_PYTHON_PREFIX=${HOME}/.conda
+ENV PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
+
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
