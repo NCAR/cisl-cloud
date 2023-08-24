@@ -51,7 +51,6 @@ jobs:
           # Provide the tags to apply to the image, this example uses the latest image tag 
           tags: |
             cislcloudpilot/cisl-cloud-base:latest
-            cislcloudpilot/cisl-cloud-base:v1-stable
             cislcloudpilot/cisl-cloud-base:${{ steps.date.outputs.date }}
           # Apply labels as defined in the Docker image metadata
           labels: ${{ steps.meta.outputs.labels }}
