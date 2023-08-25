@@ -35,8 +35,8 @@ parts:
           file: how-to/K8s/Rancher/rancher-intro
           sections:
           - file: how-to/K8s/Rancher/get-kubeconfig
-          - file: how-to/K8s/Rancher/create-namespace
           - file: how-to/K8s/Rancher/cluster-access
+          - file: how-to/K8s/Rancher/create-namespace
           - file: how-to/K8s/Rancher/permissions
         - title: Customize JupyterHub
           file: how-to/k8sJH/customize/custom
