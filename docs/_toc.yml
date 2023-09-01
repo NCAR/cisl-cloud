@@ -74,6 +74,13 @@ parts:
         - file: how-to/K8s/Hosting/book-image
           title: Containerize Jupyter Book
         - file: how-to/K8s/Hosting/deploy
+      - title: Use Dask
+        file: how-to/dask/dask-intro
+        sections:
+          - file: how-to/dask/dask-local
+            title: Dask LocalCluster
+          - file: how-to/dask/dask-gateway
+            title: Dask Gateway
       - title: Stratus
         file: how-to/Stratus/stratus-intro
         sections:
