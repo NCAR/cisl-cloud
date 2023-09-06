@@ -60,12 +60,21 @@ parts:
         file: how-to/k8sJH/k8sJH-intro
         sections:
         - file: how-to/k8sJH/access
+        - file: how-to/k8sJH/user-info
         - title: Conda Environments
           file: how-to/k8sJH/customize/env
+        - file: how-to/k8sJH/base-conda
         - title: Utilizing GitHub
           file: how-to/k8sJH/customize/github
-        - file: how-to/k8sJH/base-conda
-        - file: how-to/k8sJH/user-info
+        - title: Dask
+          file: how-to/dask/dask-intro
+          sections:
+            - file: how-to/dask/dask-local
+              title: Dask LocalCluster
+            - file: how-to/dask/dask-gateway
+              title: Dask Gateway
+            - file: how-to/dask/dask-jobqueue
+              title: Dask Jobqueue
       - title: Hosting web applications 
         file: how-to/K8s/Hosting/web-intro
         sections:
@@ -74,15 +83,6 @@ parts:
         - file: how-to/K8s/Hosting/book-image
           title: Containerize Jupyter Book
         - file: how-to/K8s/Hosting/deploy
-      - title: Dask
-        file: how-to/dask/dask-intro
-        sections:
-          - file: how-to/dask/dask-local
-            title: Dask LocalCluster
-          - file: how-to/dask/dask-gateway
-            title: Dask Gateway
-          - file: how-to/dask/dask-jobqueue
-            title: Dask Jobqueue
       - title: Stratus
         file: how-to/Stratus/stratus-intro
         sections:
