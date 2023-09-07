@@ -103,20 +103,20 @@ ENV JUPYTER_PORT=8888
 EXPOSE $JUPYTER_PORT
 
 # Configure container startup
-ENTRYPOINT ["start-notebook.sh"]
+ENTRYPOINT ["/srv/start"]
 
 ###
 # GitHub Actions Build
 ###
 # Copy local files as late as possible to avoid cache busting
-COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
+COPY configs/jupyter/base-notebook/scripts/start /srv/start
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
 COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
 # Local Build
 ###
-#COPY scripts/start-notebook.sh scripts/start-singleuser.sh /usr/local/bin/
+#COPY scripts/start /srv/start
 #COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
 
 # Fix permissions on /etc/jupyter as root
