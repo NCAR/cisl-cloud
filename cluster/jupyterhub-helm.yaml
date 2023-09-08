@@ -284,6 +284,8 @@ jupyterhub:
             NVIDIA_DRIVER_CAPABILITIES: compute,utility
   ##        node_selector:
   ##          node.kubernetes.io/instance-type: g4dn.xlarge
+          extra_pod_config:
+            runtimeClassName: "nvidia"
           extra_resource_limits:
             nvidia.com/gpu: "1"
       - display_name: "Test NCAR Custom"
