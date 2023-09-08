@@ -1,7 +1,19 @@
+# With a Kubernetes cluster available and HELM installed, this HELM values
+# file will install JupyterHub in the Kubernetes cluster. It is also assumed
+# that you have helm and kubectl installed and configured on your workstation.
+# This HELM values file will require modifications which are found and 
+# described by searching for 'MODS'
 jupyterhub:
   hub:
     config:
       JupyterHub:
+      # <MODS> You will need to configure your authentication below. Below is currently
+      # a template for Github auth and you need to fill out client_id, client_secret
+      # and adjust the oauth_callback_url. This info can be generated within Developer settings
+      # in Github via OAuth Apps using that oauth_callback_url you define.
+      # Here is a reference to other auth ways:
+      # https://jupyterhub.readthedocs.io/en/stable/tutorial/getting-started/authenticators-users-basics.html
+      # </MODS>
         authenticator_class: github
       GitHubOAuthenticator:
         client_id: 
@@ -12,12 +24,15 @@ jupyterhub:
         scope:
           - read:org
       Authenticator:
+      # <MODS> adjust the admin_users if needed. These use Github usernames </MODS>
         admin_users:
           - kcote-ncar # Ken Cote, Initial adminstrator
           - NicholasCote # Nicholas Cote, Initial adminstrator
           - nwehrheim # Nick Wehrheim, Community representative
           - barkathaliucar # Barkath Mir, Initial adminstrator
   proxy:
+    # <MODS> Make sure you fill in a secretToken. Run: 'openssl rand -hex 32'
+    # on your local workstation to get that value. </MODS>
     secretToken: ''
     service:
       type: ClusterIP
@@ -319,11 +334,13 @@ jupyterhub:
       nginx.org/websocket-services: proxy-public
       cert-manager.io/cluster-issuer: "incommon"
     ingressClassName: nginx
+    # <MODS> Adjust the hosts entries in this next session.
     hosts: [jupyter.k8s.ucar.edu]
     tls:
       - hosts:
           - jupyter.k8s.ucar.edu
         secretName: https-auto-incommon
+     # </MODS>
 dask-gateway:
   enabled: true # Enabling dask-gateway will install Dask Gateway as a dependency.
   # Futher Dask Gateway configuration goes here
