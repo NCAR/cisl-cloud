@@ -3,6 +3,8 @@
 # that you have helm and kubectl installed and configured on your workstation.
 # This HELM values file will require modifications which are found and 
 # described by searching for 'MODS'
+# Use this file as a values.yaml reference when installing the zero2jupyterhub helm chart
+# following the documentation : https://z2jh.jupyter.org/en/stable/jupyterhub/installation.html#install-jupyterhub
 jupyterhub:
   hub:
     config:
