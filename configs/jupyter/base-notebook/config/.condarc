@@ -7,3 +7,14 @@ channels:
 # ~/ is on persistent storage, where / gets wiped out and does not allow for persistent envs. 
 envs_dirs:
   - ~/.conda
+# # env_prompt (str)
+# #   Template for prompt modification based on the active environment.
+# #   Currently supported template variables are '{prefix}', '{name}', and
+# #   '{default_env}'. '{prefix}' is the absolute path to the active
+# #   environment. '{name}' is the basename of the active environment
+# #   prefix. '{default_env}' holds the value of '{name}' if the active
+# #   environment is a conda named environment ('-n' flag), or otherwise
+# #   holds the value of '{prefix}'. Templating uses python's str.format()
+# #   method.
+# # 
+env_prompt: '({name})'
