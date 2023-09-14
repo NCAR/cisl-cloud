@@ -75,6 +75,8 @@ parts:
               title: Dask Gateway
             - file: how-to/dask/dask-jobqueue
               title: Dask Jobqueue
+        - title: GPUs
+          file: how-to/gpu/gpu-intro
       - title: Hosting web applications 
         file: how-to/K8s/Hosting/web-intro
         sections:
