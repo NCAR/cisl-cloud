@@ -199,6 +199,10 @@ code, .rst-content tt, .rst-content code {
     white-space: nowrap;
 }
 
+.navbar-toggler {
+    background-color: #dbe2e9;
+}
+
 .pre {
     overflow: scroll;
     background-color: #e9ecef;
