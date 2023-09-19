@@ -676,33 +676,33 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <p>This assumes that the Nvidia GPU Operator is installed and working on your k8s cluster. Please see the <a class="reference external" href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/getting-started.html">Getting Started</a> documentation from Nvidia for more details on setting up the GPU Operator.</p>
 </div>
 <p>In order to connect JupyterHub singleuser environments to GPUs the nvidia runtime class needs to be set as the default for the container. Changing the default runtime for the cluster will cause issues and can bring the whole cluster down by interrupting other pods like the CNIs (Container Network Interface). This can be accomplished by providing an <a class="reference external" href="https://jupyterhub-kubespawner.readthedocs.io/en/latest/spawner.html#kubespawner.KubeSpawner.extra_pod_config">extra_pod_config</a> in the helm chart configuration for the GPU singleuser image. This isn’t 100% clear in the documentation and where to place this isn’t clear either. An example of what this looks like in the values used for the Helm install is as follows:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">display_name</span><span class="p">:</span> <span class="n">NVIDIA</span> <span class="n">Tesla</span> <span class="n">T4</span><span class="p">,</span> <span class="o">~</span><span class="mi">16</span> <span class="n">GB</span><span class="p">,</span> <span class="o">~</span><span class="mi">4</span> <span class="n">CPUs</span>
-  <span class="n">slug</span><span class="p">:</span> <span class="n">gpu</span>
-  <span class="n">description</span><span class="p">:</span> <span class="s2">&quot;Start a container on a dedicated node with a GPU&quot;</span>
-  <span class="n">profile_options</span><span class="p">:</span>
-    <span class="n">image</span><span class="p">:</span>
-      <span class="n">display_name</span><span class="p">:</span> <span class="n">Image</span>
-      <span class="n">choices</span><span class="p">:</span>
-        <span class="n">tensorflow</span><span class="p">:</span>
-          <span class="n">display_name</span><span class="p">:</span> <span class="n">Pangeo</span> <span class="n">Tensorflow</span> <span class="n">ML</span> <span class="n">Notebook</span>
-          <span class="n">slug</span><span class="p">:</span> <span class="s2">&quot;tensorflow&quot;</span>
-          <span class="n">kubespawner_override</span><span class="p">:</span>
-            <span class="n">image</span><span class="p">:</span> <span class="s2">&quot;pangeo/ml-notebook:2023.05.18&quot;</span>
-        <span class="n">pytorch</span><span class="p">:</span>
-          <span class="n">display_name</span><span class="p">:</span> <span class="n">Pangeo</span> <span class="n">PyTorch</span> <span class="n">ML</span> <span class="n">Notebook</span>
-          <span class="n">default</span><span class="p">:</span> <span class="n">true</span>
-          <span class="n">slug</span><span class="p">:</span> <span class="s2">&quot;pytorch&quot;</span>
-          <span class="n">kubespawner_override</span><span class="p">:</span>
-            <span class="n">image</span><span class="p">:</span> <span class="s2">&quot;pangeo/pytorch-notebook:2023.05.18&quot;</span>
-  <span class="n">kubespawner_override</span><span class="p">:</span>
-    <span class="n">mem_limit</span><span class="p">:</span> <span class="n">null</span>
-    <span class="n">mem_guarantee</span><span class="p">:</span> <span class="mi">14</span><span class="n">G</span>
-    <span class="n">environment</span><span class="p">:</span>
-      <span class="n">NVIDIA_DRIVER_CAPABILITIES</span><span class="p">:</span> <span class="n">compute</span><span class="p">,</span><span class="n">utility</span>
-    <span class="n">extra_pod_config</span><span class="p">:</span>
-      <span class="n">runtimeClassName</span><span class="p">:</span> <span class="s2">&quot;nvidia&quot;</span>
-    <span class="n">extra_resource_limits</span><span class="p">:</span>
-      <span class="n">nvidia</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">gpu</span><span class="p">:</span> <span class="s2">&quot;1&quot;</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NVIDIA Tesla T4, ~16 GB, ~4 CPUs</span>
+<span class="w">  </span><span class="nt">slug</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpu</span>
+<span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Start</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">container</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">dedicated</span><span class="nv"> </span><span class="s">node</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">GPU&quot;</span>
+<span class="w">  </span><span class="nt">profile_options</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Image</span>
+<span class="w">      </span><span class="nt">choices</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">tensorflow</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pangeo Tensorflow ML Notebook</span>
+<span class="w">          </span><span class="nt">slug</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;tensorflow&quot;</span>
+<span class="w">          </span><span class="nt">kubespawner_override</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pangeo/ml-notebook:2023.05.18&quot;</span>
+<span class="w">        </span><span class="nt">pytorch</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">display_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pangeo PyTorch ML Notebook</span>
+<span class="w">          </span><span class="nt">default</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">slug</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pytorch&quot;</span>
+<span class="w">          </span><span class="nt">kubespawner_override</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;pangeo/pytorch-notebook:2023.05.18&quot;</span>
+<span class="w">  </span><span class="nt">kubespawner_override</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">mem_limit</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">    </span><span class="nt">mem_guarantee</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">14G</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">NVIDIA_DRIVER_CAPABILITIES</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compute,utility</span>
+<span class="w">    </span><span class="nt">extra_pod_config</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">runtimeClassName</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;nvidia&quot;</span>
+<span class="w">    </span><span class="nt">extra_resource_limits</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">nvidia.com/gpu</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
 </pre></div>
 </div>
 </div>
