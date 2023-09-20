@@ -93,6 +93,13 @@ parts:
         - file: how-to/Stratus/stratus-access
         - file: how-to/Stratus/jupyter-extension
         - file: how-to/Stratus/stratus-cmd
+      - title: Harbor - Container Registry
+        file: how-to/harbor/harbor-intro
+        sections:
+        - title: Push & Pull Images
+          file: how-to/harbor/push-pull
+        - title: Vulnerability Scan
+          file: how-to/harbor/scanner
       - title: Virtual Machines
         file: how-to/vm/vm-intro
   - caption: Support Agreements

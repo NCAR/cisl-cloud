@@ -61,6 +61,8 @@ sphinx:
             url: https://jupyter.k8s.ucar.edu/
           - name: '2i2c JupyterHub'
             url: https://ncar-cisl.2i2c.cloud/hub/login
+          - name: 'Harbor - Container Registry'
+            url: https://hub.k8s.ucar.edu/
           - name: Rancher
             url: https://rancher.k8s.ucar.edu/
           - name: Request VM
