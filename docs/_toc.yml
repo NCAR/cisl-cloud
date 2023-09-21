@@ -26,18 +26,12 @@ parts:
       - title: Kubernetes (k8s)
         file: how-to/K8s/k8s-intro
         sections:
-        - file: how-to/K8s/Hosting/web-hosting
-          title: Host web applications
-          sections:
-            - file: how-to/K8s/Hosting/web-kubectl
-            - file: how-to/K8s/Hosting/web-helm
-        - title: Rancher (K8s)
-          file: how-to/K8s/Rancher/rancher-intro
-          sections:
-          - file: how-to/K8s/Rancher/get-kubeconfig
-          - file: how-to/K8s/Rancher/cluster-access
-          - file: how-to/K8s/Rancher/create-namespace
-          - file: how-to/K8s/Rancher/permissions
+        - title: cert-manager
+          file: how-to/K8s/Hosting/cert-mgr
+        - title: Ingress Controller
+          file: how-to/K8s/Hosting/ingress
+        - title: ExternalDNS
+          file: how-to/K8s/Hosting/external-dns
         - title: JupyterHub
           file: how-to/k8sJH/customize/custom
           sections:
@@ -47,17 +41,31 @@ parts:
               file: how-to/k8sJH/customize/customize-docker
             - title: GitHub Actions
               file: how-to/k8sJH/customize/setup-gh-act
+        - title: Rancher (K8s)
+          file: how-to/K8s/Rancher/rancher-intro
+          sections:
+          - file: how-to/K8s/Rancher/get-kubeconfig
+          - file: how-to/K8s/Rancher/cluster-access
+          - file: how-to/K8s/Rancher/create-namespace
+          - file: how-to/K8s/Rancher/permissions
+        - title: Harbor
+          file: how-to/harbor/install-harbor
+        - file: how-to/K8s/Hosting/web-hosting
+          title: Host web applications
+          sections:
+            - file: how-to/K8s/Hosting/web-kubectl
+            - file: how-to/K8s/Hosting/web-helm
   - caption: Use the CISL Cloud 
     chapters:
+      - title: Agile Interaction
+        file: how-to/agile
+        sections:
+        - file: how-to/create-tickets
       - title: 2i2c JupyterHub 
         file: how-to/2i2cJH/2i2cJH-intro
         sections:
         - file: how-to/2i2cJH/access
         - file: how-to/2i2cJH/user-info
-      - title: Agile Interaction
-        file: how-to/agile
-        sections:
-        - file: how-to/create-tickets
       - title: NCAR JupyterHub 
         file: how-to/k8sJH/k8sJH-intro
         sections:
@@ -79,6 +87,15 @@ parts:
               title: Dask Jobqueue
         - title: GPUs
           file: how-to/gpu/gpu-intro
+      - title: HPC JupyterHub
+        url: https://arc.ucar.edu/knowledge_base/70549913
+      - title: Harbor - Container Registry
+        file: how-to/harbor/harbor-intro
+        sections:
+        - title: Push & Pull Images
+          file: how-to/harbor/push-pull
+        - title: Vulnerability Scan
+          file: how-to/harbor/scanner
       - title: Hosting web applications 
         file: how-to/K8s/Hosting/web-intro
         sections:
@@ -93,13 +110,6 @@ parts:
         - file: how-to/Stratus/stratus-access
         - file: how-to/Stratus/jupyter-extension
         - file: how-to/Stratus/stratus-cmd
-      - title: Harbor - Container Registry
-        file: how-to/harbor/harbor-intro
-        sections:
-        - title: Push & Pull Images
-          file: how-to/harbor/push-pull
-        - title: Vulnerability Scan
-          file: how-to/harbor/scanner
       - title: Virtual Machines
         file: how-to/vm/vm-intro
   - caption: Support Agreements

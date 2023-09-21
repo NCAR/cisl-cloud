@@ -57,9 +57,11 @@ sphinx:
           url: overview/services
           dropdown: true 
           dropdown_links:
-          - name: 'NCAR JupyterHub'
+          - name: 'NCAR k8s JupyterHub'
             url: https://jupyter.k8s.ucar.edu/
-          - name: '2i2c JupyterHub'
+          - name: 'NCAR HPC JupyterHub'
+            url: https://jupyterhub.hpc.ucar.edu/
+          - name: '2i2c AWS JupyterHub'
             url: https://ncar-cisl.2i2c.cloud/hub/login
           - name: 'Harbor - Container Registry'
             url: https://hub.k8s.ucar.edu/

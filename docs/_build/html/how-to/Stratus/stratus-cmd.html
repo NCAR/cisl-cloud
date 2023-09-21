@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Harbor - Container Registry" href="../harbor/harbor-intro.html" />
+    <link rel="next" title="Virtual Machines (VMs)" href="../vm/vm-intro.html" />
     <link rel="prev" title="Jupyter S3 Extension" href="jupyter-extension.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -116,11 +116,15 @@ const thebe_selector_output = ".output, .cell_output"
             <div class="dropdown-content">
                 
                     <a class="dropdown-link" href="https://jupyter.k8s.ucar.edu/">
-                        NCAR JupyterHub
+                        NCAR k8s JupyterHub
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://jupyterhub.hpc.ucar.edu/">
+                        NCAR HPC JupyterHub
                     </a><br>
                 
                     <a class="dropdown-link" href="https://ncar-cisl.2i2c.cloud/hub/login">
-                        2i2c JupyterHub
+                        2i2c AWS JupyterHub
                     </a><br>
                 
                     <a class="dropdown-link" href="https://hub.k8s.ucar.edu/">
@@ -270,9 +274,24 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/Hosting/cert-mgr.html">
+     cert-manager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/Hosting/ingress.html">
+     Ingress Controller
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/Hosting/external-dns.html">
+     ExternalDNS
+    </a>
+   </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../K8s/Hosting/web-hosting.html">
-     Host web applications
+    <a class="reference internal" href="../k8sJH/customize/custom.html">
+     JupyterHub
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
     <label for="toctree-checkbox-3">
@@ -281,18 +300,18 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../K8s/Hosting/web-kubectl.html">
-       Deploy with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         kubectl
-        </span>
-       </code>
+      <a class="reference internal" href="../gpu/gpu-admin.html">
+       Setup GPUs
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../K8s/Hosting/web-helm.html">
-       Deploy with Helm
+      <a class="reference internal" href="../k8sJH/customize/customize-docker.html">
+       Customize Singleuser Image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../k8sJH/customize/setup-gh-act.html">
+       GitHub Actions
       </a>
      </li>
     </ul>
@@ -329,9 +348,14 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
     </ul>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../harbor/install-harbor.html">
+     Harbor
+    </a>
+   </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../k8sJH/customize/custom.html">
-     JupyterHub
+    <a class="reference internal" href="../K8s/Hosting/web-hosting.html">
+     Host web applications
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
     <label for="toctree-checkbox-5">
@@ -340,18 +364,18 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../gpu/gpu-admin.html">
-       Setup GPUs
+      <a class="reference internal" href="../K8s/Hosting/web-kubectl.html">
+       Deploy with
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         kubectl
+        </span>
+       </code>
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../k8sJH/customize/customize-docker.html">
-       Customize Singleuser Image
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../k8sJH/customize/setup-gh-act.html">
-       GitHub Actions
+      <a class="reference internal" href="../K8s/Hosting/web-helm.html">
+       Deploy with Helm
       </a>
      </li>
     </ul>
@@ -366,11 +390,28 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../2i2cJH/2i2cJH-intro.html">
-   2i2c JupyterHub
+  <a class="reference internal" href="../agile.html">
+   Agile Interaction
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
   <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../create-tickets.html">
+     Create tickets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2i2cJH/2i2cJH-intro.html">
+   2i2c JupyterHub
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -383,23 +424,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../2i2cJH/user-info.html">
      User Information
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../agile.html">
-   Agile Interaction
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../create-tickets.html">
-     Create tickets
     </a>
    </li>
   </ul>
@@ -473,12 +497,39 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
+   HPC JupyterHub
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../harbor/harbor-intro.html">
+   Harbor - Container Registry
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../harbor/push-pull.html">
+     Push &amp; Pull Images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../harbor/scanner.html">
+     Vulnerability Scan
+    </a>
+   </li>
+  </ul>
+ </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../K8s/Hosting/web-intro.html">
    Hosting web applications
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -504,8 +555,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="stratus-intro.html">
    Stratus - S3
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -523,28 +574,6 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Python Examples
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../harbor/harbor-intro.html">
-   Harbor - Container Registry
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../harbor/push-pull.html">
-     Push &amp; Pull Images
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../harbor/scanner.html">
-     Vulnerability Scan
     </a>
    </li>
   </ul>
@@ -947,10 +976,10 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
             <p class="prev-next-title">Jupyter S3 Extension</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../harbor/harbor-intro.html" title="next page">
+    <a class='right-next' id="next-link" href="../vm/vm-intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Harbor - Container Registry</p>
+        <p class="prev-next-title">Virtual Machines (VMs)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
