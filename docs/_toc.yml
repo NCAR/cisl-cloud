@@ -61,6 +61,8 @@ parts:
         file: how-to/agile
         sections:
         - file: how-to/create-tickets
+      - title: Argo cd
+        file: how-to/argocd/argo-intro
       - title: 2i2c JupyterHub 
         file: how-to/2i2cJH/2i2cJH-intro
         sections:
