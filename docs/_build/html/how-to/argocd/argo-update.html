@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Using the NCAR k8s JupyterHub &#8212; CISL Cloud Pilot</title>
+    <title>Update your Argo CD Application &#8212; CISL Cloud Pilot</title>
     
   <link href="../../_static/css/theme.css" rel="stylesheet">
   <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Requesting Access" href="access.html" />
-    <link rel="prev" title="User Information" href="../2i2cJH/user-info.html" />
+    <link rel="next" title="Using the 2i2c JupyterHub" href="../2i2cJH/2i2cJH-intro.html" />
+    <link rel="prev" title="Deploying Applications with ArgoCD" href="argo-intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -290,7 +290,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="customize/custom.html">
+    <a class="reference internal" href="../k8sJH/customize/custom.html">
      JupyterHub
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
@@ -305,12 +305,12 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="customize/customize-docker.html">
+      <a class="reference internal" href="../k8sJH/customize/customize-docker.html">
        Customize Singleuser Image
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="customize/setup-gh-act.html">
+      <a class="reference internal" href="../k8sJH/customize/setup-gh-act.html">
        GitHub Actions
       </a>
      </li>
@@ -406,18 +406,18 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../argocd/argo-intro.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="argo-intro.html">
    Argo cd
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../argocd/argo-update.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Update your Argo CD Application
     </a>
    </li>
@@ -445,38 +445,38 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../k8sJH/k8sJH-intro.html">
    NCAR JupyterHub
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="access.html">
+    <a class="reference internal" href="../k8sJH/access.html">
      Requesting Access
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="user-info.html">
+    <a class="reference internal" href="../k8sJH/user-info.html">
      User Information
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="customize/env.html">
+    <a class="reference internal" href="../k8sJH/customize/env.html">
      Conda Environments
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="base-conda.html">
+    <a class="reference internal" href="../k8sJH/base-conda.html">
      Base Conda Environment
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="customize/github.html">
+    <a class="reference internal" href="../k8sJH/customize/github.html">
      Utilizing GitHub
     </a>
    </li>
@@ -692,7 +692,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/how-to/k8sJH/k8sJH-intro.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/how-to/argocd/argo-update.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -712,7 +712,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/k8sJH/k8sJH-intro.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/argocd/argo-update.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -738,15 +738,44 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
             </div>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#overview">
-   Overview
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Update your Argo CD Application
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#update-via-ui">
+     Update via UI
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#update-via-cli">
+     Update via CLI
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id1">
+     Update via UI
+    </a>
+   </li>
+  </ul>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#access">
-   Access
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rollback">
+   Rollback
   </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cli">
+     CLI
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ui">
+     UI
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -759,18 +788,47 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="using-the-ncar-k8s-jupyterhub">
-<h1>Using the NCAR k8s JupyterHub<a class="headerlink" href="#using-the-ncar-k8s-jupyterhub" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>NCAR runs a JupyterHub instance that’s hosted on a kubernetes (k8s) cluster. It currently is available inside the NCAR network so you must either be <em><strong>onsite</strong></em> or connected to the <em><strong>VPN</strong></em>.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="update-your-argo-cd-application">
+<h1>Update your Argo CD Application<a class="headerlink" href="#update-your-argo-cd-application" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This document is assuming that your applications Sync Policy is set to Manual and not Automatic. If the Sync Policy is set to Automatic updates should be pushed automatically.</p>
 </div>
-<div class="section" id="access">
-<h2>Access<a class="headerlink" href="#access" title="Permalink to this headline">¶</a></h2>
-<p>The <a class="reference external" href="https://jupyter.k8s.ucar.edu/">JupyterHub Login</a> page is the portal to enter and spin up a personal and persistent Jupyter environment.</p>
-<p>Authentication is being handled via GitHub and access is given to members of the following NCAR <a class="reference external" href="https://github.com/orgs/NCAR/teams/2i2c-cloud-users">team</a>. If you do not currently have access you can request to join the GitHub team. Please provide valid justification for your use case. A member of the team will process the request and will be in contact to confirm or coordinate your access.</p>
+<p>When you make a change to your helm chart or repository Argo CD will pick up on these changes and will assist you in rolling out an update. After you have pushed the changes to your Git repository the status of your Application will change to <code class="docutils literal notranslate"><span class="pre">OutOfSync</span></code>. You can view this in the UI or the CLI. We will go over the steps for both.</p>
+<div class="section" id="update-via-ui">
+<h2>Update via UI<a class="headerlink" href="#update-via-ui" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="toctree-wrapper compound">
+<div class="section" id="update-via-cli">
+<h2>Update via CLI<a class="headerlink" href="#update-via-cli" title="Permalink to this headline">¶</a></h2>
+<p>To start let’s run <code class="docutils literal notranslate"><span class="pre">argocd</span> <span class="pre">app</span> <span class="pre">list</span></code> to confirm that our Application is out of sync. In the code block below is an example of an Application whose status is <code class="docutils literal notranslate"><span class="pre">OutOfSync</span></code></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ argocd app list
+NAME                        CLUSTER                         NAMESPACE   PROJECT  STATUS     HEALTH   SYNCPOLICY  CONDITIONS  REPO                                               PATH                                 TARGET
+argocd/argo-cloud-docs      https://kubernetes.default.svc  ncote-test  ncote    OutOfSync  Healthy  &lt;none&gt;      &lt;none&gt;      git@github.com:NCAR/cisl-cloud.git                 configs/helm-charts/cloud-docs       HEAD
+</pre></div>
+</div>
+<p>In order to update this Application so that is <code class="docutils literal notranslate"><span class="pre">Synced</span></code> we only need to run the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">argocd</span> <span class="pre">app</span> <span class="pre">sync</span> <span class="pre">argo-cloud-docs</span></code></p>
+<p>In the example above <code class="docutils literal notranslate"><span class="pre">argo-cloud-docs</span></code> is the name of the application that we wanted to sync. When this is run we get a large amount of output that provides us information on what was updated in our application and if it was successful. As long as there were no issues you should see a <code class="docutils literal notranslate"><span class="pre">Message:</span></code> line near the bottom of the output that states <code class="docutils literal notranslate"><span class="pre">successfully</span> <span class="pre">synced</span> <span class="pre">(all</span> <span class="pre">tasks</span> <span class="pre">run)</span></code></p>
+</div>
+<div class="section" id="id1">
+<h2>Update via UI<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>If you navigate to your application in the Argo CD UI you should see that it is reporting a Sync Status of <code class="docutils literal notranslate"><span class="pre">OutOfSync</span></code>. If you have pushed changes to your Git repository and Helm chart but the status is still Synced click the <code class="docutils literal notranslate"><span class="pre">REFRESH</span></code> button. It should now accurately reflect that your application is out of sync with your repository. An example of what this looks like can be seen in the image below:</p>
+<img src="https://ncar.github.io/cisl-cloud/_static/argo-oos.png"/><p>In order to update the Application we just have to select the <code class="docutils literal notranslate"><span class="pre">SYNC</span></code> box at the top of the Applications window. It will provide a new list of options that we can pick and choose from. For a simple in-place update of our application, assuming we’ve tested all our changes successfully before trying to update our application, the default values supplied here are fine. Hit the <code class="docutils literal notranslate"><span class="pre">SYNCHRONIZE</span></code> button at the top of the window that opened on the right side of our screen. It will spin for a few seconds before updating the status of our application. As long as everything worked correctly our new status should be <code class="docutils literal notranslate"><span class="pre">Synced</span></code>. Please visit your application now to test that the changes have been applied and everything is working correctly.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="rollback">
+<h1>Rollback<a class="headerlink" href="#rollback" title="Permalink to this headline">¶</a></h1>
+<p>If there was an issue deploying your application and you need to rollback any of these updates there is a rollback option in both the UI and the CLI.</p>
+<div class="section" id="cli">
+<h2>CLI<a class="headerlink" href="#cli" title="Permalink to this headline">¶</a></h2>
+<p>An example of the CLI command to accomplish this for the argo-cloud-docs app can be seen below:</p>
+<p><code class="docutils literal notranslate"><span class="pre">argocd</span> <span class="pre">app</span> <span class="pre">rollback</span> <span class="pre">argo-cloud-docs</span></code></p>
+</div>
+<div class="section" id="ui">
+<h2>UI<a class="headerlink" href="#ui" title="Permalink to this headline">¶</a></h2>
+<p>In the UI, at the top of the Applications window where we hit <code class="docutils literal notranslate"><span class="pre">SYNC</span></code> to update our app, is another button labeled <code class="docutils literal notranslate"><span class="pre">HISTORY</span> <span class="pre">AND</span> <span class="pre">ROLLBACK</span></code>. Select this button to get a list of all the different revisions you can rollback to. Pick the most recent version that worked, or the specific version you want to rollback to, and in the upper right hand corner are 3 dots. If you click this button there is now an option to <code class="docutils literal notranslate"><span class="pre">Rollback</span></code>. Select this and your application will rollback. An example of what this looks like can be seen in the image below:</p>
+<img src="https://ncar.github.io/cisl-cloud/_static/argo-rollback.png"/>
+<p>Your application should now show a status of OutOfSync. Check your applications interface to make sure that the changes have been reverted back to the state you wanted.</p>
 </div>
 </div>
 
@@ -787,7 +845,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         },
         kernelOptions: {
             name: "python3",
-            path: "./how-to/k8sJH"
+            path: "./how-to/argocd"
         },
         predefinedOutput: true
     }
@@ -797,17 +855,17 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               </div>
               <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../2i2cJH/user-info.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="argo-intro.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">User Information</p>
+            <p class="prev-next-title">Deploying Applications with ArgoCD</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="access.html" title="next page">
+    <a class='right-next' id="next-link" href="../2i2cJH/2i2cJH-intro.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Requesting Access</p>
+        <p class="prev-next-title">Using the 2i2c JupyterHub</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
