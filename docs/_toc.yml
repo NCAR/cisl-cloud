@@ -109,6 +109,8 @@ parts:
         - file: how-to/K8s/Hosting/book-image
           title: Containerize Jupyter Book
         - file: how-to/K8s/Hosting/deploy
+      - title: Continuous Deployment 
+        file: how-to/argocd/argo-user
       - title: Stratus - S3
         file: how-to/Stratus/stratus-intro
         sections:
