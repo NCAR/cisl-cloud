@@ -232,7 +232,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="architecture.html">
-   Architecture Diagram
+   Current Architecture Diagram
   </a>
  </li>
 </ul>
@@ -789,6 +789,20 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#harbor">
+     <span class="xref myst">
+      Harbor
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#argo-cd">
+     <span class="xref myst">
+      Argo CD
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#virtual-machines-vms">
      Virtual Machines (VMs)
     </a>
@@ -856,6 +870,17 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <p><em><strong>STATUS:</strong></em> <em>In Testing</em></p>
 <p><strong>URL :</strong> <a class="reference external" href="https://rancher.k8s.ucar.edu/">https://rancher.k8s.ucar.edu/</a></p>
 <p>We have an instance of Rancher running that provides a user interface for interacting with k8s clusters. Users can request access to the rancher instance, login, and get a kubeconfig to access and deploy k8s resources. User permissions are controlled in a way that limits what they can view and deploy to.</p>
+</div>
+<div class="section" id="harbor">
+<h3><a class="reference internal" href="../how-to/harbor/harbor-intro.html"><span class="doc std std-doc">Harbor</span></a><a class="headerlink" href="#harbor" title="Permalink to this headline">¶</a></h3>
+<p><em><strong>STATUS:</strong></em> <em>In Testing</em></p>
+<p><strong>URL :</strong> <a class="reference external" href="https://hub.k8s.ucar.edu/">https://hub.k8s.ucar.edu/</a></p>
+<p>We utilize <a class="reference external" href="https://goharbor.io/">Harbor</a> to provide a container registry based on open source software that is closer to the infrastructure running containers. A local registry allows us to utilize network infrastructure and available bandwidth between hardware for an increase in speed when pushing and pulling images locally. Harbor also includes an image scanner that will provide reports on any vulnerabilities that an image contains so we can address security concerns with images directly.</p>
+</div>
+<div class="section" id="argo-cd">
+<h3><a class="reference internal" href="../how-to/argocd/argo-user.html"><span class="doc std std-doc">Argo CD</span></a><a class="headerlink" href="#argo-cd" title="Permalink to this headline">¶</a></h3>
+<p><em><strong>STATUS:</strong></em> <em>In Testing</em></p>
+<p>We have an instance of <a class="reference external" href="https://argo-cd.readthedocs.io/en/stable/">Argo CD</a> installed to help us handle Continuous Delivery (CD). What this ultimately means is if your applications Git repo is setup in Argo CD it can be automatically configured to deploy any changes made to that repository without any intervention by the user or admins. This allows users to deploy their applications automatically to k8s without having to worry about interacting directly with Kubernetes.</p>
 </div>
 <div class="section" id="virtual-machines-vms">
 <h3>Virtual Machines (VMs)<a class="headerlink" href="#virtual-machines-vms" title="Permalink to this headline">¶</a></h3>
@@ -961,7 +986,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 28 September 2023.
+          Last updated on 29 September 2023.
         </p>
       </div>
     </div>

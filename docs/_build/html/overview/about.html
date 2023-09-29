@@ -232,7 +232,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../availability/architecture.html">
-   Architecture Diagram
+   Current Architecture Diagram
   </a>
  </li>
 </ul>
@@ -775,10 +775,29 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#harbor-container-registry">
+     <span class="xref myst">
+      Harbor - Container Registry
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#argo-cd-continuous-delivery">
+     <span class="xref myst">
+      Argo CD (Continuous Delivery)
+     </span>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#storage">
      Storage
     </a>
     <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rook">
+       Rook
+      </a>
+     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#glade">
        GLADE
@@ -847,8 +866,8 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
 <p class="admonition-title">Note</p>
 <p>This page does not cover what kubernetes is. If you are unsure exactly what kubernetes is take a look at these <a class="reference external" href="https://www.google.com/search?q=What+is+kubernetes">search results</a> or visit the kubernetes <a class="reference external" href="https://kubernetes.io/">home page</a>.</p>
 </div>
-<p>We utilize a k8s cluster to host JupyterHub. Dask gateway is installed to enable scalable parallel computing. JupyterHub Spawner creates single user environments with access to shared and personal storage space. The Spawned user environments come in different sizes with a GPU option.</p>
-<p>This cluster is configured with an ingress controller and certificate manager to offer HTTPS access to user workloads via unique URLs. Documentation on how to utilize this offering will be provided.</p>
+<p>We utilize a k8s cluster to host JupyterHub along with other services to support open science development.</p>
+<p>This cluster is configured with an ingress controller, an API to create DNS entries, and certificate manager to offer HTTPS access to user workloads via unique URLs. Documentation on how to utilize this is available at this <a class="reference internal" href="../how-to/K8s/Hosting/web-intro.html"><span class="doc std std-doc">link to web app docs</span></a>.</p>
 </div>
 <div class="section" id="jupyterhub-on-k8s">
 <h3><a class="reference internal" href="../how-to/k8sJH/k8sJH-intro.html"><span class="doc std std-doc">JupyterHub on k8s</span></a><a class="headerlink" href="#jupyterhub-on-k8s" title="Permalink to this headline">¶</a></h3>
@@ -856,7 +875,10 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
 <p class="admonition-title">Note</p>
 <p>The NCAR deployment utilized the Zero to JupyterHub <a class="reference external" href="https://z2jh.jupyter.org/en/stable/">dcoumentation</a> to get started with customizing the environment.</p>
 </div>
-<p>There is a JupyterHub instance hosted on-prem at NWSC on a RKE2 provisioned k8s cluster. This JupyterHub is going to have a customized Docker image that enables packages, kernels, and extensions the scientific research community utilizes to increase productivity in data analysis. The custom environment will also provide users read-only access to the campaign and collections directories on GLADE as well as a shared directory whose specific use case is still being fleshed out. Access to this JupyterHub will be handled via GitHub authentication and a team under the NCAR organization in GitHub.</p>
+<p>There is a JupyterHub instance hosted on-prem at NWSC on a RKE2 provisioned k8s cluster.</p>
+<p>Dask gateway is installed to enable scalable parallel computing within JupyterHub with the intention to expose it to services outside JupyterHub.</p>
+<p>JupyterHub KubeSpawner creates single user environments with access to shared and persistent personal storage space. The Spawned user environments come with different default resource sizes with a GPU option. This spawner uses a customized Docker image that enables packages, kernels, and extensions the scientific research community utilizes to increase productivity in data analysis. The custom environment also provides users read-only access to the campaign and collections directories on GLADE as well as a shared directory whose specific use case is still being fleshed out.</p>
+<p>Access to this JupyterHub is handled via GitHub authentication and a team under the NCAR organization in GitHub.</p>
 </div>
 <div class="section" id="rancher">
 <h3><a class="reference internal" href="../how-to/K8s/Rancher/rancher-intro.html"><span class="doc std std-doc">Rancher</span></a><a class="headerlink" href="#rancher" title="Permalink to this headline">¶</a></h3>
@@ -866,15 +888,27 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
 </div>
 <p>CISL operates a Rancher cluster to help manage k8s clusters. It provides the ability to manage multiple clusters and services</p>
 </div>
+<div class="section" id="harbor-container-registry">
+<h3><a class="reference internal" href="../how-to/harbor/harbor-intro.html"><span class="doc std std-doc">Harbor - Container Registry</span></a><a class="headerlink" href="#harbor-container-registry" title="Permalink to this headline">¶</a></h3>
+<p>We utilize <a class="reference external" href="https://goharbor.io/">Harbor</a> to provide a container registry based on open source software that is closer to the infrastructure running containers. A local registry allows us to utilize network infrastructure and available bandwidth between hardware for an increase in speed when pushing and pulling images locally. Harbor also includes an image scanner that will provide reports on any vulnerabilities that an image contains so we can address security concerns with images directly.</p>
+</div>
+<div class="section" id="argo-cd-continuous-delivery">
+<h3><a class="reference internal" href="../how-to/argocd/argo-user.html"><span class="doc std std-doc">Argo CD (Continuous Delivery)</span></a><a class="headerlink" href="#argo-cd-continuous-delivery" title="Permalink to this headline">¶</a></h3>
+<p>We have an instance of <a class="reference external" href="https://argo-cd.readthedocs.io/en/stable/">Argo CD</a> installed to help us handle Continuous Delivery (CD). What this ultimately means is if your applications Git repo is setup in Argo CD it can be automatically configured to deploy any changes made to that repository without any intervention by the user or admins. This allows users to deploy their applications automatically to k8s without having to worry about interacting directly with Kubernetes.</p>
+</div>
 <div class="section" id="storage">
 <h3>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="rook">
+<h4>Rook<a class="headerlink" href="#rook" title="Permalink to this headline">¶</a></h4>
+<p><a class="reference external" href="https://rook.io/docs/rook/v1.11/Getting-Started/intro/">Rook</a> is used to provide storage orchestration to k8s workloads. Rook utilizes Ceph as a distributed storage system to provide file, block, and object storage capabilities to the k8s cluster and the underlying objects hosted.</p>
+</div>
 <div class="section" id="glade">
-<h4>GLADE<a class="headerlink" href="#glade" title="Permalink to this headline">¶</a></h4>
-<p>NFS is utilized to provide read only (RO) only access to <a class="reference external" href="https://arc.ucar.edu/knowledge_base/68878466">GLADE</a> on the Spawned JupyterHub user environments. Currently the collections and campaign directories on GLADE are available as RO.</p>
+<h4><a class="reference external" href="https://arc.ucar.edu/knowledge_base/68878466">GLADE</a><a class="headerlink" href="#glade" title="Permalink to this headline">¶</a></h4>
+<p>NFS is utilized to provide read only (RO) only access to GLADE on the Spawned JupyterHub user environments. Currently the collections and campaign directories on GLADE are available as RO.</p>
 </div>
 <div class="section" id="stratus">
-<h4>Stratus<a class="headerlink" href="#stratus" title="Permalink to this headline">¶</a></h4>
-<p>S3 buckets are provided via CISLs object storage platform <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549594">Stratus</a>.</p>
+<h4><a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549594">Stratus</a><a class="headerlink" href="#stratus" title="Permalink to this headline">¶</a></h4>
+<p>S3 buckets are provided via CISLs object storage platform Stratus.</p>
 </div>
 </div>
 </div>
@@ -982,7 +1016,7 @@ We would utilize this experience to leverage 2i2c knowledge for our own educatio
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 28 September 2023.
+          Last updated on 29 September 2023.
         </p>
       </div>
     </div>

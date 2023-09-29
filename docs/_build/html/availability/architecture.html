@@ -232,7 +232,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Architecture Diagram
+   Current Architecture Diagram
   </a>
  </li>
 </ul>
@@ -743,6 +743,48 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> On this page
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Current Architecture Diagram
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#architecture-explanation">
+   Architecture Explanation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kubernetes-install">
+     Kubernetes Install
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#securely-exposing-services">
+     Securely Exposing Services
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#storage-options">
+     Storage Options
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#rook">
+       Rook
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -754,6 +796,25 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
   <div class="tex2jax_ignore mathjax_ignore section" id="current-architecture-diagram">
 <h1>Current Architecture Diagram<a class="headerlink" href="#current-architecture-diagram" title="Permalink to this headline">¶</a></h1>
 <p><a href="https://ncar.github.io/cisl-cloud/_static/ccpp-diagram.png"><img src="https://ncar.github.io/cisl-cloud/_static/ccpp-diagram.png"/></a></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="architecture-explanation">
+<h1>Architecture Explanation<a class="headerlink" href="#architecture-explanation" title="Permalink to this headline">¶</a></h1>
+<p>All of the CISL Cloud infrastructure is deployed inside the NCAR network and is only accessible while connected to the network. This includes the hardware and everything installed on it. Communication to external services goes through a firewall that controls what is permitted access and what is denied.</p>
+<div class="section" id="kubernetes-install">
+<h2>Kubernetes Install<a class="headerlink" href="#kubernetes-install" title="Permalink to this headline">¶</a></h2>
+<p>We have installed <a class="reference external" href="https://kubernetes.io/">Kubernetes (k8s)</a> master nodes on virtual machines running Linux and worker nodes on bare metal servers running Linux. Currently we have 5 Supermicro servers with 2 Intel Xeon Gold 6326 processors with 16 cores each, 512 GB of RAM, and Nvidia A2 Tensor GPUs that have 1280 cores and 16 GB of memory.</p>
+</div>
+<div class="section" id="securely-exposing-services">
+<h2>Securely Exposing Services<a class="headerlink" href="#securely-exposing-services" title="Permalink to this headline">¶</a></h2>
+<p>On the k8s cluster an <a class="reference external" href="https://docs.nginx.com/nginx-ingress-controller/">Nginx Ingress controller</a> is configured to expose Services on the network. This is coupled with <a class="reference external" href="https://bitnami.com/stack/external-dns/helm">ExternalDNS</a> in order to create DNS entries that resolve to FQDNs in order to browse to URLs of services deployed. In order to make sure the URLs exposed are secure we implemented <a class="reference external" href="https://cert-manager.io/">cert-manager</a> to assign valid certificates to applications and perform lifecycle management on the issued certificates. This ensures all services are accessible only via HTTPS with valid certificates.</p>
+</div>
+<div class="section" id="storage-options">
+<h2>Storage Options<a class="headerlink" href="#storage-options" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="rook">
+<h3>Rook<a class="headerlink" href="#rook" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://rook.io/docs/rook/v1.11/Getting-Started/intro/">Rook</a> is used to provide storage orchestration to k8s workloads. Rook utilizes Ceph as a distributed storage system to provide file, block, and object storage capabilities to the k8s cluster and the underlying objects hosted.</p>
+</div>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -838,7 +899,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 28 September 2023.
+          Last updated on 29 September 2023.
         </p>
       </div>
     </div>

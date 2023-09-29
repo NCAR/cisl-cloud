@@ -231,7 +231,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="availability/architecture.html">
-   Architecture Diagram
+   Current Architecture Diagram
   </a>
  </li>
 </ul>
@@ -755,6 +755,11 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#documentation">
+     Documentation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ncar-jupyterhub">
      NCAR JupyterHub
     </a>
@@ -765,8 +770,33 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#kubernetes-k8s">
+     Kubernetes (k8s)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#web-hosting">
+     Web Hosting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ncar-rancher">
      NCAR Rancher
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#harbor-container-registry">
+     Harbor Container Registry
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#continuous-deployment">
+     Continuous Deployment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#access-to-data-on-glade">
+     Access to Data on GLADE
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -810,11 +840,16 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <p>Welcome to the NCAR | CISL Cloud Pilot documentation page. Below is a collection of useful information and links to help utilize resources provided by NCAR for interactive scientific analysis.</p>
 <div class="section" id="resources">
 <h2><a class="reference internal" href="availability/availability.html"><span class="doc std std-doc">Resources</span></a><a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="documentation">
+<h3>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h3>
+<p>This documentation site is built on top of <a class="reference external" href="https://jupyterbook.org/en/stable/intro.html#">Jupyter Book</a> and is hosted via <a class="reference external" href="https://pages.github.com/">GitHub pages</a> and on <a class="reference external" href="https://kubernetes.io/">Kubernetes</a>(k8s). It customizes the <a class="reference external" href="https://sphinx-pythia-theme.readthedocs.io/en/latest/about.html">Pythia Sphinx Theme</a> to align with UCAR|NCAR branding. It should be a great resource to discover and utilize the services offered in the NCAR | CISL Cloud.</p>
+<p>If any pages are unclear, are missing information, or require any edits &amp; updates please open a github issue by using the dropdown GitHub icon at the top of each page. Please be descriptive in your issue description so the page can be updated appropriately.</p>
+</div>
 <div class="section" id="ncar-jupyterhub">
 <h3>NCAR JupyterHub<a class="headerlink" href="#ncar-jupyterhub" title="Permalink to this headline">¶</a></h3>
-<p>NCAR operates a JupyterHub instance on Kubernetes. The main documentation page for this service can be found <a class="reference internal" href="how-to/k8sJH/k8sJH-intro.html"><span class="doc std std-doc">here</span></a></p>
+<p>NCAR operates a <a class="reference external" href="https://jupyter.org/hub">JupyterHub</a> instance on <a class="reference external" href="https://kubernetes.io/">Kubernetes</a>. The main documentation page for this service can be found by clicking this <a class="reference internal" href="how-to/k8sJH/k8sJH-intro.html"><span class="doc std std-doc">link to internal NCAR JupyterHub Documentation</span></a></p>
 <p>A link to the NCAR JupyterHub can always be found on this documentation page under the Resources tab at the top. It can also be found below:</p>
-<p><a class="reference external" href="https://jupyter.k8s.ucar.edu/">Login to NCAR JupyterHub</a></p>
+<p><a class="reference external" href="https://jupyter.k8s.ucar.edu/">Link to Login to NCAR JupyterHub</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>Access is currently granted to members of the <a class="reference external" href="https://github.com/orgs/NCAR/teams/2i2c-cloud-users">NCAR/2i2c-cloud-users</a> Github Team. If you require access please follow these <a class="reference internal" href="how-to/k8sJH/access.html"><span class="doc std std-doc">instructions</span></a></p>
@@ -822,7 +857,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </div>
 <div class="section" id="i2c-jupyterhub">
 <h3>2i2c JupyterHub<a class="headerlink" href="#i2c-jupyterhub" title="Permalink to this headline">¶</a></h3>
-<p>2i2c operates a JupyterHub instance for NCAR use on AWS. The main documentation page for this service can be found <a class="reference internal" href="how-to/2i2cJH/2i2cJH-intro.html"><span class="doc std std-doc">here</span></a></p>
+<p>2i2c operates a <a class="reference external" href="https://kubernetes.io/">JupyterHub</a> instance for NCAR use on <a class="reference external" href="https://aws.amazon.com/">AWS</a>. The main documentation page for this service can be found by clicking this <a class="reference internal" href="how-to/2i2cJH/2i2cJH-intro.html"><span class="doc std std-doc">link to internal 2i2c JupyterHub Documentation</span></a></p>
 <p>A link to the 2i2c JupyterHub can always be found on this documentation page under the Resources tab at the top. It can also be found below:</p>
 <p><a class="reference external" href="https://jupyter.k8s.ucar.edu/">Login to 2i2c JupyterHub</a></p>
 <div class="admonition note">
@@ -830,19 +865,47 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <p>Access is currently granted to members of the <a class="reference external" href="https://github.com/orgs/NCAR/teams/2i2c-cloud-users">NCAR/2i2c-cloud-users</a> Github Team. If you require access please follow these <a class="reference internal" href="how-to/2i2cJH/access.html"><span class="doc std std-doc">instructions</span></a></p>
 </div>
 </div>
+<div class="section" id="kubernetes-k8s">
+<h3>Kubernetes (k8s)<a class="headerlink" href="#kubernetes-k8s" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://kubernetes.io/">Kubernetes</a>, often referred to as k8s with the 8 simply standing for the number of letters being replaced, is the industry standard for container orchestration. CISL operates a k8s cluster built on top of Linux running on Virtual Machines and bare metal. The cluster is architected to include shared resources that enable quick and secure ways to expose applications while providing a variety of persistent storage options. This is all utilized to host applications such as JupyterHub, JupyterBook, Rancher, Harbor, and custom built web applications for data science applications. More details about these applications can be found below or via the different pages included in this documentation.</p>
+</div>
+<div class="section" id="web-hosting">
+<h3>Web Hosting<a class="headerlink" href="#web-hosting" title="Permalink to this headline">¶</a></h3>
+<p>CISL provides the ability to host containerized web applications on k8s. Using k8s to host these containerized workloads offers advantages when it comes to accessing applications via HTTPS URLs while providing highly available and redundant compute resources.</p>
+<p>The main documentation page on this service can be found by click this <a class="reference internal" href="how-to/K8s/Hosting/web-intro.html"><span class="doc std std-doc">link to internal Web Hosting Documentation</span></a></p>
+</div>
 <div class="section" id="ncar-rancher">
 <h3>NCAR Rancher<a class="headerlink" href="#ncar-rancher" title="Permalink to this headline">¶</a></h3>
-<p>NCAR operates an instance of Rancher to provide a container management platform to the community. The main documentation page for this service can be found <a class="reference internal" href="how-to/K8s/Rancher/rancher-intro.html"><span class="doc std std-doc">here</span></a></p>
+<p>NCAR operates an instance of <a class="reference external" href="https://www.rancher.com/">Rancher</a> to provide a container management platform to the community. The main documentation page for this service can be found by clicking this <a class="reference internal" href="how-to/K8s/Rancher/rancher-intro.html"><span class="doc std std-doc">link to internal Rancher Documentation</span></a></p>
 <p>A link to the NCAR Rancher instance can always be found on this documentation page under the Resources tab at the top. It can also be found below:</p>
-<p><a class="reference external" href="https://rancher.k8s.ucar.edu/">Login to NCAR Rancher</a></p>
+<p><a class="reference external" href="https://rancher.k8s.ucar.edu/">Link to Login to NCAR Rancher</a></p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><a class="reference external" href="https://www.rancher.com/">Rancher</a> is an open source container management platform built for organizations that deploy containers in production.</p>
 </div>
 </div>
+<div class="section" id="harbor-container-registry">
+<h3>Harbor Container Registry<a class="headerlink" href="#harbor-container-registry" title="Permalink to this headline">¶</a></h3>
+<p>We utilize <a class="reference external" href="https://goharbor.io/">Harbor</a> to provide a container registry based on open source software that is closer to the infrastructure running containers. A local registry allows us to utilize network infrastructure and available bandwidth between hardware for an increase in speed when pushing and pulling images locally. Harbor also includes an image scanner that will provide reports on any vulnerabilities that an image contains so we can address security concerns with images directly.</p>
+<p>Documentation on accessing and utilizing Harbor can be found at this <a class="reference internal" href="how-to/harbor/harbor-intro.html"><span class="doc std std-doc">link to internal Documentation</span></a></p>
+<p>A link to Harbor is present under the Resources tab at the top of this documentation. It can also be found below:</p>
+<p><a class="reference external" href="https://hub.k8s.ucar.edu/">Link to Login to Harbor</a></p>
+</div>
+<div class="section" id="continuous-deployment">
+<h3>Continuous Deployment<a class="headerlink" href="#continuous-deployment" title="Permalink to this headline">¶</a></h3>
+<p>We have an instance of <a class="reference external" href="https://argo-cd.readthedocs.io/en/stable/">Argo CD</a> installed to help us handle Continuous Delivery (CD). What this ultimately means is if your applications Git repo is setup in Argo CD it can be automatically configured to deploy any changes made to that repository without any intervention by the user or admins. This allows users to deploy their applications automatically to k8s without having to worry about interacting directly with Kubernetes. If you are looking for more information on how to start creating an application to host on k8s please look at the documentation <a class="reference external" href="https://ncar.github.io/cisl-cloud/how-to/K8s/Hosting/web-intro.html">here</a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you have an application that you want to integrate into our CD platform please submit a ticket <a class="reference external" href="https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&amp;issuetype=10905">here</a> and one of our administrators will be in tough to work through deployment with you.</p>
+</div>
+</div>
+<div class="section" id="access-to-data-on-glade">
+<h3>Access to Data on GLADE<a class="headerlink" href="#access-to-data-on-glade" title="Permalink to this headline">¶</a></h3>
+<p>The k8s cluster has read only access setup to <a class="reference external" href="https://arc.ucar.edu/knowledge_base/68878466">GLADE</a> collections and campaign. This allows us to mount it directly in JupyterHub environments so it mimics how data is accessed on HPC JupyterHub. The ability to mount GLADE as a volume inside containers is also possible and could be incorporated in interactive visualizations for example so data does not have to be included in the container image which reduces image size.</p>
+</div>
 <div class="section" id="stratus-object-storage">
 <h3>Stratus Object Storage<a class="headerlink" href="#stratus-object-storage" title="Permalink to this headline">¶</a></h3>
-<p>NCAR has an object storage solution on premise called Stratus. Stratus can be accessed via API calls in a similar fashion to Amazon AWS S3. The main documentation page for this service can be found <a class="reference internal" href="how-to/Stratus/stratus-intro.html"><span class="doc std std-doc">here</span></a></p>
+<p>NCAR has an object storage solution on premise called <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549594">Stratus</a>. Stratus can be accessed via API calls in a similar fashion to Amazon AWS S3. The main documentation page for this service can be found at this <a class="reference internal" href="how-to/Stratus/stratus-intro.html"><span class="doc std std-doc">link to internal Documentation</span></a></p>
 <p>A link to the Stratus Web UI can always be found on this documentation page under the Resources tab at the top. It can also be found below:</p>
 <p><a class="reference external" href="https://stratus-admin.ucar.edu:10443/asview">Login to Stratus</a></p>
 <div class="admonition note">
@@ -957,7 +1020,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 28 September 2023.
+          Last updated on 29 September 2023.
         </p>
       </div>
     </div>
