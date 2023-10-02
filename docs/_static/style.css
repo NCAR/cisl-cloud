@@ -235,3 +235,20 @@ code, .rst-content tt, .rst-content code {
     font-size: 16px;
     margin-left: -8px;
 }
+
+tr:nth-child(even) {
+    background-color: #C3D7EE;
+}
+
+tr td {
+    border-right: 1px solid #dee2e6;
+}
+
+th {
+    background-color: #53565A;
+    border-right: 1px solid #ffffff;
+  }
+
+th p {
+    color: #ffffff !important;
+}

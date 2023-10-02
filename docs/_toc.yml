@@ -7,19 +7,19 @@ parts:
   - chapters:
     - file: overview/about
     - file: overview/use-cases
-    - file: overview/goals
     - file: overview/services
+    - file: overview/goals
   - caption: Availability
     chapters:
       - title: Current Offering
         file: availability/availability
-      - title: Hardware
-        file: availability/hw-resources
       - title: Architecture Diagram
         file: availability/architecture
+      - title: Current Hardware
+        file: availability/hw-resources
   - caption: Administer the CISL Cloud 
     chapters:
-      - title: Jupyter Book
+      - title: Documentation
         file: how-to/jupyter-book/jb-intro
         sections:
           - file: how-to/jupyter-book/create-jb
@@ -38,7 +38,7 @@ parts:
           file: how-to/k8sJH/customize/custom
           sections:
             - title: Setup GPUs
-              file: how-to/gpu/gpu-admin
+              file: how-to/k8sJH/gpu/gpu-admin
             - title: Customize Singleuser Image
               file: how-to/k8sJH/customize/customize-docker
             - title: GitHub Actions
@@ -51,17 +51,17 @@ parts:
           - file: how-to/K8s/Rancher/create-namespace
           - file: how-to/K8s/Rancher/permissions
         - title: Harbor
-          file: how-to/harbor/install-harbor
+          file: how-to/K8s/harbor/install-harbor
         - file: how-to/K8s/Hosting/web-hosting
           title: Host web applications
           sections:
             - file: how-to/K8s/Hosting/web-kubectl
             - file: how-to/K8s/Hosting/web-helm
         - title: Argo CD
-          file: how-to/argocd/argo-intro
+          file: how-to/K8s/argocd/argo-intro
           sections:
             - title: Update Application
-              file: how-to/argocd/argo-update
+              file: how-to/K8s/argocd/argo-update
   - caption: Use the CISL Cloud 
     chapters:
       - title: Agile Interaction
@@ -84,25 +84,25 @@ parts:
         - title: Utilizing GitHub
           file: how-to/k8sJH/customize/github
         - title: Dask
-          file: how-to/dask/dask-intro
+          file: how-to/k8sJH/dask/dask-intro
           sections:
-            - file: how-to/dask/dask-local
+            - file: how-to/k8sJH/dask/dask-local
               title: Dask LocalCluster
-            - file: how-to/dask/dask-gateway
+            - file: how-to/k8sJH/dask/dask-gateway
               title: Dask Gateway
-            - file: how-to/dask/dask-jobqueue
+            - file: how-to/k8sJH/dask/dask-jobqueue
               title: Dask Jobqueue
         - title: GPUs
-          file: how-to/gpu/gpu-intro
+          file: how-to/k8sJH/gpu/gpu-intro
       - title: HPC JupyterHub
         url: https://arc.ucar.edu/knowledge_base/70549913
       - title: Harbor - Container Registry
-        file: how-to/harbor/harbor-intro
+        file: how-to/K8s/harbor/harbor-intro
         sections:
         - title: Push & Pull Images
-          file: how-to/harbor/push-pull
+          file: how-to/K8s/harbor/push-pull
         - title: Vulnerability Scan
-          file: how-to/harbor/scanner
+          file: how-to/K8s/harbor/scanner
       - title: Hosting web applications 
         file: how-to/K8s/Hosting/web-intro
         sections:
@@ -111,8 +111,8 @@ parts:
         - file: how-to/K8s/Hosting/book-image
           title: Containerize Jupyter Book
         - file: how-to/K8s/Hosting/deploy
-      - title: Continuous Deployment 
-        file: how-to/argocd/argo-user
+        - title: Continuous Deployment 
+          file: how-to/K8s/argocd/argo-user
       - title: Stratus - S3
         file: how-to/Stratus/stratus-intro
         sections:

@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hardware Resources" href="hw-resources.html" />
-    <link rel="prev" title="Potential Services" href="../overview/services.html" />
+    <link rel="next" title="Current Architecture Diagram" href="architecture.html" />
+    <link rel="prev" title="Goals" href="../overview/goals.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -204,13 +204,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../overview/goals.html">
-   Goals
+  <a class="reference internal" href="../overview/services.html">
+   Potential Services
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../overview/services.html">
-   Potential Services
+  <a class="reference internal" href="../overview/goals.html">
+   Goals
   </a>
  </li>
 </ul>
@@ -226,13 +226,13 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="hw-resources.html">
-   Hardware
+  <a class="reference internal" href="architecture.html">
+   Current Architecture Diagram
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="architecture.html">
-   Current Architecture Diagram
+  <a class="reference internal" href="hw-resources.html">
+   Current Hardware
   </a>
  </li>
 </ul>
@@ -244,7 +244,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../how-to/jupyter-book/jb-intro.html">
-   Jupyter Book
+   Documentation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -254,7 +254,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../how-to/jupyter-book/create-jb.html">
-     Create CCPP Docs
+     Getting started
     </a>
    </li>
    <li class="toctree-l2">
@@ -305,7 +305,7 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/gpu/gpu-admin.html">
+      <a class="reference internal" href="../how-to/k8sJH/gpu/gpu-admin.html">
        Setup GPUs
       </a>
      </li>
@@ -354,7 +354,7 @@ const thebe_selector_output = ".output, .cell_output"
     </ul>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/harbor/install-harbor.html">
+    <a class="reference internal" href="../how-to/K8s/harbor/install-harbor.html">
      Harbor
     </a>
    </li>
@@ -386,7 +386,7 @@ const thebe_selector_output = ".output, .cell_output"
     </ul>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/argocd/argo-intro.html">
+    <a class="reference internal" href="../how-to/K8s/argocd/argo-intro.html">
      Argo CD
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
@@ -396,7 +396,7 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/argocd/argo-update.html">
+      <a class="reference internal" href="../how-to/K8s/argocd/argo-update.html">
        Update your Argo CD Application
       </a>
      </li>
@@ -486,7 +486,7 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/dask/dask-intro.html">
+    <a class="reference internal" href="../how-to/k8sJH/dask/dask-intro.html">
      Dask
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
@@ -496,24 +496,24 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/dask/dask-local.html">
+      <a class="reference internal" href="../how-to/k8sJH/dask/dask-local.html">
        Dask LocalCluster
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/dask/dask-gateway.html">
+      <a class="reference internal" href="../how-to/k8sJH/dask/dask-gateway.html">
        Dask Gateway
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/dask/dask-jobqueue.html">
+      <a class="reference internal" href="../how-to/k8sJH/dask/dask-jobqueue.html">
        Dask Jobqueue
       </a>
      </li>
     </ul>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/gpu/gpu-intro.html">
+    <a class="reference internal" href="../how-to/k8sJH/gpu/gpu-intro.html">
      GPUs
     </a>
    </li>
@@ -525,7 +525,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/harbor/harbor-intro.html">
+  <a class="reference internal" href="../how-to/K8s/harbor/harbor-intro.html">
    Harbor - Container Registry
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
@@ -535,12 +535,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/harbor/push-pull.html">
+    <a class="reference internal" href="../how-to/K8s/harbor/push-pull.html">
      Push &amp; Pull Images
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/harbor/scanner.html">
+    <a class="reference internal" href="../how-to/K8s/harbor/scanner.html">
      Vulnerability Scan
     </a>
    </li>
@@ -571,12 +571,12 @@ const thebe_selector_output = ".output, .cell_output"
      Deploy your application
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../how-to/K8s/argocd/argo-user.html">
+     Continuous Deployment
+    </a>
+   </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../how-to/argocd/argo-user.html">
-   Continuous Deployment
-  </a>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../how-to/Stratus/stratus-intro.html">
@@ -815,8 +815,8 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nfs">
-     NFS
+    <a class="reference internal nav-link" href="#persistent-volumes">
+     Persistent Volumes
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -872,13 +872,13 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <p>We have an instance of Rancher running that provides a user interface for interacting with k8s clusters. Users can request access to the rancher instance, login, and get a kubeconfig to access and deploy k8s resources. User permissions are controlled in a way that limits what they can view and deploy to.</p>
 </div>
 <div class="section" id="harbor">
-<h3><a class="reference internal" href="../how-to/harbor/harbor-intro.html"><span class="doc std std-doc">Harbor</span></a><a class="headerlink" href="#harbor" title="Permalink to this headline">¶</a></h3>
+<h3><a class="reference internal" href="../how-to/K8s/harbor/harbor-intro.html"><span class="doc std std-doc">Harbor</span></a><a class="headerlink" href="#harbor" title="Permalink to this headline">¶</a></h3>
 <p><em><strong>STATUS:</strong></em> <em>In Testing</em></p>
 <p><strong>URL :</strong> <a class="reference external" href="https://hub.k8s.ucar.edu/">https://hub.k8s.ucar.edu/</a></p>
 <p>We utilize <a class="reference external" href="https://goharbor.io/">Harbor</a> to provide a container registry based on open source software that is closer to the infrastructure running containers. A local registry allows us to utilize network infrastructure and available bandwidth between hardware for an increase in speed when pushing and pulling images locally. Harbor also includes an image scanner that will provide reports on any vulnerabilities that an image contains so we can address security concerns with images directly.</p>
 </div>
 <div class="section" id="argo-cd">
-<h3><a class="reference internal" href="../how-to/argocd/argo-user.html"><span class="doc std std-doc">Argo CD</span></a><a class="headerlink" href="#argo-cd" title="Permalink to this headline">¶</a></h3>
+<h3><a class="reference internal" href="../how-to/K8s/argocd/argo-user.html"><span class="doc std std-doc">Argo CD</span></a><a class="headerlink" href="#argo-cd" title="Permalink to this headline">¶</a></h3>
 <p><em><strong>STATUS:</strong></em> <em>In Testing</em></p>
 <p>We have an instance of <a class="reference external" href="https://argo-cd.readthedocs.io/en/stable/">Argo CD</a> installed to help us handle Continuous Delivery (CD). What this ultimately means is if your applications Git repo is setup in Argo CD it can be automatically configured to deploy any changes made to that repository without any intervention by the user or admins. This allows users to deploy their applications automatically to k8s without having to worry about interacting directly with Kubernetes.</p>
 </div>
@@ -889,9 +889,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </div>
 <div class="section" id="storage">
 <h2>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="nfs">
-<h3>NFS<a class="headerlink" href="#nfs" title="Permalink to this headline">¶</a></h3>
-<p>We can provide general shared storage in the form of an NFS volume. Access to these systems is restricted by IP address and mounting is limited to on-premise machines. NFS mounting across wide area networks is not recommended.</p>
+<div class="section" id="persistent-volumes">
+<h3>Persistent Volumes<a class="headerlink" href="#persistent-volumes" title="Permalink to this headline">¶</a></h3>
+<p>Rook is used to provide storage orchestration to k8s workloads. Rook utilizes Ceph as a distributed storage system to provide persistent file, block, and object storage capabilities to the k8s cluster and the underlying objects hosted.</p>
 </div>
 <div class="section" id="object-storage">
 <h3>Object Storage<a class="headerlink" href="#object-storage" title="Permalink to this headline">¶</a></h3>
@@ -900,7 +900,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </div>
 <div class="section" id="network-services">
 <h2>Network Services<a class="headerlink" href="#network-services" title="Permalink to this headline">¶</a></h2>
-<p>Our systems will have routable IP addresses assigned and configured via DHCP. DNS records can also be added to provide full name resolution for systems provided.</p>
+<p>Our system has ExternalDNS configured to provide DNS records for full name resolution and useable URLs for hosted systems.</p>
 </div>
 </div>
 
@@ -927,17 +927,17 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               </div>
               <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../overview/services.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../overview/goals.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Potential Services</p>
+            <p class="prev-next-title">Goals</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="hw-resources.html" title="next page">
+    <a class='right-next' id="next-link" href="architecture.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Hardware Resources</p>
+        <p class="prev-next-title">Current Architecture Diagram</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -986,7 +986,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 29 September 2023.
+          Last updated on 2 October 2023.
         </p>
       </div>
     </div>
