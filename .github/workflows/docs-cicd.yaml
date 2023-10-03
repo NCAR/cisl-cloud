@@ -23,8 +23,9 @@ jobs:
           pip install jupyter-book
           PATH="${PATH}:${HOME}/.local/bin"
       - name: Build book HTML
+        context: docs
         run: |
-          jupyter-book build .
+          jupyter-book build docs/.
       - name: Push _build/html to gh-pages
         run: |
           sudo chown -R $(whoami):$(whoami) .
