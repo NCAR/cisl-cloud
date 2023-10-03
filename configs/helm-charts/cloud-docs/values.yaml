@@ -13,3 +13,4 @@ webapp:
     memory: 1G
     cpu: 2    
     image: cislcloudpilot/docs:2023-10-03
+appVersion: 2023-10-03
