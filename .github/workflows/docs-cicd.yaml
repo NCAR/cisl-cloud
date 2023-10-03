@@ -21,6 +21,7 @@ jobs:
           sudo apt-get install python3-pip
           pip install ghp-import
           pip install jupyter-book
+          pip install sphinx_pythia_theme
           PATH="${PATH}:${HOME}/.local/bin"
       - name: Build book HTML
         run: |
