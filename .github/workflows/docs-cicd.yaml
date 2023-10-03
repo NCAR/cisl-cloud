@@ -33,4 +33,4 @@ jobs:
           git config --global user.name "$GITHUB_ACTOR"
           git remote set-url origin "https://$GITHUB_ACTOR:${{ secrets.NC_GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
           ls -lrt
-          ghp-import -n -p -f _build/html
+          ghp-import -n -p -f docs/_build/html
