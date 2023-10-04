@@ -75,17 +75,13 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       # Build and push the docker image
-      - name: Run some cmds
-        run: |
-          pwd
-          ls -la
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
           # Provide the current directory as build context 
-          context: docs/.
+          context: .
           # Specify where the Dockerfile is located in relation to the repo base path
-          file: Dockerfile
+          file: docs/Dockerfile
           # Enable the push to docker hub
           push: true
           # Provide the tags to apply to the image, this example uses the latest image tag 
