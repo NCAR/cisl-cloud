@@ -79,7 +79,7 @@ jobs:
         run: |
           pwd
           ls -la
-          ls -la /docs
+          ls -la docs
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
