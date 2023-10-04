@@ -75,6 +75,10 @@ jobs:
         id: date
         run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
       # Build and push the docker image
+      - name: Run some cmds
+        run: |
+          pwd
+          ls -la
       - name: Build and push Docker image
         uses: docker/build-push-action@v4
         with:
