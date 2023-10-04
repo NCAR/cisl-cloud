@@ -36,6 +36,7 @@ jobs:
           ghp-import -n -p -f docs/_build/html
   # Name the job(s)
   build-docs-image:
+    needs: build-book-ghp
     # Define where the job should run in this case it will be run on the latest ubuntu image
     runs-on: ubuntu-latest
     # Set the steps to take in order
