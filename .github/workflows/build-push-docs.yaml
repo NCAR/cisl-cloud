@@ -1,0 +1,101 @@
+# This workflow builds docker images and pushes them to a Docker Hub Repository
+# This workflow is specific to the base-notebook directory and image
+# Set the workflow name
+name: Build Documentation container
+
+# Define the trigger that starts the action
+# For this workflow the trigger is on a push that changes anything in the docs/_build/html/ path
+on:
+  push:
+    branches:
+      - gh-pages
+
+# Define the actions that are going to take place as part of this workflow    
+jobs:
+  # Name the job(s)
+  build-docs-image:
+    # Define where the job should run in this case it will be run on the latest ubuntu image
+    runs-on: ubuntu-latest
+    # Set the steps to take in order
+    steps:
+      # Step 1 is to checkout the github repo used to build the Dockerfile
+      - name: Check out the gh-pages branch in main repo
+        uses: actions/checkout@v3
+      # Step 2 is to login to docker hub so the image can be pushed
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.9
+      - name: Install Python dependencies
+        run: |
+          sudo apt-get install python3-pip
+          pip install jupyter-book
+          pip install sphinx_pythia_theme
+          PATH="${PATH}:${HOME}/.local/bin"
+      - name: Build book HTML
+        run: |
+          jupyter-book build docs/.
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        # GitHub secrets are used to provide login information to docker hub
+        with:
+          username: ${{ secrets.CCP_DOCKERHUB_USERNAME }}
+          password: ${{ secrets.CCP_DOCKERHUB_TOKEN  }}
+      # Pull relevant metadata out of the docker image used
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v4
+        with:
+          images: cislcloudpilot/docs
+      # Get the date to apply to image tag
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      # Build and push the docker image
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          # Provide the current directory as build context 
+          context: docs/.
+          # Specify where the Dockerfile is located in relation to the repo base path
+          file: Dockerfile
+          # Enable the push to docker hub
+          push: true
+          # Provide the tags to apply to the image, this example uses the latest image tag 
+          tags: |
+            cislcloudpilot/docs:latest
+            cislcloudpilot/docs:${{ steps.date.outputs.date }}
+          # Apply labels as defined in the Docker image metadata
+          labels: ${{ steps.meta.outputs.labels }}
+  # Name the job(s)
+  update-helm:
+    # Define where the job should run in this case it will be run on the latest ubuntu image
+    runs-on: ubuntu-latest
+    # Set the steps to take in order
+    needs: build-docs-image
+    steps:
+      # Step 1 is to checkout the github repo used to build the Dockerfile
+      - name: Check out the main repo
+        uses: actions/checkout@v3
+        with:
+          ref: main
+      # Get the date to apply to image tag
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+      - name: Update Helm values.yaml
+        run: | 
+          sed -i '15d' configs/helm-charts/cloud-docs/values.yaml
+          echo "    image: cislcloudpilot/docs:${{ steps.date.outputs.date }}" >> configs/helm-charts/cloud-docs/values.yaml
+      - name: Update Helm Chart.yaml
+        run: | 
+          sed -i '24d' configs/helm-charts/cloud-docs/Chart.yaml
+          echo "appVersion: '${{ steps.date.outputs.date }}'" >> configs/helm-charts/cloud-docs/Chart.yaml
+      - name: Run python script to update version by 1
+        run: python configs/helm-charts/cloud-docs/update_ver.py
+      - name: Commit changes
+        run: |
+          git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
+          git config --global user.name "$GITHUB_ACTOR"
+          git commit -a -m "Update Helm chart via GH Actions"
+          git push
