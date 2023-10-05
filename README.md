@@ -1,7 +1,8 @@
 # CISL Cloud Pilot Project
 
 ![Documentation CI/CD Status](https://github.com/NCAR/cisl-cloud/actions/workflows/docs-cicd.yaml/badge.svg)<br>
-![GitHub Pages Status](https://github.com/NCAR/cisl-cloud/actions/workflows/pages/pages-build-deployment/badge.svg)
+![GitHub Pages Status](https://github.com/NCAR/cisl-cloud/actions/workflows/pages/pages-build-deployment/badge.svg)<br>
+![JupyterHub User Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-basenb.yaml/badge.svg)
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
 
