@@ -70,7 +70,7 @@ jobs:
     # Define where the job should run in this case it will be run on the latest ubuntu image
     runs-on: ubuntu-latest
     # Set the steps to take in order
-    needs: build-docs-image
+    needs: build-docs
     steps:
       # Step 1 is to checkout the github repo used to build the Dockerfile
       - name: Check out the main repo
