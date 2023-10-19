@@ -4,18 +4,16 @@
 # This image provides a custom environment.yml and requirements.txt as well as
 # having some customizations injected into this Dockerfile 
 # The base image used is the docker-stacks-foundation by Jupyter
-# https://github.com/jupyter/docker-stacks/blob/main/docker-stacks-foundation/Dockerfile
+# https://github.com/jupyter/docker-stacks/blob/main/images/docker-stacks-foundation/Dockerfile
 
 FROM jupyter/docker-stacks-foundation:latest
 
 # Update version here and on the .github/workflow/build-push-basenb.yaml before pushing changes to the repo
 LABEL maintainer="CISL Cloud Pilot Team <cisl-cloud-pilot@ucar.edu>"
 
-ENV CONDA_ENV=cisl-cloud-base
-
-# Add User conda directory to path
-ENV NB_PYTHON_PREFIX=${HOME}/.conda
-ENV PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
+ENV CONDA_ENV=cisl-cloud-base \
+    NB_PYTHON_PREFIX=${HOME}/.conda \
+    PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
 # Fix: https://github.com/hadolint/hadolint/wiki/DL4006
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
@@ -72,12 +70,12 @@ RUN apt-get update --yes && \
 ###
 # GitHub Build
 ###
-COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+#COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
 
 ###
 # Local Build
 ###
-#COPY config/.condarc /opt/conda/
+COPY config/.condarc /opt/conda/
 
 WORKDIR /tmp
 
@@ -88,12 +86,12 @@ WORKDIR /tmp
 ###
 # GitHub Build
 ###
-COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
+#COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
 
 ###
 # Local Build
 ###
-#COPY environment.yml requirements.txt npl-2023b.yml r-4.3.yml /tmp/
+COPY environment.yml requirements.txt npl-2023b.yml r-4.3.yml /tmp/
 
 # Install required Python packages
 RUN mamba install --quiet --yes \
@@ -108,11 +106,11 @@ RUN mamba install --quiet --yes \
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
     # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
     # Create a kernel named cisl-cloud-base from the environment.yml file
-    mamba env create --name "${CONDA_ENV}" -f environment.yml && \
+    mamba env create -f environment.yml && \
     # Create a kernel named NPL-2023b from the environment.yml file
-    mamba env create --name "NPL-2023b" -f npl-2023b.yml && \
+    mamba env create -f npl-2023b.yml && \
     # Create a kernel named R-4.3 from the r-4.3.yml file
-    mamba env create --name "R-4.3" -f r-4.3.yml && \
+    mamba env create -f r-4.3.yml && \
     # Install extensions in to OS Python env
     pip install -r requirements.txt && \
     # Build Jupyter Config
@@ -192,28 +190,28 @@ ENTRYPOINT ["/srv/start"]
 # GitHub Actions Build
 ###
 # Copy local files as late as possible to avoid cache busting
-COPY configs/jupyter/base-notebook/scripts/start /srv/start
+#COPY configs/jupyter/base-notebook/scripts/start /srv/start
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+#COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
 # Local Build
 ###
-#COPY scripts/start /srv/start
-#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+COPY scripts/start /srv/start
+COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
 # GitHub Build
 ###
 # Copy the bash profile to autoload conda envs
-COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
-COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
+#COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
+#COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
 
 ###
 # Local Build
 ###
-#COPY config/.profile /.bash_profile
-#COPY config/.bashrc /etc/bash.bashrc
+COPY config/.profile /.bash_profile
+COPY config/.bashrc /etc/bash.bashrc
 
 # Cleanup files that were already installed
 RUN rm -rf /tmp/environment.yml && \
@@ -224,16 +222,24 @@ RUN rm -rf /tmp/environment.yml && \
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
 RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
     /etc/jupyter/jupyter_server_config.py > /etc/jupyter/jupyter_notebook_config.py && \
-    fix-permissions /etc/jupyter/ 
-
-# Used to allow folder deletions from user
-RUN sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' /etc/jupyter/jupyter_server_config.py
+    fix-permissions /etc/jupyter/ && \
+# Used to allow user deletions of folders and contents
+    sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' \
+    /etc/jupyter/jupyter_server_config.py
 
 # HEALTHCHECK documentation: https://docs.docker.com/engine/reference/builder/#healthcheck
 # This healtcheck works well for `lab`, `notebook`, `nbclassic`, `server` and `retro` jupyter commands
 # https://github.com/jupyter/docker-stacks/issues/915#issuecomment-1068528799
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
     CMD /etc/jupyter/docker_healthcheck.py || exit 1
+
+# Make the conda environments we install read only and executable for the user
+# They can run the environments but will get permission denied when trying to make changes
+# New environments are installed to /home/jovyan/.conda with write permissions for the users
+RUN chmod 755 /home/jovyan/.conda/cisl-cloud-base/* && \
+    chmod 755 /home/jovyan/.conda/npl-2023b/* && \
+    chmod 755 /home/jovyan/.conda/r-4.3/* && \
+    chmod 755 /opt/conda/share/jupyter/kernels/python3/*
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}

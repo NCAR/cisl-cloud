@@ -62,3 +62,12 @@ if "NB_UMASK" in os.environ:
 # Configure nb_conda_kernels to avoid registering jupyter kernels in our conda
 # environment again.
 c.CondaKernelSpecManager.env_filter = '/opt/conda/*'
+
+# Change the default name format so it just displays the environment name
+c.CondaKernelSpecManager.name_format = '{environment}'
+
+# Removes the default ipykernel  
+c.MultiKernelManager.ensure_native_kernel=False
+
+# Set the default kernel to be our cloud base
+c.MultiKernelManager.default_kernel_name = 'cisl-cloud-base' 
