@@ -70,12 +70,12 @@ RUN apt-get update --yes && \
 ###
 # GitHub Build
 ###
-#COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
 
 ###
 # Local Build
 ###
-COPY config/.condarc /opt/conda/
+#COPY config/.condarc /opt/conda/
 
 WORKDIR /tmp
 
@@ -86,12 +86,12 @@ WORKDIR /tmp
 ###
 # GitHub Build
 ###
-#COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
+COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
 
 ###
 # Local Build
 ###
-COPY environment.yml requirements.txt npl-2023b.yml r-4.3.yml /tmp/
+#COPY environment.yml requirements.txt npl-2023b.yml r-4.3.yml /tmp/
 
 # Install required Python packages
 RUN mamba install --quiet --yes \
@@ -190,28 +190,28 @@ ENTRYPOINT ["/srv/start"]
 # GitHub Actions Build
 ###
 # Copy local files as late as possible to avoid cache busting
-#COPY configs/jupyter/base-notebook/scripts/start /srv/start
+COPY configs/jupyter/base-notebook/scripts/start /srv/start
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-#COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
 # Local Build
 ###
-COPY scripts/start /srv/start
-COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+#COPY scripts/start /srv/start
+#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
 # GitHub Build
 ###
 # Copy the bash profile to autoload conda envs
-#COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
-#COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
+COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
+COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
 
 ###
 # Local Build
 ###
-COPY config/.profile /.bash_profile
-COPY config/.bashrc /etc/bash.bashrc
+#COPY config/.profile /.bash_profile
+#COPY config/.bashrc /etc/bash.bashrc
 
 # Cleanup files that were already installed
 RUN rm -rf /tmp/environment.yml && \
