@@ -25,6 +25,8 @@ parts:
           - file: how-to/jupyter-book/create-jb
           - file: how-to/jupyter-book/add-jb
           - file: how-to/jupyter-book/k8s-hosting
+      - title: Encrypting Secrets
+        file: how-to/sops-age/sops-age
       - title: Kubernetes (k8s)
         file: how-to/K8s/k8s-intro
         sections:
