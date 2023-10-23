@@ -1,21 +1,82 @@
 apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
-  name: incommon  # The name of an Issuer
+    # The name of an Issuer
+    name: incommon
 spec:
-  acme:
-    email: sis@ucar.edu # A valid email address
-    # for certificate expiry alerts
-    server: https://acme.sectigo.com/v2/InCommonRSAOV # The ACME server URL
-    externalAccountBinding:
-      keyID: 
-      keySecretRef:
-        name: eab-secret # The name of the Kubernetes Secret
-        # created with your HMAC
-        key: secret
-    privateKeySecretRef:
-      name: incommon-account-key # The private key created by Cert-Manager
-    solvers:
-    - http01:
-        ingress:
-          class: nginx
+    acme:
+        # A valid email address
+        email: ENC[AES256_GCM,data:um40joEl2nPXX6AD,iv:1KhmSA7Llc4VhHd+YRiPZ3zCST4ekr1uzE4YyqUZxzU=,tag:1AQjpSXDWHzuZcqW9Lny9g==,type:str]
+        # for certificate expiry alerts
+        # The ACME server URL
+        server: ENC[AES256_GCM,data:Nzt+9b0qJkjbGNDDor5p4698hoy3/poF9WTay/9RE8DVrvo5jI61JiU=,iv:9wqJAdSeyPAWIxIpvZO9w/6CMKwYFdXGbt9Tjxi43d4=,tag:dT1T7hsFKR7zu2paKHNhsg==,type:str]
+        externalAccountBinding:
+            keyID: ENC[AES256_GCM,data:E+VbvhmFILXN/MCkLABdEQt73/qUGQ==,iv:FaWCI+8fkdLt39QfOIBvxlb4u67WyekHDYnsK9TO0t4=,tag:Hmg0vh+ALCGrC9hoLlkLMw==,type:str]
+            keySecretRef:
+                #ENC[AES256_GCM,data:OLSJaW//s2fR26cWTPp52aL5Npx9IktTsvTAeHtzC1qefQ==,iv:bI8nIXoLQ7GoPSqXSJuhH1p6ZU3/jLlY7AG00BSE3Kc=,tag:n8NFY+kF5j27mPv48MRKnA==,type:comment]
+                name: ENC[AES256_GCM,data:F8Pne4KSvBJHMQ==,iv:3PsWqeRcUlEkADJtKaM5RC4/xja+z5T0fzAsxx9H3es=,tag:MJRMEVj910lf85Gtci/KfQ==,type:str]
+                #ENC[AES256_GCM,data:sKOPHZeK2AH+yWYgGtyhCvxjQtLf61k=,iv:zrjRHagx3Zd8zw2j8UNdN7EEZ/Y46IgCMByWqhdQs6Q=,tag:cz4PNQfK4MOua1u8Cn7zSw==,type:comment]
+                key: ENC[AES256_GCM,data:Iaa2HT8i,iv:8PO/vlc7xXhT4F9jf+a/Pgv9QKwpKchd08IW6tdRhn4=,tag:7FiKG/b6ZT+hmzUTKAEXrg==,type:str]
+        privateKeySecretRef:
+            #ENC[AES256_GCM,data:j2jWEL1+GryUoouC+b2QYhLXcNuC+MgfIFOgsw2G1mfsz4PR+CTJ8w==,iv:LOWrII95XkXssTdoCUpEQLKeP87TrTOm7y/M7oU/nKA=,tag:7C8EP4NIftwnUXZIhF4Jfw==,type:comment]
+            name: ENC[AES256_GCM,data:y7jGc269BPbjgPEHlpe6MyOfMd8=,iv:V0PeQorD72MkZ9ZJZOqVT+nmGF6MM/78AwHcSuROiAk=,tag:jDDC/JiIFB64c1CHNqv9KQ==,type:str]
+        solvers:
+            - http01:
+                ingress:
+                    class: nginx
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1ucetgj7k3whaqf9nulacsqarur6nrgzuyt59apeptu5cphd6ksdsqpy5he
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBzMXdwM0RkcXVKemtxNGx0
+            WWROcEFZRFBSWENVNGpnNGNOYVUremc1b1JFCkNTVUdPd2xyUU5lZUNqZ2Z3L1VO
+            Tk5wRHV0dnRHT2cwS3o1N1FweHB3TDQKLS0tIDdUc3dHcTdSRWtZWTNaSWRxeEx2
+            M1kwdVA1aGtodUtXSVp3WXFpc1lqeFUKMyi3JqBdQh5MpbAsNicPXLIH7P6Jmdhf
+            qPnJKczdSVMC3WEbWbtkfaSIznwn68iR0nhWDs40U9Ydl7TbWK03Cw==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1dnkv8vy8xkl5afwuwl55ycpquy2uk7ypc5ad87sfug2zffp6jgkqwwzglr
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNWFk3bEJLakJGM2hya0gv
+            d242UDZqLzRtZmtoZ0JlZFRGaHA2M2ZDbkJJCnpYREQyS3dSR2doeVB3aC9qQWJz
+            aWlkOFRVMmo1OEF1dmF1UlNxdlRoeE0KLS0tIDM2RVdqYnAyNWpxRkZ0TjlzcGRp
+            YlFqRlpPMyttQisyaDRqT1RqeXYyMjQKuyTq8IFfat/J3/6iH/thBTlsJFvndQoZ
+            dCJ4H7bEJfYR89dEcJGrfh9EX8YdYyu6qX8ugyikXsDTX2QqVgtQUA==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1wt75fkqsa2ngrhtmr7ws2ve8v9h2463hryj4jk4k7m5khxmc9pgqgqag8x
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA4QzlrTythak1ERnE4UnJC
+            YUlWZ0JPQU5PWkU4eXF6L3hVL3crTEsxdVNvCm4zK1d5QkRGVWc2RW5oZCtxeXlM
+            ekRJRVlJekxnUldJQzFPai9hMkgxR1EKLS0tIElQZllIY1Z5b0dYWWtUdUpaSlF5
+            ZGdMYkR0dG5MSEs0MkJNU3dKbzk3TmsK6CD0NMkwyj4MQRWOmUxy+R30sAPoHu/d
+            BGsWoTZlt9QXYns5H0zm51G4g+cRaZNWnER/zLXNRznqGCLq6bD2WA==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1fqw4znyl0zjpw5ta7ll3auxpzg8dme578jgw43a0dtzjhwjn4qlstaez7c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIeitReFlhRXpXMVpjWkNa
+            WCtjV2JjQjdnUVFwQWlvbVRnSUp3RHBuY2hnCis3Uk91cG5VMUdpWGJrVGFZUHFl
+            SmlLejY1SDVjV2MvRW9TejRtVXlHa0UKLS0tIE1oWEhINVd3QzhIQVNDNGpFOWlN
+            dHNBS29SN3F3MnFabjRxVTgvOXdrRzAKH0Db3cyx4JLuUMOAGGSXLdiYBo5mOyDN
+            TuqfyzrHW0Xb1IlMFhMWAaGLOwvtKi3FBFFxNORKOATe8/KGcKTk7A==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1m2ay7zlek6d4uctt09vsw5l8gpydjlvu9xemv8pqh97urdmhhyrsh9qe86
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAxbVhFTG5yVGRRdXRRaDJY
+            Zm5BY1JKUmRLRlJOUFZoZjZOSVllVndjM0NFClZ0RHBmWm1xS1d2U3JLYXBINWNM
+            aWtCYWpHUVRDaThzOEhKOUtkOE9sM1EKLS0tIDU0aGQ4Y0JCTWJXZmhLcXZaMEVG
+            NXZTSjU2dE85SFU2WTdvZEFlMmMyWHcKQlshopfnmYpliPA80I1oPzSitJTWOFFi
+            TyCPzc41IIF3YRVeSscCTKuXUIofJYoM4dwKYGfI8i/dxLG9phENUQ==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2023-10-23T13:22:31Z"
+    mac: ENC[AES256_GCM,data:G0uR0MZYKEvxkN9KTMfLVuadFulc8DXs2MwPsO9enfqpARhOa9RIrlAViPyHb+riMs3Pd3THzzIrixp1hGZqKtPed8XRkJIxkXnZSwaGCuLnUqy1IgFUNLaDr4ZZXVsuLbYfRozxAXqOUlotgtS0iQv94ANKUVSXa9sM6Elb5fk=,iv:tl2EWyOhZyxMwxwJHzw4iYoCOMQUHVuOBnQgWeteZDM=,tag:IyCrUW8O0jp3Wduc3hQydg==,type:str]
+    pgp: []
+    encrypted_regex: ^(email|externalAccountBinding|privateKeySecretRef|server)$
+    version: 3.7.3
