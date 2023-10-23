@@ -1,5 +1,0 @@
-name: cisl-cloud-c++
-channels:
-  - conda-forge
-dependencies:
-  - xeus-cling

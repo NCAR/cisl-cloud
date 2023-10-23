@@ -66,8 +66,12 @@ c.CondaKernelSpecManager.env_filter = '/opt/conda/*'
 # Change the default name format so it just displays the environment name
 c.CondaKernelSpecManager.name_format = '{environment}'
 
-# Removes the default ipykernel  
-c.MultiKernelManager.ensure_native_kernel=False
-
 # Set the default kernel to be our cloud base
 c.MultiKernelManager.default_kernel_name = 'cisl-cloud-base' 
+
+# Removes the default ipykernel  
+# This isn't working as expected. I thought it was but when launched with Jupyterhub it
+# may need to be set as a Spawner argument
+c.MultiKernelManager.ensure_native_kernel=False
+
+c.Spawner.args = ["--KernelSpecManager.ensure_native_kernel=False"]
