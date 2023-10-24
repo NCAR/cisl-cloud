@@ -1,0 +1,1087 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Customize a Jupyter Docker Image &#8212; CISL Cloud Pilot</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-pythia-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../_static/design-tabs.js"></script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Setup GitHub actions to Build Docker image automatically" href="setup-gh-act.html" />
+    <link rel="prev" title="Setup Nvidia GPU for JupyterHub" href="../gpu/gpu-admin.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="132">
+    <div class="container-fluid" id="shim"></div>
+    <div class="container-fluid" id="banner"></div>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../../index.html">
+  <img src="../../../_static/CISL-contemp-logo-blue.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+
+       
+        
+            
+        
+        <li class="nav-item">
+            <a class="nav-link nav-internal" href="../../../index.html">Cloud Docs</a>
+        </li>    
+    
+    
+    
+        <div class="dropdown">
+        
+            
+        
+            <li class="nav-item">
+                <button class="dropbtn">
+                    <a class="nav-link nav-internal" href="../../../overview/services.html">
+                        Resources <i class="fa fa-chevron-down" style="color: #000000;"></i>
+                    </a>
+                </button>
+            </li>
+            <div class="dropdown-content">
+                
+                    <a class="dropdown-link" href="https://jupyter.k8s.ucar.edu/">
+                        NCAR k8s JupyterHub
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://jupyterhub.hpc.ucar.edu/">
+                        NCAR HPC JupyterHub
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://ncar-cisl.2i2c.cloud/hub/login">
+                        2i2c AWS JupyterHub
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://hub.k8s.ucar.edu/">
+                        Harbor - Container Registry
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://rancher.k8s.ucar.edu/">
+                        Rancher
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17">
+                        Request VM
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://stratus-admin.ucar.edu:10443/asview">
+                        Stratus
+                    </a><br>
+                
+            </div>
+        </div>
+    
+    
+       
+        
+            
+        
+        <li class="nav-item">
+            <a class="nav-link nav-internal" href="https://www2.cisl.ucar.edu/">CISL Home</a>
+        </li>    
+    
+    
+       
+        
+            
+        
+        <li class="nav-item">
+            <a class="nav-link nav-internal" href="https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10905">Report issue</a>
+        </li>    
+    
+    
+
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    <div class="container-xl">
+      <div class="row">
+        
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../overview/about.html">
+   About this Project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../overview/use-cases.html">
+   Use Cases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../overview/services.html">
+   Potential Services
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../overview/goals.html">
+   Goals
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Availability
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../availability/availability.html">
+   Current Offering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../availability/architecture.html">
+   Current Architecture Diagram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../availability/hw-resources.html">
+   Current Hardware
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Administer the CISL Cloud
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../jupyter-book/jb-intro.html">
+   Documentation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../jupyter-book/create-jb.html">
+     Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../jupyter-book/add-jb.html">
+     Add content
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../jupyter-book/k8s-hosting.html">
+     Hosting on k8s
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../sops-age/sops-age.html">
+   Encrypting Secrets
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../K8s/k8s-intro.html">
+   Kubernetes (k8s)
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../K8s/Hosting/cert-mgr.html">
+     cert-manager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../K8s/Hosting/ingress.html">
+     Ingress Controller
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../K8s/Hosting/external-dns.html">
+     ExternalDNS
+    </a>
+   </li>
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="custom.html">
+     JupyterHub
+    </a>
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul class="current">
+     <li class="toctree-l3">
+      <a class="reference internal" href="../gpu/gpu-admin.html">
+       Setup GPUs
+      </a>
+     </li>
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       Customize Singleuser Image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="setup-gh-act.html">
+       GitHub Actions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../K8s/Rancher/rancher-intro.html">
+     Rancher (K8s)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../K8s/Rancher/get-kubeconfig.html">
+       Get a kubeconfig
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../K8s/Rancher/cluster-access.html">
+       Accessing a k8s Cluster
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../K8s/Rancher/create-namespace.html">
+       Create namespace
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../K8s/Rancher/permissions.html">
+       Permissions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../K8s/harbor/install-harbor.html">
+     Harbor
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../K8s/Hosting/web-hosting.html">
+     Host web applications
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../K8s/Hosting/web-kubectl.html">
+       Deploy with
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         kubectl
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../K8s/Hosting/web-helm.html">
+       Deploy with Helm
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../K8s/argocd/argo-intro.html">
+     Argo CD
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../K8s/argocd/argo-update.html">
+       Update your Argo CD Application
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Use the CISL Cloud
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../agile.html">
+   Agile Interaction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../create-tickets.html">
+     Create tickets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../2i2cJH/2i2cJH-intro.html">
+   2i2c JupyterHub
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../2i2cJH/access.html">
+     Requesting Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../2i2cJH/user-info.html">
+     User Information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../k8sJH-intro.html">
+   NCAR JupyterHub
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../access.html">
+     Requesting Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../user-info.html">
+     User Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="env.html">
+     Conda Environments
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../base-conda.html">
+     Base Conda Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="github.html">
+     Utilizing GitHub
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../dask/dask-intro.html">
+     Dask
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dask/dask-local.html">
+       Dask LocalCluster
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dask/dask-gateway.html">
+       Dask Gateway
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../dask/dask-jobqueue.html">
+       Dask Jobqueue
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../gpu/gpu-intro.html">
+     GPUs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
+   HPC JupyterHub
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../K8s/harbor/harbor-intro.html">
+   Harbor - Container Registry
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../K8s/harbor/push-pull.html">
+     Push &amp; Pull Images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../K8s/harbor/scanner.html">
+     Vulnerability Scan
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../K8s/Hosting/web-intro.html">
+   Hosting web applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../K8s/Hosting/containerize.html">
+     Containerize Python app
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../K8s/Hosting/book-image.html">
+     Containerize Jupyter Book
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../K8s/Hosting/deploy.html">
+     Deploy your application
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../K8s/argocd/argo-user.html">
+     Continuous Deployment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../Stratus/stratus-intro.html">
+   Stratus - S3
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Stratus/stratus-access.html">
+     Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Stratus/jupyter-extension.html">
+     Jupyter S3 Extension
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../Stratus/stratus-cmd.html">
+     Python Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../vm/vm-intro.html">
+   Virtual Machines
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Support Agreements
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../../slas/slas.html">
+   SLA’s
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../slas/glade.html">
+     GLADE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../slas/stratus.html">
+     Stratus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../../slas/ncar-jh.html">
+     NCAR JupyterHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference external" href="https://docs.2i2c.org/support/">
+     2i2c JupyterHub
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contact Us
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../contact.html">
+   Information
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
+Follow our <a href="https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP">Kanban board</a><br>
+Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><hr>
+<div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div><br>
+Theme by <a href="https://projectpythia.org/">Project Pythia</a>
+
+</div>
+
+</div>
+
+        
+
+        <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main"><div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/how-to/k8sJH/customize/customize-docker.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/NCAR/cisl-cloud"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/k8sJH/customize/customize-docker.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> On this page
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dockerfile">
+   Dockerfile
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#requirements-txt">
+   requirements.txt
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+          <div id="main-content" class="row">
+            <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+              
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="customize-a-jupyter-docker-image">
+<h1>Customize a Jupyter Docker Image<a class="headerlink" href="#customize-a-jupyter-docker-image" title="Permalink to this headline">¶</a></h1>
+<p>The Jupyter environment spun up for the users can be customized by building on top of the base Jupyter Docker image. For this use case the docker-stacks-foundation image from Jupyter is used. That image is built from ubuntu:22.04.</p>
+<p>This example Dockerfile has comments inline to explain what the lines are doing</p>
+<div class="section" id="dockerfile">
+<h2><a class="reference external" href="https://github.com/NCAR/cisl-cloud/blob/main/configs/jupyter/base-notebook/Dockerfile">Dockerfile</a><a class="headerlink" href="#dockerfile" title="Permalink to this headline">¶</a></h2>
+<p>The following Dockerfile is built automatically anytime there is a push to the directory where it is stored via GitHub actions. Setting up a GitHub action to build and push a Docker image to Docker Hub can be viewed at the <a class="reference internal" href="setup-gh-act.html"><span class="doc std std-doc">Setup GitHub Action</span></a> section. It also installs a base conda environment that you can read more about <a class="reference internal" href="../base-conda.html"><span class="doc std std-doc">here</span></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Along with the environment.yml and requirements.txt files this also copies <code class="docutils literal notranslate"><span class="pre">.bashrc</span></code>, <code class="docutils literal notranslate"><span class="pre">.condarc</span></code>, and <code class="docutils literal notranslate"><span class="pre">.profile</span></code>. This is to activate the <code class="docutils literal notranslate"><span class="pre">cisl-cloud-base</span></code> conda environment, setup conda to place new environments on persistent storage on <code class="docutils literal notranslate"><span class="pre">~/.conda/</span></code>, and to utilize bashrc respectively.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>There are <a class="reference external" href="https://github.com/NCAR/cisl-cloud/tree/main/configs/jupyter/base-notebook/scripts">scripts</a> that are also copied to the container. These were all taken directly from the <a class="reference external" href="https://github.com/jupyter/docker-stacks/tree/main/base-notebook">jupyter/base-notebook</a> repository. The only changes have been to the <code class="docutils literal notranslate"><span class="pre">jupyter_server_config.py</span></code> file in order to make some additional customizations.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span># Borrowed heavily from the base-notebook Dockerfile by Jupyter
+# https://github.com/jupyter/docker-stacks/blob/main/base-notebook/Dockerfile
+# The shell scripts and python modules were developed by the Jupyter Development Team
+# This image provides a custom environment.yml and requirements.txt as well as
+# having some customizations injected into this Dockerfile 
+# The base image used is the docker-stacks-foundation by Jupyter
+# https://github.com/jupyter/docker-stacks/blob/main/docker-stacks-foundation/Dockerfile
+
+FROM jupyter/docker-stacks-foundation:latest
+
+# Update version here and on the .github/workflow/build-push-basenb.yaml before pushing changes to the repo
+LABEL maintainer=&quot;CISL Cloud Pilot Team &lt;cisl-cloud-pilot@ucar.edu&gt;&quot; version=&quot;v1-stable&quot;
+
+ENV CONDA_ENV=cisl-cloud-base
+
+# Fix: https://github.com/hadolint/hadolint/wiki/DL4006
+# Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
+SHELL [&quot;/bin/bash&quot;, &quot;-o&quot;, &quot;pipefail&quot;, &quot;-c&quot;]
+
+USER root
+
+# Install all OS dependencies for notebook server that starts but lacks all
+# features (e.g., download as all possible file formats)
+RUN apt-get update --yes &amp;&amp; \
+    apt-get install --yes --no-install-recommends \
+    curl \
+    cmake \
+    csh \
+    emacs \
+    fonts-dejavu \
+    fonts-liberation \
+    g++ \
+    gcc \
+    gfortran \
+    git \
+    # R pre-requisites
+    libperl-dev \
+    libsnappy-dev \
+    libstdc++-12-dev \
+    make \
+    nodejs \
+    npm \
+    pandoc \
+    vim \
+    # - pandoc is used to convert notebooks to html files
+    #   it&#39;s not present in aarch64 ubuntu image, so we install it here
+    # - run-one - a wrapper script that runs no more
+    #   than one unique  instance  of  some  command with a unique set of arguments,
+    #   we use `run-one-constantly` to support `RESTARTABLE` option
+    run-one &amp;&amp; \
+    apt-get clean &amp;&amp; rm -rf /var/lib/apt/lists/* 
+
+USER ${NB_UID}
+
+# Install Jupyter Notebook, Lab, and Hub
+# Generate a notebook server config
+# Cleanup temporary files
+# Correct permissions
+# Do all this in a single RUN command to avoid duplicating all of the
+# files across image layers when the permissions change
+
+###
+# GitHub Build
+###
+COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt /tmp/
+
+###
+# Local Build
+###
+#COPY environment.yml requirements.txt /tmp/
+
+WORKDIR /tmp
+
+RUN mamba install --quiet --yes \
+    # NodeJS &gt;= 18.0 is required for `jupyter lab build` command
+    # https://github.com/jupyter/docker-stacks/issues/1901
+    &#39;nodejs&gt;=18.0&#39; \
+    &#39;notebook&#39; \
+    &#39;jupyterhub&#39; \
+    &#39;jupyterlab==3.6.3&#39; \
+    &#39;conda-forge::nb_conda_kernels&#39; &amp;&amp; \
+    # Pin NodeJS
+    echo &#39;nodejs &gt;=18.0&#39; &gt;&gt; &quot;${CONDA_DIR}/conda-meta/pinned&quot; &amp;&amp; \
+    # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
+    # Create a kernel named cisl-cloud-base from the environment.yml file
+    mamba env update --name &quot;${CONDA_ENV}&quot; -f environment.yml &amp;&amp; \
+    pip install -r requirements.txt &amp;&amp; \
+    jupyter notebook --generate-config &amp;&amp; \
+    mamba clean --all -f -y &amp;&amp; \
+    npm cache clean --force &amp;&amp; \
+    jupyter lab clean &amp;&amp; \
+    rm -rf &quot;/home/${NB_USER}/.cache/yarn&quot; &amp;&amp; \
+    fix-permissions &quot;${CONDA_DIR}&quot; &amp;&amp; \
+    fix-permissions &quot;/home/${NB_USER}&quot;
+
+ENV JUPYTER_PORT=8888
+EXPOSE $JUPYTER_PORT
+
+# Configure container startup
+CMD [&quot;start-notebook.sh&quot;]
+
+###
+# GitHub Actions Build
+###
+# Copy local files as late as possible to avoid cache busting
+COPY configs/jupyter/base-notebook/scripts/start-notebook.sh configs/jupyter/base-notebook/scripts/start-singleuser.sh /usr/local/bin/
+# Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
+COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+
+###
+# Local Build
+###
+#COPY scripts/start-notebook.sh scripts/start-singleuser.sh /usr/local/bin/
+#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+
+# Fix permissions on /etc/jupyter as root
+USER root
+
+RUN rm -rf /tmp/environment.yml &amp;&amp; \
+    rm -rf /tmp/requirements.txt 
+    
+# Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
+RUN sed -re &quot;s/c.ServerApp/c.NotebookApp/g&quot; \
+    /etc/jupyter/jupyter_server_config.py &gt; /etc/jupyter/jupyter_notebook_config.py &amp;&amp; \
+    fix-permissions /etc/jupyter/
+
+# Used to allow folder deletions
+RUN sed -i &#39;s/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g&#39; /etc/jupyter/jupyter_server_config.py
+
+# HEALTHCHECK documentation: https://docs.docker.com/engine/reference/builder/#healthcheck
+# This healtcheck works well for `lab`, `notebook`, `nbclassic`, `server` and `retro` jupyter commands
+# https://github.com/jupyter/docker-stacks/issues/915#issuecomment-1068528799
+HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
+    CMD /etc/jupyter/docker_healthcheck.py || exit 1
+
+###
+# GitHub Build
+###
+# Copy the .condarc file to allow for saving of user custom conda environments
+COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
+COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
+
+###
+# Local Build
+###
+#COPY config/.condarc /opt/conda/
+#COPY config/.profile /.bash_profile
+#COPY config/.bashrc /etc/bash.bashrc
+
+# Switch back to jovyan to avoid accidental container runs as root
+USER ${NB_UID}
+
+WORKDIR &quot;${HOME}&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="requirements-txt">
+<h2><a class="reference external" href="https://github.com/NCAR/cisl-cloud/blob/main/configs/jupyter/base-notebook/requirements.txt">requirements.txt</a><a class="headerlink" href="#requirements-txt" title="Permalink to this headline">¶</a></h2>
+<p>pip is used to install the following Jupyter extensions so they are available in the base image irregardless of the conda enviornment that is active.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">bokeh</span><span class="o">==</span><span class="mf">2.4.3</span>
+<span class="n">dask</span><span class="o">-</span><span class="n">labextension</span>
+<span class="n">ipywidgets</span>
+<span class="n">jupyter</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">proxy</span>
+<span class="n">jupyterlab_widgets</span>
+<span class="n">jupyterlab</span><span class="o">-</span><span class="n">git</span>
+<span class="n">jupyterlab</span><span class="o">-</span><span class="n">s3</span><span class="o">-</span><span class="n">browser</span><span class="o">&gt;=</span><span class="mf">0.12</span>
+<span class="n">nb_search</span>
+<span class="n">nbgitpuller</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./how-to/k8sJH/customize"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="../gpu/gpu-admin.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Setup Nvidia GPU for JupyterHub</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="setup-gh-act.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Setup GitHub actions to Build Docker image automatically</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </div>
+          </div>
+        </main>
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+<footer class="footer">
+  <div class="container-fluid m-0 p-0">
+  
+    <div class="footer-item">
+    
+    </div>
+  
+    <div class="footer-item">
+    <style>
+  @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
+</style>
+<div class="grid-x grid-padding-y footer-menu-tertiary">
+  <div class="cell text-center custom-footer">
+      <small>©  UCAR</small>
+          <a href="https://www.ucar.edu/privacy-notice" class="custom-footer-link">Privacy</a>
+          <a href="https://www.ucar.edu/cookie-other-tracking-technologies-notice" class="custom-footer-link">Cookies</a>
+          <a href="https://www.ucar.edu/terms-of-use" class="custom-footer-link">Terms of Use</a>
+          <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" class="custom-footer-link">Copyright Issues</a>
+          <a href="https://nsf.gov" class="custom-footer-link">Sponsored by NSF</a>
+          <a href="https://ncar.ucar.edu" class="custom-footer-link">NCAR Home</a>
+          <a href="https://www.ucar.edu" class="custom-footer-link">UCAR Home</a>
+      </ul>
+  </div>
+</div>
+    </div>
+  
+    <div class="footer-item">
+      <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2023.
+        
+          By The CISL Cloud Pilot Team.
+        
+          Last updated on 24 October 2023.
+        </p>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+    <div class="footer-item">
+    <div class="container-fluid footer-extra">
+    <div class="container">
+      <center>
+        Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
+        in Pythia Foundations is licensed under Apache 2.0. All other non-code
+        content is licensed under
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          Creative Commons BY 4.0 (CC BY 4.0)</a
+        >.
+      </center>
+      <br />
+      <div class="row">
+        <p class="m-0">
+          <img
+            src="../../../_static/footer-logo-nsf.png"
+            style="float: left; width: 60px; height: 60px; margin-right: 1rem"
+          />
+          This material is based upon work supported by the National Science
+          Foundation. Any opinions, findings,
+          and conclusions or recommendations expressed in this material are those
+          of the author(s) and do not necessarily reflect the views of the
+          National Science Foundation.
+        </p>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+  </div>
+</footer>
+  </body>
+</html>

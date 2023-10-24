@@ -1,0 +1,1102 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Python Examples &#8212; CISL Cloud Pilot</title>
+    
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-pythia-theme.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/style.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon.ico"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Virtual Machines (VMs)" href="../vm/vm-intro.html" />
+    <link rel="prev" title="Jupyter S3 Extension" href="jupyter-extension.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="132">
+    <div class="container-fluid" id="shim"></div>
+    <div class="container-fluid" id="banner"></div>
+    <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main"><div class="container-xl">
+
+  <div id="navbar-start">
+    
+    
+
+<a class="navbar-brand" href="../../index.html">
+  <img src="../../_static/CISL-contemp-logo-blue.png" class="logo" alt="logo">
+</a>
+
+
+    
+  </div>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  
+  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
+    <div id="navbar-center" class="mr-auto">
+      
+      <div class="navbar-center-item">
+        <ul id="navbar-main-elements" class="navbar-nav">
+
+       
+        
+            
+        
+        <li class="nav-item">
+            <a class="nav-link nav-internal" href="../../index.html">Cloud Docs</a>
+        </li>    
+    
+    
+    
+        <div class="dropdown">
+        
+            
+        
+            <li class="nav-item">
+                <button class="dropbtn">
+                    <a class="nav-link nav-internal" href="../../overview/services.html">
+                        Resources <i class="fa fa-chevron-down" style="color: #000000;"></i>
+                    </a>
+                </button>
+            </li>
+            <div class="dropdown-content">
+                
+                    <a class="dropdown-link" href="https://jupyter.k8s.ucar.edu/">
+                        NCAR k8s JupyterHub
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://jupyterhub.hpc.ucar.edu/">
+                        NCAR HPC JupyterHub
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://ncar-cisl.2i2c.cloud/hub/login">
+                        2i2c AWS JupyterHub
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://hub.k8s.ucar.edu/">
+                        Harbor - Container Registry
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://rancher.k8s.ucar.edu/">
+                        Rancher
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17">
+                        Request VM
+                    </a><br>
+                
+                    <a class="dropdown-link" href="https://stratus-admin.ucar.edu:10443/asview">
+                        Stratus
+                    </a><br>
+                
+            </div>
+        </div>
+    
+    
+       
+        
+            
+        
+        <li class="nav-item">
+            <a class="nav-link nav-internal" href="https://www2.cisl.ucar.edu/">CISL Home</a>
+        </li>    
+    
+    
+       
+        
+            
+        
+        <li class="nav-item">
+            <a class="nav-link nav-internal" href="https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10905">Report issue</a>
+        </li>    
+    
+    
+
+</ul>
+      </div>
+      
+    </div>
+
+    <div id="navbar-end">
+      
+      <div class="navbar-end-item">
+        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
+      </ul>
+      </div>
+      
+    </div>
+  </div>
+</div>
+    </nav>
+    <div class="container-xl">
+      <div class="row">
+        
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../overview/about.html">
+   About this Project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../overview/use-cases.html">
+   Use Cases
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../overview/services.html">
+   Potential Services
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../overview/goals.html">
+   Goals
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Availability
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../availability/availability.html">
+   Current Offering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../availability/architecture.html">
+   Current Architecture Diagram
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../availability/hw-resources.html">
+   Current Hardware
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Administer the CISL Cloud
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../jupyter-book/jb-intro.html">
+   Documentation
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jupyter-book/create-jb.html">
+     Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jupyter-book/add-jb.html">
+     Add content
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../jupyter-book/k8s-hosting.html">
+     Hosting on k8s
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../sops-age/sops-age.html">
+   Encrypting Secrets
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../K8s/k8s-intro.html">
+   Kubernetes (k8s)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/Hosting/cert-mgr.html">
+     cert-manager
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/Hosting/ingress.html">
+     Ingress Controller
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/Hosting/external-dns.html">
+     ExternalDNS
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../k8sJH/customize/custom.html">
+     JupyterHub
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+    <label for="toctree-checkbox-3">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../k8sJH/gpu/gpu-admin.html">
+       Setup GPUs
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../k8sJH/customize/customize-docker.html">
+       Customize Singleuser Image
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../k8sJH/customize/setup-gh-act.html">
+       GitHub Actions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../K8s/Rancher/rancher-intro.html">
+     Rancher (K8s)
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../K8s/Rancher/get-kubeconfig.html">
+       Get a kubeconfig
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../K8s/Rancher/cluster-access.html">
+       Accessing a k8s Cluster
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../K8s/Rancher/create-namespace.html">
+       Create namespace
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../K8s/Rancher/permissions.html">
+       Permissions
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/harbor/install-harbor.html">
+     Harbor
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../K8s/Hosting/web-hosting.html">
+     Host web applications
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../K8s/Hosting/web-kubectl.html">
+       Deploy with
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         kubectl
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../K8s/Hosting/web-helm.html">
+       Deploy with Helm
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../K8s/argocd/argo-intro.html">
+     Argo CD
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../K8s/argocd/argo-update.html">
+       Update your Argo CD Application
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Use the CISL Cloud
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../agile.html">
+   Agile Interaction
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../create-tickets.html">
+     Create tickets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../2i2cJH/2i2cJH-intro.html">
+   2i2c JupyterHub
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2i2cJH/access.html">
+     Requesting Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../2i2cJH/user-info.html">
+     User Information
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../k8sJH/k8sJH-intro.html">
+   NCAR JupyterHub
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../k8sJH/access.html">
+     Requesting Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../k8sJH/user-info.html">
+     User Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../k8sJH/customize/env.html">
+     Conda Environments
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../k8sJH/base-conda.html">
+     Base Conda Environment
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../k8sJH/customize/github.html">
+     Utilizing GitHub
+    </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../k8sJH/dask/dask-intro.html">
+     Dask
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+    <label for="toctree-checkbox-10">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../k8sJH/dask/dask-local.html">
+       Dask LocalCluster
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../k8sJH/dask/dask-gateway.html">
+       Dask Gateway
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../k8sJH/dask/dask-jobqueue.html">
+       Dask Jobqueue
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../k8sJH/gpu/gpu-intro.html">
+     GPUs
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
+   HPC JupyterHub
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../K8s/harbor/harbor-intro.html">
+   Harbor - Container Registry
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+  <label for="toctree-checkbox-11">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/harbor/push-pull.html">
+     Push &amp; Pull Images
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/harbor/scanner.html">
+     Vulnerability Scan
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../K8s/Hosting/web-intro.html">
+   Hosting web applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+  <label for="toctree-checkbox-12">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/Hosting/containerize.html">
+     Containerize Python app
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/Hosting/book-image.html">
+     Containerize Jupyter Book
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/Hosting/deploy.html">
+     Deploy your application
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../K8s/argocd/argo-user.html">
+     Continuous Deployment
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="stratus-intro.html">
+   Stratus - S3
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="stratus-access.html">
+     Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="jupyter-extension.html">
+     Jupyter S3 Extension
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Python Examples
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../vm/vm-intro.html">
+   Virtual Machines
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Support Agreements
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../slas/slas.html">
+   SLA’s
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../slas/glade.html">
+     GLADE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../slas/stratus.html">
+     Stratus
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../slas/ncar-jh.html">
+     NCAR JupyterHub
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference external" href="https://docs.2i2c.org/support/">
+     2i2c JupyterHub
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Contact Us
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../contact.html">
+   Information
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
+Follow our <a href="https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP">Kanban board</a><br>
+Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><hr>
+<div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div><br>
+Theme by <a href="https://projectpythia.org/">Project Pythia</a>
+
+</div>
+
+</div>
+
+        
+
+        <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main"><div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/how-to/Stratus/stratus-cmd.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/NCAR/cisl-cloud"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/Stratus/stratus-cmd.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> On this page
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#import-required-python-modules">
+   Import required python modules
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stratus-s3-client">
+   Stratus S3 Client
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stratus-s3-resource">
+   Stratus S3 Resource
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-a-bucket">
+   Create a bucket
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-all-buckets">
+   List all buckets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#list-all-object-in-a-bucket">
+   List all object in a bucket
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#upload-a-file">
+   Upload a file
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#download-a-file">
+   Download a file
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+          <div id="main-content" class="row">
+            <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+              
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="python-examples">
+<h1>Python Examples<a class="headerlink" href="#python-examples" title="Permalink to this headline">¶</a></h1>
+<p>The following are some example Python functions for interacting with Stratus</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These functions use the Python package <code class="docutils literal notranslate"><span class="pre">os</span></code> to get your Stratus Access ID and Secret Key. Please export the following variables.</p>
+<p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">AWS_ACCESS_KEY_ID=&quot;youraccessidhere&quot;</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">AWS_SECRET_ACCESS_KEY=&quot;yousecretkeyhere&quot;</span></code></p>
+</div>
+<div class="section" id="import-required-python-modules">
+<h2>Import required python modules<a class="headerlink" href="#import-required-python-modules" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># os is used to get local environment variables </span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1"># boto3 is the python package used to interact with S3</span>
+<span class="kn">import</span> <span class="nn">boto3</span>
+<span class="kn">import</span> <span class="nn">botocore</span>
+<span class="c1"># This requests package is imported to disable certificate access warnings. </span>
+<span class="c1"># SSL certificates can be provided and this would not be required.</span>
+<span class="kn">import</span> <span class="nn">requests.packages.urllib3</span>
+<span class="c1"># We aren&#39;t verifying certs to start so this line is disable warnings</span>
+<span class="n">requests</span><span class="o">.</span><span class="n">packages</span><span class="o">.</span><span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stratus-s3-client">
+<h2>Stratus S3 Client<a class="headerlink" href="#stratus-s3-client" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the Stratus S3 client to be used in other operations</span>
+<span class="k">def</span> <span class="nf">stratus_s3_client</span><span class="p">():</span>
+    <span class="c1"># Define the API endpoint for stratus</span>
+    <span class="n">endpoint</span> <span class="o">=</span> <span class="s2">&quot;https://stratus.ucar.edu/&quot;</span>
+    <span class="c1"># Create a boto3 sessions</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+    <span class="c1"># Get the API keys required from OS environmental variables</span>
+    <span class="c1"># Set these yourself locally so keys are not exposed in plain text in code</span>
+    <span class="n">access_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_ACCESS_KEY_ID&quot;</span><span class="p">)</span>
+    <span class="n">secret_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_SECRET_ACCESS_KEY&quot;</span><span class="p">)</span>
+    <span class="c1"># Create the S3 client based on the variables we set and provided</span>
+    <span class="n">s3_client</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">client</span><span class="p">(</span>
+        <span class="n">service_name</span><span class="o">=</span><span class="s1">&#39;s3&#39;</span><span class="p">,</span> 
+        <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span> 
+        <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">access_key</span><span class="p">,</span>
+        <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">secret_key</span><span class="p">,</span>
+        <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># Return the client so that it can be used in other functions</span>
+    <span class="k">return</span> <span class="n">s3_client</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="stratus-s3-resource">
+<h2>Stratus S3 Resource<a class="headerlink" href="#stratus-s3-resource" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the Stratus S3 resource to be used in other operations    </span>
+<span class="k">def</span> <span class="nf">stratus_s3_resource</span><span class="p">():</span>
+    <span class="c1"># Define the API endpoint for stratus</span>
+    <span class="n">endpoint</span> <span class="o">=</span> <span class="s2">&quot;https://stratus.ucar.edu/&quot;</span>
+    <span class="c1"># Create a boto3 sessions</span>
+    <span class="n">session</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span>
+    <span class="c1"># Get the API keys required from OS environmental variables</span>
+    <span class="c1"># Set these yourself locally so keys are not exposed in plain text in code</span>
+    <span class="n">access_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_ACCESS_KEY_ID&quot;</span><span class="p">)</span>
+    <span class="n">secret_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;AWS_SECRET_ACCESS_KEY&quot;</span><span class="p">)</span>
+    <span class="c1"># Create the S3 resource based on the variables we set and provided</span>
+    <span class="n">s3_resource</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">resource</span><span class="p">(</span>
+        <span class="n">service_name</span><span class="o">=</span><span class="s1">&#39;s3&#39;</span><span class="p">,</span> 
+        <span class="n">endpoint_url</span><span class="o">=</span><span class="n">endpoint</span><span class="p">,</span> 
+        <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">access_key</span><span class="p">,</span>
+        <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">secret_key</span><span class="p">,</span>
+        <span class="n">verify</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="c1"># Return the client so that it can be used in other functions</span>
+    <span class="k">return</span> <span class="n">s3_resource</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="create-a-bucket">
+<h2>Create a bucket<a class="headerlink" href="#create-a-bucket" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to create a new S3 bucket with a name set by the bucket_name argument</span>
+<span class="k">def</span> <span class="nf">create_bucket</span><span class="p">(</span><span class="n">bucket_name</span><span class="p">):</span>
+    <span class="c1"># Use the S3 client already defined to make the call</span>
+    <span class="n">s3_client</span> <span class="o">=</span> <span class="n">stratus_s3_client</span><span class="p">()</span>
+    <span class="c1"># Call the create_bucket endpoint and provide the bucket_name specified by the user</span>
+    <span class="n">s3_client</span><span class="o">.</span><span class="n">create_bucket</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">bucket_name</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-all-buckets">
+<h2>List all buckets<a class="headerlink" href="#list-all-buckets" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to list all buckets in the space</span>
+<span class="k">def</span> <span class="nf">list_all_buckets</span><span class="p">():</span>
+    <span class="c1"># Use the S3 client already defined to make the call</span>
+    <span class="n">s3_client</span> <span class="o">=</span> <span class="n">stratus_s3_client</span><span class="p">()</span>
+    <span class="c1"># Get a response from the list_buckets endpoint</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">s3_client</span><span class="o">.</span><span class="n">list_buckets</span><span class="p">()</span>
+    <span class="c1"># Iterate through the Buckets in the response to print all the bucket names</span>
+    <span class="k">for</span> <span class="n">bucket</span> <span class="ow">in</span> <span class="n">response</span><span class="p">[</span><span class="s1">&#39;Buckets&#39;</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">bucket</span><span class="p">[</span><span class="s1">&#39;Name&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="list-all-object-in-a-bucket">
+<h2>List all object in a bucket<a class="headerlink" href="#list-all-object-in-a-bucket" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to list all the objects stored in a bucket</span>
+<span class="k">def</span> <span class="nf">list_bucket_objs</span><span class="p">(</span><span class="n">bucket</span><span class="p">):</span>
+    <span class="c1"># Use the S3 resource already defined to make the call</span>
+    <span class="n">s3_resource</span> <span class="o">=</span> <span class="n">stratus_s3_resource</span><span class="p">()</span>
+    <span class="c1"># Get the individual bucket resources for the bucket name provided in the function </span>
+    <span class="n">bucket</span> <span class="o">=</span> <span class="n">s3_resource</span><span class="o">.</span><span class="n">Bucket</span><span class="p">(</span><span class="n">bucket</span><span class="p">)</span>
+    <span class="c1"># Iterate through the response to show all objects contained within the bucket</span>
+    <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">bucket</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">all</span><span class="p">():</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">key</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="upload-a-file">
+<h2>Upload a file<a class="headerlink" href="#upload-a-file" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Please check and make sure the file being uploaded has a unique and descriptive filename that won’t conflict with any existing data.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to upload a file/object to a bucket, specify the filename to upload and the bucket name to be placed in</span>
+<span class="k">def</span> <span class="nf">upload_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">bucketname</span><span class="p">):</span>
+    <span class="c1"># Use the S3 client already defined to make the call</span>
+    <span class="n">s3_client</span> <span class="o">=</span> <span class="n">stratus_s3_client</span><span class="p">()</span>
+    <span class="c1"># Use the upload_file endpoint to upload our filename to the specified bucket and keep the filename the same</span>
+    <span class="n">s3_client</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">bucketname</span><span class="p">,</span> <span class="n">filename</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Done!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="download-a-file">
+<h2>Download a file<a class="headerlink" href="#download-a-file" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define a function to download a file/object to a bucket</span>
+<span class="k">def</span> <span class="nf">download_file</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="n">bucketname</span><span class="p">):</span>
+    <span class="c1"># Use the S3 client already defined to make the call</span>
+    <span class="n">s3_client</span> <span class="o">=</span> <span class="n">stratus_s3_client</span><span class="p">()</span>
+    <span class="c1"># Open a local file with the same filename as the one we are downloading</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">filename</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">data</span><span class="p">:</span>
+        <span class="c1"># Write the file to our open local file which is the python variable &#39;data&#39;</span>
+        <span class="n">s3_client</span><span class="o">.</span><span class="n">download_fileobj</span><span class="p">(</span><span class="n">bucketname</span><span class="p">,</span> <span class="n">filename</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./how-to/Stratus"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="jupyter-extension.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Jupyter S3 Extension</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../vm/vm-intro.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Virtual Machines (VMs)</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </div>
+          </div>
+        </main>
+
+      </div>
+    </div>
+  
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+<footer class="footer">
+  <div class="container-fluid m-0 p-0">
+  
+    <div class="footer-item">
+    
+    </div>
+  
+    <div class="footer-item">
+    <style>
+  @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
+</style>
+<div class="grid-x grid-padding-y footer-menu-tertiary">
+  <div class="cell text-center custom-footer">
+      <small>©  UCAR</small>
+          <a href="https://www.ucar.edu/privacy-notice" class="custom-footer-link">Privacy</a>
+          <a href="https://www.ucar.edu/cookie-other-tracking-technologies-notice" class="custom-footer-link">Cookies</a>
+          <a href="https://www.ucar.edu/terms-of-use" class="custom-footer-link">Terms of Use</a>
+          <a href="https://www.ucar.edu/notification-copyright-infringement-digital-millenium-copyright-act" class="custom-footer-link">Copyright Issues</a>
+          <a href="https://nsf.gov" class="custom-footer-link">Sponsored by NSF</a>
+          <a href="https://ncar.ucar.edu" class="custom-footer-link">NCAR Home</a>
+          <a href="https://www.ucar.edu" class="custom-footer-link">UCAR Home</a>
+      </ul>
+  </div>
+</div>
+    </div>
+  
+    <div class="footer-item">
+      <div class="container-fluid footer-info">
+    <div class="container-xl">
+      <div class="d-flex justify-content-center">
+        <p class="py-1 m-0">
+            &copy;&nbsp;2023.
+        
+          By The CISL Cloud Pilot Team.
+        
+          Last updated on 24 October 2023.
+        </p>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+    <div class="footer-item">
+    <div class="container-fluid footer-extra">
+    <div class="container">
+      <center>
+        Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
+        in Pythia Foundations is licensed under Apache 2.0. All other non-code
+        content is licensed under
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          Creative Commons BY 4.0 (CC BY 4.0)</a
+        >.
+      </center>
+      <br />
+      <div class="row">
+        <p class="m-0">
+          <img
+            src="../../_static/footer-logo-nsf.png"
+            style="float: left; width: 60px; height: 60px; margin-right: 1rem"
+          />
+          This material is based upon work supported by the National Science
+          Foundation. Any opinions, findings,
+          and conclusions or recommendations expressed in this material are those
+          of the author(s) and do not necessarily reflect the views of the
+          National Science Foundation.
+        </p>
+      </div>
+    </div>
+  </div>
+    </div>
+  
+  </div>
+</footer>
+  </body>
+</html>
