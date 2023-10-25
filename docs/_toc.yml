@@ -66,16 +66,11 @@ parts:
               file: how-to/K8s/argocd/argo-update
   - caption: Use the CISL Cloud 
     chapters:
-      - title: Agile Interaction
+      - title: Interacting w/ Cloud Team
         file: how-to/agile
         sections:
         - file: how-to/create-tickets
-      - title: 2i2c JupyterHub 
-        file: how-to/2i2cJH/2i2cJH-intro
-        sections:
-        - file: how-to/2i2cJH/access
-        - file: how-to/2i2cJH/user-info
-      - title: NCAR JupyterHub 
+      - title: NCAR K8s JupyterHub 
         file: how-to/k8sJH/k8sJH-intro
         sections:
         - file: how-to/k8sJH/access
@@ -98,14 +93,14 @@ parts:
           file: how-to/k8sJH/gpu/gpu-intro
       - title: HPC JupyterHub
         url: https://arc.ucar.edu/knowledge_base/70549913
-      - title: Harbor - Container Registry
+      - title: Container Registry
         file: how-to/K8s/harbor/harbor-intro
         sections:
         - title: Push & Pull Images
           file: how-to/K8s/harbor/push-pull
         - title: Vulnerability Scan
           file: how-to/K8s/harbor/scanner
-      - title: Hosting web applications 
+      - title: Hosting Web Applications 
         file: how-to/K8s/Hosting/web-intro
         sections:
         - file: how-to/K8s/Hosting/containerize
@@ -115,12 +110,17 @@ parts:
         - file: how-to/K8s/Hosting/deploy
         - title: Continuous Deployment 
           file: how-to/K8s/argocd/argo-user
-      - title: Stratus - S3
+      - title: Object Storage
         file: how-to/Stratus/stratus-intro
         sections:
         - file: how-to/Stratus/stratus-access
         - file: how-to/Stratus/jupyter-extension
         - file: how-to/Stratus/stratus-cmd
+      - title: 2i2c JupyterHub 
+        file: how-to/2i2cJH/2i2cJH-intro
+        sections:
+        - file: how-to/2i2cJH/access
+        - file: how-to/2i2cJH/user-info
       - title: Virtual Machines
         file: how-to/vm/vm-intro
   - caption: Support Agreements
