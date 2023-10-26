@@ -6,8 +6,6 @@
 # The base image used is the docker-stacks-foundation by Jupyter
 # https://github.com/jupyter/docker-stacks/blob/main/images/docker-stacks-foundation/Dockerfile
 
-
-##########
 ARG ROOT_CONTAINER=ubuntu:22.04
 
 FROM $ROOT_CONTAINER
