@@ -177,11 +177,11 @@ RUN set -x && \
     fix-permissions "/home/${NB_USER}"
 
 ENV CONDA_ENV=cisl-cloud-base \
-    NB_PYTHON_PREFIX=${HOME}/.conda \
+    NB_PYTHON_PREFIX=${HOME}/.jupyter \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
 ###
-# Copy the .condarc file now so envs are created in ~/.conda
+# Copy the .condarc file now so envs are created in ~/.jupyter
 ###
 # GitHub Build
 ###
@@ -350,10 +350,10 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 
 # Make the conda environments we install read only and executable for the user
 # They can run the environments but will get permission denied when trying to make changes
-# New environments are installed to /home/jovyan/.conda with write permissions for the users
-RUN chmod 755 /home/jovyan/.conda/cisl-cloud-base/* && \
-    chmod 755 /home/jovyan/.conda/npl-2023b/* && \
-    chmod 755 /home/jovyan/.conda/r-4.3/* && \
+# New environments are installed to /home/jovyan/.jupyter with write permissions for the users
+RUN chmod 755 /home/jovyan/.jupyter/cisl-cloud-base/* && \
+    chmod 755 /home/jovyan/.jupyter/npl-2023b/* && \
+    chmod 755 /home/jovyan/.jupyter/r-4.3/* && \
     chmod 755 /opt/conda/share/jupyter/kernels/python3/*
 
 # Switch back to jovyan to avoid accidental container runs as root
