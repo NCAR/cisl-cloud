@@ -349,9 +349,9 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 # Make the conda environments we install read only and executable for the user
 # They can run the environments but will get permission denied when trying to make changes
 # New environments are installed to /home/jovyan/.jupyter with write permissions for the users
-RUN chmod 755 /home/jovyan/.jupyter/cisl-cloud-base/* && \
-    chmod 755 /home/jovyan/.jupyter/npl-2023b/* && \
-    chmod 755 /home/jovyan/.jupyter/r-4.3/* && \
+RUN chmod 755 /home/jovyan/my-conda-envs/cisl-cloud-base/* && \
+    chmod 755 /home/jovyan/my-conda-envs/npl-2023b/* && \
+    chmod 755 /home/jovyan/my-conda-envs/r-4.3/* && \
     chmod 755 /opt/conda/share/jupyter/kernels/python3/*
 
 # Switch back to jovyan to avoid accidental container runs as root
