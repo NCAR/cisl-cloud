@@ -3,6 +3,8 @@ channels:
   - conda-forge
 dependencies:
   - argopy
+  - arm_pyart
+  - astropy
   - beautifulsoup4
   - boto3
   - bokeh
@@ -11,6 +13,7 @@ dependencies:
   - cartopy 
   - cdsapi
   - celluloid
+  - certifi
   - cfgrib
   - cf-units
   - click
@@ -25,8 +28,9 @@ dependencies:
   - earthaccess
   - erddapy
   - esmpy
-  - flox
   - fiona
+  - flox
+  - folium
   - gdal
   - geocat-comp
   - geocat-viz
@@ -46,34 +50,37 @@ dependencies:
   - intake-xarray
   - ipympl
   - ipywidgets-bokeh
+  - iris
   - jupyter_bokeh
+  - jupyter-book
   - jupyter-panel-proxy
   - ldcpy
+  - libblas[build=*blis]
   - matplotlib
   - metpy
   - mpi4py
-  - nb_conda_kernels
   - nbstripout
   - nc-time-axis
   - netcdf4
-  - nodejs>=18.0
-  - notebook
   - numba
   - numcodecs
   - numexpr
   - numpy
   - ocgis
+  - openssl
   - pandas
   - panel
   - papermill
   - pillow
   - pop-tools
   - pydap
+  - pygraphviz
   - pygrib
   - pyhdf
   - pylint
   - pynco
   - pyngl
+  - pyspharm
   - pystac
   - pystac-client
   - pytables
@@ -97,6 +104,7 @@ dependencies:
   - stackstac
   - tobac
   - widgetsnbextension
+  - windspharm
   - wrf-python
   - xarray>=2023.4.2
   - xesmf

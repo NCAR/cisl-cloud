@@ -66,12 +66,6 @@ c.CondaKernelSpecManager.env_filter = '/opt/conda/*'
 # Change the default name format so it just displays the environment name
 c.CondaKernelSpecManager.name_format = '{environment}'
 
-# Set the default kernel to be our cloud base
-c.MultiKernelManager.default_kernel_name = 'cisl-cloud-base' 
-
-# Removes the default ipykernel  
-# This isn't working as expected. I thought it was but when launched with Jupyterhub it
-# may need to be set as a Spawner argument
-c.MultiKernelManager.ensure_native_kernel=False
-
-c.Spawner.args = ["--KernelSpecManager.ensure_native_kernel=False"]
+# Sets the default kernel to the conda env we install and control
+# You have to use the full name, find by running `python -m nb_conda_kernels list` 
+c.MultiKernelManager.default_kernel_name = 'conda-env-cisl-cloud-base-py' 

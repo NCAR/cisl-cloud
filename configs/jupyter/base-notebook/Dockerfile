@@ -32,12 +32,6 @@ RUN apt-get update --yes && \
     # - bzip2 is necessary to extract the micromamba executable.
     bzip2 \
     ca-certificates \
-    locales \
-    sudo \
-    # - tini is installed as a helpful container entrypoint that reaps zombie
-    #   processes and such of the actual executable we want to start, see
-    #   https://github.com/krallin/tini#why-tini for details.
-    tini \
     curl \
     # Build C++
     cmake \
@@ -54,6 +48,7 @@ RUN apt-get update --yes && \
     # GNU Fortan
     gfortran \
     git \
+    graphviz \
     # R pre-requisites
     # Perl library development files
     libperl-dev \
@@ -61,6 +56,7 @@ RUN apt-get update --yes && \
     libsnappy-dev \
     # GNU Standard C++ Library development files
     libstdc++-12-dev \
+    locales \
     # Build executable programs
     make \
     # Javascript runtime
@@ -69,9 +65,14 @@ RUN apt-get update --yes && \
     npm \
     # - pandoc is used to convert notebooks to html files
     pandoc \
-    vim \
     # - run-one - a wrapper script that runs no more
     run-one \
+    sudo \
+    # - tini is installed as a helpful container entrypoint that reaps zombie
+    #   processes and such of the actual executable we want to start, see
+    #   https://github.com/krallin/tini#why-tini for details.
+    tini \
+    vim \
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
@@ -230,6 +231,7 @@ RUN mamba install --quiet --yes \
     jupyter notebook --generate-config && \
     # Cleanup files no longer needed to reduce image size
     mamba clean --all -f -y && \
+    pip uninstall -y ipykernel && \
     npm cache clean --force && \
     jupyter lab clean && \
     rm -rf "/home/${NB_USER}/.cache/yarn" && \
@@ -351,8 +353,7 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 # New environments are installed to /home/jovyan/.jupyter with write permissions for the users
 RUN chmod 755 /home/jovyan/my-conda-envs/cisl-cloud-base/* && \
     chmod 755 /home/jovyan/my-conda-envs/npl-2023b/* && \
-    chmod 755 /home/jovyan/my-conda-envs/r-4.3/* && \
-    chmod 755 /opt/conda/share/jupyter/kernels/python3/*
+    chmod 755 /home/jovyan/my-conda-envs/r-4.3/* 
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}
