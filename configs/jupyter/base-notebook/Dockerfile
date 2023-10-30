@@ -179,18 +179,6 @@ ENV CONDA_ENV=cisl-cloud-base \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
-###
-# Copy the .condarc file now so envs are created in ~/.jupyter
-###
-# GitHub Build
-###
-COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
-
-###
-# Local Build
-###
-#COPY config/.condarc /opt/conda/
-
 WORKDIR /tmp
 
 ###
@@ -200,7 +188,7 @@ WORKDIR /tmp
 ###
 # GitHub Build
 ###
-COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
+#COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
 
 ###
 # Local Build
@@ -292,6 +280,18 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
     rm -rf "${HOME}/.local" && \
     fix-permissions "${JULIA_PKGDIR}" "${CONDA_DIR}/share/jupyter"
 
+###
+# Change the .condarc file now so user envs are created in ~/my-conda-envs
+###
+# GitHub Build
+###
+COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+
+###
+# Local Build
+###
+#COPY config/.condarc /opt/conda/
+
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
 EXPOSE $JUPYTER_PORT
@@ -351,9 +351,9 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 # Make the conda environments we install read only and executable for the user
 # They can run the environments but will get permission denied when trying to make changes
 # New environments are installed to /home/jovyan/.jupyter with write permissions for the users
-RUN chmod 755 /home/jovyan/my-conda-envs/cisl-cloud-base/* && \
-    chmod 755 /home/jovyan/my-conda-envs/npl-2023b/* && \
-    chmod 755 /home/jovyan/my-conda-envs/r-4.3/* 
+RUN chmod 755 /opt/base-conda/cisl-cloud-base/* && \
+    chmod 755 /opt/base-conda/npl-2023b/* && \
+    chmod 755 /opt/base-conda/r-4.3/* 
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}
