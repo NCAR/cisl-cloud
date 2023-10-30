@@ -1,7 +1,7 @@
 # Borrowed heavily from the base-notebook Dockerfile by Jupyter
 # https://github.com/jupyter/docker-stacks/blob/main/base-notebook/Dockerfile
 # The shell scripts and python modules were developed by the Jupyter Development Team
-# This image provides a custom environment.yml and requirements.txt as well as
+# This image provides a custom cisl-cloud-base.yml and requirements.txt as well as
 # having some customizations injected into this Dockerfile 
 # The base image used is the docker-stacks-foundation by Jupyter
 # https://github.com/jupyter/docker-stacks/blob/main/images/docker-stacks-foundation/Dockerfile
@@ -188,12 +188,12 @@ WORKDIR /tmp
 ###
 # GitHub Build
 ###
-COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
+COPY configs/jupyter/base-notebook/cisl-cloud-base.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
 
 ###
 # Local Build
 ###
-#COPY environment.yml requirements.txt npl-2023b.yml r-4.3.yml /tmp/
+#COPY cisl-cloud-base.yml requirements.txt npl-2023b.yml r-4.3.yml /tmp/
 
 # Install required Python packages
 RUN mamba install --quiet --yes \
@@ -207,9 +207,9 @@ RUN mamba install --quiet --yes \
     # Pin NodeJS
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
     # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
-    # Create a kernel named cisl-cloud-base from the environment.yml file
-    mamba env create -f environment.yml && \
-    # Create a kernel named NPL-2023b from the environment.yml file
+    # Create a kernel named cisl-cloud-base from the cisl-cloud-base.yml file
+    mamba env create -f cisl-cloud-base.yml && \
+    # Create a kernel named NPL-2023b from the cisl-cloud-base.yml file
     mamba env create -f npl-2023b.yml && \
     # Create a kernel named R-4.3 from the r-4.3.yml file
     mamba env create -f r-4.3.yml && \
@@ -329,7 +329,7 @@ COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
 #COPY config/.bashrc /etc/bash.bashrc
 
 # Cleanup files that were already installed
-RUN rm -rf /tmp/environment.yml && \
+RUN rm -rf /tmp/cisl-cloud-base.yml && \
     rm -rf /tmp/requirements.txt && \
     rm -rf /tmp/npl-2023b.yml && \
     rm -rf /tmp/r-4.3.yml 
