@@ -188,7 +188,7 @@ WORKDIR /tmp
 ###
 # GitHub Build
 ###
-#COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
+COPY configs/jupyter/base-notebook/environment.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
 
 ###
 # Local Build
