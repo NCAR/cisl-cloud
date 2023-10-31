@@ -45,8 +45,6 @@ RUN apt-get update --yes && \
     libperl-dev \
     # compression/decompression library
     libsnappy-dev \
-    # GNU Standard C++ Library development files
-    libstdc++-12-dev \
     locales \
     # Build executable programs
     make \
