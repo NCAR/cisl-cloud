@@ -192,9 +192,7 @@ COPY configs/jupyter/gpu-tf-notebook/start /srv/start
 RUN rm -rf /tmp/requirements.txt
 
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
-RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
-    /etc/jupyter/jupyter_server_config.py > /etc/jupyter/jupyter_notebook_config.py && \
-    fix-permissions /etc/jupyter/ && \
+RUN fix-permissions /etc/jupyter/ && \
 # Used to allow user deletions of folders and contents
     sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' \
     /etc/jupyter/jupyter_server_config.py
