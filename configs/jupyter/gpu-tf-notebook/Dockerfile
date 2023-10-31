@@ -180,7 +180,7 @@ RUN mamba install --quiet --yes \
 # to ${CONDA_DIR}/etc but not to /etc
 ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
-COPY .condarc /opt/conda
+COPY configs/jupyter/gpu-tf-notebook/.condarc /opt/conda
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -189,7 +189,7 @@ EXPOSE $JUPYTER_PORT
 # Configure container startup. Dask gateway requires ENTRYPOINT
 ENTRYPOINT ["/srv/start"]
 
-COPY start /srv/start
+COPY configs/jupyter/gpu-tf-notebook/start /srv/start
 
 RUN rm -rf /tmp/requirements.txt
 
@@ -200,7 +200,7 @@ RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
 # Used to allow user deletions of folders and contents
     sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' \
     /etc/jupyter/jupyter_server_config.py
-    
+
 USER ${NB_UID}
 
 WORKDIR "${HOME}"
