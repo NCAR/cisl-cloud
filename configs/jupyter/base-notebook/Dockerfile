@@ -353,7 +353,8 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 # New environments are installed to /home/jovyan/.jupyter with write permissions for the users
 RUN chmod 755 /opt/base-conda/cisl-cloud-base/* && \
     chmod 755 /opt/base-conda/npl-2023b/* && \
-    chmod 755 /opt/base-conda/r-4.3/* 
+    chmod 755 /opt/base-conda/r-4.3/* && \
+    chown root:root /opt/*   
 
 # Switch back to jovyan to avoid accidental container runs as root
 USER ${NB_UID}
