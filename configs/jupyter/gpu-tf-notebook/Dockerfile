@@ -3,14 +3,7 @@
 
 FROM nvcr.io/nvidia/tensorflow:22.04-tf2-py3
 
-RUN pip install --no-cache-dir jupyterhub
-RUN pip install --no-cache-dir --upgrade jupyterlab==3.6.3 notebook 
-
-COPY configs/jupyter/gpu-tf-notebook/requirements.txt /tmp
-
-COPY configs/jupyter/gpu-tf-notebook/fix-permissions /usr/local/bin/fix-permissions
-RUN chmod a+rx /usr/local/bin/fix-permissions
-
+LABEL maintainer="CISL Cloud Pilot Team <cisl-cloud-pilot@ucar.edu>"
 ARG NB_USER="jovyan"
 ARG NB_UID="1000"
 ARG NB_GID="100"
@@ -30,12 +23,47 @@ RUN apt-get update --yes && \
     # - bzip2 is necessary to extract the micromamba executable.
     bzip2 \
     ca-certificates \
+    curl \
+    # Build C++
+    cmake \
+    # C shell
+    csh \
+    # text editor for POSIX
+    emacs \
+    fonts-dejavu \
+    fonts-liberation \
+    # GNU C++ compiler
+    g++ \
+    # Set of GNU compilers
+    gcc \
+    # GNU Fortan
+    gfortran \
+    git \
+    graphviz \
+    # R pre-requisites
+    # Perl library development files
+    libperl-dev \
+    # compression/decompression library
+    libsnappy-dev \
+    # GNU Standard C++ Library development files
+    libstdc++-12-dev \
     locales \
+    # Build executable programs
+    make \
+    # Javascript runtime
+    nodejs \
+    # Javascript Package manager
+    npm \
+    # - pandoc is used to convert notebooks to html files
+    pandoc \
+    # - run-one - a wrapper script that runs no more
+    run-one \
     sudo \
     # - tini is installed as a helpful container entrypoint that reaps zombie
     #   processes and such of the actual executable we want to start, see
     #   https://github.com/krallin/tini#why-tini for details.
     tini \
+    vim \
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
@@ -54,6 +82,30 @@ ENV CONDA_DIR=/opt/conda \
 ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
 
+COPY configs/jupyter/gpu-tf-notebook/fix-permissions /usr/local/bin/fix-permissions
+RUN chmod a+rx /usr/local/bin/fix-permissions
+
+# Enable prompt color in the skeleton .bashrc before creating the default NB_USER
+# hadolint ignore=SC2016
+RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' /etc/skel/.bashrc && \
+   # Add call to conda init script see https://stackoverflow.com/a/58081608/4413446
+   echo 'eval "$(command conda shell.bash hook 2> /dev/null)"' >> /etc/skel/.bashrc
+
+# Create NB_USER with name jovyan user with UID=1000 and in the 'users' group
+# and make sure these dirs are writable by the `users` group.
+RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
+    sed -i.bak -e 's/^%admin/#%admin/' /etc/sudoers && \
+    sed -i.bak -e 's/^%sudo/#%sudo/' /etc/sudoers && \
+    useradd --no-log-init --create-home --shell /bin/bash --uid "${NB_UID}" --no-user-group "${NB_USER}" && \
+    mkdir -p "${CONDA_DIR}" && \
+    chown "${NB_USER}:${NB_GID}" "${CONDA_DIR}" && \
+    chmod g+w /etc/passwd && \
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
+
+# Pin python version here, or set it to "default"
+ARG PYTHON_VERSION=3.10
+
 # Download and install Micromamba, and initialize Conda prefix.
 #   <https://github.com/mamba-org/mamba#micromamba>
 #   Similar projects using Micromamba:
@@ -64,8 +116,11 @@ ENV PATH="${CONDA_DIR}/bin:${PATH}" \
 # Correct permissions
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
+
 COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-tf-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+
 WORKDIR /tmp
+
 RUN set -x && \
     arch=$(uname -m) && \
     if [ "${arch}" = "x86_64" ]; then \
@@ -91,23 +146,61 @@ RUN set -x && \
     mamba list python | grep '^python ' | tr -s ' ' | cut -d ' ' -f 1,2 >> "${CONDA_DIR}/conda-meta/pinned" && \
     mamba clean --all -f -y
 
-RUN mamba install --quiet --yes conda-forge::nb_conda_kernels
+ENV CONDA_ENV=cisl-cloud-gpu \
+    NB_PYTHON_PREFIX=${HOME}/.jupyter \
+    PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+COPY configs/jupyter/gpu-tf-notebook/requirements.txt /tmp
 
-ENV HOME="/home/${NB_USER}"
+RUN pip install --no-cache-dir jupyterhub
+RUN pip install --no-cache-dir --upgrade jupyterlab==3.6.3 notebook 
 
-# Enable prompt color in the skeleton .bashrc before creating the default NB_USER
-# hadolint ignore=SC2016
-RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' /etc/skel/.bashrc
+RUN mamba install --quiet --yes \
+    'nodejs>=18.0' \
+    'notebook' \
+    'jupyterhub' \
+    'conda-forge::nb_conda_kernels' && \
+    # Pin NodeJS
+    echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
+    pip install -r /tmp/requirements.txt && \
+    # Build Jupyter Config
+    jupyter notebook --generate-config && \
+    # Cleanup files no longer needed to reduce image size
+    mamba clean --all -f -y && \
+    pip uninstall -y ipykernel && \
+    npm cache clean --force && \
+    jupyter lab clean && \
+    rm -rf "/home/${NB_USER}/.cache/yarn" && \
+    # Fix permissions
+    fix-permissions "${CONDA_DIR}" && \
+    fix-permissions "/home/${NB_USER}"
 
-# Create NB_USER with name jovyan user with UID=1000 and in the 'users' group
-# and make sure these dirs are writable by the `users` group.
-RUN echo "auth requisite pam_deny.so" >> /etc/pam.d/su && \
-    useradd -l -m -s /bin/bash -N -u "${NB_UID}" "${NB_USER}" && \
-    chmod g+w /etc/passwd && \
-    fix-permissions "${HOME}"
+# Ask dask to read config from ${CONDA_DIR}/etc rather than
+# the default of /etc, since the non-root jovyan user can write
+# to ${CONDA_DIR}/etc but not to /etc
+ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
+COPY .condarc /opt/conda
+
+# Expose the application on the port JupyterHub listens on
+ENV JUPYTER_PORT=8888
+EXPOSE $JUPYTER_PORT
+
+# Configure container startup. Dask gateway requires ENTRYPOINT
+ENTRYPOINT ["/srv/start"]
+
+COPY start /srv/start
+
+RUN rm -rf /tmp/requirements.txt
+
+# Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
+RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
+    /etc/jupyter/jupyter_server_config.py > /etc/jupyter/jupyter_notebook_config.py && \
+    fix-permissions /etc/jupyter/ && \
+# Used to allow user deletions of folders and contents
+    sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' \
+    /etc/jupyter/jupyter_server_config.py
+    
 USER ${NB_UID}
 
 WORKDIR "${HOME}"
