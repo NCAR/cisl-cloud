@@ -193,7 +193,9 @@ jupyterhub:
                             display_name: NCAR Latest Test
                             slug: ncar
                             kubespawner_override:
-                                image: cislcloudpilot/cisl-cloud-base:2023-09-12
+                                image: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-base:2023-10-31.20
+                                imagePullSecrets:
+                                    - harbor-k8s-jupyter
               kubespawner_override:
                 mem_guarantee: 2G
                 mem_limit: 6G
