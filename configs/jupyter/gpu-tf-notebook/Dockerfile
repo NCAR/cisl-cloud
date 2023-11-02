@@ -148,7 +148,7 @@ ENV CONDA_ENV=cisl-cloud-gpu \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
-COPY configs/jupyter/gpu-tf-notebook/requirements.txt /tmp
+COPY configs/jupyter/gpu-tf-notebook/requirements.txt configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml /tmp
 
 RUN pip install --no-cache-dir jupyterhub
 RUN pip install --no-cache-dir --upgrade jupyterlab==3.6.3 notebook 
@@ -160,6 +160,7 @@ RUN mamba install --quiet --yes \
     'conda-forge::nb_conda_kernels' && \
     # Pin NodeJS
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
+    mamba env create -f cisl-gpu-base.yml && \
     pip install -r /tmp/requirements.txt && \
     # Build Jupyter Config
     jupyter notebook --generate-config && \
@@ -189,7 +190,7 @@ ENTRYPOINT ["/srv/start"]
 
 COPY configs/jupyter/gpu-tf-notebook/start /srv/start
 
-RUN rm -rf /tmp/requirements.txt
+RUN rm -rf /tmp/requirements.txt /tmp/cisl-gpu-base.yaml
 
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
 #RUN fix-permissions /etc/jupyter/ && \
