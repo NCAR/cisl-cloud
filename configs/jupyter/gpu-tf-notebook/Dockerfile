@@ -148,10 +148,7 @@ ENV CONDA_ENV=cisl-cloud-gpu \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
-COPY configs/jupyter/gpu-tf-notebook/requirements.txt configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml /tmp
-
-RUN pip install --no-cache-dir jupyterhub
-RUN pip install --no-cache-dir --upgrade jupyterlab==3.6.3 notebook 
+COPY configs/jupyter/gpu-tf-notebook/requirements.txt configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml /tmp/
 
 RUN mamba install --quiet --yes \
     'nodejs>=18.0' \
