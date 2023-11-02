@@ -157,7 +157,7 @@ RUN mamba install --quiet --yes \
     'conda-forge::nb_conda_kernels' && \
     # Pin NodeJS
     echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
-    mamba env create -f cisl-gpu-base.yml && \
+    mamba env create -f /tmp/cisl-gpu-base.yaml && \
     pip install -r /tmp/requirements.txt && \
     # Build Jupyter Config
     jupyter notebook --generate-config && \
