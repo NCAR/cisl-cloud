@@ -1,7 +1,7 @@
 # Currently copied directly from https://github.com/zonca/jupyterhub-deploy-kubernetes-jetstream/blob/master/gpu/nvidia-tensorflow-jupyterhub/Dockerfile
 # We will start with this and go through testing to determine where this needs to be customized
 
-FROM nvcr.io/nvidia/tensorflow:22.04-tf2-py3
+FROM nvcr.io/nvidia/tensorflow:23.10-tf2-py3
 
 LABEL maintainer="CISL Cloud Pilot Team <cisl-cloud-pilot@ucar.edu>"
 ARG NB_USER="jovyan"
