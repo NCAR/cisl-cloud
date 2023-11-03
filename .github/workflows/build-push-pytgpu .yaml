@@ -13,7 +13,7 @@ on:
 # Define the actions that are going to take place as part of this workflow    
 jobs:
   # Name the job(s)
-  deploy-docker-gpu-tf-notebook:
+  deploy-docker-gpu-pyt-notebook:
     # Define where the job should run in this case it will be run on the latest ubuntu image
     runs-on: ubuntu-latest
     # Set the steps to take in order
