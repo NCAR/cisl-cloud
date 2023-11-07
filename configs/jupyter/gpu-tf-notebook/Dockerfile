@@ -176,7 +176,7 @@ RUN mamba install --quiet --yes \
 # to ${CONDA_DIR}/etc but not to /etc
 ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
-COPY configs/jupyter/gpu-tf-notebook/.condarc /opt/conda
+COPY configs/jupyter/gpu-tf-notebook/config/.condarc /opt/conda
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -185,15 +185,28 @@ EXPOSE $JUPYTER_PORT
 # Configure container startup. Dask gateway requires ENTRYPOINT
 ENTRYPOINT ["/srv/start"]
 
+COPY configs/jupyter/gpu-tf-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-tf-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 COPY configs/jupyter/gpu-tf-notebook/start /srv/start
+COPY configs/jupyter/gpu-tf-notebook/config/.profile /.bash_profile
+COPY configs/jupyter/gpu-tf-notebook/config/.bashrc /etc/bash.bashrc
 
 RUN rm -rf /tmp/requirements.txt /tmp/cisl-gpu-base.yaml
 
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
-#RUN fix-permissions /etc/jupyter/ && \
+RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
+    /etc/jupyter/jupyter_server_config.py > /etc/jupyter/jupyter_notebook_config.py && \
+    fix-permissions /etc/jupyter/ && \
 # Used to allow user deletions of folders and contents
-#    sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' \
-#    /etc/jupyter/jupyter_server_config.py
+    sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' \
+    /etc/jupyter/jupyter_server_config.py
+
+# HEALTHCHECK documentation: https://docs.docker.com/engine/reference/builder/#healthcheck
+# This healtcheck works well for `lab`, `notebook`, `nbclassic`, `server` and `retro` jupyter commands
+# https://github.com/jupyter/docker-stacks/issues/915#issuecomment-1068528799
+HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
+    CMD /etc/jupyter/docker_healthcheck.py || exit 1
+
+RUN chmod 755 /opt/base-conda/cisl-gpu-base/*
 
 USER ${NB_UID}
 

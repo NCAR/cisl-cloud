@@ -80,7 +80,7 @@ ENV CONDA_DIR=/opt/conda \
 ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
 
-COPY configs/jupyter/gpu-tf-notebook/fix-permissions /usr/local/bin/fix-permissions
+COPY configs/jupyter/gpu-pyt-notebook/fix-permissions /usr/local/bin/fix-permissions
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
 # Enable prompt color in the skeleton .bashrc before creating the default NB_USER
@@ -115,7 +115,7 @@ ARG PYTHON_VERSION=3.10
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
 
-COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-tf-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-pyt-notebook/initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
 
@@ -148,7 +148,7 @@ ENV CONDA_ENV=cisl-cloud-gpu \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
-COPY configs/jupyter/gpu-tf-notebook/requirements.txt configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml /tmp/
+COPY configs/jupyter/gpu-pyt-notebook/requirements.txt configs/jupyter/gpu-pyt-notebook/cisl-gpu-base.yaml /tmp/
 
 RUN mamba install --quiet --yes \
     'nodejs>=18.0' \
@@ -176,7 +176,7 @@ RUN mamba install --quiet --yes \
 # to ${CONDA_DIR}/etc but not to /etc
 ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
-COPY configs/jupyter/gpu-tf-notebook/.condarc /opt/conda
+COPY configs/jupyter/gpu-pyt-notebook/config/.condarc /opt/conda
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -185,15 +185,28 @@ EXPOSE $JUPYTER_PORT
 # Configure container startup. Dask gateway requires ENTRYPOINT
 ENTRYPOINT ["/srv/start"]
 
-COPY configs/jupyter/gpu-tf-notebook/start /srv/start
+COPY configs/jupyter/gpu-pyt-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-pyt-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+COPY configs/jupyter/gpu-pyt-notebook/start /srv/start
+COPY configs/jupyter/gpu-pyt-notebook/config/.profile /.bash_profile
+COPY configs/jupyter/gpu-pyt-notebook/config/.bashrc /etc/bash.bashrc
 
 RUN rm -rf /tmp/requirements.txt /tmp/cisl-gpu-base.yaml
 
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
-#RUN fix-permissions /etc/jupyter/ && \
+RUN sed -re "s/c.ServerApp/c.NotebookApp/g" \
+    /etc/jupyter/jupyter_server_config.py > /etc/jupyter/jupyter_notebook_config.py && \
+    fix-permissions /etc/jupyter/ && \
 # Used to allow user deletions of folders and contents
-#    sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' \
-#    /etc/jupyter/jupyter_server_config.py
+    sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManager.always_delete_dir = True/g' \
+    /etc/jupyter/jupyter_server_config.py
+
+# HEALTHCHECK documentation: https://docs.docker.com/engine/reference/builder/#healthcheck
+# This healtcheck works well for `lab`, `notebook`, `nbclassic`, `server` and `retro` jupyter commands
+# https://github.com/jupyter/docker-stacks/issues/915#issuecomment-1068528799
+HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
+    CMD /etc/jupyter/docker_healthcheck.py || exit 1
+
+RUN chmod 755 /opt/base-conda/cisl-gpu-base/*
 
 USER ${NB_UID}
 
