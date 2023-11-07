@@ -5,8 +5,9 @@ channels:
 dependencies:
   - jupyterlab-nvdashboard
   - gpytorch
-  - pytorch>=2.0.0=*cuda112*
-  - torchvision>=0.15.1=*cuda112*
+  - pytorch
+  - torchvision
+  - cupy
   - torchgeo
   - _libgcc_mutex=0.1=conda_forge
   - _openmp_mutex=4.5=2_gnu
