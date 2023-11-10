@@ -1,7 +1,7 @@
 # This workflow builds docker images and pushes them to a Docker Hub Repository
 # This workflow is specific to the base-notebook directory and image
 # Set the workflow name
-name: Deploy gpu-pyt-notebook
+name: PyTorch Build & Push
 
 # Define the trigger that starts the action
 # For this workflow the trigger is on a push that changes anything in the configs/jupyter/base-notebook/ path
