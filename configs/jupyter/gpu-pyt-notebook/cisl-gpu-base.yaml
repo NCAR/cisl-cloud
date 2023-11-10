@@ -7,6 +7,10 @@ dependencies:
   - gpytorch
   - pytorch
   - torchvision
+  - catboost
+  - pyvista[all,trame]
+  - pyvista-xarray
+  - rapidsapi
   - cupy
   - torchgeo
   - _libgcc_mutex=0.1=conda_forge
