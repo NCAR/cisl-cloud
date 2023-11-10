@@ -60,9 +60,6 @@ RUN apt-get update --yes && \
     # Build executable programs
     make \
     # Javascript runtime
-    nodejs \
-    # Javascript Package manager
-    npm \
     # - pandoc is used to convert notebooks to html files
     pandoc \
     # - run-one - a wrapper script that runs no more
@@ -94,11 +91,11 @@ ENV PATH="${CONDA_DIR}/bin:${PATH}" \
 ###
 # GitHub Build
 ###
-COPY configs/jupyter/base-notebook/fix-permissions /usr/local/bin/fix-permissions
+#COPY configs/jupyter/base-notebook/fix-permissions /usr/local/bin/fix-permissions
 ###
 # Local Build
 ###
-#COPY fix-permissions /usr/local/bin/fix-permissions
+COPY fix-permissions /usr/local/bin/fix-permissions
 
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
@@ -141,11 +138,11 @@ RUN mkdir "/home/${NB_USER}/work" && \
 ###
 # GitHub Build
 ###
-COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/base-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+#COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/base-notebook/initial-condarc "${CONDA_DIR}/.condarc"
 ###
 # Local Build
 ###
-#COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
+COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
 RUN set -x && \
@@ -188,31 +185,29 @@ WORKDIR /tmp
 ###
 # GitHub Build
 ###
-COPY configs/jupyter/base-notebook/cisl-cloud-base.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
+#COPY configs/jupyter/base-notebook/cisl-cloud-base.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
 
 ###
 # Local Build
 ###
-#COPY cisl-cloud-base.yml requirements.txt npl-2023b.yml r-4.3.yml /tmp/
+COPY cisl-cloud-base.yml requirements.txt npl-2023b.yml r-4.3.yml /tmp/
 
 # Install required Python packages
 RUN mamba install --quiet --yes \
     # NodeJS >= 18.0 is required for `jupyter lab build` command
     # https://github.com/jupyter/docker-stacks/issues/1901
-    'nodejs>=18.0' \
     'notebook' \
     'jupyterhub' \
     'r-irkernel' \
     'conda-forge::nb_conda_kernels' && \
     # Pin NodeJS
-    echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
     # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
     # Create a kernel named cisl-cloud-base from the cisl-cloud-base.yml file
     mamba env create -f cisl-cloud-base.yml && \
     # Create a kernel named NPL-2023b from the cisl-cloud-base.yml file
-    mamba env create -f npl-2023b.yml && \
+#    mamba env create -f npl-2023b.yml && \
     # Create a kernel named R-4.3 from the r-4.3.yml file
-    mamba env create -f r-4.3.yml && \
+#    mamba env create -f r-4.3.yml && \
     # Install extensions in to OS Python env
     pip install -r requirements.txt && \
     # Build Jupyter Config
@@ -285,12 +280,12 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
 ###
 # GitHub Build
 ###
-COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+#COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
 
 ###
 # Local Build
 ###
-#COPY config/.condarc /opt/conda/
+COPY config/.condarc /opt/conda/
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -305,28 +300,28 @@ ENTRYPOINT ["/srv/start"]
 # GitHub Actions Build
 ###
 # Copy local files as late as possible to avoid cache busting
-COPY configs/jupyter/base-notebook/scripts/start /srv/start
+#COPY configs/jupyter/base-notebook/scripts/start /srv/start
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+#COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
 # Local Build
 ###
-#COPY scripts/start /srv/start
-#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+COPY scripts/start /srv/start
+COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
 # GitHub Build
 ###
 # Copy the bash profile to autoload conda envs
-COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
-COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
+#COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
+#COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
 
 ###
 # Local Build
 ###
-#COPY config/.profile /.bash_profile
-#COPY config/.bashrc /etc/bash.bashrc
+COPY config/.profile /.bash_profile
+COPY config/.bashrc /etc/bash.bashrc
 
 # Cleanup files that were already installed
 RUN rm -rf /tmp/cisl-cloud-base.yml && \
@@ -352,8 +347,8 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 # They can run the environments but will get permission denied when trying to make changes
 # New environments are installed to /home/jovyan/.jupyter with write permissions for the users
 RUN chmod 755 /opt/base-conda/cisl-cloud-base/* && \
-    chmod 755 /opt/base-conda/npl-2023b/* && \
-    chmod 755 /opt/base-conda/r-4.3/* && \
+#    chmod 755 /opt/base-conda/npl-2023b/* && \
+#    chmod 755 /opt/base-conda/r-4.3/* && \
     chown root:root /opt/*   
 
 # Switch back to jovyan to avoid accidental container runs as root
