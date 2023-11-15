@@ -36,17 +36,17 @@ dependencies:
   - r-clipr
   - r-readr
   - r-curl
-  - r-lmoments
-  - r-statmod
-  - r-zip
-  - r-distillery
-  - r-nloptr
-  - r-extremes
-  - r-climate4r.climdex
-  - r-climate4r.datasets
-  - r-climate4r.indices
-  - r-climate4r.udg
-  - r-climate4r.value
-  - r-s2dv
-  - jupyter_client
-  - r-dataretrieval
+#  - r-lmoments
+#  - r-statmod
+#  - r-zip
+#  - r-distillery
+#  - r-nloptr
+#  - r-extremes
+#  - r-climate4r.climdex
+#  - r-climate4r.datasets
+#  - r-climate4r.indices
+#  - r-climate4r.udg
+#  - r-climate4r.value
+#  - r-s2dv
+#  - jupyter_client
+#  - r-dataretrieval

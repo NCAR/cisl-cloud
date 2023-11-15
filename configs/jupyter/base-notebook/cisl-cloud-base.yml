@@ -11,7 +11,7 @@ dependencies:
   - bokeh
   - bottleneck
   - ca-certificates
-  - cartopy 
+  - cartopy
   - cdsapi
   - celluloid
   - certifi
@@ -73,15 +73,14 @@ dependencies:
   - papermill
   - pillow=10.0.1
   - pop-tools
-  - pyarrow
-  - pyarrow-hotfix
+  - pyarrow=14.0.1
   - pydap
   - pygraphviz
   - pygrib
   - pyhdf
   - pylint
   - pynco
-  - pyngl
+#  - pyngl
   - pyspharm
   - pystac
   - pystac-client
@@ -103,7 +102,7 @@ dependencies:
   - seawater
   - shapely
   - statsmodels
-  - stackstac
+#  - stackstac
   - tobac
   - widgetsnbextension
   - windspharm

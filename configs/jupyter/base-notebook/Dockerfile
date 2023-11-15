@@ -205,9 +205,8 @@ RUN mamba install --quiet --yes \
     # Create a kernel named cisl-cloud-base from the cisl-cloud-base.yml file
     mamba env create -f cisl-cloud-base.yml && \
     # Create a kernel named NPL-2023b from the cisl-cloud-base.yml file
-#    mamba env create -f npl-2023b.yml && \
+    mamba env create -f npl-2023b.yml && \
     # Create a kernel named R-4.3 from the r-4.3.yml file
-#    mamba env create -f r-4.3.yml && \
     # Install extensions in to OS Python env
     pip install -r requirements.txt && \
     # Build Jupyter Config
@@ -221,6 +220,8 @@ RUN mamba install --quiet --yes \
     # Fix permissions
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
+RUN mamba env create -f r-4.3.yml
 
 # Ask dask to read config from ${CONDA_DIR}/etc rather than
 # the default of /etc, since the non-root jovyan user can write
@@ -347,8 +348,8 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 # They can run the environments but will get permission denied when trying to make changes
 # New environments are installed to /home/jovyan/.jupyter with write permissions for the users
 RUN chmod 755 /opt/base-conda/cisl-cloud-base/* && \
-#    chmod 755 /opt/base-conda/npl-2023b/* && \
-#    chmod 755 /opt/base-conda/r-4.3/* && \
+    chmod 755 /opt/base-conda/npl-2023b/* && \
+    chmod 755 /opt/base-conda/r-4.3/* && \
     chown root:root /opt/*   
 
 # Switch back to jovyan to avoid accidental container runs as root
