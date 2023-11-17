@@ -91,11 +91,11 @@ ENV PATH="${CONDA_DIR}/bin:${PATH}" \
 ###
 # GitHub Build
 ###
-#COPY configs/jupyter/base-notebook/fix-permissions /usr/local/bin/fix-permissions
+COPY configs/jupyter/base-notebook/fix-permissions /usr/local/bin/fix-permissions
 ###
 # Local Build
 ###
-COPY fix-permissions /usr/local/bin/fix-permissions
+#COPY fix-permissions /usr/local/bin/fix-permissions
 
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
@@ -138,11 +138,11 @@ RUN mkdir "/home/${NB_USER}/work" && \
 ###
 # GitHub Build
 ###
-#COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/base-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/base-notebook/initial-condarc "${CONDA_DIR}/.condarc"
 ###
 # Local Build
 ###
-COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
+#COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
 RUN set -x && \
@@ -185,12 +185,12 @@ WORKDIR /tmp
 ###
 # GitHub Build
 ###
-#COPY configs/jupyter/base-notebook/cisl-cloud-base.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
+COPY configs/jupyter/base-notebook/cisl-cloud-base.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/npl-2023b.yml configs/jupyter/base-notebook/r-4.3.yml /tmp/
 
 ###
 # Local Build
 ###
-COPY cisl-cloud-base.yml requirements.txt npl-2023b.yml r-4.3.yml /tmp/
+#COPY cisl-cloud-base.yml requirements.txt npl-2023b.yml r-4.3.yml /tmp/
 
 # Install required Python packages
 RUN mamba install --quiet --yes \
@@ -207,6 +207,7 @@ RUN mamba install --quiet --yes \
     # Create a kernel named NPL-2023b from the cisl-cloud-base.yml file
     mamba env create -f npl-2023b.yml && \
     # Create a kernel named R-4.3 from the r-4.3.yml file
+    mamba env create -f r-4.3.yml && \
     # Install extensions in to OS Python env
     pip install -r requirements.txt && \
     # Build Jupyter Config
@@ -220,8 +221,6 @@ RUN mamba install --quiet --yes \
     # Fix permissions
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
-
-RUN mamba env create -f r-4.3.yml
 
 # Ask dask to read config from ${CONDA_DIR}/etc rather than
 # the default of /etc, since the non-root jovyan user can write
@@ -281,12 +280,12 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
 ###
 # GitHub Build
 ###
-#COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
 
 ###
 # Local Build
 ###
-COPY config/.condarc /opt/conda/
+#COPY config/.condarc /opt/conda/
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -301,28 +300,28 @@ ENTRYPOINT ["/srv/start"]
 # GitHub Actions Build
 ###
 # Copy local files as late as possible to avoid cache busting
-#COPY configs/jupyter/base-notebook/scripts/start /srv/start
+COPY configs/jupyter/base-notebook/scripts/start /srv/start
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-#COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
 # Local Build
 ###
-COPY scripts/start /srv/start
-COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+#COPY scripts/start /srv/start
+#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
 # GitHub Build
 ###
 # Copy the bash profile to autoload conda envs
-#COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
-#COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
+COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
+COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
 
 ###
 # Local Build
 ###
-COPY config/.profile /.bash_profile
-COPY config/.bashrc /etc/bash.bashrc
+#COPY config/.profile /.bash_profile
+#COPY config/.bashrc /etc/bash.bashrc
 
 # Cleanup files that were already installed
 RUN rm -rf /tmp/cisl-cloud-base.yml && \
