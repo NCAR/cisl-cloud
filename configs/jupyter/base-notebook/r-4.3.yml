@@ -16,7 +16,7 @@ dependencies:
   - r-rgooglemaps=1.5.1=r43hc72bb7e_0
   - r-lava=1.7.3=r43hc72bb7e_0
   - r-beanplot=1.3.1=r43ha770c72_2
-  - r-cdft=1.2r43hc72bb7e_2
+  - r-cdft=1.2=r43hc72bb7e_2
   - r-corrplot=0.92=r43hc72bb7e_2
   - r-dt=0.28=r43hc72bb7e_1
   - r-ellipse=0.5.0=r43hc72bb7e_0
@@ -40,7 +40,7 @@ dependencies:
   - r-statmod=1.5.0=r43hd8f1df9_1
   - r-zip=2.3.0=r43h57805ef_1
   - r-distillery=1.2_1=r43h785f33e_2
-  - r-nloptr=2.0.3r43hcf54a89_2
+  - r-nloptr=2.0.3=r43hcf54a89_2
   - r-extremes=2.1_3=r43h1df0287_1
   - r-climate4r.climdex=0.2.3=r43ha770c72_0
   - r-climate4r.datasets=0.0.1=r43ha770c72_2
