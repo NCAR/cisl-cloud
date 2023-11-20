@@ -3,14 +3,14 @@ channels:
   - conda-forge
   - r
 dependencies:
-  - flax
-  - jax
+#  - flax
+#  - jax
   - jupyterlab-nvdashboard
-  - keras-cv
-  - catboost
-  - pyvista[all,trame]
-  - pyvista-xarray
-  - cupy
+#  - keras-cv
+#  - catboost
+#  - pyvista[all,trame]
+#  - pyvista-xarray
+#  - cupy
 #  - rapids
 #  - torch
 #  - torchaudio
