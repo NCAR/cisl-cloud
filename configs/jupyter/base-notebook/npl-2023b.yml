@@ -82,6 +82,8 @@ dependencies:
   # Same version as NPL in GitHub
   - intake=0.7.0=pyhd8ed1ab_0
   # Same version as NPL in GitHub
+  - ipykernel=6.24.0=pyh71e2992_0
+  # Same version as NPL in GitHub
   - ipympl=0.9.3=pyhd8ed1ab_0
   # Same version as NPL in GitHub
   - ipywidgets=8.0.7=pyhd8ed1ab_0

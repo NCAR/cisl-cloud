@@ -97,6 +97,8 @@ dependencies:
   - intake-xarray=0.7.0=pyhd8ed1ab_0
   # Same version as NPL
   - ipympl=0.9.3=pyhd8ed1ab_0
+  # Same version as NPL in GitHub
+  - ipykernel=6.24.0=pyh71e2992_0
   # Not included in NPL
   - ipywidgets-bokeh=1.5.0
   # Same version as NPL
