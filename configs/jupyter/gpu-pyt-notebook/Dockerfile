@@ -79,8 +79,11 @@ ENV CONDA_DIR=/opt/conda \
 ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
 
-#COPY configs/jupyter/gpu-pyt-notebook/fix-permissions /usr/local/bin/fix-permissions
-COPY fix-permissions /usr/local/bin/fix-permissions
+# GitHub build
+COPY configs/jupyter/gpu-pyt-notebook/fix-permissions /usr/local/bin/fix-permissions
+# Local build
+#COPY fix-permissions /usr/local/bin/fix-permissions
+
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
 # Enable prompt color in the skeleton .bashrc before creating the default NB_USER
@@ -115,8 +118,10 @@ ARG PYTHON_VERSION=3.10
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
 
-#COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-pyt-notebook/initial-condarc "${CONDA_DIR}/.condarc"
-COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
+# GitHub build
+COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-pyt-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+# Local build
+#COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
 
@@ -149,8 +154,10 @@ ENV CONDA_ENV=cisl-cloud-gpu \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
-#COPY configs/jupyter/gpu-pyt-notebook/requirements.txt configs/jupyter/gpu-pyt-notebook/cisl-gpu-base.yaml /tmp/
-COPY requirements.txt cisl-gpu-base.yaml /tmp/
+# GitHub build
+COPY configs/jupyter/gpu-pyt-notebook/requirements.txt configs/jupyter/gpu-pyt-notebook/cisl-gpu-base.yaml /tmp/
+# Local build
+#COPY requirements.txt cisl-gpu-base.yaml /tmp/
 
 RUN mamba install --quiet --yes \
     'notebook' \
@@ -175,8 +182,10 @@ RUN mamba install --quiet --yes \
 # to ${CONDA_DIR}/etc but not to /etc
 ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
-#COPY configs/jupyter/gpu-pyt-notebook/config/.condarc /opt/conda
-COPY config/.condarc /opt/conda
+# GitHub build
+COPY configs/jupyter/gpu-pyt-notebook/config/.condarc /opt/conda
+# Local build
+#COPY config/.condarc /opt/conda
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -185,15 +194,17 @@ EXPOSE $JUPYTER_PORT
 # Configure container startup. Dask gateway requires ENTRYPOINT
 ENTRYPOINT ["/srv/start"]
 
-#COPY configs/jupyter/gpu-pyt-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-pyt-notebook/scripts/docker_healthcheck.py /etc/jupyter/
-#COPY configs/jupyter/gpu-pyt-notebook/start /srv/start
-#COPY configs/jupyter/gpu-pyt-notebook/config/.profile /.bash_profile
-#COPY configs/jupyter/gpu-pyt-notebook/config/.bashrc /etc/bash.bashrc
+# GitHub build
+COPY configs/jupyter/gpu-pyt-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-pyt-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+COPY configs/jupyter/gpu-pyt-notebook/start /srv/start
+COPY configs/jupyter/gpu-pyt-notebook/config/.profile /.bash_profile
+COPY configs/jupyter/gpu-pyt-notebook/config/.bashrc /etc/bash.bashrc
 
-COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
-COPY start /srv/start
-COPY config/.profile /.bash_profile
-COPY config/.bashrc /etc/bash.bashrc
+# Local build
+#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+#COPY start /srv/start
+#COPY config/.profile /.bash_profile
+#COPY config/.bashrc /etc/bash.bashrc
 
 RUN rm -rf /tmp/requirements.txt /tmp/cisl-gpu-base.yaml
 
