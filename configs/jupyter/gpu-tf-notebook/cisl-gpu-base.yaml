@@ -3,7 +3,7 @@ channels:
   - conda-forge
   - r
 dependencies:
-#  - flax
+  - flax
 #  - jax
   - jupyterlab-nvdashboard
 #  - keras-cv

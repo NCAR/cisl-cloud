@@ -12,8 +12,8 @@ ARG NB_GID="100"
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Install all OS dependencies for notebook server that starts but lacks all
-# features (e.g., download as all possible file formats)
+# Install all OS dependencies for Server that starts
+# but lacks all features (e.g., download as all possible file formats)
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update --yes && \
     # - apt-get upgrade is run to patch known vulnerabilities in apt-get packages as
@@ -45,13 +45,12 @@ RUN apt-get update --yes && \
     libperl-dev \
     # compression/decompression library
     libsnappy-dev \
+    # GNU Standard C++ Library development files
+    libstdc++-12-dev \
     locales \
     # Build executable programs
     make \
     # Javascript runtime
-    nodejs \
-    # Javascript Package manager
-    npm \
     # - pandoc is used to convert notebooks to html files
     pandoc \
     # - run-one - a wrapper script that runs no more
@@ -151,12 +150,9 @@ ENV CONDA_ENV=cisl-cloud-gpu \
 COPY configs/jupyter/gpu-tf-notebook/requirements.txt configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml /tmp/
 
 RUN mamba install --quiet --yes \
-    'nodejs>=18.0' \
     'notebook' \
     'jupyterhub' \
     'conda-forge::nb_conda_kernels' && \
-    # Pin NodeJS
-    echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
     mamba env create -f /tmp/cisl-gpu-base.yaml && \
     pip install -r /tmp/requirements.txt && \
     # Build Jupyter Config

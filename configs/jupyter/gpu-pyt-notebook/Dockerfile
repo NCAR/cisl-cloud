@@ -12,8 +12,8 @@ ARG NB_GID="100"
 # Fix: https://github.com/koalaman/shellcheck/wiki/SC3014
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-# Install all OS dependencies for notebook server that starts but lacks all
-# features (e.g., download as all possible file formats)
+# Install all OS dependencies for Server that starts
+# but lacks all features (e.g., download as all possible file formats)
 ENV DEBIAN_FRONTEND noninteractive
 RUN apt-get update --yes && \
     # - apt-get upgrade is run to patch known vulnerabilities in apt-get packages as
@@ -45,13 +45,12 @@ RUN apt-get update --yes && \
     libperl-dev \
     # compression/decompression library
     libsnappy-dev \
+    # GNU Standard C++ Library development files
+    libstdc++-12-dev \
     locales \
     # Build executable programs
     make \
     # Javascript runtime
-    nodejs \
-    # Javascript Package manager
-    npm \
     # - pandoc is used to convert notebooks to html files
     pandoc \
     # - run-one - a wrapper script that runs no more
@@ -80,7 +79,8 @@ ENV CONDA_DIR=/opt/conda \
 ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
 
-COPY configs/jupyter/gpu-pyt-notebook/fix-permissions /usr/local/bin/fix-permissions
+#COPY configs/jupyter/gpu-pyt-notebook/fix-permissions /usr/local/bin/fix-permissions
+COPY fix-permissions /usr/local/bin/fix-permissions
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
 # Enable prompt color in the skeleton .bashrc before creating the default NB_USER
@@ -115,7 +115,8 @@ ARG PYTHON_VERSION=3.10
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
 
-COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-pyt-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+#COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-pyt-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
 
@@ -148,15 +149,13 @@ ENV CONDA_ENV=cisl-cloud-gpu \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
-COPY configs/jupyter/gpu-pyt-notebook/requirements.txt configs/jupyter/gpu-pyt-notebook/cisl-gpu-base.yaml /tmp/
+#COPY configs/jupyter/gpu-pyt-notebook/requirements.txt configs/jupyter/gpu-pyt-notebook/cisl-gpu-base.yaml /tmp/
+COPY requirements.txt cisl-gpu-base.yaml /tmp/
 
 RUN mamba install --quiet --yes \
-    'nodejs>=18.0' \
     'notebook' \
     'jupyterhub' \
     'conda-forge::nb_conda_kernels' && \
-    # Pin NodeJS
-    echo 'nodejs >=18.0' >> "${CONDA_DIR}/conda-meta/pinned" && \
     mamba env create -f /tmp/cisl-gpu-base.yaml && \
     pip install -r /tmp/requirements.txt && \
     # Build Jupyter Config
@@ -176,7 +175,8 @@ RUN mamba install --quiet --yes \
 # to ${CONDA_DIR}/etc but not to /etc
 ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
-COPY configs/jupyter/gpu-pyt-notebook/config/.condarc /opt/conda
+#COPY configs/jupyter/gpu-pyt-notebook/config/.condarc /opt/conda
+COPY config/.condarc /opt/conda
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -185,10 +185,15 @@ EXPOSE $JUPYTER_PORT
 # Configure container startup. Dask gateway requires ENTRYPOINT
 ENTRYPOINT ["/srv/start"]
 
-COPY configs/jupyter/gpu-pyt-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-pyt-notebook/scripts/docker_healthcheck.py /etc/jupyter/
-COPY configs/jupyter/gpu-pyt-notebook/start /srv/start
-COPY configs/jupyter/gpu-pyt-notebook/config/.profile /.bash_profile
-COPY configs/jupyter/gpu-pyt-notebook/config/.bashrc /etc/bash.bashrc
+#COPY configs/jupyter/gpu-pyt-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-pyt-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+#COPY configs/jupyter/gpu-pyt-notebook/start /srv/start
+#COPY configs/jupyter/gpu-pyt-notebook/config/.profile /.bash_profile
+#COPY configs/jupyter/gpu-pyt-notebook/config/.bashrc /etc/bash.bashrc
+
+COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+COPY start /srv/start
+COPY config/.profile /.bash_profile
+COPY config/.bashrc /etc/bash.bashrc
 
 RUN rm -rf /tmp/requirements.txt /tmp/cisl-gpu-base.yaml
 
