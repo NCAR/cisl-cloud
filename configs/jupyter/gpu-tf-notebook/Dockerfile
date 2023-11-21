@@ -75,7 +75,8 @@ ENV CONDA_DIR=/opt/conda \
     NB_GID=${NB_GID} \
     LC_ALL=en_US.UTF-8 \
     LANG=en_US.UTF-8 \
-    LANGUAGE=en_US.UTF-8
+    LANGUAGE=en_US.UTF-8 \
+    PIP_EXTRA_INDEX_URL='https://pypi.nvidia.com'
 
 ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
@@ -167,7 +168,7 @@ RUN mamba install --quiet --yes \
     'jupyterhub' \
     'conda-forge::nb_conda_kernels' && \
     mamba env create -f /tmp/cisl-gpu-base.yaml && \
-    pip3 install -r /tmp/requirements.txt && \
+    pip install -r /tmp/requirements.txt && \
     # Build Jupyter Config
     jupyter notebook --generate-config && \
     # Cleanup files no longer needed to reduce image size
