@@ -167,7 +167,7 @@ RUN mamba install --quiet --yes \
     'jupyterhub' \
     'conda-forge::nb_conda_kernels' && \
     mamba env create -f /tmp/cisl-gpu-base.yaml && \
-    pip install -r /tmp/requirements.txt && \
+    pip3 install -r /tmp/requirements.txt && \
     # Build Jupyter Config
     jupyter notebook --generate-config && \
     # Cleanup files no longer needed to reduce image size
