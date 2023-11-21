@@ -1,0 +1,35 @@
+Application deployment using ArgoCD.
+1. Using ArgoCLI
+2. Using Application manifest
+
+
+
+Test app deploment using ArgoCLI:
+
+
+Login to Argo from CLI:
+
+argo login argocd.k8s.ucar.edu
+**Use LDAP credentials.
+
+---
+
+If repo is public,run below command:
+
+argocd app create <app_name> --repo <repo URL - https> --path <path_to_folder_containing_chart.yaml> --dest-server https://kubernetes.default.svc --dest-namespace <any-allowed-namespace>
+
+
+Example:
+argocd app create helm-guestbook --repo https://github.com/argoproj/argocd-example-apps.git --path helm-guestbook --dest-server https://kubernetes.default.svc --dest-namespace default
+
+
+If repo is private, create a SSH KeyPair and connect repo first in Argo, then run app deployment command show above.
+
+Example:
+
+argocd app create helm-guestbook-cisl --repo https://github.com/NCAR/cisl-cloud.git --path cluster/argocd/tests/helm-guestbook --dest-server https://kubernetes.default.svc --dest-namespace argo-test
+
+
+argocd app create lens2-dashboard --repo https://github.com/NicholasCote/LENS2-Dashboard-Python.git --path lens2-helm --dest-server https://kubernetes.default.svc --dest-namespace argo-test
+
+
