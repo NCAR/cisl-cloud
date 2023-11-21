@@ -13,3 +13,5 @@ nb_search
 nbdime
 nbgitpuller
 voila
+tensorflow
+tensorrt

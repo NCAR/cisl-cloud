@@ -1,7 +1,7 @@
 # Currently copied directly from https://github.com/zonca/jupyterhub-deploy-kubernetes-jetstream/blob/master/gpu/nvidia-tensorflow-jupyterhub/Dockerfile
 # We will start with this and go through testing to determine where this needs to be customized
 
-FROM nvcr.io/nvidia/tensorflow:23.10-tf2-py3
+FROM nvidia/cuda:12.2.2-base-ubuntu22.04
 
 LABEL maintainer="CISL Cloud Pilot Team <cisl-cloud-pilot@ucar.edu>"
 ARG NB_USER="jovyan"
@@ -59,6 +59,7 @@ RUN apt-get update --yes && \
     # - tini is installed as a helpful container entrypoint that reaps zombie
     #   processes and such of the actual executable we want to start, see
     #   https://github.com/krallin/tini#why-tini for details.
+    tensorrt \
     tini \
     vim \
     wget && \
@@ -79,7 +80,12 @@ ENV CONDA_DIR=/opt/conda \
 ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
 
+# GitHub Build
 COPY configs/jupyter/gpu-tf-notebook/fix-permissions /usr/local/bin/fix-permissions
+
+# Local Build
+#COPY fix-permissions /usr/local/bin/fix-permissions
+
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
 # Enable prompt color in the skeleton .bashrc before creating the default NB_USER
@@ -114,7 +120,10 @@ ARG PYTHON_VERSION=3.10
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
 
+# GitHub Build
 COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-tf-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+# Local Build
+#COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
 
@@ -147,7 +156,11 @@ ENV CONDA_ENV=cisl-cloud-gpu \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
+# GitHub Build
 COPY configs/jupyter/gpu-tf-notebook/requirements.txt configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml /tmp/
+
+# Local Build
+#COPY requirements.txt cisl-gpu-base.yaml /tmp/
 
 RUN mamba install --quiet --yes \
     'notebook' \
@@ -172,7 +185,10 @@ RUN mamba install --quiet --yes \
 # to ${CONDA_DIR}/etc but not to /etc
 ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
+# GitHub Build
 COPY configs/jupyter/gpu-tf-notebook/config/.condarc /opt/conda
+# Local Build
+#COPY config/.condarc /opt/conda
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -181,10 +197,17 @@ EXPOSE $JUPYTER_PORT
 # Configure container startup. Dask gateway requires ENTRYPOINT
 ENTRYPOINT ["/srv/start"]
 
+# GitHub Build
 COPY configs/jupyter/gpu-tf-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-tf-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 COPY configs/jupyter/gpu-tf-notebook/start /srv/start
 COPY configs/jupyter/gpu-tf-notebook/config/.profile /.bash_profile
 COPY configs/jupyter/gpu-tf-notebook/config/.bashrc /etc/bash.bashrc
+
+# Local Build
+#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+#COPY start /srv/start
+#COPY config/.profile /.bash_profile
+#COPY config/.bashrc /etc/bash.bashrc
 
 RUN rm -rf /tmp/requirements.txt /tmp/cisl-gpu-base.yaml
 

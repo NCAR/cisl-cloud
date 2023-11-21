@@ -1,20 +1,21 @@
 name: cisl-gpu-base
 channels:
   - conda-forge
-  - r
+  - pytorch
+  - rapidsai 
 dependencies:
   - flax
-#  - jax
+  - jax
   - jupyterlab-nvdashboard
-#  - keras-cv
-#  - catboost
-#  - pyvista[all,trame]
-#  - pyvista-xarray
-#  - cupy
-#  - rapids
+  - keras-cv
+  - catboost
+  - pyvista[all,trame]
+  - pyvista-xarray
+  - cupy
+  - rapids
 #  - torch
-#  - torchaudio
-#  - torchvision
+  - torchaudio
+  - torchvision
   # Not included in NPL
   - argopy=0.1.14 
   # Same version as NPL
@@ -184,7 +185,7 @@ dependencies:
   # Same version as NPL
   - pyqt=5.15.7=py310hab646b1_3
   # Same version as NPL
-  - python=3.10.12=hd12c33a_0_cpython
+  - python
   # Same version as NPL
   - python-graphviz=0.20.1=pyh22cad53_0
   # Same version as NPL
