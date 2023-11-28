@@ -59,7 +59,7 @@ if "NB_UMASK" in os.environ:
     os.umask(int(os.environ["NB_UMASK"], 8))
 
 # Change the default name format so it just displays the environment name
-c.CondaKernelSpecManager.name_format = '{environment}'
+c.CondaKernelSpecManager.name_format = '{environment} ({0})'
 
 # Sets the default kernel to the conda env we install and control
 # You have to use the full name, find by running `python -m nb_conda_kernels list` 

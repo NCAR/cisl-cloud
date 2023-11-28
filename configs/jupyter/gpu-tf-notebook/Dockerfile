@@ -81,10 +81,10 @@ ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
 
 # GitHub Build
-COPY configs/jupyter/gpu-tf-notebook/fix-permissions /usr/local/bin/fix-permissions
+#COPY configs/jupyter/gpu-tf-notebook/fix-permissions /usr/local/bin/fix-permissions
 
 # Local Build
-#COPY fix-permissions /usr/local/bin/fix-permissions
+COPY fix-permissions /usr/local/bin/fix-permissions
 
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
@@ -121,9 +121,9 @@ ARG PYTHON_VERSION=3.10
 # files across image layers when the permissions change
 
 # GitHub Build
-COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-tf-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+#COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-tf-notebook/initial-condarc "${CONDA_DIR}/.condarc"
 # Local Build
-#COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
+COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
 
@@ -157,10 +157,10 @@ ENV CONDA_ENV=cisl-cloud-gpu \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
 # GitHub Build
-COPY configs/jupyter/gpu-tf-notebook/requirements.txt configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml /tmp/
+#COPY configs/jupyter/gpu-tf-notebook/requirements.txt configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml /tmp/
 
 # Local Build
-#COPY requirements.txt cisl-gpu-base.yaml /tmp/
+COPY requirements.txt cisl-gpu-base.yaml /tmp/
 
 RUN mamba install --quiet --yes \
     'notebook' \
@@ -172,7 +172,6 @@ RUN mamba install --quiet --yes \
     jupyter notebook --generate-config && \
     # Cleanup files no longer needed to reduce image size
     mamba clean --all -f -y && \
-    pip uninstall -y ipykernel && \
     npm cache clean --force && \
     jupyter lab clean && \
     rm -rf "/home/${NB_USER}/.cache/yarn" && \
@@ -186,9 +185,9 @@ RUN mamba install --quiet --yes \
 ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
 # GitHub Build
-COPY configs/jupyter/gpu-tf-notebook/config/.condarc /opt/conda
+#COPY configs/jupyter/gpu-tf-notebook/config/.condarc /opt/conda
 # Local Build
-#COPY config/.condarc /opt/conda
+COPY config/.condarc /opt/conda
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -198,16 +197,16 @@ EXPOSE $JUPYTER_PORT
 ENTRYPOINT ["/srv/start"]
 
 # GitHub Build
-COPY configs/jupyter/gpu-tf-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-tf-notebook/scripts/docker_healthcheck.py /etc/jupyter/
-COPY configs/jupyter/gpu-tf-notebook/start /srv/start
-COPY configs/jupyter/gpu-tf-notebook/config/.profile /.bash_profile
-COPY configs/jupyter/gpu-tf-notebook/config/.bashrc /etc/bash.bashrc
+#COPY configs/jupyter/gpu-tf-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-tf-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+#COPY configs/jupyter/gpu-tf-notebook/start /srv/start
+#COPY configs/jupyter/gpu-tf-notebook/config/.profile /.bash_profile
+#COPY configs/jupyter/gpu-tf-notebook/config/.bashrc /etc/bash.bashrc
 
 # Local Build
-#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
-#COPY start /srv/start
-#COPY config/.profile /.bash_profile
-#COPY config/.bashrc /etc/bash.bashrc
+COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+COPY start /srv/start
+COPY config/.profile /.bash_profile
+COPY config/.bashrc /etc/bash.bashrc
 
 RUN rm -rf /tmp/requirements.txt /tmp/cisl-gpu-base.yaml
 

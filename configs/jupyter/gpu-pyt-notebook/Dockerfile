@@ -169,7 +169,6 @@ RUN mamba install --quiet --yes \
     jupyter notebook --generate-config && \
     # Cleanup files no longer needed to reduce image size
     mamba clean --all -f -y && \
-    pip uninstall -y ipykernel && \
     npm cache clean --force && \
     jupyter lab clean && \
     rm -rf "/home/${NB_USER}/.cache/yarn" && \

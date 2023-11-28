@@ -93,6 +93,8 @@ dependencies:
   - intake=0.7.0=pyhd8ed1ab_0
   # Same version as NPL
   - intake-esm=2023.7.7=pyhd8ed1ab_0
+  # Not included in NPL
+  - intake-thredds=2022.8.19=pyhd8ed1ab_0
   # Same version as NPL
   - intake-xarray=0.7.0=pyhd8ed1ab_0
   # Same version as NPL
@@ -199,6 +201,8 @@ dependencies:
   - seawater=3.3.4=py_1
   # Updated to patch vulnerability
   - shapely=2.0.2=py310h7dcad9a_0
+  # Not included in NPL
+  - siphon=0.9=pyhd8ed1ab_2
   # Same version as NPL
   - statsmodels=0.14.0=py310h278f3c1_1
   # Removed to patch vulnerability
