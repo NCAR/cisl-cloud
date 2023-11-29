@@ -3,6 +3,11 @@
 /* Right Side table of contents*/
 /* Done */
 
+.logo {
+    height: 100;
+    width: auto;
+}
+
 .bd-toc {
     background-color: #323133 !important;
 }
@@ -201,6 +206,15 @@ code, .rst-content tt, .rst-content code {
 
 .navbar-toggler {
     background-color: #dbe2e9;
+}
+
+#navbar-toggler {
+    color: #ffffff;
+    background-color: #dbe2e9;
+}
+
+.i fa-bars {
+    padding-left: 5px;
 }
 
 .pre {

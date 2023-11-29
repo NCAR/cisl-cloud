@@ -75,3 +75,5 @@ sphinx:
           url: https://www2.cisl.ucar.edu/
         - name: Report issue
           url: https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10905
+      page_layouts:
+        home: page-standalone.html
