@@ -6,7 +6,6 @@ channels:
 dependencies:
   - flax
   - jax
-  - jupyterlab-nvdashboard
   - keras-cv
   - catboost
   - pyvista[all,trame]

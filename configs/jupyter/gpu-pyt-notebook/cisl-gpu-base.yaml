@@ -4,7 +4,6 @@ channels:
   - pytorch
   - rapidsai 
 dependencies:
-  - jupyterlab-nvdashboard
   - gpytorch
   - pytorch
   - torchvision

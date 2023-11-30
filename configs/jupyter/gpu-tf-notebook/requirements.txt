@@ -2,6 +2,7 @@ jupyterlab==3.6.3
 dask-labextension==6.2.0
 dask-gateway==2023.1.1
 ipywidgets
+jupyterlab-nvdashboard
 jupyter-resource-usage<1.0.0
 jupyter-server-proxy==v4.1.0
 jupyter_bokeh==3.0.7
