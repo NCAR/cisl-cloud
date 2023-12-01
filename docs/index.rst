@@ -8,15 +8,15 @@ NSF NCAR | CISL Cloud
 
 Built with |jbook|
 
-This is the NSF NCAR | CISL Cloud Gateway. We host dependable storage, compute, and networking resources hosted, operated, 
+This is the NSF NCAR | CISL Cloud Gateway. We host dependable storage, compute, and networking resources operated 
 and maintained by CISL staff that are highly available to the NSF NCAR community. This project and the services run on it
 are still in a introductory pilot phase. As such, there are currently no well defined SLAs as active development is ongoing. 
 
 .. raw:: html
 
    <span class="d-flex justify-content-center py-4">
-     <a href="about.html" role="button" class="btn btn-light btn-lg">
-       Read more about using the Cloud
+     <a href="overview/about.html" role="button" class="btn btn-light btn-lg">
+       Read more about the Cloud
      </a>
    </span>
 
@@ -100,7 +100,7 @@ Documentation
 .. raw:: html
 
    <span class="d-flex justify-content-center py-4">
-     <a href="index.html" role="button" class="btn btn-primary btn-lg">
+     <a href="main.html" role="button" class="btn btn-primary btn-lg">
        Read the documentation
      </a>
    </span>
