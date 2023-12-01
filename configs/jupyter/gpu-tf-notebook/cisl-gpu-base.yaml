@@ -118,6 +118,7 @@ dependencies:
   - papermill=2.3.4=pyhd8ed1ab_0
   # Same version as NPL
   - pop-tools=2023.6.0=pyhd8ed1ab_0
+  - pyarrow==14.0.1=py310hf9e7431_1_cpu
   # Same version as NPL
   - pydap=3.4.0=pyhd8ed1ab_0
   # Same version as NPL
