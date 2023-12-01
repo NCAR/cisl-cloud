@@ -66,6 +66,16 @@
     color: #007fa3 !important;
 }
 
+.dropdown {
+    padding-top: 8px;
+    height: 42.4px
+}
+
+.navbar-collapse {
+    text-align: left;
+    flex-basis: 100%;
+}
+
 /* Dropdown content (hidden by default) */
 .dropdown-content {
     display: none;

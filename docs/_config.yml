@@ -52,7 +52,7 @@ sphinx:
         Theme by <a href="https://projectpythia.org/">Project Pythia</a>
       navbar_links:
         - name: Cloud Docs
-          url: index
+          url: main
         - name: Resources
           url: overview/services
           dropdown: true 
@@ -76,6 +76,6 @@ sphinx:
         - name: Report issue
           url: https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10905
       page_layouts:
-        home: page-banner.html
+        index: page-banner.html
     html_sidebars:
-      home: []
+      index: []

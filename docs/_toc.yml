@@ -5,6 +5,7 @@ format: jb-book
 root: index
 parts:
   - chapters:
+    - file: main
     - file: overview/about
     - file: overview/use-cases
     - file: overview/services

@@ -1,5 +1,5 @@
-NCAR | CISL Cloud
-===================
+NSF NCAR | CISL Cloud
+=======================
 
 .. banner::
    :image: images/cirrus.png
@@ -8,7 +8,9 @@ NCAR | CISL Cloud
 
 Built with |jbook|
 
-This is the NCAR | CISL Cloud Gateway.
+This is the NSF NCAR | CISL Cloud Gateway. We host dependable storage, compute, and networking resources hosted, operated, 
+and maintained by CISL staff that are highly available to the NSF NCAR community. This project and the services run on it
+are still in a introductory pilot phase. As such, there are currently no well defined SLAs as active development is ongoing. 
 
 .. raw:: html
 
@@ -17,6 +19,17 @@ This is the NCAR | CISL Cloud Gateway.
        Read more about using the Cloud
      </a>
    </span>
+
+Information
+------------------------
+
+NSF NCAR received one-time funding to evaluate an on-premise (on-prem) cloud. An on-prem cloud was selected because NSF
+NCAR already has state of the art data centers with staffing in place. An on-prem cloud offers the ability to tailor the environment
+to meet the needs of the scientific community while being fully in control of access and security. Initial use cases were gathered
+from the scientific community. The services provided are tailored to address those use cases. Agile product management methods
+are also being utilized to provide users an interface to the team via a Product Owner while prioritizing and accomplishing work
+on a Kanban board.
+
 
 Resources
 ------------------------
@@ -31,22 +44,6 @@ Resources
        <figcaption style="text-align:center"><a href="how-to/k8sJH/k8sJH-intro.html">Link to Docs</a></figcaption>
       </figure>
      </a>
-     <a href="https://jupyterhub.hpc.ucar.edu/">
-     <figure>
-       <img src="_static/jhub-logo.png">
-       <figcaption style="text-align:center">HPC JupyterHub</figcaption>
-       <figcaption style="text-align:center"><a href="https://arc.ucar.edu/knowledge_base/70549913">Link to Docs</a></figcaption>
-      </figure>
-     </a>
-     <a href="https://ncar-cisl.2i2c.cloud/">
-     <figure>
-       <img src="_static/jhub-logo.png">
-       <figcaption style="text-align:center">2i2c JupyterHub</figcaption>
-       <figcaption style="text-align:center"><a href="how-to/2i2cJH/2i2cJH-intro.html">Link to Docs</a></figcaption>
-      </figure>
-     </a>
-   </span>
-   <span class="d-flex justify-content-center py-4">
      <a href="https://stratus-admin.ucar.edu:10443/asview">
      <figure>
        <img src="_static/stratus.png">
@@ -54,6 +51,15 @@ Resources
        <figcaption style="text-align:center"><a href="how-to/Stratus/stratus-intro.html">Link to Docs</a></figcaption>
       </figure>
      </a>
+     <a href="https://jupyterhub.hpc.ucar.edu/">
+     <figure>
+       <img src="_static/jhub-logo.png">
+       <figcaption style="text-align:center">HPC JupyterHub</figcaption>
+       <figcaption style="text-align:center"><a href="https://arc.ucar.edu/knowledge_base/70549913">Link to Docs</a></figcaption>
+      </figure>
+     </a>
+   </span>
+   <span class="d-flex justify-content-center py-4">
      <a href="https://hub.k8s.ucar.edu/">
      <figure>
        <img src="_static/harbor.png">
@@ -65,6 +71,13 @@ Resources
      <figure>
        <img src="_static/argo.png">
        <figcaption style="text-align:center">Argo CD Docs</figcaption>
+      </figure>
+     </a>
+     <a href="https://ncar-cisl.2i2c.cloud/">
+     <figure>
+       <img src="_static/jhub-logo.png">
+       <figcaption style="text-align:center">2i2c JupyterHub</figcaption>
+       <figcaption style="text-align:center"><a href="how-to/2i2cJH/2i2cJH-intro.html">Link to Docs</a></figcaption>
       </figure>
      </a>
    </span>
