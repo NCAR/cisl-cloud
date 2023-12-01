@@ -71,7 +71,7 @@ jupyterhub:
     singleuser:
         cmd: jupyterhub-singleuser
         extraEnv:
-            DASK_DISTRIBUTED__DASHBOARD__LINK: $(JUPYTERHUB_SERVICE_PREFIX)proxy/{port}/status
+            DASK_DISTRIBUTED__DASHBOARD__LINK: $(JUPYTERHUB_SERVICE_PREFIX)proxy/{{port}}/status
             DASK_GATEWAY__CLUSTER__OPTIONS__IMAGE: $(JUPYTER_IMAGE_SPEC)
         image:
             name: pangeo/pangeo-notebook
