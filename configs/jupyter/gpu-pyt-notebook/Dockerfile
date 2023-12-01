@@ -200,10 +200,10 @@ COPY configs/jupyter/gpu-pyt-notebook/config/.profile /.bash_profile
 COPY configs/jupyter/gpu-pyt-notebook/config/.bashrc /etc/bash.bashrc
 
 # Local build
-COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
-COPY start /srv/start
-COPY config/.profile /.bash_profile
-COPY config/.bashrc /etc/bash.bashrc
+#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+#COPY start /srv/start
+#COPY config/.profile /.bash_profile
+#COPY config/.bashrc /etc/bash.bashrc
 
 RUN rm -rf /tmp/requirements.txt /tmp/cisl-gpu-base.yaml
 
