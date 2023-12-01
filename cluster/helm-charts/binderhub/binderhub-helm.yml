@@ -6,6 +6,9 @@ config:
     DockerRegistry:
         token_url: https://hub.k8s.ucar.edu/service/token?service=harbor-registry
         url: ENC[AES256_GCM,data:7dITolTjFFevQxT62dibF1B5kyUShlii,iv:q4uhfeIHgp6P/MOvS+4EuMdPv3ZFHJlml7R6r1xGSfs=,tag:faQJoM6UD8uwWZaqxt+9Kw==,type:str]
+extraPodSpec:
+    dnsPolicy: ClusterFirstWithHostNet
+    hostNetwork: true
 imageBuilderType: dind
 ingress:
     annotations:
@@ -20,6 +23,8 @@ ingress:
             - ENC[AES256_GCM,data:Yi9BYYpoOpn2du7LPPgECOAeXw==,iv:GY+LXI27JRjRBMLRsYpEfa4+hhb6ukMeJHl5rEj5HXg=,tag:wwXMvzl0SoKo1XCEl3wXaA==,type:str]
           secretName: ENC[AES256_GCM,data:vS0WodXLeB5mdRpWmmC64694oSb2TSs=,iv:6mdI9QhVi6DHdYKQFPnHVqZO2DmCuhUgS1ivh2CfU54=,tag:iXezHVsWW6B5Vw/90UnF1g==,type:str]
 jupyterhub:
+    debug:
+        enabled: false
     hub:
         config:
             Authenticator:
