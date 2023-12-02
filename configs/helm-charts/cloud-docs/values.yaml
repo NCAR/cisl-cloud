@@ -12,4 +12,4 @@ webapp:
     port: 80
     memory: 1G
     cpu: 2    
-    image: cislcloudpilot/docs:2023-12-01.23
+    image: cislcloudpilot/docs:2023-12-02.00
