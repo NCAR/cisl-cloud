@@ -82,14 +82,6 @@ Resources
      </a>
    </span>
 
-Information
-^^^^^^^^^^^^^^
-
-An on-premise (on-prem) cloud consists of storage, compute, and networking resources hosted 
-on fully redundant hardware installed in personal/organizational facilities available to users. 
-We utilize a Kubernetes (k8s) cluster to host JupyterHub along with other services to support open science development.
-
-
 Documentation
 -------------
 

@@ -71,6 +71,17 @@
     height: 42.4px
 }
 
+main.banner-main div.sectionwrapper-2:nth-child(even) {
+    background-color: transparent;
+}
+
+main.banner-main div#main-content {
+    background-image: url("NCAR-Waves.png") !important;
+    background-position: right top;
+    background-repeat: no-repeat;
+    background-color: #dbe2e9 !important;
+}
+
 .navbar-collapse {
     text-align: left;
     flex-basis: 100%;
