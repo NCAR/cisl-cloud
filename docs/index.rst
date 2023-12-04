@@ -34,6 +34,9 @@ on a Kanban board.
 Resources
 ------------------------
 
+NSF UCAR Network Access Required
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 .. raw:: html
 
    <span class="d-flex justify-content-center py-4">
@@ -73,6 +76,14 @@ Resources
        <figcaption style="text-align:center">Argo CD Docs</figcaption>
       </figure>
      </a>
+   </span>
+
+Publicly Accessible
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+   <span class="d-flex justify-content-center py-4">
      <a href="https://ncar-cisl.2i2c.cloud/">
      <figure>
        <img src="_static/jhub-logo.png">
