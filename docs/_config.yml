@@ -12,7 +12,8 @@ copyright: "2023"
 execute:
   execute_notebooks: auto
   exclude_patterns:
-    - '*tf-namespace*'
+    - '*rda-local*'
+    - '*rda-remote*'
     - '*create-jb*'
     - '*stratus-cmd*'
 

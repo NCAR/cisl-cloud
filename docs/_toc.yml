@@ -92,6 +92,13 @@ parts:
               title: Dask Gateway
             - file: how-to/k8sJH/dask/dask-jobqueue
               title: Dask Jobqueue
+      - title: Data Access
+        file: how-to/data-access/intro
+        sections:
+        - title: RDA Local Access
+          file: how-to/data-access/rda-local
+        - title: RDA Remote Access
+          file: how-to/data-access/rda-remote
       - title: HPC JupyterHub
         url: https://arc.ucar.edu/knowledge_base/70549913
       - title: Container Registry
