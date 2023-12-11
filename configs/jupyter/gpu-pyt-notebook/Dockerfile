@@ -61,7 +61,7 @@ RUN apt-get update --yes && \
     #   https://github.com/krallin/tini#why-tini for details.
     tini \
     vim \
-    # Required for NVIDIA OpenGL
+    # Required for NVIDIA OpenGL Possibly
     libxext-dev \
     libx11-dev \
     x11proto-gl-dev \
