@@ -62,10 +62,10 @@ RUN apt-get update --yes && \
     tini \
     vim \
     # Required for NVIDIA OpenGL Possibly
-    libxext-dev \
-    libx11-dev \
-    x11proto-gl-dev \
-    libglvnd-dev \
+    #libxext-dev \
+    #libx11-dev \
+    #x11proto-gl-dev \
+    #libglvnd-dev \
     # End of OpenGL
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
