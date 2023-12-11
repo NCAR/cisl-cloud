@@ -168,7 +168,8 @@ RUN set -x && \
     rm micromamba && \
     # Pin major.minor version of python
     mamba list python | grep '^python ' | tr -s ' ' | cut -d ' ' -f 1,2 >> "${CONDA_DIR}/conda-meta/pinned" && \
-    mamba clean --all -f -y && \
+    # Changed to conda clean due to : https://github.com/mamba-org/mamba/issues/3044
+    conda clean --all -f -y && \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
@@ -213,7 +214,8 @@ RUN mamba install --quiet --yes \
     # Build Jupyter Config
     jupyter notebook --generate-config && \
     # Cleanup files no longer needed to reduce image size
-    mamba clean --all -f -y && \
+    # Changed to conda clean due to : https://github.com/mamba-org/mamba/issues/3044
+    conda clean --all -f -y && \
     npm cache clean --force && \
     jupyter lab clean && \
     rm -rf "/home/${NB_USER}/.cache/yarn" && \
