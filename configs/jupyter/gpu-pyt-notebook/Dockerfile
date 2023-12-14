@@ -172,7 +172,7 @@ RUN mamba install --quiet --yes \
     'notebook' \
     'jupyterhub' \
     'conda-forge::nb_conda_kernels' && \
-    mamba env create -f /tmp/cisl-gpu-base.yaml && \
+    CONDA_OVERRIDE_CUDA="12.3" mamba env create -f /tmp/cisl-gpu-base.yaml && \
     pip install -r /tmp/requirements.txt && \
     # Install Nvidia extension for Jupyterlab>=4
     pip install --extra-index-url https://pypi.anaconda.org/rapidsai-wheels-nightly/simple --pre jupyterlab_nvdashboard && \
