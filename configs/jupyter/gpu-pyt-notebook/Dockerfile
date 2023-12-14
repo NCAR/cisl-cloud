@@ -1,7 +1,9 @@
 # Currently copied directly from https://github.com/zonca/jupyterhub-deploy-kubernetes-jetstream/blob/master/gpu/nvidia-tensorflow-jupyterhub/Dockerfile
 # We will start with this and go through testing to determine where this needs to be customized
 
-FROM nvidia/cuda:12.2.2-base-ubuntu22.04
+ARG ROOT_CONTAINER=ubuntu:22.04
+
+FROM $ROOT_CONTAINER
 
 LABEL maintainer="CISL Cloud Pilot Team <cisl-cloud-pilot@ucar.edu>"
 ARG NB_USER="jovyan"
@@ -172,6 +174,8 @@ RUN mamba install --quiet --yes \
     'conda-forge::nb_conda_kernels' && \
     mamba env create -f /tmp/cisl-gpu-base.yaml && \
     pip install -r /tmp/requirements.txt && \
+    # Install Nvidia extension for Jupyterlab>=4
+    pip install --extra-index-url https://pypi.anaconda.org/rapidsai-wheels-nightly/simple --pre jupyterlab_nvdashboard && \
     # Build Jupyter Config
     jupyter notebook --generate-config && \
     # Cleanup files no longer needed to reduce image size

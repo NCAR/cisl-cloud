@@ -10,7 +10,7 @@ dependencies:
   - catboost
   - pyvista[all,trame]
   - pyvista-xarray
-  - tensorflow>=2.9.1=*cuda112*
+  - tensorflow>=2.12.0=*cuda112*
   - cupy
   - rapids
   # Not included in NPL
@@ -78,7 +78,7 @@ dependencies:
   # Same version as NPL
   - intake=0.7.0=pyhd8ed1ab_0
   # Same version as NPL
-  - intake-esm=2023.7.7=pyhd8ed1ab_0
+  - intake-esm
   # Not included in NPL
   - intake-thredds=2022.8.19=pyhd8ed1ab_0
   # Same version as NPL
@@ -105,7 +105,7 @@ dependencies:
   # Same version as NPL
   - nc-time-axis=1.4.1=pyhd8ed1ab_0
   # Same version as NPL
-  - numcodecs=0.11.0=py310heca2aa9_1
+  - numcodecs
   # Same version as NPL
   - numpy
   # Same version as NPL
@@ -116,7 +116,6 @@ dependencies:
   - papermill=2.3.4=pyhd8ed1ab_0
   # Same version as NPL
   - pop-tools=2023.6.0=pyhd8ed1ab_0
-  - pyarrow==14.0.1=py310hf9e7431_1_cpu
   # Same version as NPL
   - pydap=3.4.0=pyhd8ed1ab_0
   # Same version as NPL
