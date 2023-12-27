@@ -4,9 +4,9 @@
 | **Jupyter Singleuser CPU image build** | ![CPU Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-basenb.yaml/badge.svg) |
 | **Jupyter Singleuser GPU image builds** | ![Tensorflow Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-tfgpu.yaml/badge.svg) | ![PyTorch Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-pytgpu.yaml/badge.svg) |
 
-```{note}
+* Note
 The TensorFlow build does not work on GitHub hosted runners
-```
+
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
 
