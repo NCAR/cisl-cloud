@@ -1,7 +1,7 @@
 # Currently copied directly from https://github.com/zonca/jupyterhub-deploy-kubernetes-jetstream/blob/master/gpu/nvidia-tensorflow-jupyterhub/Dockerfile
 # We will start with this and go through testing to determine where this needs to be customized
 
-ARG ROOT_CONTAINER=ubuntu:22.04
+ARG ROOT_CONTAINER=nvidia/opengl:base-ubuntu22.04
 
 FROM $ROOT_CONTAINER
 
@@ -42,6 +42,22 @@ RUN apt-get update --yes && \
     gfortran \
     git \
     graphviz \
+    # Required for NVIDIA OpenGL Possibly
+    libegl1 \
+    libgl1 \
+    libgles2 \
+    libglvnd0 \
+    libglvnd-dev \
+    libglx0 \
+    # Required for NVIDIA OpenGL Possibly
+    libx11-dev \
+    libxau6 \
+    libxcb1 \
+    libxdmcp6 \
+    # Required for NVIDIA OpenGL Possibly
+    libxext-dev \
+    libxext6 \
+    libx11-6 \
     # R pre-requisites
     # Perl library development files
     libperl-dev \
@@ -52,7 +68,8 @@ RUN apt-get update --yes && \
     locales \
     # Build executable programs
     make \
-    # Javascript runtime
+    # SSH for Git 
+    openssh-client \
     # - pandoc is used to convert notebooks to html files
     pandoc \
     # - run-one - a wrapper script that runs no more
@@ -63,13 +80,9 @@ RUN apt-get update --yes && \
     #   https://github.com/krallin/tini#why-tini for details.
     tini \
     vim \
-    # Required for NVIDIA OpenGL Possibly
-    libxext-dev \
-    libx11-dev \
-    x11proto-gl-dev \
-    libglvnd-dev \
     # End of OpenGL
-    wget && \
+    wget \
+    x11proto-gl-dev && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
     locale-gen
@@ -88,9 +101,9 @@ ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
 
 # GitHub build
-COPY configs/jupyter/gpu-pyt-notebook/fix-permissions /usr/local/bin/fix-permissions
+# COPY configs/jupyter/gpu-pyt-notebook/fix-permissions /usr/local/bin/fix-permissions
 # Local build
-#COPY fix-permissions /usr/local/bin/fix-permissions
+COPY fix-permissions /usr/local/bin/fix-permissions
 
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
@@ -127,9 +140,9 @@ ARG PYTHON_VERSION=3.10
 # files across image layers when the permissions change
 
 # GitHub build
-COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-pyt-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+# COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-pyt-notebook/initial-condarc "${CONDA_DIR}/.condarc"
 # Local build
-#COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
+COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
 
@@ -159,14 +172,26 @@ RUN set -x && \
     # Changed to conda clean due to : https://github.com/mamba-org/mamba/issues/3044
     conda clean --all -f -y
 
+# GitHub build
+#COPY configs/jupyter/gpu-pyt-notebook/config/10_nvidia.json /usr/share/glvnd/egl_vendor.d/10_nvidia.json
+# Local build
+COPY config/10_nvidia.json /usr/share/glvnd/egl_vendor.d/10_nvidia.json
+
 ENV CONDA_ENV=cisl-cloud-gpu \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
-    PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
+    PATH=${NB_PYTHON_PREFIX}/bin:${PATH} \
+    __EGL_VENDOR_LIBRARY_FILENAMES=/usr/share/glvnd/egl_vendor.d/10_nvidia.json
+
+# nvidia-container-runtime
+ENV NVIDIA_VISIBLE_DEVICES \
+        ${NVIDIA_VISIBLE_DEVICES:-all}
+ENV NVIDIA_DRIVER_CAPABILITIES \
+        ${NVIDIA_DRIVER_CAPABILITIES:+$NVIDIA_DRIVER_CAPABILITIES,}graphics,utility,display,compute
 
 # GitHub build
-COPY configs/jupyter/gpu-pyt-notebook/requirements.txt configs/jupyter/gpu-pyt-notebook/cisl-gpu-base.yaml /tmp/
+#COPY configs/jupyter/gpu-pyt-notebook/requirements.txt configs/jupyter/gpu-pyt-notebook/cisl-gpu-base.yaml /tmp/
 # Local build
-#COPY requirements.txt cisl-gpu-base.yaml /tmp/
+COPY requirements.txt cisl-gpu-base.yaml /tmp/
 
 RUN mamba install --quiet --yes \
     'notebook' \
@@ -194,9 +219,9 @@ RUN mamba install --quiet --yes \
 ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
 # GitHub build
-COPY configs/jupyter/gpu-pyt-notebook/config/.condarc /opt/conda
+#COPY configs/jupyter/gpu-pyt-notebook/config/.condarc /opt/conda
 # Local build
-#COPY config/.condarc /opt/conda
+COPY config/.condarc /opt/conda
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -206,16 +231,16 @@ EXPOSE $JUPYTER_PORT
 ENTRYPOINT ["/srv/start"]
 
 # GitHub build
-COPY configs/jupyter/gpu-pyt-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-pyt-notebook/scripts/docker_healthcheck.py /etc/jupyter/
-COPY configs/jupyter/gpu-pyt-notebook/start /srv/start
-COPY configs/jupyter/gpu-pyt-notebook/config/.profile /.bash_profile
-COPY configs/jupyter/gpu-pyt-notebook/config/.bashrc /etc/bash.bashrc
+#COPY configs/jupyter/gpu-pyt-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-pyt-notebook/scripts/docker_healthcheck.py /etc/jupyter/
+#COPY configs/jupyter/gpu-pyt-notebook/start /srv/start
+#COPY configs/jupyter/gpu-pyt-notebook/config/.profile /.bash_profile
+#COPY configs/jupyter/gpu-pyt-notebook/config/.bashrc /etc/bash.bashrc
 
 # Local build
-#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
-#COPY start /srv/start
-#COPY config/.profile /.bash_profile
-#COPY config/.bashrc /etc/bash.bashrc
+COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+COPY start /srv/start
+COPY config/.profile /.bash_profile
+COPY config/.bashrc /etc/bash.bashrc
 
 RUN rm -rf /tmp/requirements.txt /tmp/cisl-gpu-base.yaml
 

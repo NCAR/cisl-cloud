@@ -6,18 +6,15 @@ root: index
 parts:
   - chapters:
     - file: main
-    - file: overview/about
-    - file: overview/use-cases
     - file: overview/services
-    - file: overview/goals
+    - title: Interacting w/ Cloud Team
+      file: how-to/agile
+      sections:
+      - file: how-to/create-tickets
   - caption: Availability
     chapters:
-      - title: Current Offering
-        file: availability/availability
-      - title: Architecture Diagram
-        file: availability/architecture
-      - title: Current Hardware
-        file: availability/hw-resources
+      - file: availability/services
+      - file: availability/architecture
   - caption: Administer the CISL Cloud 
     chapters:
       - title: Documentation
@@ -67,10 +64,8 @@ parts:
               file: how-to/K8s/argocd/argo-update
   - caption: Use the CISL Cloud 
     chapters:
-      - title: Interacting w/ Cloud Team
-        file: how-to/agile
-        sections:
-        - file: how-to/create-tickets
+      - title: Getting Started
+        file: overview/getting-started
       - title: NCAR K8s JupyterHub 
         file: how-to/k8sJH/k8sJH-intro
         sections:

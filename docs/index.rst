@@ -15,8 +15,8 @@ are still in a introductory pilot phase. As such, there are currently no well de
 .. raw:: html
 
    <span class="d-flex justify-content-center py-4">
-     <a href="overview/about.html" role="button" class="btn btn-light btn-lg">
-       Read more about the Cloud
+     <a href="overview/getting-started.html" role="button" class="btn btn-light btn-lg">
+       Getting Started on the Cloud
      </a>
    </span>
 

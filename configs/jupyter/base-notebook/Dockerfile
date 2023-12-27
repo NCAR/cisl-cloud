@@ -59,7 +59,8 @@ RUN apt-get update --yes && \
     locales \
     # Build executable programs
     make \
-    # Javascript runtime
+    # SSH for Git 
+    openssh-client \
     # - pandoc is used to convert notebooks to html files
     pandoc \
     # - run-one - a wrapper script that runs no more
