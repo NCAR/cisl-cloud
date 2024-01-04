@@ -66,7 +66,7 @@ parts:
     chapters:
       - title: Getting Started
         file: overview/getting-started
-      - title: NCAR K8s JupyterHub 
+      - title: K8s JupyterHub 
         file: how-to/k8sJH/k8sJH-intro
         sections:
         - file: how-to/k8sJH/access
@@ -90,10 +90,21 @@ parts:
       - title: Data Access
         file: how-to/data-access/intro
         sections:
-        - title: RDA Local Access
-          file: how-to/data-access/rda-local
-        - title: RDA Remote Access
-          file: how-to/data-access/rda-remote
+        - title: GLADE
+          file: how-to/data-access/glade
+        - title: Object Storage
+          file: how-to/Stratus/stratus-intro
+          sections:
+          - file: how-to/Stratus/stratus-access
+          - file: how-to/Stratus/jupyter-extension
+          - file: how-to/Stratus/stratus-cmd
+        - title: RDA
+          file: how-to/data-access/rda
+          sections:
+          - title: RDA Local Access
+            file: how-to/data-access/rda-local
+          - title: RDA Remote Access
+            file: how-to/data-access/rda-remote
       - title: HPC JupyterHub
         url: https://arc.ucar.edu/knowledge_base/70549913
       - title: Container Registry
@@ -111,14 +122,6 @@ parts:
         - file: how-to/K8s/Hosting/book-image
           title: Containerize Jupyter Book
         - file: how-to/K8s/Hosting/deploy
-        - title: Continuous Deployment 
-          file: how-to/K8s/argocd/argo-user
-      - title: Object Storage
-        file: how-to/Stratus/stratus-intro
-        sections:
-        - file: how-to/Stratus/stratus-access
-        - file: how-to/Stratus/jupyter-extension
-        - file: how-to/Stratus/stratus-cmd
       - title: 2i2c JupyterHub 
         file: how-to/2i2cJH/2i2cJH-intro
         sections:

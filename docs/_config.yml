@@ -48,7 +48,8 @@ sphinx:
       extra_navbar: |
         <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
         Follow our <a href="https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP">Kanban board</a><br>
-        Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><hr>
+        Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><br>
+        <a href="https://github.com/NicholasCote/jupyterbook-cisl-theme">Template for this JupyterBook layout</a><hr>
         <div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div><br>
         Theme by <a href="https://projectpythia.org/">Project Pythia</a>
       navbar_links:

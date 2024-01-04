@@ -77,7 +77,7 @@ NSF UCAR Network Access Required
        <figcaption style="text-align:center"><a href="how-to/K8s/harbor/harbor-intro.html">Link to Docs</a></figcaption>
       </figure>
      </a>
-     <a href="how-to/K8s/argocd/argo-user.html">
+     <a href="how-to/K8s/Hosting/deploy">
      <figure>
        <img src="_static/argo.png">
        <figcaption style="text-align:center">Argo CD Docs</figcaption>
