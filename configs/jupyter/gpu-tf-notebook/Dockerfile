@@ -52,6 +52,7 @@ RUN apt-get update --yes && \
     locales \
     # Build executable programs
     make \
+    mesa-utils \
     # SSH for Git 
     openssh-client \
     # - pandoc is used to convert notebooks to html files
