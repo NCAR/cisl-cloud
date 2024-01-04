@@ -105,8 +105,6 @@ parts:
             file: how-to/data-access/rda-local
           - title: RDA Remote Access
             file: how-to/data-access/rda-remote
-      - title: HPC JupyterHub
-        url: https://arc.ucar.edu/knowledge_base/70549913
       - title: Container Registry
         file: how-to/K8s/harbor/harbor-intro
         sections:
@@ -122,13 +120,15 @@ parts:
         - file: how-to/K8s/Hosting/book-image
           title: Containerize Jupyter Book
         - file: how-to/K8s/Hosting/deploy
+      - title: Virtual Machines
+        file: how-to/vm/vm-intro
+      - title: HPC JupyterHub
+        url: https://arc.ucar.edu/knowledge_base/70549913
       - title: 2i2c JupyterHub 
         file: how-to/2i2cJH/2i2cJH-intro
         sections:
         - file: how-to/2i2cJH/access
         - file: how-to/2i2cJH/user-info
-      - title: Virtual Machines
-        file: how-to/vm/vm-intro
   - caption: Support Agreements
     chapters:
       - file: slas/slas
