@@ -116,12 +116,12 @@ parts:
       - title: Hosting Web Applications 
         file: how-to/K8s/Hosting/web-intro
         sections:
-        - file: how-to/K8s/Hosting/containerize
-          title: Containerize Python app
-        - file: how-to/K8s/Hosting/book-image
-          title: Containerize Jupyter Book
         - file: how-to/K8s/Hosting/deploy
         - file: how-to/github-actions
+        - file: how-to/K8s/Hosting/containerize
+          title: Containerize Python
+        - file: how-to/K8s/Hosting/book-image
+          title: Containerize Jupyter Book
       - title: Virtual Machines
         file: how-to/vm/vm-intro
       - title: HPC JupyterHub
