@@ -1,3 +1,4 @@
 jupyter-book
+sphinx
 sphinx_pythia_theme
 ghp-import
