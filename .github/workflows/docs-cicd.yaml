@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-docs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       # Step 1 is to checkout the github repo
       - name: Check out the repo
@@ -15,7 +15,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.10.12
+          python-version: 3.10
       - name: Install Python dependencies
         run: |
           sudo apt-get install python3-pip
