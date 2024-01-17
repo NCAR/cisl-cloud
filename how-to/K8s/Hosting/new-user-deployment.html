@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Argo CD (Continuous Deployment) &#8212; CISL Cloud Pilot</title>
+    <title>New User Deployment &#8212; CISL Cloud Pilot</title>
     
   <link href="../../../_static/css/theme.css" rel="stylesheet">
   <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Introduction to Stratus" href="../../Stratus/stratus-intro.html" />
-    <link rel="prev" title="Deploy your application" href="../Hosting/deploy.html" />
+    <link rel="next" title="Helm &amp; Argo CD" href="web-helm.html" />
+    <link rel="prev" title="Host a web application" href="web-hosting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -74,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     
 
 <a class="navbar-brand" href="../../../index.html">
-  <img src="../../../_static/CISL-contemp-logo-blue.png" class="logo" alt="logo">
+  <img src="../../../_static/NSF-NCAR.png" class="logo" alt="logo">
 </a>
 
 
@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
             
         
         <li class="nav-item">
-            <a class="nav-link nav-internal" href="../../../index.html">Cloud Docs</a>
+            <a class="nav-link nav-internal" href="../../../main.html">Cloud Docs</a>
         </li>    
     
     
@@ -108,9 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
         
             <li class="nav-item">
                 <button class="dropbtn">
-                    <a class="nav-link nav-internal" href="../../../overview/services.html">
                         Resources <i class="fa fa-chevron-down" style="color: #000000;"></i>
-                    </a>
                 </button>
             </li>
             <div class="dropdown-content">
@@ -194,24 +192,31 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../overview/about.html">
-   About this Project
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../overview/use-cases.html">
-   Use Cases
+  <a class="reference internal" href="../../../main.html">
+   CISL Cloud Pilot
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../../overview/services.html">
-   Potential Services
+   Work in Progress
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../overview/goals.html">
-   Goals
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../agile.html">
+   Interacting w/ Cloud Team
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../create-tickets.html">
+     Create tickets
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -221,18 +226,13 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../availability/availability.html">
-   Current Offering
+  <a class="reference internal" href="../../../availability/services.html">
+   Services
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../../availability/architecture.html">
-   Current Architecture Diagram
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../availability/hw-resources.html">
-   Current Hardware
+   Architecture
   </a>
  </li>
 </ul>
@@ -241,13 +241,13 @@ const thebe_selector_output = ".output, .cell_output"
   Administer the CISL Cloud
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../jupyter-book/jb-intro.html">
    Documentation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -270,32 +270,37 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../../github-strategy.html">
+   GitHub Strategy
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../sops-age/sops-age.html">
    Encrypting Secrets
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../k8s-intro.html">
    Kubernetes (k8s)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../Hosting/cert-mgr.html">
+    <a class="reference internal" href="cert-mgr.html">
      cert-manager
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Hosting/ingress.html">
+    <a class="reference internal" href="ingress.html">
      Ingress Controller
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../Hosting/external-dns.html">
+    <a class="reference internal" href="external-dns.html">
      ExternalDNS
     </a>
    </li>
@@ -303,8 +308,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../../k8sJH/customize/custom.html">
      JupyterHub
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -330,8 +335,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../Rancher/rancher-intro.html">
      Rancher (K8s)
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -363,45 +368,40 @@ const thebe_selector_output = ".output, .cell_output"
      Harbor
     </a>
    </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../Hosting/web-hosting.html">
+   <li class="toctree-l2 current active has-children">
+    <a class="reference internal" href="web-hosting.html">
      Host web applications
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
+    <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
      <i class="fas fa-chevron-down">
      </i>
     </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../Hosting/web-kubectl.html">
-       Deploy with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         kubectl
-        </span>
-       </code>
+    <ul class="current">
+     <li class="toctree-l3 current active">
+      <a class="current reference internal" href="#">
+       New User Deployment
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../Hosting/web-helm.html">
-       Deploy with Helm
+      <a class="reference internal" href="web-helm.html">
+       Helm &amp; Argo CD
       </a>
      </li>
     </ul>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="argo-intro.html">
+    <a class="reference internal" href="../argocd/argo-intro.html">
      Argo CD
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="argo-update.html">
+      <a class="reference internal" href="../argocd/argo-update.html">
        Update your Argo CD Application
       </a>
      </li>
@@ -415,52 +415,18 @@ const thebe_selector_output = ".output, .cell_output"
   Use the CISL Cloud
  </span>
 </p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../agile.html">
-   Agile Interaction
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../overview/getting-started.html">
+   Getting Started
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../create-tickets.html">
-     Create tickets
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../2i2cJH/2i2cJH-intro.html">
-   2i2c JupyterHub
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../2i2cJH/access.html">
-     Requesting Access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../2i2cJH/user-info.html">
-     User Information
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../k8sJH/k8sJH-intro.html">
-   NCAR JupyterHub
+   K8s JupyterHub
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -472,7 +438,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../k8sJH/user-info.html">
-     User Information
+     Initial Login
     </a>
    </li>
    <li class="toctree-l2">
@@ -482,7 +448,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../../k8sJH/base-conda.html">
-     Base Conda Environment
+     Base Conda Environments
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../k8sJH/gpu/gpu-intro.html">
+     GPUs
     </a>
    </li>
    <li class="toctree-l2">
@@ -494,8 +465,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../../k8sJH/dask/dask-intro.html">
      Dask
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-    <label for="toctree-checkbox-10">
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -517,24 +488,80 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
     </ul>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../data-access/intro.html">
+   Data Access
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../k8sJH/gpu/gpu-intro.html">
-     GPUs
+    <a class="reference internal" href="../../data-access/glade.html">
+     GLADE
     </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../Stratus/stratus-intro.html">
+     Object Storage
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../Stratus/stratus-access.html">
+       Access
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../Stratus/jupyter-extension.html">
+       Jupyter S3 Extension
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../Stratus/stratus-cmd.html">
+       Python Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../data-access/rda.html">
+     RDA
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../data-access/rda-local.html">
+       RDA Local Access
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../data-access/rda-remote.html">
+       RDA Remote Access
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
-   HPC JupyterHub
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../harbor/harbor-intro.html">
-   Harbor - Container Registry
+   Container Registry
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -551,61 +578,34 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../Hosting/web-intro.html">
-   Hosting web applications
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Hosting/containerize.html">
-     Containerize Python app
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Hosting/book-image.html">
-     Containerize Jupyter Book
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../Hosting/deploy.html">
-     Deploy your application
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Continuous Deployment
-    </a>
-   </li>
-  </ul>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../Stratus/stratus-intro.html">
-   Stratus - S3
+  <a class="reference internal" href="web-intro.html">
+   Hosting Web Applications
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../Stratus/stratus-access.html">
-     Access
+    <a class="reference internal" href="containerize.html">
+     Containerize Python app
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../Stratus/jupyter-extension.html">
-     Jupyter S3 Extension
+    <a class="reference internal" href="book-image.html">
+     Containerize Jupyter Book
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../Stratus/stratus-cmd.html">
-     Python Examples
+    <a class="reference internal" href="deploy.html">
+     Deploy your application
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../github-actions.html">
+     GitHub Actions
     </a>
    </li>
   </ul>
@@ -614,6 +614,33 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../vm/vm-intro.html">
    Virtual Machines
   </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
+   HPC JupyterHub
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../2i2cJH/2i2cJH-intro.html">
+   2i2c JupyterHub
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../2i2cJH/access.html">
+     Requesting Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../2i2cJH/user-info.html">
+     User Information
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -626,8 +653,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../../slas/slas.html">
    SLA’s
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -674,7 +701,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="navbar_extra_footer">
   <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
 Follow our <a href="https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP">Kanban board</a><br>
-Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><hr>
+Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><br>
+<a href="https://github.com/NicholasCote/jupyterbook-cisl-theme">Copy this JupyterBook layout</a><hr>
 <div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div><br>
 Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 
@@ -707,7 +735,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/how-to/K8s/argocd/argo-user.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../../_sources/how-to/K8s/Hosting/new-user-deployment.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -727,7 +755,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/K8s/argocd/argo-user.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/K8s/Hosting/new-user-deployment.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -754,8 +782,28 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#test-production">
-   Test &amp; Production
+  <a class="reference internal nav-link" href="#user-requirements">
+   User Requirements
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#verify-users-configuration">
+   Verify Users configuration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#create-rancher-project-k8s-namespace">
+   Create Rancher Project &amp; K8s namespace
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#setup-argo-cd">
+   Setup Argo CD
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#close-jira-ticket">
+   Close Jira Ticket
   </a>
  </li>
 </ul>
@@ -769,16 +817,39 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="argo-cd-continuous-deployment">
-<h1>Argo CD (Continuous Deployment)<a class="headerlink" href="#argo-cd-continuous-deployment" title="Permalink to this headline">¶</a></h1>
-<p>We have an instance of <a class="reference external" href="https://argo-cd.readthedocs.io/en/stable/">Argo CD</a> installed to help us handle Continuous Delivery (CD). What this ultimately means is if your applications Git repo is setup in Argo CD it can be automatically configured to deploy any changes made to that repository without any intervention by the user or admins. This allows users to deploy their applications automatically to k8s without having to worry about interacting directly with Kubernetes. If you are looking for more information on how to start creating an application to host on k8s please look at the documentation <a class="reference external" href="https://ncar.github.io/cisl-cloud/how-to/K8s/Hosting/web-intro.html">here</a>.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>If you have an application that you want to integrate into our CD platform please submit a ticket <a class="reference external" href="https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&amp;issuetype=10905">here</a> and one of our administrators will be in tough to work through deployment with you.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="new-user-deployment">
+<h1>New User Deployment<a class="headerlink" href="#new-user-deployment" title="Permalink to this headline">¶</a></h1>
+<p>New requests should be submitted via a Jira ticket to track and update the progress as well as for keeping records of who wanted deployments.</p>
+<div class="section" id="user-requirements">
+<h2>User Requirements<a class="headerlink" href="#user-requirements" title="Permalink to this headline">¶</a></h2>
+<p>In order to deploy a Users application on the CISL Cloud K8s cluster a few things need to be in place from the users side</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- A containerized version of their application
+- A GitHub repository to connect to Argo CD
+- A Helm chart to control the deployment options
+</pre></div>
 </div>
-<div class="section" id="test-production">
-<h2>Test &amp; Production<a class="headerlink" href="#test-production" title="Permalink to this headline">¶</a></h2>
-<p>When automatically making changes to an application it’s always best practice to test changes in a controlled environment before pushing those changes to a production instance. It’s recommended to create a test branch of your repository and add that to Argo CD along with your main branch. You can then push changes to the test branch, confirm functionality on your hosted test instance, and, if everything is working, merge those changes to your main branch.</p>
+</div>
+<div class="section" id="verify-users-configuration">
+<h2>Verify Users configuration<a class="headerlink" href="#verify-users-configuration" title="Permalink to this headline">¶</a></h2>
+<p>As administrators we need to verify the container image works, the repository is accessible, and the Helm chart and <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> file used is appropriate for the deployment. When looking at the values.yaml file we need to ensure that unique values are being used for the FQDN and the TLS secret name. Please work directly with the user, or team, when running through the confirmation steps. Update the user if any changes need to be made and provide valid reasoning to why those changes are required.</p>
+</div>
+<div class="section" id="create-rancher-project-k8s-namespace">
+<h2>Create Rancher Project &amp; K8s namespace<a class="headerlink" href="#create-rancher-project-k8s-namespace" title="Permalink to this headline">¶</a></h2>
+<p>The best way to isolate a users application in our k8s architecture is to utilize Projects inside Rancher and then add a K8s namespace inside that project. Login to the <a class="reference external" href="https://rancher.k8s.ucar.edu/">Rancher UI</a>, select the siodine cluster, and on the left hand navigation panel select Projects/Namespaces to navigate to that menu. Inside the Projects/Namespaces menu there is a <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">Project</span></code> button. User the users sso username, or team name, for the project name and create it.</p>
+<p>If there is not an existing namespace that makes sense to place the users application, a new one will need to be created. By default using a users sso username or a team name for the namespace is best. It will allow us to track who made the request, and get in touch with them, or the team, quickly in the event of an issue.</p>
+<p>Here is the <a class="reference internal" href="../Rancher/create-namespace.html"><span class="doc std std-doc">link to documentation for creating a namespace in K8s</span></a></p>
+</div>
+<div class="section" id="setup-argo-cd">
+<h2>Setup Argo CD<a class="headerlink" href="#setup-argo-cd" title="Permalink to this headline">¶</a></h2>
+<p>Argo CD enables us to automatically sync changes made to a Helm chart hosted in a code repository.</p>
+<p>It’s necessary to create a specific project in Argo CD if one does not already exist for the user, or team, that requested a deployment. Again, using the users sso username, or team name, is best practice for naming a project as it makes it easier to identify ownership long term.</p>
+<p>The project settings need to be updated to include the source code repository and the kubernetes cluster and namespace to use.</p>
+<p>With that in place a new application for the user can be created from the Applications tab. Make sure everything deploys correctly. If there are issues please work with the user, if necessary, to fix the source code for the deployment.</p>
+<p>Here is the <a class="reference internal" href="../argocd/argo-intro.html"><span class="doc std std-doc">link to documentation for deployments on Argo CD</span></a>.</p>
+</div>
+<div class="section" id="close-jira-ticket">
+<h2>Close Jira Ticket<a class="headerlink" href="#close-jira-ticket" title="Permalink to this headline">¶</a></h2>
+<p>When the work has been completed, and everything is confirmed to be working, please update and close the Jira ticket submitted by the user. Include information about the kubernetes namespace, Argo CD project, and any URLs that may be in use for an audit trail for the request.</p>
 </div>
 </div>
 
@@ -795,7 +866,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         },
         kernelOptions: {
             name: "python3",
-            path: "./how-to/K8s/argocd"
+            path: "./how-to/K8s/Hosting"
         },
         predefinedOutput: true
     }
@@ -805,17 +876,17 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               </div>
               <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../Hosting/deploy.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="web-hosting.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Deploy your application</p>
+            <p class="prev-next-title">Host a web application</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../Stratus/stratus-intro.html" title="next page">
+    <a class='right-next' id="next-link" href="web-helm.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Introduction to Stratus</p>
+        <p class="prev-next-title">Helm &amp; Argo CD</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -864,7 +935,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 24 October 2023.
+          Last updated on 17 January 2024.
         </p>
       </div>
     </div>
@@ -889,11 +960,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
             src="../../../_static/footer-logo-nsf.png"
             style="float: left; width: 60px; height: 60px; margin-right: 1rem"
           />
-          This material is based upon work supported by the National Science
-          Foundation. Any opinions, findings,
-          and conclusions or recommendations expressed in this material are those
-          of the author(s) and do not necessarily reflect the views of the
-          National Science Foundation.
+          This material is based upon work supported by the NSF National Center  for Atmospheric Research, a major facility sponsored by the U.S. National Science Foundation and managed by the University  Corporation for Atmospheric Research. Any opinions, findings and  conclusions or recommendations expressed in this material do not  necessarily reflect the views of the U.S. National Science Foundation. 
         </p>
       </div>
     </div>

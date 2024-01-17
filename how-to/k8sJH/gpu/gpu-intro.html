@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Harbor - Container Registry" href="../../K8s/harbor/harbor-intro.html" />
-    <link rel="prev" title="Using Dask-Jobqueue to deploy Dask on HPC job queue systems" href="../dask/dask-jobqueue.html" />
+    <link rel="next" title="Utilizing GitHub" href="../customize/github.html" />
+    <link rel="prev" title="Base Conda Environments" href="../base-conda.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -74,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     
 
 <a class="navbar-brand" href="../../../index.html">
-  <img src="../../../_static/CISL-contemp-logo-blue.png" class="logo" alt="logo">
+  <img src="../../../_static/NSF-NCAR.png" class="logo" alt="logo">
 </a>
 
 
@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
             
         
         <li class="nav-item">
-            <a class="nav-link nav-internal" href="../../../index.html">Cloud Docs</a>
+            <a class="nav-link nav-internal" href="../../../main.html">Cloud Docs</a>
         </li>    
     
     
@@ -108,9 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
         
             <li class="nav-item">
                 <button class="dropbtn">
-                    <a class="nav-link nav-internal" href="../../../overview/services.html">
                         Resources <i class="fa fa-chevron-down" style="color: #000000;"></i>
-                    </a>
                 </button>
             </li>
             <div class="dropdown-content">
@@ -194,24 +192,31 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../overview/about.html">
-   About this Project
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../overview/use-cases.html">
-   Use Cases
+  <a class="reference internal" href="../../../main.html">
+   CISL Cloud Pilot
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../../overview/services.html">
-   Potential Services
+   Work in Progress
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../overview/goals.html">
-   Goals
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../agile.html">
+   Interacting w/ Cloud Team
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../create-tickets.html">
+     Create tickets
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -221,18 +226,13 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../../availability/availability.html">
-   Current Offering
+  <a class="reference internal" href="../../../availability/services.html">
+   Services
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../../../availability/architecture.html">
-   Current Architecture Diagram
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../availability/hw-resources.html">
-   Current Hardware
+   Architecture
   </a>
  </li>
 </ul>
@@ -246,8 +246,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../jupyter-book/jb-intro.html">
    Documentation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -270,6 +270,11 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1">
+  <a class="reference internal" href="../../github-strategy.html">
+   GitHub Strategy
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../../sops-age/sops-age.html">
    Encrypting Secrets
   </a>
@@ -278,8 +283,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../K8s/k8s-intro.html">
    Kubernetes (k8s)
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -303,8 +308,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../customize/custom.html">
      JupyterHub
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
+    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+    <label for="toctree-checkbox-4">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -330,8 +335,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../../K8s/Rancher/rancher-intro.html">
      Rancher (K8s)
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
+    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+    <label for="toctree-checkbox-5">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -367,25 +372,20 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../../K8s/Hosting/web-hosting.html">
      Host web applications
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
+    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+    <label for="toctree-checkbox-6">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Hosting/web-kubectl.html">
-       Deploy with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         kubectl
-        </span>
-       </code>
+      <a class="reference internal" href="../../K8s/Hosting/new-user-deployment.html">
+       New User Deployment
       </a>
      </li>
      <li class="toctree-l3">
       <a class="reference internal" href="../../K8s/Hosting/web-helm.html">
-       Deploy with Helm
+       Helm &amp; Argo CD
       </a>
      </li>
     </ul>
@@ -394,8 +394,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../../K8s/argocd/argo-intro.html">
      Argo CD
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -416,51 +416,17 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../agile.html">
-   Agile Interaction
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../overview/getting-started.html">
+   Getting Started
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../create-tickets.html">
-     Create tickets
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../2i2cJH/2i2cJH-intro.html">
-   2i2c JupyterHub
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../2i2cJH/access.html">
-     Requesting Access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../2i2cJH/user-info.html">
-     User Information
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../k8sJH-intro.html">
-   NCAR JupyterHub
+   K8s JupyterHub
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -472,7 +438,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../user-info.html">
-     User Information
+     Initial Login
     </a>
    </li>
    <li class="toctree-l2">
@@ -482,7 +448,12 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../base-conda.html">
-     Base Conda Environment
+     Base Conda Environments
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     GPUs
     </a>
    </li>
    <li class="toctree-l2">
@@ -494,8 +465,8 @@ const thebe_selector_output = ".output, .cell_output"
     <a class="reference internal" href="../dask/dask-intro.html">
      Dask
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-    <label for="toctree-checkbox-10">
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
      <i class="fas fa-chevron-down">
      </i>
     </label>
@@ -517,24 +488,80 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
     </ul>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     GPUs
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../data-access/intro.html">
+   Data Access
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../data-access/glade.html">
+     GLADE
     </a>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../Stratus/stratus-intro.html">
+     Object Storage
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../Stratus/stratus-access.html">
+       Access
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../Stratus/jupyter-extension.html">
+       Jupyter S3 Extension
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../Stratus/stratus-cmd.html">
+       Python Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="../../data-access/rda.html">
+     RDA
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../data-access/rda-local.html">
+       RDA Local Access
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="../../data-access/rda-remote.html">
+       RDA Remote Access
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
-   HPC JupyterHub
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../K8s/harbor/harbor-intro.html">
-   Harbor - Container Registry
+   Container Registry
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
+  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
+  <label for="toctree-checkbox-13">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -553,10 +580,10 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../../K8s/Hosting/web-intro.html">
-   Hosting web applications
+   Hosting Web Applications
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -577,35 +604,8 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/argocd/argo-user.html">
-     Continuous Deployment
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../Stratus/stratus-intro.html">
-   Stratus - S3
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../Stratus/stratus-access.html">
-     Access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../Stratus/jupyter-extension.html">
-     Jupyter S3 Extension
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../Stratus/stratus-cmd.html">
-     Python Examples
+    <a class="reference internal" href="../../github-actions.html">
+     GitHub Actions
     </a>
    </li>
   </ul>
@@ -614,6 +614,33 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../vm/vm-intro.html">
    Virtual Machines
   </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
+   HPC JupyterHub
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../2i2cJH/2i2cJH-intro.html">
+   2i2c JupyterHub
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../2i2cJH/access.html">
+     Requesting Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../2i2cJH/user-info.html">
+     User Information
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -626,8 +653,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../../../slas/slas.html">
    SLA’s
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -674,7 +701,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="navbar_extra_footer">
   <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
 Follow our <a href="https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP">Kanban board</a><br>
-Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><hr>
+Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><br>
+<a href="https://github.com/NicholasCote/jupyterbook-cisl-theme">Copy this JupyterBook layout</a><hr>
 <div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div><br>
 Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 
@@ -748,6 +776,24 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> On this page
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#packages-used-in-tensorflow-image">
+   Packages used in Tensorflow image
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#packages-used-in-the-pytorch-image">
+   Packages used in the PyTorch image
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -759,7 +805,200 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
   <div class="tex2jax_ignore mathjax_ignore section" id="using-gpus">
 <h1>Using GPUs<a class="headerlink" href="#using-gpus" title="Permalink to this headline">¶</a></h1>
 <p>The JupyterHubs offered have GPUs available to provide more processing cores for an expansion of parallel processing capabilities. The NCAR JupyterHub has Nvidia A2 Tensor GPUs while the 2i2c JupyterHub utilizes AWS nodes with Nvidia Tesla T4 GPUs. The GPUs can be utilized by selecting a GPU image from the Server Options like in the image seen below:</p>
-<img src="https://ncar.github.io/cisl-cloud/_static/server-opts.png"/><p>Allowing multiple users to access GPU resources at the same time is currently being handled with NVIDIA time slicing. The NVIDIA documentation on this feature at this <a class="reference external" href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-sharing.html">link</a> provides more detail on the exact mechanism on how this is accomplished. The GPU virtualization layer divides the available GPU resources, including processing cores, memory, and other hardware components, into time slices or time intervals. Each time slice represents a portion of the GPU’s processing power and memory. The GPU hypervisor manages the allocation of these time slices to different applications or users. It keeps track of which applications or users have active GPU tasks and assigns time slices to them in a fair and efficient manner. This allows multiple applications or users to share a single GPU, making more efficient use of the hardware and ensuring fair access to GPU resources.</p>
+<img src="https://ncar.github.io/cisl-cloud/_static/server-opts.png"/><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In order to have the conda environments you install persist you have to utilize the Images that begin with NCAR. The images that begin with Pangeo will not persist. We utilize the Pangeo Image to test functionality for this Pilot and will remove them when the NCAR images have been tested further.</p>
+</div>
+<p>We currently offer a PyTorch &amp; Tensorflow Jupyter image. Allowing multiple users to access GPU resources at the same time is currently being handled with NVIDIA time slicing. The NVIDIA documentation on this feature at this <a class="reference external" href="https://docs.nvidia.com/datacenter/cloud-native/gpu-operator/latest/gpu-sharing.html">link</a> provides more detail on the exact mechanism on how this is accomplished. The GPU virtualization layer divides the available GPU resources, including processing cores, memory, and other hardware components, into time slices or time intervals. Each time slice represents a portion of the GPU’s processing power and memory. The GPU hypervisor manages the allocation of these time slices to different applications or users. It keeps track of which applications or users have active GPU tasks and assigns time slices to them in a fair and efficient manner. This allows multiple applications or users to share a single GPU, making more efficient use of the hardware and ensuring fair access to GPU resources.</p>
+<div class="section" id="packages-used-in-tensorflow-image">
+<h2>Packages used in Tensorflow image<a class="headerlink" href="#packages-used-in-tensorflow-image" title="Permalink to this headline">¶</a></h2>
+<p>The living list of packages can be found directly at this <a class="reference external" href="https://github.com/NCAR/cisl-cloud/blob/main/configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml">link to the GitHub repository</a></p>
+<p>While the GitHub repository is still private a static list of packages can be viewed below.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+PyTorch package list<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">flax</p></li>
+<li><p class="sd-card-text">jax</p></li>
+<li><p class="sd-card-text">keras-cv</p></li>
+<li><p class="sd-card-text">catboost</p></li>
+<li><p class="sd-card-text">pyvista[all,trame]</p></li>
+<li><p class="sd-card-text">pyvista-xarray</p></li>
+<li><p class="sd-card-text">cupy</p></li>
+<li><p class="sd-card-text">rapids</p></li>
+<li><p class="sd-card-text">torchaudio</p></li>
+<li><p class="sd-card-text">torchvision</p></li>
+<li><p class="sd-card-text">argopy=0.1.14</p></li>
+<li><p class="sd-card-text">beautifulsoup4=4.12.2=pyha770c72_0</p></li>
+<li><p class="sd-card-text">bokeh=3.1.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">boto3=1.28.2=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">ca-certificates=2023.7.22=hbcca054_0</p></li>
+<li><p class="sd-card-text">cdsapi=0.6.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">celluloid=0.2.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">certifi=2023.7.22=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">cfgrib=0.9.10.4=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">cmocean=3.0.3=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">cryptography=41.0.7</p></li>
+<li><p class="sd-card-text">dask</p></li>
+<li><p class="sd-card-text">dask-gateway=2023.1.1=pyh8af1aa0_0</p></li>
+<li><p class="sd-card-text">dask-jobqueue=0.8.2=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">dask-ml=2023.3.24=pyhd8ed1ab_1</p></li>
+<li><p class="sd-card-text">datashader=0.15.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">descartes=1.1.0=py_4</p></li>
+<li><p class="sd-card-text">docopt=0.6.2=py_1</p></li>
+<li><p class="sd-card-text">erddapy=2.2.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">esmpy=8.4.2=pyhc1e730c_1</p></li>
+<li><p class="sd-card-text">flox=0.7.2=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">folium=0.14.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">geocat-comp=2023.06.1=pyha770c72_0</p></li>
+<li><p class="sd-card-text">geopy=2.4.0</p></li>
+<li><p class="sd-card-text">geoviews=1.10.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">ghp-import=2.1.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">globus-cli=3.15.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">globus-sdk=3.21.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">h5netcdf=1.2.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">holoviews=1.18.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">hvplot=0.8.4=pyhd8ed1ab_1</p></li>
+<li><p class="sd-card-text">intake=0.7.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">intake-esm=2023.7.7=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">intake-thredds=2022.8.19=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">intake-xarray=0.7.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">ipykernel=6.24.0=pyh71e2992_0</p></li>
+<li><p class="sd-card-text">ipympl=0.9.3=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">ipywidgets-bokeh=1.5.0</p></li>
+<li><p class="sd-card-text">iris=3.6.1=pyha770c72_0</p></li>
+<li><p class="sd-card-text">jupyter_bokeh=3.0.7</p></li>
+<li><p class="sd-card-text">jupyter-book=0.15.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">jupyter-panel-proxy=0.1.0</p></li>
+<li><p class="sd-card-text">metpy=1.5.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">nbgitpuller=1.1.1</p></li>
+<li><p class="sd-card-text">nbstripout=0.6.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">nc-time-axis=1.4.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">numcodecs=0.11.0=py310heca2aa9_1</p></li>
+<li><p class="sd-card-text">numpy</p></li>
+<li><p class="sd-card-text">pandas</p></li>
+<li><p class="sd-card-text">panel=1.2.3=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">papermill=2.3.4=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">pop-tools=2023.6.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">pyarrow==14.0.1=py310hf9e7431_1_cpu</p></li>
+<li><p class="sd-card-text">pydap=3.4.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">pylint=2.17.4=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">pynco=1.1.0=pyhd8ed1ab_1</p></li>
+<li><p class="sd-card-text">pystac=1.9.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">pystac-client=0.7.5=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">python</p></li>
+<li><p class="sd-card-text">python-graphviz=0.20.1=pyh22cad53_0</p></li>
+<li><p class="sd-card-text">python-wget=3.2=py_0</p></li>
+<li><p class="sd-card-text">seaborn=0.12.2=hd8ed1ab_0</p></li>
+<li><p class="sd-card-text">seawater=3.3.4=py_1</p></li>
+<li><p class="sd-card-text">siphon=0.9=pyhd8ed1ab_2</p></li>
+<li><p class="sd-card-text">tobac=1.4.2=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">widgetsnbextension=4.0.8=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">xarray=2023.6.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">xesmf=0.7.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">xgcm=0.8.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">xrft=1.0.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">zarr=2.15.0=pyhd8ed1ab_0</p></li>
+</ul>
+</div>
+</details></div>
+<div class="section" id="packages-used-in-the-pytorch-image">
+<h2>Packages used in the PyTorch image<a class="headerlink" href="#packages-used-in-the-pytorch-image" title="Permalink to this headline">¶</a></h2>
+<p>The living list of packages can be found directly at this <a class="reference external" href="https://github.com/NCAR/cisl-cloud/blob/main/configs/jupyter/gpu-pyt-notebook/cisl-gpu-base.yaml">link to the GitHub repository</a></p>
+<p>While the GitHub repository is still private a static list of packages can be viewed below.</p>
+<details class="sd-sphinx-override sd-dropdown sd-card sd-mb-3">
+<summary class="sd-summary-title sd-card-header">
+Tensorflow package list<div class="sd-summary-down docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-down" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M5.22 8.72a.75.75 0 000 1.06l6.25 6.25a.75.75 0 001.06 0l6.25-6.25a.75.75 0 00-1.06-1.06L12 14.44 6.28 8.72a.75.75 0 00-1.06 0z"></path></svg></div>
+<div class="sd-summary-up docutils">
+<svg version="1.1" width="1.5em" height="1.5em" class="sd-octicon sd-octicon-chevron-up" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M18.78 15.28a.75.75 0 000-1.06l-6.25-6.25a.75.75 0 00-1.06 0l-6.25 6.25a.75.75 0 101.06 1.06L12 9.56l5.72 5.72a.75.75 0 001.06 0z"></path></svg></div>
+</summary><div class="sd-summary-content sd-card-body docutils">
+<ul class="simple">
+<li><p class="sd-card-text">gpytorch</p></li>
+<li><p class="sd-card-text">pytorch</p></li>
+<li><p class="sd-card-text">torchvision</p></li>
+<li><p class="sd-card-text">catboost</p></li>
+<li><p class="sd-card-text">pyvista[all,trame]</p></li>
+<li><p class="sd-card-text">pyvista-xarray</p></li>
+<li><p class="sd-card-text">cupy</p></li>
+<li><p class="sd-card-text">rapids</p></li>
+<li><p class="sd-card-text">argopy=0.1.14</p></li>
+<li><p class="sd-card-text">beautifulsoup4=4.12.2=pyha770c72_0</p></li>
+<li><p class="sd-card-text">bokeh=3.1.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">boto3=1.28.2=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">ca-certificates=2023.7.22=hbcca054_0</p></li>
+<li><p class="sd-card-text">cdsapi=0.6.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">celluloid=0.2.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">certifi=2023.7.22=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">cfgrib=0.9.10.4=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">cmocean=3.0.3=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">cryptography=41.0.7</p></li>
+<li><p class="sd-card-text">dask</p></li>
+<li><p class="sd-card-text">dask-gateway=2023.1.1=pyh8af1aa0_0</p></li>
+<li><p class="sd-card-text">dask-jobqueue=0.8.2=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">dask-ml=2023.3.24=pyhd8ed1ab_1</p></li>
+<li><p class="sd-card-text">datashader=0.15.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">descartes=1.1.0=py_4</p></li>
+<li><p class="sd-card-text">docopt=0.6.2=py_1</p></li>
+<li><p class="sd-card-text">erddapy=2.2.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">esmpy=8.4.2=pyhc1e730c_1</p></li>
+<li><p class="sd-card-text">flox=0.7.2=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">folium=0.14.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">geocat-comp=2023.06.1=pyha770c72_0</p></li>
+<li><p class="sd-card-text">geopy=2.4.0</p></li>
+<li><p class="sd-card-text">geoviews=1.10.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">ghp-import=2.1.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">globus-cli=3.15.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">globus-sdk=3.21.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">h5netcdf=1.2.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">holoviews=1.18.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">hvplot=0.8.4=pyhd8ed1ab_1</p></li>
+<li><p class="sd-card-text">intake=0.7.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">intake-esm=2023.7.7=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">intake-thredds=2022.8.19=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">intake-xarray=0.7.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">ipykernel=6.24.0=pyh71e2992_0</p></li>
+<li><p class="sd-card-text">ipympl=0.9.3=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">ipywidgets-bokeh=1.5.0</p></li>
+<li><p class="sd-card-text">iris=3.6.1=pyha770c72_0</p></li>
+<li><p class="sd-card-text">jupyter_bokeh=3.0.7</p></li>
+<li><p class="sd-card-text">jupyter-book=0.15.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">jupyter-panel-proxy=0.1.0</p></li>
+<li><p class="sd-card-text">metpy=1.5.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">nbgitpuller=1.1.1</p></li>
+<li><p class="sd-card-text">nbstripout=0.6.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">nc-time-axis=1.4.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">numcodecs=0.11.0=py310heca2aa9_1</p></li>
+<li><p class="sd-card-text">numpy</p></li>
+<li><p class="sd-card-text">pandas</p></li>
+<li><p class="sd-card-text">panel=1.2.3=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">papermill=2.3.4=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">pop-tools=2023.6.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">pydap=3.4.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">pylint=2.17.4=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">pynco=1.1.0=pyhd8ed1ab_1</p></li>
+<li><p class="sd-card-text">pystac=1.9.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">pystac-client=0.7.5=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">python</p></li>
+<li><p class="sd-card-text">python-graphviz=0.20.1=pyh22cad53_0</p></li>
+<li><p class="sd-card-text">python-wget=3.2=py_0</p></li>
+<li><p class="sd-card-text">seaborn=0.12.2=hd8ed1ab_0</p></li>
+<li><p class="sd-card-text">seawater=3.3.4=py_1</p></li>
+<li><p class="sd-card-text">siphon=0.9=pyhd8ed1ab_2</p></li>
+<li><p class="sd-card-text">tobac=1.4.2=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">widgetsnbextension=4.0.8=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">xarray=2023.6.0=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">xesmf=0.7.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">xgcm=0.8.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">xrft=1.0.1=pyhd8ed1ab_0</p></li>
+<li><p class="sd-card-text">zarr=2.15.0=pyhd8ed1ab_0</p></li>
+</ul>
+</div>
+</details></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -785,17 +1024,17 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               </div>
               <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../dask/dask-jobqueue.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../base-conda.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Using Dask-Jobqueue to deploy Dask on HPC job queue systems</p>
+            <p class="prev-next-title">Base Conda Environments</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../../K8s/harbor/harbor-intro.html" title="next page">
+    <a class='right-next' id="next-link" href="../customize/github.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Harbor - Container Registry</p>
+        <p class="prev-next-title">Utilizing GitHub</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -844,7 +1083,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 24 October 2023.
+          Last updated on 17 January 2024.
         </p>
       </div>
     </div>
@@ -869,11 +1108,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
             src="../../../_static/footer-logo-nsf.png"
             style="float: left; width: 60px; height: 60px; margin-right: 1rem"
           />
-          This material is based upon work supported by the National Science
-          Foundation. Any opinions, findings,
-          and conclusions or recommendations expressed in this material are those
-          of the author(s) and do not necessarily reflect the views of the
-          National Science Foundation.
+          This material is based upon work supported by the NSF National Center  for Atmospheric Research, a major facility sponsored by the U.S. National Science Foundation and managed by the University  Corporation for Atmospheric Research. Any opinions, findings and  conclusions or recommendations expressed in this material do not  necessarily reflect the views of the U.S. National Science Foundation. 
         </p>
       </div>
     </div>

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Available Services and Status &#8212; CISL Cloud Pilot</title>
+    <title>GitHub Strategy &#8212; CISL Cloud Pilot</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -55,8 +55,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Current Architecture Diagram" href="architecture.html" />
-    <link rel="prev" title="Goals" href="../overview/goals.html" />
+    <link rel="next" title="SOPS, Age, and helm-secrets" href="sops-age/sops-age.html" />
+    <link rel="prev" title="Hosting on k8s" href="jupyter-book/k8s-hosting.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -74,7 +74,7 @@ const thebe_selector_output = ".output, .cell_output"
     
 
 <a class="navbar-brand" href="../index.html">
-  <img src="../_static/CISL-contemp-logo-blue.png" class="logo" alt="logo">
+  <img src="../_static/NSF-NCAR.png" class="logo" alt="logo">
 </a>
 
 
@@ -97,7 +97,7 @@ const thebe_selector_output = ".output, .cell_output"
             
         
         <li class="nav-item">
-            <a class="nav-link nav-internal" href="../index.html">Cloud Docs</a>
+            <a class="nav-link nav-internal" href="../main.html">Cloud Docs</a>
         </li>    
     
     
@@ -108,9 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
         
             <li class="nav-item">
                 <button class="dropbtn">
-                    <a class="nav-link nav-internal" href="../overview/services.html">
                         Resources <i class="fa fa-chevron-down" style="color: #000000;"></i>
-                    </a>
                 </button>
             </li>
             <div class="dropdown-content">
@@ -194,57 +192,18 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../overview/about.html">
-   About this Project
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../overview/use-cases.html">
-   Use Cases
+  <a class="reference internal" href="../main.html">
+   CISL Cloud Pilot
   </a>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../overview/services.html">
-   Potential Services
+   Work in Progress
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../overview/goals.html">
-   Goals
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Availability
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Current Offering
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="architecture.html">
-   Current Architecture Diagram
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="hw-resources.html">
-   Current Hardware
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Administer the CISL Cloud
- </span>
-</p>
-<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/jupyter-book/jb-intro.html">
-   Documentation
+  <a class="reference internal" href="agile.html">
+   Interacting w/ Cloud Team
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -253,30 +212,39 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/jupyter-book/create-jb.html">
-     Getting started
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/jupyter-book/add-jb.html">
-     Add content
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/jupyter-book/k8s-hosting.html">
-     Hosting on k8s
+    <a class="reference internal" href="create-tickets.html">
+     Create tickets
     </a>
    </li>
   </ul>
  </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Availability
+ </span>
+</p>
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../how-to/sops-age/sops-age.html">
-   Encrypting Secrets
+  <a class="reference internal" href="../availability/services.html">
+   Services
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../availability/architecture.html">
+   Architecture
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Administer the CISL Cloud
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/K8s/k8s-intro.html">
-   Kubernetes (k8s)
+  <a class="reference internal" href="jupyter-book/jb-intro.html">
+   Documentation
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -285,50 +253,60 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/cert-mgr.html">
+    <a class="reference internal" href="jupyter-book/create-jb.html">
+     Getting started
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="jupyter-book/add-jb.html">
+     Add content
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="jupyter-book/k8s-hosting.html">
+     Hosting on k8s
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   GitHub Strategy
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="sops-age/sops-age.html">
+   Encrypting Secrets
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="K8s/k8s-intro.html">
+   Kubernetes (k8s)
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="K8s/Hosting/cert-mgr.html">
      cert-manager
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/ingress.html">
+    <a class="reference internal" href="K8s/Hosting/ingress.html">
      Ingress Controller
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/external-dns.html">
+    <a class="reference internal" href="K8s/Hosting/external-dns.html">
      ExternalDNS
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/k8sJH/customize/custom.html">
+    <a class="reference internal" href="k8sJH/customize/custom.html">
      JupyterHub
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-    <label for="toctree-checkbox-3">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/gpu/gpu-admin.html">
-       Setup GPUs
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/customize/customize-docker.html">
-       Customize Singleuser Image
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/customize/setup-gh-act.html">
-       GitHub Actions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/K8s/Rancher/rancher-intro.html">
-     Rancher (K8s)
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
     <label for="toctree-checkbox-4">
@@ -337,35 +315,25 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Rancher/get-kubeconfig.html">
-       Get a kubeconfig
+      <a class="reference internal" href="k8sJH/gpu/gpu-admin.html">
+       Setup GPUs
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Rancher/cluster-access.html">
-       Accessing a k8s Cluster
+      <a class="reference internal" href="k8sJH/customize/customize-docker.html">
+       Customize Singleuser Image
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Rancher/create-namespace.html">
-       Create namespace
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Rancher/permissions.html">
-       Permissions
+      <a class="reference internal" href="k8sJH/customize/setup-gh-act.html">
+       GitHub Actions
       </a>
      </li>
     </ul>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/harbor/install-harbor.html">
-     Harbor
-    </a>
-   </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/K8s/Hosting/web-hosting.html">
-     Host web applications
+    <a class="reference internal" href="K8s/Rancher/rancher-intro.html">
+     Rancher (K8s)
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
     <label for="toctree-checkbox-5">
@@ -374,25 +342,35 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Hosting/web-kubectl.html">
-       Deploy with
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         kubectl
-        </span>
-       </code>
+      <a class="reference internal" href="K8s/Rancher/get-kubeconfig.html">
+       Get a kubeconfig
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Hosting/web-helm.html">
-       Deploy with Helm
+      <a class="reference internal" href="K8s/Rancher/cluster-access.html">
+       Accessing a k8s Cluster
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="K8s/Rancher/create-namespace.html">
+       Create namespace
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="K8s/Rancher/permissions.html">
+       Permissions
       </a>
      </li>
     </ul>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="K8s/harbor/install-harbor.html">
+     Harbor
+    </a>
+   </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/K8s/argocd/argo-intro.html">
-     Argo CD
+    <a class="reference internal" href="K8s/Hosting/web-hosting.html">
+     Host web applications
     </a>
     <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
     <label for="toctree-checkbox-6">
@@ -401,7 +379,29 @@ const thebe_selector_output = ".output, .cell_output"
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/argocd/argo-update.html">
+      <a class="reference internal" href="K8s/Hosting/new-user-deployment.html">
+       New User Deployment
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="K8s/Hosting/web-helm.html">
+       Helm &amp; Argo CD
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="K8s/argocd/argo-intro.html">
+     Argo CD
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+    <label for="toctree-checkbox-7">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="K8s/argocd/argo-update.html">
        Update your Argo CD Application
       </a>
      </li>
@@ -416,26 +416,14 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/agile.html">
-   Agile Interaction
+ <li class="toctree-l1">
+  <a class="reference internal" href="../overview/getting-started.html">
+   Getting Started
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/create-tickets.html">
-     Create tickets
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/2i2cJH/2i2cJH-intro.html">
-   2i2c JupyterHub
+  <a class="reference internal" href="k8sJH/k8sJH-intro.html">
+   K8s JupyterHub
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
   <label for="toctree-checkbox-8">
@@ -444,148 +432,133 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/2i2cJH/access.html">
+    <a class="reference internal" href="k8sJH/access.html">
      Requesting Access
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/2i2cJH/user-info.html">
-     User Information
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/k8sJH/k8sJH-intro.html">
-   NCAR JupyterHub
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/access.html">
-     Requesting Access
+    <a class="reference internal" href="k8sJH/user-info.html">
+     Initial Login
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/user-info.html">
-     User Information
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/customize/env.html">
+    <a class="reference internal" href="k8sJH/customize/env.html">
      Conda Environments
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/base-conda.html">
-     Base Conda Environment
+    <a class="reference internal" href="k8sJH/base-conda.html">
+     Base Conda Environments
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/customize/github.html">
+    <a class="reference internal" href="k8sJH/gpu/gpu-intro.html">
+     GPUs
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="k8sJH/customize/github.html">
      Utilizing GitHub
     </a>
    </li>
    <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/k8sJH/dask/dask-intro.html">
+    <a class="reference internal" href="k8sJH/dask/dask-intro.html">
      Dask
     </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-    <label for="toctree-checkbox-10">
+    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+    <label for="toctree-checkbox-9">
      <i class="fas fa-chevron-down">
      </i>
     </label>
     <ul>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/dask/dask-local.html">
+      <a class="reference internal" href="k8sJH/dask/dask-local.html">
        Dask LocalCluster
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/dask/dask-gateway.html">
+      <a class="reference internal" href="k8sJH/dask/dask-gateway.html">
        Dask Gateway
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/dask/dask-jobqueue.html">
+      <a class="reference internal" href="k8sJH/dask/dask-jobqueue.html">
        Dask Jobqueue
       </a>
      </li>
     </ul>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/gpu/gpu-intro.html">
-     GPUs
-    </a>
-   </li>
   </ul>
  </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
-   HPC JupyterHub
-  </a>
- </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/K8s/harbor/harbor-intro.html">
-   Harbor - Container Registry
+  <a class="reference internal" href="data-access/intro.html">
+   Data Access
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-  <label for="toctree-checkbox-11">
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/harbor/push-pull.html">
-     Push &amp; Pull Images
+    <a class="reference internal" href="data-access/glade.html">
+     GLADE
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/harbor/scanner.html">
-     Vulnerability Scan
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="Stratus/stratus-intro.html">
+     Object Storage
     </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
+    <label for="toctree-checkbox-11">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="Stratus/stratus-access.html">
+       Access
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="Stratus/jupyter-extension.html">
+       Jupyter S3 Extension
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="Stratus/stratus-cmd.html">
+       Python Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toctree-l2 has-children">
+    <a class="reference internal" href="data-access/rda.html">
+     RDA
+    </a>
+    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
+    <label for="toctree-checkbox-12">
+     <i class="fas fa-chevron-down">
+     </i>
+    </label>
+    <ul>
+     <li class="toctree-l3">
+      <a class="reference internal" href="data-access/rda-local.html">
+       RDA Local Access
+      </a>
+     </li>
+     <li class="toctree-l3">
+      <a class="reference internal" href="data-access/rda-remote.html">
+       RDA Remote Access
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/K8s/Hosting/web-intro.html">
-   Hosting web applications
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-  <label for="toctree-checkbox-12">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/containerize.html">
-     Containerize Python app
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/book-image.html">
-     Containerize Jupyter Book
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/deploy.html">
-     Deploy your application
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/argocd/argo-user.html">
-     Continuous Deployment
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/Stratus/stratus-intro.html">
-   Stratus - S3
+  <a class="reference internal" href="K8s/harbor/harbor-intro.html">
+   Container Registry
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
   <label for="toctree-checkbox-13">
@@ -594,26 +567,80 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/Stratus/stratus-access.html">
-     Access
+    <a class="reference internal" href="K8s/harbor/push-pull.html">
+     Push &amp; Pull Images
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/Stratus/jupyter-extension.html">
-     Jupyter S3 Extension
+    <a class="reference internal" href="K8s/harbor/scanner.html">
+     Vulnerability Scan
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="K8s/Hosting/web-intro.html">
+   Hosting Web Applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
+  <label for="toctree-checkbox-14">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="K8s/Hosting/containerize.html">
+     Containerize Python app
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/Stratus/stratus-cmd.html">
-     Python Examples
+    <a class="reference internal" href="K8s/Hosting/book-image.html">
+     Containerize Jupyter Book
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="K8s/Hosting/deploy.html">
+     Deploy your application
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="github-actions.html">
+     GitHub Actions
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../how-to/vm/vm-intro.html">
+  <a class="reference internal" href="vm/vm-intro.html">
    Virtual Machines
   </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
+   HPC JupyterHub
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="2i2cJH/2i2cJH-intro.html">
+   2i2c JupyterHub
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
+  <label for="toctree-checkbox-15">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2i2cJH/access.html">
+     Requesting Access
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2i2cJH/user-info.html">
+     User Information
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -626,8 +653,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../slas/slas.html">
    SLA’s
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
+  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
+  <label for="toctree-checkbox-16">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -674,7 +701,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="navbar_extra_footer">
   <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
 Follow our <a href="https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP">Kanban board</a><br>
-Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><hr>
+Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><br>
+<a href="https://github.com/NicholasCote/jupyterbook-cisl-theme">Copy this JupyterBook layout</a><hr>
 <div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div><br>
 Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 
@@ -707,7 +735,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/availability/availability.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/how-to/github-strategy.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -727,7 +755,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Favailability/availability.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/github-strategy.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -754,86 +782,37 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jupyterhub">
-   JupyterHub
+  <a class="reference internal nav-link" href="#proposed-solution">
+   Proposed Solution
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#on-premise">
-     <span class="xref myst">
-      On-premise
-     </span>
+    <a class="reference internal nav-link" href="#enabling-branch-protection">
+     Enabling Branch protection
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#aws-instance-supported-by-2i2c">
-     <span class="xref myst">
-      AWS instance supported by 2i2c
-     </span>
+    <a class="reference internal nav-link" href="#gitflow-development">
+     GitFlow Development
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#development-branch">
+       Development Branch
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#additional-branches">
+       Additional Branches
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#virtualization">
-   Virtualization
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#kubernetes-k8s">
-     <span class="xref myst">
-      Kubernetes (k8s)
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#rancher">
-     <span class="xref myst">
-      Rancher
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#harbor">
-     <span class="xref myst">
-      Harbor
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#argo-cd">
-     <span class="xref myst">
-      Argo CD
-     </span>
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#virtual-machines-vms">
-     Virtual Machines (VMs)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#storage">
-   Storage
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#persistent-volumes">
-     Persistent Volumes
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#object-storage">
-     Object Storage
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#network-services">
-   Network Services
+  <a class="reference internal nav-link" href="#example-workflow">
+   Example Workflow
   </a>
  </li>
 </ul>
@@ -847,65 +826,42 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="available-services-and-status">
-<h1>Available Services and Status<a class="headerlink" href="#available-services-and-status" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="jupyterhub">
-<h2>JupyterHub<a class="headerlink" href="#jupyterhub" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="on-premise">
-<h3><a class="reference internal" href="../how-to/k8sJH/k8sJH-intro.html"><span class="doc std std-doc">On-premise</span></a><a class="headerlink" href="#on-premise" title="Permalink to this headline">¶</a></h3>
-<p><em><strong>STATUS:</strong></em> <em>In Development</em></p>
-<p><strong>URL :</strong> <a class="reference external" href="https://jupyter.k8s.ucar.edu/">https://jupyter.k8s.ucar.edu/</a></p>
-<p>An on-premise JupyterHub is up and running, but is still in development. Authentication against github is being worked on currently but there is no authentication presently. The user space that is spun up has access to a shared NFS volume that is read-only as well as GLADE collections and campaign directories also mounted as read-only. The user notebook that is deployed is based on a custom Docker image that the CCPP team maintains. Documentation on how this was setup and deployed can be found on the <a class="reference internal" href="../how-to/k8sJH/customize/customize-docker.html"><span class="doc std std-doc">how-to</span></a> page in this documentation.</p>
-</div>
-<div class="section" id="aws-instance-supported-by-2i2c">
-<h3><a class="reference internal" href="../how-to/2i2cJH/2i2cJH-intro.html"><span class="doc std std-doc">AWS instance supported by 2i2c</span></a><a class="headerlink" href="#aws-instance-supported-by-2i2c" title="Permalink to this headline">¶</a></h3>
-<p><em><strong>STATUS:</strong></em> <em>In Testing</em></p>
-<p><strong>URL :</strong> <a class="reference external" href="https://ncar-cisl.2i2c.cloud/">https://ncar-cisl.2i2c.cloud/</a></p>
-<p>The JupyterHub instance setup and managed by 2i2c that runs on AWS is up and ready to use. Access to this JupyterHub is controlled via a GitHub team, specifically the NCAR organizations <a class="reference external" href="https://github.com/orgs/NCAR/teams/2i2c-cloud-users">2i2c-cloud-users</a> team.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="github-strategy">
+<h1>GitHub Strategy<a class="headerlink" href="#github-strategy" title="Permalink to this headline">¶</a></h1>
+<p>We have options when it comes to deploying a GitHub strategy and branches. Ultimately our end goal is to be able to make the contents of our repository public and protect the main branch.</p>
+<div class="section" id="proposed-solution">
+<h2>Proposed Solution<a class="headerlink" href="#proposed-solution" title="Permalink to this headline">¶</a></h2>
+<p>We are going to enable branch protection for the main branch that prohibits anyone from directly pushing changes to the main branch. Any changes to the main branch will require a pull request to be submitted, reviewed, and approved by our team administrators.</p>
+<div class="section" id="enabling-branch-protection">
+<h3>Enabling Branch protection<a class="headerlink" href="#enabling-branch-protection" title="Permalink to this headline">¶</a></h3>
+<p>Go to the GitHub repository hosted at <a class="reference external" href="http://github.com">github.com</a> and select Settings on the right side of the navbar at the top of the page. Once in Settings on the left side select Branches under Code and automation. By default there is no protection on any branches. Click on the box to <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">branch</span> <span class="pre">protection</span> <span class="pre">rule</span></code>. This will bring up a checklist for the different rules that can be applied to different branches. To start enter the branch name that should be protected in the <code class="docutils literal notranslate"><span class="pre">Branch</span> <span class="pre">name</span> <span class="pre">pattern</span> <span class="pre">*</span></code> textbox, in most cases this will be the <code class="docutils literal notranslate"><span class="pre">main</span></code> branch but additional branches can always be added and protected. To start select the box next to <code class="docutils literal notranslate"><span class="pre">Require</span> <span class="pre">a</span> <span class="pre">pull</span> <span class="pre">request</span> <span class="pre">before</span> <span class="pre">merging</span></code>, this will then open another box that’s automatically selected to <code class="docutils literal notranslate"><span class="pre">Require</span> <span class="pre">approvals</span></code>. This is to setup the code review to approve pull requests and the approval number is set to 1 by default, but can be set to whatever makes sense. The only other option that needs to be selected is <code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">not</span> <span class="pre">allow</span> <span class="pre">bypassing</span> <span class="pre">the</span> <span class="pre">above</span> <span class="pre">settings</span></code>. Click on the create button at the bottom and the main branch of the GitHub repository is now protected from having direct pushes made to it, and will only allows approved pull requests to be merged.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to be able to push to the main branch of your repository, but don’t want anyone else to, leave the <code class="docutils literal notranslate"><span class="pre">Do</span> <span class="pre">not</span> <span class="pre">allow</span> <span class="pre">bypassing</span> <span class="pre">the</span> <span class="pre">above</span> <span class="pre">settings</span></code> box unchecked.</p>
 </div>
 </div>
-<div class="section" id="virtualization">
-<h2>Virtualization<a class="headerlink" href="#virtualization" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="kubernetes-k8s">
-<h3><a class="reference internal" href="../how-to/K8s/k8s-intro.html"><span class="doc std std-doc">Kubernetes (k8s)</span></a><a class="headerlink" href="#kubernetes-k8s" title="Permalink to this headline">¶</a></h3>
-<p>We have a kubernetes cluster that we can utilize to host containers. We can provide users a private namespace to deploy to. We can also provision full kubernetes clusters for users via Rancher. Users would be administrators of their own k8s clusters but would have more freedom to customize to their needs and requirements.</p>
+<div class="section" id="gitflow-development">
+<h3>GitFlow Development<a class="headerlink" href="#gitflow-development" title="Permalink to this headline">¶</a></h3>
+<p>With branch protection now enabled, in order to make changes to the main branch, development needs to be done in different branches.</p>
+<div class="section" id="development-branch">
+<h4>Development Branch<a class="headerlink" href="#development-branch" title="Permalink to this headline">¶</a></h4>
+<p>For now updates can be pushed and tested to the development branch in our code repository. When everything is confirmed to be working as expected a pull request can be made to merge the changes to the main branch. Please be descriptive in the changes made as part of your pull request. Once the pull request has been submitted an email will go out to the team that is ready to be reviewed. Once all the changes have been reviewed and confirmed the pull request will be approved and the changes will be merged in to the main branch.</p>
 </div>
-<div class="section" id="rancher">
-<h3><a class="reference internal" href="../how-to/K8s/Rancher/rancher-intro.html"><span class="doc std std-doc">Rancher</span></a><a class="headerlink" href="#rancher" title="Permalink to this headline">¶</a></h3>
-<p><em><strong>STATUS:</strong></em> <em>In Testing</em></p>
-<p><strong>URL :</strong> <a class="reference external" href="https://rancher.k8s.ucar.edu/">https://rancher.k8s.ucar.edu/</a></p>
-<p>We have an instance of Rancher running that provides a user interface for interacting with k8s clusters. Users can request access to the rancher instance, login, and get a kubeconfig to access and deploy k8s resources. User permissions are controlled in a way that limits what they can view and deploy to.</p>
-</div>
-<div class="section" id="harbor">
-<h3><a class="reference internal" href="../how-to/K8s/harbor/harbor-intro.html"><span class="doc std std-doc">Harbor</span></a><a class="headerlink" href="#harbor" title="Permalink to this headline">¶</a></h3>
-<p><em><strong>STATUS:</strong></em> <em>In Testing</em></p>
-<p><strong>URL :</strong> <a class="reference external" href="https://hub.k8s.ucar.edu/">https://hub.k8s.ucar.edu/</a></p>
-<p>We utilize <a class="reference external" href="https://goharbor.io/">Harbor</a> to provide a container registry based on open source software that is closer to the infrastructure running containers. A local registry allows us to utilize network infrastructure and available bandwidth between hardware for an increase in speed when pushing and pulling images locally. Harbor also includes an image scanner that will provide reports on any vulnerabilities that an image contains so we can address security concerns with images directly.</p>
-</div>
-<div class="section" id="argo-cd">
-<h3><a class="reference internal" href="../how-to/K8s/argocd/argo-user.html"><span class="doc std std-doc">Argo CD</span></a><a class="headerlink" href="#argo-cd" title="Permalink to this headline">¶</a></h3>
-<p><em><strong>STATUS:</strong></em> <em>In Testing</em></p>
-<p>We have an instance of <a class="reference external" href="https://argo-cd.readthedocs.io/en/stable/">Argo CD</a> installed to help us handle Continuous Delivery (CD). What this ultimately means is if your applications Git repo is setup in Argo CD it can be automatically configured to deploy any changes made to that repository without any intervention by the user or admins. This allows users to deploy their applications automatically to k8s without having to worry about interacting directly with Kubernetes.</p>
-</div>
-<div class="section" id="virtual-machines-vms">
-<h3>Virtual Machines (VMs)<a class="headerlink" href="#virtual-machines-vms" title="Permalink to this headline">¶</a></h3>
-<p>We can provide VMs to users as needed for tasks that aren’t well suited for running in a container.</p>
+<div class="section" id="additional-branches">
+<h4>Additional Branches<a class="headerlink" href="#additional-branches" title="Permalink to this headline">¶</a></h4>
+<p>Additional branches can be created for a variety of different reasons but they should now be created off the development branch and integrated back in to that branch before being merged to the main branch. As we expand this practice we will outline what branches we typically use.</p>
 </div>
 </div>
-<div class="section" id="storage">
-<h2>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="persistent-volumes">
-<h3>Persistent Volumes<a class="headerlink" href="#persistent-volumes" title="Permalink to this headline">¶</a></h3>
-<p>Rook is used to provide storage orchestration to k8s workloads. Rook utilizes Ceph as a distributed storage system to provide persistent file, block, and object storage capabilities to the k8s cluster and the underlying objects hosted.</p>
 </div>
-<div class="section" id="object-storage">
-<h3>Object Storage<a class="headerlink" href="#object-storage" title="Permalink to this headline">¶</a></h3>
-<p>Object Storage is available and our admins can create new buckets and assign user permissions for S3 interactions.</p>
-</div>
-</div>
-<div class="section" id="network-services">
-<h2>Network Services<a class="headerlink" href="#network-services" title="Permalink to this headline">¶</a></h2>
-<p>Our system has ExternalDNS configured to provide DNS records for full name resolution and useable URLs for hosted systems.</p>
+<div class="section" id="example-workflow">
+<h2>Example Workflow<a class="headerlink" href="#example-workflow" title="Permalink to this headline">¶</a></h2>
+<p>To start, clone the repository</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">clone</span> <span class="pre">https://github.com/NCAR/cisl-cloud.git</span></code></p>
+<p>Change from the main branch to the development branch</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">checkout</span> <span class="pre">-b</span> <span class="pre">dev</span></code></p>
+<p>Make your changes in the development branch, test, and push the code</p>
+<p><code class="docutils literal notranslate"><span class="pre">git</span> <span class="pre">push</span></code></p>
+<p>With the changes pushed the branches will now be out of sync. There are a few different ways to create a pull request to merge the changes. The easiest is to utilize the UI found at the repository on GitHub. On the top navigation bar there is a tab for <code class="docutils literal notranslate"><span class="pre">Pull</span> <span class="pre">requests</span></code>. From here you can chose branches to compare, confirm the changes you want to try and merge, add in a description for the changes, and ultimately submit the pull request. Once the PR is made an email will go out to approvers to review the request. Once it get’s one review and approval the PR can be selected to Merge in to the main branch. As long as there are no conflicts the merge should proceed with no issues. If there are conflicts they should be handled via the code review, updated accordingly, agreed upon, and confirmed with another team member.</p>
 </div>
 </div>
 
@@ -922,7 +878,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         },
         kernelOptions: {
             name: "python3",
-            path: "./availability"
+            path: "./how-to"
         },
         predefinedOutput: true
     }
@@ -932,17 +888,17 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
               </div>
               <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../overview/goals.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="jupyter-book/k8s-hosting.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Goals</p>
+            <p class="prev-next-title">Hosting on k8s</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="architecture.html" title="next page">
+    <a class='right-next' id="next-link" href="sops-age/sops-age.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Current Architecture Diagram</p>
+        <p class="prev-next-title">SOPS, Age, and helm-secrets</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -991,7 +947,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 24 October 2023.
+          Last updated on 17 January 2024.
         </p>
       </div>
     </div>
@@ -1016,11 +972,7 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
             src="../_static/footer-logo-nsf.png"
             style="float: left; width: 60px; height: 60px; margin-right: 1rem"
           />
-          This material is based upon work supported by the National Science
-          Foundation. Any opinions, findings,
-          and conclusions or recommendations expressed in this material are those
-          of the author(s) and do not necessarily reflect the views of the
-          National Science Foundation.
+          This material is based upon work supported by the NSF National Center  for Atmospheric Research, a major facility sponsored by the U.S. National Science Foundation and managed by the University  Corporation for Atmospheric Research. Any opinions, findings and  conclusions or recommendations expressed in this material do not  necessarily reflect the views of the U.S. National Science Foundation. 
         </p>
       </div>
     </div>
