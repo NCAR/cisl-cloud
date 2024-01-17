@@ -797,6 +797,10 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <h1>Harbor - Container Registry<a class="headerlink" href="#harbor-container-registry" title="Permalink to this headline">¶</a></h1>
 <p>We utilize <a class="reference external" href="https://goharbor.io/">Harbor</a> to provide a container registry based on open source software that is closer to the infrastructure running containers. A local registry allows us to utilize network infrastructure and available bandwidth between hardware for an increase in speed when pushing and pulling images locally. Harbor also includes an image scanner that will provide reports on any vulnerabilities that an image contains so we can address security concerns with images directly.</p>
 <p>The Harbor web interface can be accessed at the following URL : <a class="reference external" href="https://hub.k8s.ucar.edu/">https://hub.k8s.ucar.edu/</a>. A link is also present under the Resources tab at the top of this documentation. Credentials will be your CIT sso username and password. There is no need to specify a domain.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Access to Harbor is controlled via an LDAP group. If you are not a member of this group you will not be able to login and push images to the registry. Please submit a Jira request, using the link at the top of the Documentation, if you require access to push images. There are public repositories that allow you to pull images without being authenticated.</p>
+</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
