@@ -22,6 +22,7 @@ jobs:
           pip install ghp-import
           pip install jupyter-book
           pip install sphinx_pythia_theme
+          pip install sphinxcontrib-applehelp==1.0.4
           PATH="${PATH}:${HOME}/.local/bin"
       - name: Build book HTML
         run: |
