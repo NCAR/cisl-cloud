@@ -4,7 +4,6 @@
 | **Jupyter Singleuser CPU image build** | ![CPU Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-basenb.yaml/badge.svg) |
 | **Jupyter Singleuser GPU image builds** | ![Tensorflow Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-tfgpu.yaml/badge.svg) | ![PyTorch Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-pytgpu.yaml/badge.svg) |
 
-* 1/16/2024 - jupyter-book build is throwing a Sphinx version error and the job is failing. It works locally for manual updates, but the CICD job is broken 
 * ***Note*** - The TensorFlow build does not work on GitHub hosted runners
 
 
