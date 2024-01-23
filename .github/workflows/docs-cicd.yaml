@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-docs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       # Step 1 is to checkout the github repo
       - name: Check out the repo
@@ -15,13 +15,19 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.9
+          python-version: 3.10.12
       - name: Install Python dependencies
         run: |
           sudo apt-get install python3-pip
           pip install ghp-import
           pip install jupyter-book
           pip install sphinx_pythia_theme
+          pip install sphinxcontrib-applehelp==1.0.4
+          pip install sphinxcontrib-bibtex==2.5.0
+          pip install sphinxcontrib-devhelp==1.0.2
+          pip install sphinxcontrib-htmlhelp==2.0.1
+          pip install sphinxcontrib-serializinghtml==1.1.5
+          pip install sphinxcontrib-qthelp==1.0.3
           PATH="${PATH}:${HOME}/.local/bin"
       - name: Build book HTML
         run: |

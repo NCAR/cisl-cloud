@@ -63,18 +63,18 @@ sphinx:
             url: https://jupyter.k8s.ucar.edu/
           - name: 'NCAR HPC JupyterHub'
             url: https://jupyterhub.hpc.ucar.edu/
-          - name: '2i2c AWS JupyterHub'
-            url: https://ncar-cisl.2i2c.cloud/hub/login
+          - name: Stratus Object Storage
+            url: https://stratus-admin.ucar.edu:10443/asview
           - name: 'Harbor - Container Registry'
             url: https://hub.k8s.ucar.edu/
-          - name: Rancher
-            url: https://rancher.k8s.ucar.edu/
           - name: Request VM
             url: https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17
-          - name: Stratus
-            url: https://stratus-admin.ucar.edu:10443/asview
+          - name: '2i2c AWS JupyterHub'
+            url: https://ncar-cisl.2i2c.cloud/hub/login
         - name: CISL Home
           url: https://www2.cisl.ucar.edu/
+        - name: New Request
+          url: https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10903&customfield_10281=CCPP-108
         - name: Report issue
           url: https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10905
       page_layouts:

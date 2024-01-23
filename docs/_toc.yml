@@ -23,6 +23,7 @@ parts:
           - file: how-to/jupyter-book/create-jb
           - file: how-to/jupyter-book/add-jb
           - file: how-to/jupyter-book/k8s-hosting
+      - file: how-to/github-strategy
       - title: Encrypting Secrets
         file: how-to/sops-age/sops-age
       - title: Kubernetes (k8s)
@@ -55,7 +56,7 @@ parts:
         - file: how-to/K8s/Hosting/web-hosting
           title: Host web applications
           sections:
-            - file: how-to/K8s/Hosting/web-kubectl
+            - file: how-to/K8s/Hosting/new-user-deployment
             - file: how-to/K8s/Hosting/web-helm
         - title: Argo CD
           file: how-to/K8s/argocd/argo-intro
@@ -115,11 +116,12 @@ parts:
       - title: Hosting Web Applications 
         file: how-to/K8s/Hosting/web-intro
         sections:
+        - file: how-to/K8s/Hosting/deploy
+        - file: how-to/github-actions
         - file: how-to/K8s/Hosting/containerize
-          title: Containerize Python app
+          title: Containerize Python
         - file: how-to/K8s/Hosting/book-image
           title: Containerize Jupyter Book
-        - file: how-to/K8s/Hosting/deploy
       - title: Virtual Machines
         file: how-to/vm/vm-intro
       - title: HPC JupyterHub
