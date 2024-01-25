@@ -9,6 +9,8 @@ on:
   push:
     paths:
       - configs/jupyter/gpu-pyt-notebook/**
+    branches:
+      - main
 
 # Define the actions that are going to take place as part of this workflow    
 jobs:
