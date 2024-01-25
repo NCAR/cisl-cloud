@@ -63,6 +63,8 @@ parts:
           sections:
             - title: Update Application
               file: how-to/K8s/argocd/argo-update
+      - title: Add User to Stratus
+        file: how-to/Stratus/add-user
   - caption: Use the CISL Cloud 
     chapters:
       - title: Getting Started
