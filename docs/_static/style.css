@@ -106,8 +106,8 @@ main.banner-main div#main-content {
     text-decoration: none;
     font-size: 14px !important;
     font-weight: 600 !important;
+    padding: 0px 20px !important;
     text-transform: capitalize !important;
-    padding: 20px 20px !important;
 }
 
 /* Add a blue color to dropdown links on hover */
@@ -245,7 +245,6 @@ code, .rst-content tt, .rst-content code {
     border-radius: 8px;
     display: block;
     padding: .25rem .5rem;
-    cursor: pointer;
 }
 
 /* Navbar Toggler */

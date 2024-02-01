@@ -24,8 +24,7 @@ Information
 
 Built with |jbook|
 
-NSF NCAR received one-time funding to evaluate an on-premise (on-prem) cloud. An on-prem cloud was selected because NSF
-NCAR already has state of the art data centers with staffing in place. An on-prem cloud offers the ability to tailor the environment
+NSF NCAR received one-time funding to evaluate an on-premise (on-prem) cloud. An on-prem cloud offers the ability to tailor the environment
 to meet the needs of the scientific community while being fully in control of access and security. Initial use cases were gathered
 from the scientific community. The services provided are tailored to address those use cases. Agile product management methods
 are also being utilized to provide users an interface to the team via a Product Owner while prioritizing and accomplishing work
@@ -46,45 +45,45 @@ NSF UCAR Network Access Required
 
 .. raw:: html
 
-   <span class="d-flex justify-content-center py-4">
-     <a href="https://jupyter.k8s.ucar.edu/">
-     <figure>
-       <img src="_static/jhub-logo.png">
-       <figcaption style="text-align:center">K8s JupyterHub</figcaption>
-       <figcaption style="text-align:center"><a href="how-to/k8sJH/k8sJH-intro.html">Link to Docs</a></figcaption>
+    <span class="d-flex justify-content-center py-4">
+      <a href="https://hub.k8s.ucar.edu/">
+      <figure>
+        <img src="_static/harbor.png">
+        <figcaption style="text-align:center">Harbor Container Registry</figcaption>
+        <figcaption style="text-align:center"><a href="how-to/K8s/harbor/harbor-intro.html">Link to Docs</a></figcaption>
       </figure>
-     </a>
-     <a href="https://stratus-admin.ucar.edu:10443/asview">
-     <figure>
-       <img src="_static/stratus.png">
-       <figcaption style="text-align:center">Stratus Object Storage</figcaption>
-       <figcaption style="text-align:center"><a href="how-to/Stratus/stratus-intro.html">Link to Docs</a></figcaption>
+      </a>
+      <a href="how-to/K8s/Hosting/deploy">
+      <figure>
+        <img src="_static/argo.png">
+        <figcaption style="text-align:center">Argo CD Docs</figcaption>
       </figure>
-     </a>
-     <a href="https://jupyterhub.hpc.ucar.edu/">
-     <figure>
-       <img src="_static/jhub-logo.png">
-       <figcaption style="text-align:center">HPC JupyterHub</figcaption>
-       <figcaption style="text-align:center"><a href="https://arc.ucar.edu/knowledge_base/70549913">Link to Docs</a></figcaption>
+      </a>
+      <a href="https://stratus-admin.ucar.edu:10443/asview">
+      <figure>
+        <img src="_static/stratus.png">
+        <figcaption style="text-align:center">Stratus Object Storage</figcaption>
+        <figcaption style="text-align:center"><a href="how-to/Stratus/stratus-intro.html">Link to Docs</a></figcaption>
       </figure>
-     </a>
-   </span>
-   <span class="d-flex justify-content-center py-4">
-     <a href="https://hub.k8s.ucar.edu/">
-     <figure>
-       <img src="_static/harbor.png">
-       <figcaption style="text-align:center">Harbor Container Registry</figcaption>
-       <figcaption style="text-align:center"><a href="how-to/K8s/harbor/harbor-intro.html">Link to Docs</a></figcaption>
+      </a>
+    </span>
+    <span class="d-flex justify-content-center py-4">
+      <a href="https://jupyter.k8s.ucar.edu/">
+      <figure>
+        <img src="_static/jhub-logo.png">
+        <figcaption style="text-align:center">K8s JupyterHub</figcaption>
+        <figcaption style="text-align:center"><a href="how-to/k8sJH/k8sJH-intro.html">Link to Docs</a></figcaption>
       </figure>
-     </a>
-     <a href="how-to/K8s/Hosting/deploy">
-     <figure>
-       <img src="_static/argo.png">
-       <figcaption style="text-align:center">Argo CD Docs</figcaption>
+      </a>
+      <a href="https://jupyterhub.hpc.ucar.edu/">
+      <figure>
+        <img src="_static/jhub-logo.png">
+        <figcaption style="text-align:center">HPC JupyterHub</figcaption>
+        <figcaption style="text-align:center"><a href="https://arc.ucar.edu/knowledge_base/70549913">Link to Docs</a></figcaption>
       </figure>
-     </a>
-   </span>
-
+      </a>
+    </span>
+   
 Publicly Accessible
 ^^^^^^^^^^^^^^^^^^^^^^
 
