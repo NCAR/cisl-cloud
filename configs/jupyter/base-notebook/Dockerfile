@@ -91,12 +91,6 @@ ENV PATH="${CONDA_DIR}/bin:${PATH}" \
 ###
 # Copy a script that we will use to correct permissions after running certain commands
 ###
-# GitHub Build
-###
-#COPY configs/jupyter/base-notebook/fix-permissions /usr/local/bin/fix-permissions
-###
-# Local Build
-###
 COPY fix-permissions /usr/local/bin/fix-permissions
 
 RUN chmod a+rx /usr/local/bin/fix-permissions
@@ -138,11 +132,7 @@ RUN mkdir "/home/${NB_USER}/work" && \
 # files across image layers when the permissions change
 
 ###
-# GitHub Build
-###
-#COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/base-notebook/initial-condarc "${CONDA_DIR}/.condarc"
-###
-# Local Build
+# Copy the first condarc file to install preconfigured envs to /opt/conda
 ###
 COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
@@ -191,13 +181,6 @@ WORKDIR /tmp
 # Python Package Installation
 ###
 # Copy package list for base OS and Kernels
-###
-# GitHub Build
-###
-#COPY configs/jupyter/base-notebook/conda-envs/cisl-cloud-base.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/conda-envs/npl-2024a.yml configs/jupyter/base-notebook/conda-envs/npl-2023b.yml configs/jupyter/base-notebook/conda-envs/r-4.3.yml /tmp/
-
-###
-# Local Build
 ###
 COPY requirements.txt conda-envs/cisl-cloud-base.yml conda-envs/npl-2023b.yml conda-envs/r-4.3.yml /tmp/
 
@@ -287,13 +270,6 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
 ###
 # Change the .condarc file now so user envs are created in ~/my-conda-envs
 ###
-# GitHub Build
-###
-#COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
-
-###
-# Local Build
-###
 COPY config/.condarc /opt/conda/
 
 # Expose the application on the port JupyterHub listens on
@@ -306,28 +282,14 @@ ENTRYPOINT ["/srv/start"]
 ###
 # Copy startup/healthcheck scripts & custom user profile
 ###
-# GitHub Actions Build
-###
 # Copy local files as late as possible to avoid cache busting
-#COPY configs/jupyter/base-notebook/scripts/start /srv/start
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-#COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
-
-###
-# Local Build
 ###
 COPY scripts/start /srv/start
 COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
-# GitHub Build
-###
 # Copy the bash profile to autoload conda envs
-#COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
-#COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
-
-###
-# Local Build
 ###
 COPY config/.profile /.bash_profile
 COPY config/.bashrc /etc/bash.bashrc
