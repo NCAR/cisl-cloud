@@ -89,7 +89,14 @@ ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
 
 # Copy a script that we will use to correct permissions after running certain commands
-COPY fix-permissions /usr/local/bin/fix-permissions
+###
+# GitHub Build
+###
+COPY configs/jupyter/base-notebook/fix-permissions /usr/local/bin/fix-permissions
+###
+# Local Build
+###
+#COPY fix-permissions /usr/local/bin/fix-permissions
 
 RUN chmod a+rx /usr/local/bin/fix-permissions
 
@@ -129,7 +136,14 @@ RUN mkdir "/home/${NB_USER}/work" && \
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
 
-COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
+###
+# GitHub Build
+###
+COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/base-notebook/initial-condarc "${CONDA_DIR}/.condarc"
+###
+# Local Build
+###
+#COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
 RUN set -x && \
@@ -176,7 +190,15 @@ WORKDIR /tmp
 # Python Package Installation
 ###
 # Copy package list for base OS and Kernels
-COPY requirements.txt conda-envs/cisl-cloud-base.yml conda-envs/npl-2023b.yml conda-envs/r-4.3.yml /tmp/
+###
+# GitHub Build
+###
+COPY configs/jupyter/base-notebook/conda-envs/cisl-cloud-base.yml configs/jupyter/base-notebook/requirements.txt configs/jupyter/base-notebook/conda-envs/npl-2024a.yml configs/jupyter/base-notebook/conda-envs/npl-2023b.yml configs/jupyter/base-notebook/conda-envs/r-4.3.yml /tmp/
+
+###
+# Local Build
+###
+#COPY requirements.txt conda-envs/cisl-cloud-base.yml conda-envs/npl-2023b.yml conda-envs/npl-2024a.yml conda-envs/r-4.3.yml /tmp/
 
 # Install required Python packages
 RUN mamba install --quiet --yes \
@@ -190,8 +212,10 @@ RUN mamba install --quiet --yes \
     # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
     # Create a kernel named cisl-cloud-base from the cisl-cloud-base.yml file
     mamba env create -f cisl-cloud-base.yml && \
-    # Create a kernel named npl-2023b from the npl-2023b.yml file
+    # Create a kernel named NPL-2023b from the npl-2023b.yml file
     mamba env create -f npl-2023b.yml && \
+    # Create a kernel named NPL-2024a from the npl-2024a.yml file
+    mamba env create -f npl-2024a.yml && \
     # Create a kernel named R-4.3 from the r-4.3.yml file
     mamba env create -f r-4.3.yml && \
     # Install extensions in to OS Python env
@@ -264,7 +288,14 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
 ###
 # Change the .condarc file now so user envs are created in ~/my-conda-envs
 ###
-COPY config/.condarc /opt/conda/
+# GitHub Build
+###
+COPY configs/jupyter/base-notebook/config/.condarc /opt/conda/
+
+###
+# Local Build
+###
+#COPY config/.condarc /opt/conda/
 
 # Expose the application on the port JupyterHub listens on
 ENV JUPYTER_PORT=8888
@@ -276,20 +307,37 @@ ENTRYPOINT ["/srv/start"]
 ###
 # Copy startup/healthcheck scripts & custom user profile
 ###
+# GitHub Actions Build
+###
 # Copy local files as late as possible to avoid cache busting
+COPY configs/jupyter/base-notebook/scripts/start /srv/start
 # Currently need to have both jupyter_notebook_config and jupyter_server_config to support classic and lab
-COPY scripts/start /srv/start
-COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+COPY configs/jupyter/base-notebook/scripts/jupyter_server_config.py configs/jupyter/base-notebook/scripts/docker_healthcheck.py /etc/jupyter/
 
 ###
+# Local Build
+###
+#COPY scripts/start /srv/start
+#COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
+
+###
+# GitHub Build
+###
 # Copy the bash profile to autoload conda envs
-COPY config/.profile /.bash_profile
-COPY config/.bashrc /etc/bash.bashrc
+COPY configs/jupyter/base-notebook/config/.profile /.bash_profile
+COPY configs/jupyter/base-notebook/config/.bashrc /etc/bash.bashrc
+
+###
+# Local Build
+###
+#COPY config/.profile /.bash_profile
+#COPY config/.bashrc /etc/bash.bashrc
 
 # Cleanup files that were already installed
 RUN rm -rf /tmp/cisl-cloud-base.yml && \
     rm -rf /tmp/requirements.txt && \
     rm -rf /tmp/npl-2023b.yml && \
+    rm -rf /tmp/npl-2024a.yml && \
     rm -rf /tmp/r-4.3.yml 
     
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
@@ -311,6 +359,7 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 # New environments are installed to /home/jovyan/.jupyter with write permissions for the users
 RUN chmod 755 /opt/base-conda/cisl-cloud-base/* && \
     chmod 755 /opt/base-conda/npl-2023b/* && \
+    chmod 755 /opt/base-conda/npl-2024a/* && \
     chmod 755 /opt/base-conda/r-4.3/* && \
     chown root:root /opt/*   
 
