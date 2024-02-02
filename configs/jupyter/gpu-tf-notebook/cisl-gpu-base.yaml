@@ -11,6 +11,8 @@ dependencies:
   - pyvista[all,trame]
   - pyvista-xarray
   - tensorflow>=2.12.0=*cuda112*
+  - cudatoolkit
+  - cudnn
   - cupy
   - rapids
   # Not included in NPL
