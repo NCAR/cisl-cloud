@@ -39,7 +39,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           # Provide the current directory as build context 
-          context: .
+          context: configs/jupyter/base-notebook/.
           # Specify where the Dockerfile is located in relation to the repo base path
           file: configs/jupyter/base-notebook/Dockerfile
           # Enable the push to docker hub
