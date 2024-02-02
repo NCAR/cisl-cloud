@@ -1,0 +1,58 @@
+name: Cloud Docs CI/CD Test Image Build 
+
+on:
+  push:
+    paths:
+      - docs/**
+    branches:
+      - dev
+
+jobs:
+  build-docs:
+    runs-on: ubuntu-22.04
+    steps:
+      # Step 1 is to checkout the github repo
+      - name: Check out the repo
+        uses: actions/checkout@v3
+        with:
+          ref: main
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10.12
+      - name: Install Python dependencies
+        run: |
+          sudo apt-get install python3-pip
+          pip install ghp-import
+          pip install jupyter-book
+          pip install sphinx_pythia_theme
+          pip install sphinxcontrib-applehelp==1.0.4
+          pip install sphinxcontrib-bibtex==2.5.0
+          pip install sphinxcontrib-devhelp==1.0.2
+          pip install sphinxcontrib-htmlhelp==2.0.1
+          pip install sphinxcontrib-serializinghtml==1.1.5
+          pip install sphinxcontrib-qthelp==1.0.3
+          PATH="${PATH}:${HOME}/.local/bin"
+      - name: Build book HTML
+        run: |
+          jupyter-book build docs/.
+      - name: Install Podman
+        run: |
+          sudo apt-get remove -y golang-github-containers-image \
+          && sudo mkdir -p /etc/apt/keyrings \
+          && curl -fsSL https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/xUbuntu_$(lsb_release -rs)/Release.key \
+            | gpg --dearmor \
+            | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null \
+          && echo \
+            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg] \
+            https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/xUbuntu_$(lsb_release -rs)/ /" \
+            | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null \
+          && sudo apt-get update -y \
+          && sudo apt-get install -y podman skopeo
+      # Get the date to apply to image tag
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
+      - name: Build Podman image
+        run: |
+          podman build -t cislcloudpilot/docs-test:${{ steps.date.outputs.date }} docs/.
