@@ -54,6 +54,8 @@ jobs:
         run: |
           pwd
           ls -la
+          ls -la docs/
+          ls -la docs/_build/
       - name: Get current date
         id: date
         run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
