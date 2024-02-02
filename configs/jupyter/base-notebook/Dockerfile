@@ -214,7 +214,7 @@ RUN mamba install --quiet --yes \
     mamba env create -f cisl-cloud-base.yml && \
     # Create a kernel named NPL-2023b from the npl-2023b.yml file
     mamba env create -f npl-2023b.yml && \
-    # Create a kernel named NPL-2024a from the npl-2024a.yml file#
+    # Create a kernel named NPL-2024a from the npl-2024a.yml file
     mamba env create -f npl-2024a.yml && \
     # Create a kernel named R-4.3 from the r-4.3.yml file
     mamba env create -f r-4.3.yml && \
