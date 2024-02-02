@@ -88,6 +88,7 @@ ENV CONDA_DIR=/opt/conda \
 ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
 
+###
 # Copy a script that we will use to correct permissions after running certain commands
 ###
 # GitHub Build
