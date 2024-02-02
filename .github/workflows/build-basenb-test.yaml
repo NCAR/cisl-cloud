@@ -1,0 +1,32 @@
+# This workflow builds docker images and pushes them to a Docker Hub Repository
+# This workflow is specific to the base-notebook directory and image
+# Set the workflow name
+name: JHub CPU Build Test
+
+# Define the trigger that starts the action
+# For this workflow the trigger is on a push that changes anything in the configs/jupyter/base-notebook/ path
+on:
+  push:
+    paths:
+      - configs/jupyter/base-notebook/**
+    branches:
+      - dev
+
+# Define the actions that are going to take place as part of this workflow    
+jobs:
+  # Name the job(s)
+  build-base-notebook-image:
+    # Define where the job should run in this case it will be run on the latest ubuntu image
+    runs-on: ubuntu-latest
+    # Set the steps to take in order
+    steps:
+      # Step 1 is to checkout the github repo used to build the Dockerfile
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      # Build the docker image
+      - name: Build Docker image
+        run: docker build -t cislcloudpilot/cisl-cloud-base:latest configs/jupyter/base-notebook/.
+      - name: Create pull request to merge dev in to main
+        run: gh pr create -B main -H dev --title 'Test build successful. Merge base notebook update from dev into main' --body 'Created by Github action'
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

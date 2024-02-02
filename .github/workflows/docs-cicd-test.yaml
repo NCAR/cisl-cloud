@@ -62,7 +62,7 @@ jobs:
       - name: Build Podman image
         run: |
           podman build -t cislcloudpilot/docs-test:${{ steps.date.outputs.date }} docs/. --format docker
-      - name: Create pull request to merge dev Helm chart in to main
+      - name: Create pull request to merge dev in to main
         run: gh pr create -B main -H dev --title 'Test build successful. Merge documentation update from dev into main' --body 'Created by Github action'
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
