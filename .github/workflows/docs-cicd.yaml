@@ -69,7 +69,7 @@ jobs:
         run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
       - name: Build Podman image
         run: |
-          podman build -t cislcloudpilot/docs:${{ steps.date.outputs.date }} .
+          podman build -t cislcloudpilot/docs:${{ steps.date.outputs.date }} docs/.
       - name: Push Podman image to Docker hub
         run: |
           podman push cislcloudpilot/docs:${{ steps.date.outputs.date }}

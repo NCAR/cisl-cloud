@@ -50,7 +50,7 @@ jobs:
       # Build and push the docker image
       - name: Build Podman image
         run: |
-          podman build -t cislcloudpilot/cisl-cloud-base:${{ steps.date.outputs.date }} .
+          podman build -t cislcloudpilot/cisl-cloud-base:${{ steps.date.outputs.date }} configs/jupyter/base-notebook/.
       - name: Push Podman image to Docker hub
         run: |
           podman push cislcloudpilot/cisl-cloud-base:${{ steps.date.outputs.date }}
