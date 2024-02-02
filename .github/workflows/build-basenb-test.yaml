@@ -15,7 +15,7 @@ on:
 # Define the actions that are going to take place as part of this workflow    
 jobs:
   # Name the job(s)
-  deploy-docker-base-notebook:
+  build-base-notebook-image:
     # Define where the job should run in this case it will be run on the latest ubuntu image
     runs-on: ubuntu-latest
     # Set the steps to take in order
@@ -25,14 +25,7 @@ jobs:
         uses: actions/checkout@v3
       # Build the docker image
       - name: Build Docker image
-        uses: docker/build-push-action@v4
-        with:
-          # Provide the current directory as build context 
-          context: .
-          # Specify where the Dockerfile is located in relation to the repo base path
-          file: configs/jupyter/base-notebook/Dockerfile
-          # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: cislcloudpilot/cisl-cloud-base:latest
+        run: docker build -t cislcloudpilot/cisl-cloud-base:latest configs/jupyter/base-notebook/.
       - name: Create pull request to merge dev in to main
         run: gh pr create -B main -H dev --title 'Test build successful. Merge base notebook update from dev into main' --body 'Created by Github action'
         env:
