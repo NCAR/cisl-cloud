@@ -31,11 +31,8 @@ jobs:
           context: .
           # Specify where the Dockerfile is located in relation to the repo base path
           file: configs/jupyter/base-notebook/Dockerfile
-          # Enable the push to docker hub
-          push: false
           # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: |
-            cislcloudpilot/cisl-cloud-base:latest
+          tags: cislcloudpilot/cisl-cloud-base:latest
       - name: Create pull request to merge dev in to main
         run: gh pr create -B main -H dev --title 'Test build successful. Merge base notebook update from dev into main' --body 'Created by Github action'
         env:
