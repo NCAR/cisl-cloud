@@ -24,8 +24,23 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
       # Build the docker image
-      - name: Build Docker image
-        run: docker build -t cislcloudpilot/cisl-cloud-base:latest configs/jupyter/base-notebook/.
+      # Get the date to apply to image tag
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
+      # Build and push the docker image
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          # Provide the current directory as build context 
+          context: configs/jupyter/base-notebook/.
+          # Specify where the Dockerfile is located in relation to the repo base path
+          file: Dockerfile
+          # Enable the push to docker hub
+          push: false
+          # Provide the tags to apply to the image, this example uses the latest image tag 
+          tags: |
+            cislcloudpilot/cisl-cloud-base:${{ steps.date.outputs.date }}
       - name: Create pull request to merge dev in to main
         run: gh pr create -B main -H dev --title 'Test build successful. Merge base notebook update from dev into main' --body 'Created by Github action'
         env:
