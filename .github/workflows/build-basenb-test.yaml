@@ -1,21 +1,28 @@
-name: Cloud Docs CI/CD Test Image Build 
+# This workflow builds docker images and pushes them to a Docker Hub Repository
+# This workflow is specific to the base-notebook directory and image
+# Set the workflow name
+name: JHub CPU Build Test
 
+# Define the trigger that starts the action
+# For this workflow the trigger is on a push that changes anything in the configs/jupyter/base-notebook/ path
 on:
   push:
     paths:
-      - docs/**
+      - configs/jupyter/base-notebook/**
     branches:
       - dev
 
+# Define the actions that are going to take place as part of this workflow    
 jobs:
-  build-docs:
-    runs-on: ubuntu-22.04
+  # Name the job(s)
+  deploy-docker-base-notebook:
+    # Define where the job should run in this case it will be run on the latest ubuntu image
+    runs-on: ubuntu-latest
+    # Set the steps to take in order
     steps:
-      # Step 1 is to checkout the github repo
+      # Step 1 is to checkout the github repo used to build the Dockerfile
       - name: Check out the repo
         uses: actions/checkout@v3
-        with:
-          ref: dev
       - name: Install Podman
         run: |
           sudo apt-get remove -y golang-github-containers-image \
@@ -29,40 +36,15 @@ jobs:
             | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null \
           && sudo apt-get update -y \
           && sudo apt-get install -y podman skopeo
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.10.12
-      - name: Install Python dependencies
-        run: |
-          sudo apt-get install python3-pip
-          pip install ghp-import
-          pip install jupyter-book
-          pip install sphinx_pythia_theme
-          pip install sphinxcontrib-applehelp==1.0.4
-          pip install sphinxcontrib-bibtex==2.5.0
-          pip install sphinxcontrib-devhelp==1.0.2
-          pip install sphinxcontrib-htmlhelp==2.0.1
-          pip install sphinxcontrib-serializinghtml==1.1.5
-          pip install sphinxcontrib-qthelp==1.0.3
-          PATH="${PATH}:${HOME}/.local/bin"
-      - name: Build book HTML
-        run: |
-          jupyter-book build docs/.
       # Get the date to apply to image tag
-      - name: directory libstdcxx-ng
-        run: |
-          pwd
-          ls -la
-          ls -la docs/
-          ls -la docs/_build/
       - name: Get current date
         id: date
         run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
+      # Build and push the docker image
       - name: Build Podman image
         run: |
-          podman build -t cislcloudpilot/docs-test:${{ steps.date.outputs.date }} docs/. --format docker
+          podman build -t cislcloudpilot/cisl-cloud-base:${{ steps.date.outputs.date }} configs/jupyter/base-notebook/. --format docker
       - name: Create pull request to merge dev in to main
-        run: gh pr create -B main -H dev --title 'Test build successful. Merge documentation update from dev into main' --body 'Created by Github action'
+        run: gh pr create -B main -H dev --title 'Test build successful. Merge base notebook update from dev into main' --body 'Created by Github action'
         env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
