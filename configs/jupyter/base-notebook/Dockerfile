@@ -176,7 +176,7 @@ WORKDIR /tmp
 # Python Package Installation
 ###
 # Copy package list for base OS and Kernels
-COPY requirements.txt conda-envs/cisl-cloud-base.yml conda-envs/npl-2024a.yml conda-envs/r-4.3.yml /tmp/
+COPY requirements.txt conda-envs/cisl-cloud-base.yml conda-envs/npl-2023b.yml conda-envs/r-4.3.yml /tmp/
 
 # Install required Python packages
 RUN mamba install --quiet --yes \
@@ -190,8 +190,8 @@ RUN mamba install --quiet --yes \
     # nb_conda_kernels is required to save user environments as custom user notebook kernels that persist
     # Create a kernel named cisl-cloud-base from the cisl-cloud-base.yml file
     mamba env create -f cisl-cloud-base.yml && \
-    # Create a kernel named NPL-2024a from the npl-2024a.yml file
-    mamba env create -f npl-2024a.yml && \
+    # Create a kernel named npl-2023b from the npl-2023b.yml file
+    mamba env create -f npl-2023b.yml && \
     # Create a kernel named R-4.3 from the r-4.3.yml file
     mamba env create -f r-4.3.yml && \
     # Install extensions in to OS Python env
@@ -289,7 +289,7 @@ COPY config/.bashrc /etc/bash.bashrc
 # Cleanup files that were already installed
 RUN rm -rf /tmp/cisl-cloud-base.yml && \
     rm -rf /tmp/requirements.txt && \
-    rm -rf /tmp/npl-2024a.yml && \
+    rm -rf /tmp/npl-2023b.yml && \
     rm -rf /tmp/r-4.3.yml 
     
 # Legacy for Jupyter Notebook Server, see: [#1205](https://github.com/jupyter/docker-stacks/issues/1205)
@@ -310,7 +310,7 @@ HEALTHCHECK --interval=5s --timeout=3s --start-period=5s --retries=3 \
 # They can run the environments but will get permission denied when trying to make changes
 # New environments are installed to /home/jovyan/.jupyter with write permissions for the users
 RUN chmod 755 /opt/base-conda/cisl-cloud-base/* && \
-    chmod 755 /opt/base-conda/npl-2024a/* && \
+    chmod 755 /opt/base-conda/npl-2023b/* && \
     chmod 755 /opt/base-conda/r-4.3/* && \
     chown root:root /opt/*   
 
