@@ -4,6 +4,8 @@ on:
   push:
     paths:
       - docs/**
+    branches:
+      - main
 
 jobs:
   build-docs:
@@ -12,6 +14,8 @@ jobs:
       # Step 1 is to checkout the github repo
       - name: Check out the repo
         uses: actions/checkout@v3
+        with:
+          ref: main
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
@@ -46,32 +50,29 @@ jobs:
         with:
           username: ${{ secrets.CCP_DOCKERHUB_USERNAME }}
           password: ${{ secrets.CCP_DOCKERHUB_TOKEN  }}
-      # Pull relevant metadata out of the docker image used
-      - name: Extract metadata for Docker
-        id: meta
-        uses: docker/metadata-action@v4
-        with:
-          images: cislcloudpilot/docs
+      - name: Install Podman
+        run: |
+          sudo apt-get remove -y golang-github-containers-image \
+          && sudo mkdir -p /etc/apt/keyrings \
+          && curl -fsSL https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/xUbuntu_$(lsb_release -rs)/Release.key \
+            | gpg --dearmor \
+            | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null \
+          && echo \
+            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg] \
+            https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/xUbuntu_$(lsb_release -rs)/ /" \
+            | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null \
+          && sudo apt-get update -y \
+          && sudo apt-get install -y podman skopeo
       # Get the date to apply to image tag
       - name: Get current date
         id: date
         run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
-      # Build and push the docker image
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          # Provide the current directory as build context 
-          context: .
-          # Specify where the Dockerfile is located in relation to the repo base path
-          file: docs/Dockerfile
-          # Enable the push to docker hub
-          push: true
-          # Provide the tags to apply to the image, this example uses the latest image tag 
-          tags: |
-            cislcloudpilot/docs:latest
-            cislcloudpilot/docs:${{ steps.date.outputs.date }}
-          # Apply labels as defined in the Docker image metadata
-          labels: ${{ steps.meta.outputs.labels }}
+      - name: Build Podman image
+        run: |
+          podman build -t cislcloudpilot/docs:${{ steps.date.outputs.date }} .
+      - name: Push Podman image to Docker hub
+        run: |
+          podman push cislcloudpilot/docs:${{ steps.date.outputs.date }}
   update-helm:
     # Define where the job should run in this case it will be run on the latest ubuntu image
     runs-on: ubuntu-latest
@@ -82,7 +83,7 @@ jobs:
       - name: Check out the main repo
         uses: actions/checkout@v3
         with:
-          ref: main
+          ref: dev
       # Get the date to apply to image tag
       - name: Get current date
         id: date
@@ -97,9 +98,13 @@ jobs:
           echo "appVersion: '${{ steps.date.outputs.date }}'" >> configs/helm-charts/cloud-docs/Chart.yaml
       - name: Run python script to update version by 1
         run: python configs/helm-charts/cloud-docs/update_ver.py
-      - name: Commit changes
+      - name: Commit changes to dev branch
         run: |
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git config --global user.name "$GITHUB_ACTOR"
           git commit -a -m "Update Helm chart via GH Actions"
           git push
+      - name: Create pull request to merge dev Helm chart in to main
+        run: gh pr create -B main -H dev --title 'Merge documentation Helm chart CICD update from dev into main' --body 'Created by Github action'
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

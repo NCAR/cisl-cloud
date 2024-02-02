@@ -63,31 +63,21 @@ parts:
           sections:
             - title: Update Application
               file: how-to/K8s/argocd/argo-update
+      - title: Add User to Stratus
+        file: how-to/Stratus/add-user
   - caption: Use the CISL Cloud 
     chapters:
       - title: Getting Started
         file: overview/getting-started
-      - title: K8s JupyterHub 
-        file: how-to/k8sJH/k8sJH-intro
+      - title: Hosting Web Applications 
+        file: how-to/K8s/Hosting/web-intro
         sections:
-        - file: how-to/k8sJH/access
-        - file: how-to/k8sJH/user-info
-        - title: Conda Environments
-          file: how-to/k8sJH/customize/env
-        - file: how-to/k8sJH/base-conda
-        - title: GPUs
-          file: how-to/k8sJH/gpu/gpu-intro
-        - title: Utilizing GitHub
-          file: how-to/k8sJH/customize/github
-        - title: Dask
-          file: how-to/k8sJH/dask/dask-intro
-          sections:
-            - file: how-to/k8sJH/dask/dask-local
-              title: Dask LocalCluster
-            - file: how-to/k8sJH/dask/dask-gateway
-              title: Dask Gateway
-            - file: how-to/k8sJH/dask/dask-jobqueue
-              title: Dask Jobqueue
+        - file: how-to/K8s/Hosting/deploy
+        - file: how-to/github-actions
+        - file: how-to/K8s/Hosting/containerize
+          title: Containerize Python
+        - file: how-to/K8s/Hosting/book-image
+          title: Containerize Jupyter Book
       - title: Data Access
         file: how-to/data-access/intro
         sections:
@@ -113,15 +103,27 @@ parts:
           file: how-to/K8s/harbor/push-pull
         - title: Vulnerability Scan
           file: how-to/K8s/harbor/scanner
-      - title: Hosting Web Applications 
-        file: how-to/K8s/Hosting/web-intro
+      - title: K8s JupyterHub 
+        file: how-to/k8sJH/k8sJH-intro
         sections:
-        - file: how-to/K8s/Hosting/deploy
-        - file: how-to/github-actions
-        - file: how-to/K8s/Hosting/containerize
-          title: Containerize Python
-        - file: how-to/K8s/Hosting/book-image
-          title: Containerize Jupyter Book
+        - file: how-to/k8sJH/access
+        - file: how-to/k8sJH/user-info
+        - title: Conda Environments
+          file: how-to/k8sJH/customize/env
+        - file: how-to/k8sJH/base-conda
+        - title: GPUs
+          file: how-to/k8sJH/gpu/gpu-intro
+        - title: Utilizing GitHub
+          file: how-to/k8sJH/customize/github
+        - title: Dask
+          file: how-to/k8sJH/dask/dask-intro
+          sections:
+            - file: how-to/k8sJH/dask/dask-local
+              title: Dask LocalCluster
+            - file: how-to/k8sJH/dask/dask-gateway
+              title: Dask Gateway
+            - file: how-to/k8sJH/dask/dask-jobqueue
+              title: Dask Jobqueue
       - title: Virtual Machines
         file: how-to/vm/vm-intro
       - title: HPC JupyterHub
