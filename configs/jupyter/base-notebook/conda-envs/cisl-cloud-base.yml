@@ -113,7 +113,7 @@ dependencies:
   - ldcpy=0.17=py310h5764c6d_1
   # Same version as NPL
   - libblas=3.9.0=17_linux64_blis
-  - lz4-c
+  - lz4-c=1.9.4=hcb278e6_0
   # Same version as NPL
   - matplotlib=3.7.2=py310hff52083_0
   # Not included in NPL
@@ -143,7 +143,7 @@ dependencies:
   # Same version as NPL
   - papermill=2.3.4=pyhd8ed1ab_0
   # Updated to patch vulnerability
-  - pillow=10.0.1=py310h01dd4db_2
+  - pillow=10.2.0=py310h01dd4db_0
   # Same version as NPL
   - pop-tools=2023.6.0=pyhd8ed1ab_0
   # Updated to patch vulnerability

@@ -94,8 +94,6 @@ dependencies:
   # Same version as NPL in GitHub
   - jupyter-server-proxy=4.0.0=pyhd8ed1ab_0
   # Same version as NPL in GitHub
-  - jupyterlab=4.0.2=pyhd8ed1ab_0
-  # Same version as NPL in GitHub
   - ldcpy=0.17=py310h5764c6d_1
   # Same version as NPL in GitHub
   - libblas=3.9.0=17_linux64_blis
@@ -126,7 +124,7 @@ dependencies:
   # Same version as NPL in GitHub
   - papermill=2.3.4=pyhd8ed1ab_0
   # Updated to patch vulnerability
-  - pillow=10.0.1=py310h01dd4db_2
+  - pillow=10.2.0=py310h01dd4db_0
   # Same version as NPL in GitHub
   - pop-tools=2023.6.0=pyhd8ed1ab_0
   # Updated to patch vulnerability
