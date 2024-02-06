@@ -3,6 +3,7 @@ channels:
   - conda-forge
   - pytorch
   - rapidsai 
+  - nvidia
 dependencies:
   - flax
   - jax
@@ -14,6 +15,7 @@ dependencies:
   - cudatoolkit
   - cudnn
   - cupy
+  - cuda-nvcc=11.3.58
   - rapids
   # Not included in NPL
   - argopy=0.1.14 
