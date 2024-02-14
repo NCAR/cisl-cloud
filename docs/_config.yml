@@ -43,7 +43,7 @@ sphinx:
       use_repository_button: true
       launch_buttons:
         notebook_interface: jupyterlab  # The interface interactive links will activate ["classic", "jupyterlab"]
-        #binderhub_url: "https://mybinder.org"  # The URL of the BinderHub (e.g., https://mybinder.org) won't work with private repo
+        binderhub_url: "https://binder.k8s.ucar.edu/"  # The URL of the BinderHub (e.g., https://mybinder.org) won't work with private repo
         jupyterhub_url: "https://jupyter.k8s.ucar.edu/"  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu) won't work with private repo
       extra_navbar: |
         <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
@@ -63,8 +63,10 @@ sphinx:
             url: https://hub.k8s.ucar.edu/
           - name: Stratus Object Storage
             url: https://stratus-admin.ucar.edu:10443/asview
-          - name: 'NCAR k8s JupyterHub'
+          - name: 'NCAR K8s JupyterHub'
             url: https://jupyter.k8s.ucar.edu/
+          - name: 'NCAR K8s Binder'
+            url: https://binder.k8s.ucar.edu/
           - name: Rancher
             url: https://rancher.k8s.ucar.edu/
           - name: 'NCAR HPC JupyterHub'
