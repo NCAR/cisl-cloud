@@ -163,18 +163,10 @@ RUN set -x && \
     # Changed to conda clean due to : https://github.com/mamba-org/mamba/issues/3044
     conda clean --all -f -y
 
-ENV CONDA_ENV=cisl-cloud-gpu \
+ENV CONDA_ENV=cisl-gpu-base \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
-    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/ \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
-# Run conda activate each time a bash shell starts, so users don't have to manually type conda activate
-# Note this is only read by shell, but not by the jupyter notebook - that relies
-# on us starting the correct `python` process, which we do by adding the notebook conda environment's
-# bin to PATH earlier ($NB_PYTHON_PREFIX/bin)
-RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh ; conda activate ${CONDA_ENV}" > /etc/profile.d/init_conda.sh && \
-    mkdir -p $CONDA_PREFIX/etc/conda/activate.d && \
-    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
 
 # GitHub Build
 #COPY configs/jupyter/gpu-tf-notebook/requirements.txt configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml /tmp/
@@ -201,6 +193,22 @@ RUN mamba install --quiet --yes \
     # Fix permissions
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
+
+ENV CONDA_PREFIX=/opt/base-conda/${CONDA_ENV} \
+    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
+
+# Run conda activate each time a bash shell starts, so users don't have to manually type conda activate
+# Note this is only read by shell, but not by the jupyter notebook - that relies
+# on us starting the correct `python` process, which we do by adding the notebook conda environment's
+# bin to PATH earlier ($NB_PYTHON_PREFIX/bin)
+RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh ; conda activate ${CONDA_ENV}" > /etc/profile.d/init_conda.sh && \
+    mkdir -p $CONDA_PREFIX/etc/conda/activate.d && \
+    echo 'export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/' > $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh
+
+# GPU TensorFlow config based on https://github.com/tensorflow/tensorflow/issues/58681
+RUN printf 'export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib/\n' >> $CONDA_PREFIX/etc/conda/activate.d/env_vars.sh && \
+    mkdir -p $CONDA_PREFIX/lib/nvvm/libdevice && \
+    cp $CONDA_PREFIX/lib/libdevice.10.bc $CONDA_PREFIX/lib/nvvm/libdevice/
 
 # Ask dask to read config from ${CONDA_DIR}/etc rather than
 # the default of /etc, since the non-root jovyan user can write

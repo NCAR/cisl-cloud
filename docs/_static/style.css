@@ -286,3 +286,7 @@ th p {
     color: #A8C700;
     border-color: #A8C700;
 }
+
+.highlight pre {
+    white-space: pre-wrap;
+}
