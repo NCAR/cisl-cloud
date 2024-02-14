@@ -43,8 +43,8 @@ sphinx:
       use_repository_button: true
       launch_buttons:
         notebook_interface: jupyterlab  # The interface interactive links will activate ["classic", "jupyterlab"]
-        binderhub_url: "https://binder.k8s.ucar.edu/"  # The URL of the BinderHub (e.g., https://mybinder.org) won't work with private repo
-        jupyterhub_url: "https://jupyter.k8s.ucar.edu/"  # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu) won't work with private repo
+        binderhub_url: "https://binder.k8s.ucar.edu/"  # The URL of the CISL on-premise cloud pilot BinderHub
+        jupyterhub_url: "https://jupyter.k8s.ucar.edu/"  # The URL of the CISL on-premise cloud pilot JupyterHub
       extra_navbar: |
         <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
         Follow our <a href="https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP">Kanban board</a><br>
