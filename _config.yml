@@ -37,13 +37,13 @@ sphinx:
     html_theme_options:
       home_page_in_toc: false
       repository_url: https://github.com/NCAR/cisl-cloud # Online location of your book
-      repository_branch: main
+      repository_branch: docs
       navbar_align: content
       use_issues_button: true
       use_repository_button: true
       launch_buttons:
         notebook_interface: jupyterlab  # The interface interactive links will activate ["classic", "jupyterlab"]
-        binderhub_url: "https://binder.k8s.ucar.edu/"  # The URL of the CISL on-premise cloud pilot BinderHub
+        binderhub_url: "https://binder.k8s.ucar.edu"  # The URL of the CISL on-premise cloud pilot BinderHub
         jupyterhub_url: "https://jupyter.k8s.ucar.edu/"  # The URL of the CISL on-premise cloud pilot JupyterHub
       extra_navbar: |
         <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
