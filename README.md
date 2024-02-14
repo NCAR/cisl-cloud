@@ -1,4 +1,9 @@
-# CISL Cloud Pilot Project
+# CISL Cloud Pilot Project Documentation
+
+***Note:*** This branch should never be merged with the main branch. It only hosts documentation content and differs from the main and dev branches. 
+
+## GitHub Actions Status
+
 | GitHub Pages |  ![GitHub Pages Status](https://github.com/NCAR/cisl-cloud/actions/workflows/pages/pages-build-deployment/badge.svg) | |
 |---|---|---|
 | Documentation Website Builds | ![Documentation Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/docs-cicd-test.yaml/badge.svg) | ![Documentation CI/CD Status](https://github.com/NCAR/cisl-cloud/actions/workflows/docs-cicd.yaml/badge.svg) |
