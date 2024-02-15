@@ -124,6 +124,8 @@ parts:
               title: Dask Gateway
             - file: how-to/k8sJH/dask/dask-jobqueue
               title: Dask Jobqueue
+      - title: Binder
+        file: how-to/binderhub/binderhub
       - title: Virtual Machines
         file: how-to/vm/vm-intro
       - title: HPC JupyterHub
