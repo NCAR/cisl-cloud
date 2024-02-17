@@ -75,6 +75,13 @@ NSF UCAR Network Access Required
         <figcaption style="text-align:center"><a href="how-to/k8sJH/k8sJH-intro.html">Link to Docs</a></figcaption>
       </figure>
       </a>
+      <a href="https://binder.k8s.ucar.edu/">
+      <figure>
+        <img src="_static/binder/binder-logo.png">
+        <figcaption style="text-align:center">K8s Binder</figcaption>
+        <figcaption style="text-align:center"><a href="how-to/binderhub/binderhub.html">Link to Docs</a></figcaption>
+      </figure>
+      </a>
       <a href="https://jupyterhub.hpc.ucar.edu/">
       <figure>
         <img src="_static/jhub-logo.png">
