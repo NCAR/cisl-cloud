@@ -90,10 +90,6 @@ ENV CONDA_DIR=/opt/conda \
 ENV PATH="${CONDA_DIR}/bin:${PATH}" \
     HOME="/home/${NB_USER}"
 
-# GitHub Build
-#COPY configs/jupyter/gpu-tf-notebook/fix-permissions /usr/local/bin/fix-permissions
-
-# Local Build
 COPY fix-permissions /usr/local/bin/fix-permissions
 
 RUN chmod a+rx /usr/local/bin/fix-permissions
@@ -130,9 +126,6 @@ ARG PYTHON_VERSION=3.10.12
 # Do all this in a single RUN command to avoid duplicating all of the
 # files across image layers when the permissions change
 
-# GitHub Build
-#COPY --chown="${NB_UID}:${NB_GID}" configs/jupyter/gpu-tf-notebook/initial-condarc "${CONDA_DIR}/.condarc"
-# Local Build
 COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
@@ -167,11 +160,6 @@ ENV CONDA_ENV=cisl-gpu-base \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
 
-
-# GitHub Build
-#COPY configs/jupyter/gpu-tf-notebook/requirements.txt configs/jupyter/gpu-tf-notebook/cisl-gpu-base.yaml /tmp/
-
-# Local Build
 COPY requirements.txt cisl-gpu-base.yaml /tmp/
 
 RUN mamba install --quiet --yes \
@@ -215,9 +203,6 @@ RUN printf 'export XLA_FLAGS=--xla_gpu_cuda_data_dir=$CONDA_PREFIX/lib/\n' >> $C
 # to ${CONDA_DIR}/etc but not to /etc
 ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
-# GitHub Build
-#COPY configs/jupyter/gpu-tf-notebook/config/.condarc /opt/conda
-# Local Build
 COPY config/.condarc /opt/conda
 
 # Expose the application on the port JupyterHub listens on
@@ -227,13 +212,6 @@ EXPOSE $JUPYTER_PORT
 # Configure container startup. Dask gateway requires ENTRYPOINT
 ENTRYPOINT ["/srv/start"]
 
-# GitHub Build
-#COPY configs/jupyter/gpu-tf-notebook/scripts/jupyter_server_config.py configs/jupyter/gpu-tf-notebook/scripts/docker_healthcheck.py /etc/jupyter/
-#COPY configs/jupyter/gpu-tf-notebook/start /srv/start
-#COPY configs/jupyter/gpu-tf-notebook/config/.profile /.bash_profile
-#COPY configs/jupyter/gpu-tf-notebook/config/.bashrc /etc/bash.bashrc
-
-# Local Build
 COPY scripts/jupyter_server_config.py scripts/docker_healthcheck.py /etc/jupyter/
 COPY start /srv/start
 COPY config/.profile /.bash_profile
