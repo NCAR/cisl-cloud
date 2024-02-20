@@ -1,0 +1,12 @@
+replicaCount: 1
+
+webapp:
+  name: ccpp-github-runner
+  group: ccpp-github-runner
+  container: 
+    imagePullPolicy: Always
+    port: 80
+    memory: 1G
+    cpu: 2    
+    image: hub.k8s.ucar.edu/ncote/github-runner:2024-02-15
+  repo: NCAR/cisl-cloud
