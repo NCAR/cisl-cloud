@@ -12,4 +12,4 @@ webapp:
     port: 80
     memory: 1G
     cpu: 2    
-    image: hub.k8s.ucar.edu/docker/cislcloudpilot/docs:2024-02-21.20
+    image: hub.k8s.ucar.edu/docker/cislcloudpilot/docs:2024-02-21.23

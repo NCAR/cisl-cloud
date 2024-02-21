@@ -2,9 +2,8 @@
 | Documentation Website Builds | ![GitHub Pages Status](https://github.com/NCAR/cisl-cloud/actions/workflows/pages/pages-build-deployment/badge.svg) | ![Documentation CI/CD Status](https://github.com/NCAR/cisl-cloud/actions/workflows/docs-cicd.yaml/badge.svg) |
 |---|---|---|
 | **Jupyter Singleuser CPU image build** | ![CPU Image Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-basenb-test.yaml/badge.svg) | ![CPU Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-basenb.yaml/badge.svg) |
-| **Jupyter Singleuser GPU image builds** | ![Tensorflow Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-tfgpu.yaml/badge.svg) | ![PyTorch Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-pytgpu.yaml/badge.svg) |
-
-* ***Note*** - The TensorFlow build does not work on GitHub hosted runners
+| **Jupyter Tensorflow GPU image builds** | ![Tensorflow Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/tensorflow-build-test.yaml/badge.svg) | ![Tensorflow Image Build & Push](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-tfgpu.yaml/badge.svg) |
+| **Jupyter PyTorch GPU image builds** | ![PyTorch Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/pytorch-build-test.yaml/badge.svg) | ![PyTorch Image Build & Push](https://github.com/NCAR/cisl-cloud/actions/workflows/build-push-pytgpu.yaml/badge.svg) |
 
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
