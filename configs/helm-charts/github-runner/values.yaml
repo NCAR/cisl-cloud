@@ -6,7 +6,7 @@ webapp:
   container: 
     imagePullPolicy: Always
     port: 80
-    memory: 1G
+    memory: 10G
     cpu: 2    
-    image: hub.k8s.ucar.edu/ncote/github-runner:2024-02-15
+    image: hub.k8s.ucar.edu/ncote/github-runner:2024-02-21.18.05
   repo: NCAR/cisl-cloud
