@@ -5,6 +5,7 @@ channels:
   - rapidsai 
   - nvidia
 dependencies:
+  # GPU/TensorFlow Specific Packages
   - flax=0.6.1=pyhd8ed1ab_1
   - jax=0.4.13=pyhd8ed1ab_0
   - keras-cv=0.8.2=pyhd8ed1ab_0
@@ -17,7 +18,7 @@ dependencies:
   - cupy=13.0.0=py311h878bca4_3
   - cuda-nvcc=11.3.58=h2467b9f_0
   - rapids=0.0.1=pyh9f0ad1d_0
-  # Not included in NPL
+  # CISL-Cloud-Base CPU packages
   - argopy=0.1.14 
   # Same version as NPL
   - beautifulsoup4=4.12.2=pyha770c72_0
