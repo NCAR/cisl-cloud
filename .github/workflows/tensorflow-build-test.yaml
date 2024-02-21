@@ -27,19 +27,10 @@ jobs:
       - name: Get current date
         id: date
         run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
-      - name: Install Podman
-        run: |
-          sudo apt-get remove -y golang-github-containers-image \
-          && sudo mkdir -p /etc/apt/keyrings \
-          && curl -fsSL https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/xUbuntu_$(lsb_release -rs)/Release.key \
-            | gpg --dearmor \
-            | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null \
-          && echo \
-            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg] \
-            https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/xUbuntu_$(lsb_release -rs)/ /" \
-            | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null \
-          && sudo apt-get update -y \
-          && sudo apt-get install -y podman skopeo
       - name: Build Podman image
         run: |
-          podman build -f configs/jupyter/gpu-tf-notebook/Dockerfile -t cislcloudpilot/cisl-cloud-gpu-tf:${{ steps.date.outputs.date }} configs/jupyter/gpu-tf-notebook/. --format=docker
+          podman build -f configs/jupyter/gpu-tf-notebook/Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-tf:${{ steps.date.outputs.date }} configs/jupyter/gpu-tf-notebook/. --no-cache --format=docker
+      - name: Login to Harbor
+        run: podman login hub.k8s.ucar.edu -u Harbor -p ${{ secrets.HARBOR_LOGIN  }}
+      - name: Push image to Harbor
+        run: podman push hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-tf:${{ steps.date.outputs.date }}
