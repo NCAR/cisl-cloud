@@ -30,6 +30,10 @@ jobs:
       - name: Build Podman image
         run: |
           podman build -f configs/jupyter/gpu-tf-notebook/Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-tf:${{ steps.date.outputs.date }} configs/jupyter/gpu-tf-notebook/. --no-cache --format=docker
+      - name: Create pull request to merge dev in to main
+        run: gh pr create -B main -H dev --title 'Test build successful. Merge tensorflow notebook update from dev into main' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # These lines should be included only in a production build
       #- name: Login to Harbor
         #run: podman login hub.k8s.ucar.edu -u Harbor -p ${{ secrets.HARBOR_LOGIN  }}
