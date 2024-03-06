@@ -15,14 +15,14 @@ on:
 # Define the actions that are going to take place as part of this workflow    
 jobs:
   # Name the job(s)
-  deploy-docker-gpu-tf-notebook:
+  podman-build-gpu-tf-notebook:
     # Define where the job should run in this case it will be run on the latest ubuntu image
     runs-on: self-hosted
     # Set the steps to take in order
     steps:
       # Step 1 is to checkout the github repo used to build the Dockerfile
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       # Get the date to apply to image tag
       - name: Get current date
         id: date
@@ -34,8 +34,3 @@ jobs:
         run: gh pr create -B main -H dev --title 'Test build successful. Merge tensorflow notebook update from dev into main' --body 'Created by Github action'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      # These lines should be included only in a production build
-      #- name: Login to Harbor
-        #run: podman login hub.k8s.ucar.edu -u Harbor -p ${{ secrets.HARBOR_LOGIN  }}
-      #- name: Push image to Harbor
-        #run: podman push hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-tf:${{ steps.date.outputs.date }}
