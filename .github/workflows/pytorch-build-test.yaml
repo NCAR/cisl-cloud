@@ -15,14 +15,14 @@ on:
 # Define the actions that are going to take place as part of this workflow    
 jobs:
   # Name the job(s)
-  deploy-docker-gpu-pyt-notebook:
+  podman-build-gpu-pyt-notebook:
     # Define where the job should run in this case it will be run on the latest ubuntu image
     runs-on: self-hosted
     # Set the steps to take in order
     steps:
       # Step 1 is to checkout the github repo used to build the Dockerfile
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
       # Get the date to apply to image tag
       - name: Get current date
         id: date
