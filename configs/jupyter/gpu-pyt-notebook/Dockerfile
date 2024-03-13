@@ -1,7 +1,7 @@
 # Currently copied directly from https://github.com/zonca/jupyterhub-deploy-kubernetes-jetstream/blob/master/gpu/nvidia-tensorflow-jupyterhub/Dockerfile
 # We will start with this and go through testing to determine where this needs to be customized
 
-ARG ROOT_CONTAINER=nvidia/opengl:base-ubuntu22.04
+ARG ROOT_CONTAINER=ubuntu:22.04
 
 FROM $ROOT_CONTAINER
 
