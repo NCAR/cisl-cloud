@@ -52,7 +52,6 @@ RUN apt-get update --yes && \
     locales \
     # Build executable programs
     make \
-    mesa-utils \
     # SSH for Git 
     openssh-client \
     # - pandoc is used to convert notebooks to html files
@@ -66,10 +65,9 @@ RUN apt-get update --yes && \
     tini \
     vim \
     # Required for NVIDIA OpenGL Possibly
-    libxext-dev \
-    libx11-dev \
-    x11proto-gl-dev \
+    libglu1-mesa-dev \
     libglvnd-dev \
+    mesa-common-dev \
     # End of OpenGL
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
