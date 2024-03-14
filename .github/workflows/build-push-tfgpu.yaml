@@ -31,6 +31,6 @@ jobs:
         run: |
           podman build -f configs/jupyter/gpu-tf-notebook/Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-tf:${{ steps.date.outputs.date }} configs/jupyter/gpu-tf-notebook/. --no-cache --format=docker
       - name: Login to Harbor
-        run: podman login hub.k8s.ucar.edu -u Harbor -p ${{ secrets.HARBOR_LOGIN  }}
+        run: podman login hub.k8s.ucar.edu -u admin -p ${{ secrets.HARBOR_LOGIN  }}
       - name: Push image to Harbor
         run: podman push hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-tf:${{ steps.date.outputs.date }}
