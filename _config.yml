@@ -29,6 +29,9 @@ bibtex_bibfiles:
 #######################################################################################
 # Launch button settings
 
+html:
+  google_analytics_id: G-7W0SHCDV52
+
 sphinx:
   config:
     html_favicon: images/favicon.ico
