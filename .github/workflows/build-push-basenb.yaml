@@ -31,7 +31,7 @@ jobs:
         run: |
           podman build -f configs/jupyter/gpu-pyt-notebook/Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-base:${{ steps.date.outputs.date }} configs/jupyter/gpu-pyt-notebook/. --no-cache --format=docker
       - name: Login to Harbor
-        run: podman login hub.k8s.ucar.edu -u Harbor -p ${{ secrets.HARBOR_LOGIN  }}
+        run: podman login hub.k8s.ucar.edu -u admin -p ${{ secrets.HARBOR_LOGIN  }}
       - name: Push Podman image to Docker hub
         run: |
           podman push hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-base:${{ steps.date.outputs.date }}
