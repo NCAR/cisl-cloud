@@ -7,20 +7,15 @@ on:
 
 jobs:
   build-docs:
-    runs-on: ubuntu-22.04
+    runs-on: self-hosted
     steps:
       # Step 1 is to checkout the github repo
       - name: Check out the repo
         uses: actions/checkout@v3
         with:
           ref: docs
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: 3.10.12
       - name: Install Python dependencies
         run: |
-          sudo apt-get install python3-pip
           pip install ghp-import
           pip install jupyter-book
           pip install sphinx_pythia_theme
@@ -42,35 +37,18 @@ jobs:
           git remote set-url origin "https://$GITHUB_ACTOR:${{ secrets.NC_GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
           ls -lrt
           ghp-import -n -p -f _build/html
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        # GitHub secrets are used to provide login information to docker hub
-        with:
-          username: ${{ secrets.CCP_DOCKERHUB_USERNAME }}
-          password: ${{ secrets.CCP_DOCKERHUB_TOKEN  }}
-      - name: Install Podman
-        run: |
-          sudo apt-get remove -y golang-github-containers-image \
-          && sudo mkdir -p /etc/apt/keyrings \
-          && curl -fsSL https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/xUbuntu_$(lsb_release -rs)/Release.key \
-            | gpg --dearmor \
-            | sudo tee /etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg > /dev/null \
-          && echo \
-            "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/devel_kubic_libcontainers_unstable.gpg] \
-            https://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/unstable/xUbuntu_$(lsb_release -rs)/ /" \
-            | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:unstable.list > /dev/null \
-          && sudo apt-get update -y \
-          && sudo apt-get install -y podman skopeo
       # Get the date to apply to image tag
       - name: Get current date
         id: date
         run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
       - name: Build Podman image
         run: |
-          podman build -f docs.Dockerfile -t cislcloudpilot/docs:${{ steps.date.outputs.date }} .
+          podman build -f docs.Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }} .
+      - name: Login to Harbor
+        run: podman login hub.k8s.ucar.edu -u admin -p ${{ secrets.HARBOR_LOGIN  }}
       - name: Push Podman image to Docker hub
         run: |
-          podman push cislcloudpilot/docs:${{ steps.date.outputs.date }}
+          podman push hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }}
   update-helm:
     # Define where the job should run in this case it will be run on the latest ubuntu image
     runs-on: ubuntu-latest
