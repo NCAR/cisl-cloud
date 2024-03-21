@@ -71,6 +71,17 @@ RUN apt-get update --yes && \
     #   https://github.com/krallin/tini#why-tini for details.
     tini \
     vim \
+    # Remote Desktop
+    dbus-x11 \
+    xfce4 \
+    xfce4-panel \
+    xfce4-session \
+    xfce4-settings \
+    xorg \
+    xubuntu-icon-theme \
+    tigervnc-standalone-server \
+    tigervnc-xorg-extension \
+    websockify \
     wget && \
     apt-get clean && rm -rf /var/lib/apt/lists/* && \
     echo "en_US.UTF-8 UTF-8" > /etc/locale.gen && \
@@ -137,6 +148,7 @@ RUN mkdir "/home/${NB_USER}/work" && \
 COPY --chown="${NB_UID}:${NB_GID}" initial-condarc "${CONDA_DIR}/.condarc"
 
 WORKDIR /tmp
+
 RUN set -x && \
     arch=$(uname -m) && \
     if [ "${arch}" = "x86_64" ]; then \
@@ -168,12 +180,6 @@ RUN set -x && \
 ENV CONDA_ENV=cisl-cloud-base \
     NB_PYTHON_PREFIX=${HOME}/.jupyter \
     PATH=${NB_PYTHON_PREFIX}/bin:${PATH}
-
-# Run conda activate each time a bash shell starts, so users don't have to manually type conda activate
-# Note this is only read by shell, but not by the jupyter notebook - that relies
-# on us starting the correct `python` process, which we do by adding the notebook conda environment's
-# bin to PATH earlier ($NB_PYTHON_PREFIX/bin)
-RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh ; conda activate ${CONDA_ENV}" > /etc/profile.d/init_conda.sh
 
 WORKDIR /tmp
 
@@ -266,6 +272,12 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
     chmod -R go+rx "${CONDA_DIR}/share/jupyter" && \
     rm -rf "${HOME}/.local" && \
     fix-permissions "${JULIA_PKGDIR}" "${CONDA_DIR}/share/jupyter"
+
+# Run conda activate each time a bash shell starts, so users don't have to manually type conda activate
+# Note this is only read by shell, but not by the jupyter notebook - that relies
+# on us starting the correct `python` process, which we do by adding the notebook conda environment's
+# bin to PATH earlier ($NB_PYTHON_PREFIX/bin)
+RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh ; conda activate ${CONDA_ENV}" > /etc/profile.d/init_conda.sh
 
 ###
 # Change the .condarc file now so user envs are created in ~/my-conda-envs
