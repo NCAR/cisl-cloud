@@ -16,15 +16,15 @@ jobs:
           ref: docs
       - name: Install Python dependencies
         run: |
-          pip install ghp-import
-          pip install jupyter-book
-          pip install sphinx_pythia_theme
-          pip install sphinxcontrib-applehelp==1.0.4
-          pip install sphinxcontrib-bibtex==2.5.0
-          pip install sphinxcontrib-devhelp==1.0.2
-          pip install sphinxcontrib-htmlhelp==2.0.1
-          pip install sphinxcontrib-serializinghtml==1.1.5
-          pip install sphinxcontrib-qthelp==1.0.3
+          pip3 install ghp-import
+          pip3 install jupyter-book
+          pip3 install sphinx_pythia_theme
+          pip3 install sphinxcontrib-applehelp==1.0.4
+          pip3 install sphinxcontrib-bibtex==2.5.0
+          pip3 install sphinxcontrib-devhelp==1.0.2
+          pip3 install sphinxcontrib-htmlhelp==2.0.1
+          pip3 install sphinxcontrib-serializinghtml==1.1.5
+          pip3 install sphinxcontrib-qthelp==1.0.3
           PATH="${PATH}:${HOME}/.local/bin"
       - name: Build book HTML
         run: |
@@ -45,7 +45,7 @@ jobs:
         run: |
           podman build -f docs.Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }} .
       - name: Login to Harbor
-        run: podman login hub.k8s.ucar.edu -u admin -p ${{ secrets.HARBOR_LOGIN  }}
+        run: podman login hub.k8s.ucar.edu -u robot-cislcloudpilot+cislcloudpilot -p ${{ secrets.HARBOR_LOGIN  }}
       - name: Push Podman image to Docker hub
         run: |
           podman push hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }}
