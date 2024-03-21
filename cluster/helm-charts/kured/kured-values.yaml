@@ -1,0 +1,7 @@
+configuration:
+  forceReboot: true
+  rebootSentinelCommand: 'sh -c "! dnf -q needs-restarting -r"'
+
+tolerations:
+  - key: node-role.kubernetes.io/master
+    operator: Exists

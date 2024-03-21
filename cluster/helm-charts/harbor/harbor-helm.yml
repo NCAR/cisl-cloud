@@ -26,12 +26,12 @@ expose:
             # The name of secret which contains keys named:
             # "tls.crt" - the certificate
             # "tls.key" - the private key
-            secretName: ENC[AES256_GCM,data:ymexnmCfdmOegPL/OIs=,iv:15d7RJBqkoNXkQuTtmdNswv2HX5nqKNxvxezzN1hdmg=,tag:yQbReRoecwEGGGJJmNSlAw==,type:str]
+            secretName: ENC[AES256_GCM,data:G49ACNurOBCY0rrNyxY=,iv:Sill1EvY0kIgd4ce6aRgCg6ih22rctkK/0M/N4PX9LI=,tag:Cqbxo3SGzF0nidJjza0Jog==,type:str]
             # The name of secret which contains keys named:
             # "tls.crt" - the certificate
             # "tls.key" - the private key
             # Only needed when the "expose.type" is "ingress".
-            notarySecretName: ENC[AES256_GCM,data:rcpB0UmoPULqKQHXsYPywf0lHU+5,iv:+4O4ncEx4KAWB2ViTquciRLO/5FI2kKwmYMDT6GnXoA=,tag:tVt/SwfksDivcSsKnI33Qg==,type:str]
+            notarySecretName: ENC[AES256_GCM,data:qO0u8a9lb37F78alortAYZVZBz2W,iv:4ZWH87z7iG4OILmDZR3cl7JCgd76eH5SSP74ofJv7/4=,tag:53oXB6woOBmQERlPoy/lFQ==,type:str]
     ingress:
         hosts:
             core: hub.k8s.ucar.edu
@@ -350,7 +350,7 @@ logLevel: info
 # key in secret is given via (default to HARBOR_ADMIN_PASSWORD)
 # existingSecretAdminPassword:
 existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
-harborAdminPassword: ENC[AES256_GCM,data:aIuhZjH2UEM88ss=,iv:WTEVmdvdOWWs5JQDrXe6NpbNb1ZknlXTMAyLT2Dj5Q4=,tag:7HfIYAc07SjQHUBv2LiM6Q==,type:str]
+harborAdminPassword: ENC[AES256_GCM,data:PwBLBjcZr44InvIflrflizjZQn4=,iv:Lfz008vmr42UMqeE0KGNfsVUHZkaXcTE4qW9atf8oUM=,tag:I37/JziXkIyZhfnlEFYPsQ==,type:str]
 # The name of the secret which contains key named "ca.crt". Setting this enables the
 # download link on portal to download the CA certificate when the certificate isn't
 # generated automatically
@@ -527,7 +527,7 @@ registry:
         image:
             repository: goharbor/registry-photon
             tag: v2.8.4
-        # resources:
+            # resources:
     #  requests:
     #    memory: 256Mi
     #    cpu: 100m
@@ -935,50 +935,50 @@ sops:
         - recipient: age1ucetgj7k3whaqf9nulacsqarur6nrgzuyt59apeptu5cphd6ksdsqpy5he
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB0MVp6N0xyUVhEdXhpaGFP
-            QUxCajBRL0hpYlVmNHpITC9JWTJDM2kycTFBCjI4Q0xIU2JzTG1aZHYwOWREeGpi
-            WFp5dEI5U2lrV0Jkc2syckJiQktXYVkKLS0tIFpQU284SjRPSGxaMk1oYXB5bVYy
-            QVdVRVYxcnFlemJ2OUtlZkkvS0w1UzAKj2OD59jY2Ll5cSPoRtY7ULiTiELQHtpe
-            pSoTOazWhmTagJKxqmhFfO6UF9QEUihrP6T9P9LurzO4Y+CEZAulSw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBVN0xtZmxBMkpYRXBTbFNE
+            UE5tV3gvV0liWnNYRy81ZnRqNEpjbndVc2tNCkNzMXFPdkFXdXp4NGVJa1c5QTY5
+            UUs3NUxOUlJrQjViZjUreE5QRzUzeWMKLS0tIDNUTDlzbUJpNXA3cWRreU9sdGp0
+            MkxoRyt6Tkg2eTZ6b0k3d2piSFZHMFEK3x6s9X54qtUHpWl9njmPRoARkLxrawwn
+            j3C3pucCYnOrQXOjSVjJmi/b0vqPAFfmmqX2m7tW/dMGCZgZWPReqw==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1dnkv8vy8xkl5afwuwl55ycpquy2uk7ypc5ad87sfug2zffp6jgkqwwzglr
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSArOGNSRWJGeGdsMG05bjNK
-            SXplbGlnZXpiTzY1Uzc0K1pSTmZnVnhHUGlVCk1qUW5TVDRabWhRUEU1OSsyRmFK
-            bGdnZEFIeFRycDFFREhOaG5mWXpUa2cKLS0tIHpOYm1qbGNkSEI2aDNObEhLMk52
-            MEdzUEt5ZXg5VEExYWFhUVJhTnNJL0EKSW1t6Wwx69y6NmgoFfzF3f+sVZGd+tUf
-            LEqmB0tsj+58PH3/ECuHZL0GJunWzkfjxxto+rstFklFkvAPjJ30kg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBaNWpxeVNoNXN4WGZsZXdz
+            WExjZm9iS3dPZTE0WGpZZis3MTZKMzhwT3hjCktnVkVqQW1uNEE4bUtqWW1ENzlY
+            bU14WjZjd3ZVQVlqak5xTnBRVzNyMFUKLS0tIHRRRFppSGxVb212U0ZXSTcvckpr
+            WXhLZFpyeFJWaGxKNk9xaDcvQytwbWsKqjFgB8zLgraPVrZANNzb7kevaUvwWVhF
+            e6XuCrDoxgEjd50GZmOTLFDlEDZGw1NKYMu1DoV2ciRXWWYHfOGL7Q==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1wt75fkqsa2ngrhtmr7ws2ve8v9h2463hryj4jk4k7m5khxmc9pgqgqag8x
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAzOXBVT1dTZEdQKzBBb0F6
-            VzhTaEg0NktOY1l4bnJMY2xkQ29JSm05YjNJCkxCRkxlMDhGeVU3Uk1pSzZEOGdH
-            aFJvcmx2aDIyUzZLa3gwSmcyUnMyYkkKLS0tIHV2eFl0U3NoSWRERmdoSUQvaHFV
-            ZHdYVWtLL0lMdlJKR2w3UnB4eE82K28KSwt3c4ics0ICnmozxl7U+1+UECh9yE1+
-            BOl52JlpaMcrA/uTOUKDpcTiXZ1XzYAfe/Ecn/6fXxulhlyOJk3zHA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjNTEzSWNBbnlzQUJkSWRn
+            eE1IYzBGcmJ4VHlXSE1EZk5tQ3VVVnhSNGlzCmpjdTlVUWpVbnZVWFRKVGJpVjBR
+            OFl5ZWxHTDdGQXhkSXhQc1VsRS9zZW8KLS0tIHlQLzloaERXK201WEh3OHVPTm56
+            WlcxU1RPZzlUaGxhMGk1SEtZdjVOOEkKqzx71E5exHwc0d4XQoq+KAoWNRmewQp3
+            fJ7E18cFJWDAjHkLyx0EB8Zzs98Qw8wXdvq6yk3UbObm3jQJYYvZ9A==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1fqw4znyl0zjpw5ta7ll3auxpzg8dme578jgw43a0dtzjhwjn4qlstaez7c
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBFNm1MNC92enV3SWdoSDZ2
-            MklsNXhrVks0d3dsNld3TkZ5RFZ5RTJUNGxVCndTbWZKbS9kTEFFcjdyMXhEajln
-            dVNDK1J4a0tFTWhXekpCNjlFSVV1UTAKLS0tIDgwUEEvVUhGZGZiTGVFWmF6ZW1a
-            c25VWGlETytMMXpsNGd1RkdqdWJFSFUKgp0HepP6Mw7fp++Tw1lXtVRqxYTE57uH
-            lDW/dRv58Z5sy+WMU6ADl3jkYh+a2538vpMPBSh9PHGE7/iIHIlu5Q==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmRGhuMzBLRUVTaTJ4US9R
+            TmZpRXpad3lqTEJ1cnU5UFkxOU1INEZVcFNFCk90ZHQyOHA4NnlEMkhjZ1FhbUpS
+            Ykk1VmVISUwrUWsyaEZQc0lSdTRPOFUKLS0tIEJDYkpuMmtCTzdjZXpYT3RkRjgy
+            dHRBbHY4QS8rVnE3MXZNcGp0Skk0eGcKBElUyeiI/Fa5V0Yh++6NsSZbYMgvzXnT
+            TtxMMEE1Frr+7m7YI9/csgmC55n0NfQIJ+PC2+4p854N8pwDqIRtXQ==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1m2ay7zlek6d4uctt09vsw5l8gpydjlvu9xemv8pqh97urdmhhyrsh9qe86
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBRZnRLVW1PNWczM21GR3hF
-            OGtTVU1vUW9JSThjRm1QRGNVeUJnK054OWxZCnNaUFNkL094SHU0cW5KUitidjlu
-            MWNIS2M1dnhsVys1U0hxdzJqZ2RRVmMKLS0tIGlmSllpUFdvbzNNOFAvcmFES2o2
-            S2FyUWZ5TzRXcDBpRll0emN0RzlJOHcKdYoPU6m/yzhBhL0InvrixLER3kDF8wIJ
-            S8+eHf0WOlAfMlB55ItFBMWiVRPyKAJ/k9RlVoN7eJTLcqR3BCaKEw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBFQU1Wcm9SZWYzM3FKdThh
+            NFY2djE5WG1yYmNMdEp1T0dLaHVVRDVLK0hRCnhmQ0dDdUF2V2EwcEEwUFdXcldh
+            VTVYbkRKNFpyR0xwWGhqV05mb0xkK3cKLS0tIDZXcjExZVFTRWxmL1hjVHdYN0U5
+            WjBYajdCKzRnb0NDSGd0TW5BSkRMYzgKXjyb2zkeAHkLt+YtnsT8NdpZ4IVDjy3k
+            j4BUAXao2ZlWtT16uBsRWRogfJy5nl7dZDQU+1Y84ZtKp2ezPMlyYg==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2023-11-21T21:40:44Z"
-    mac: ENC[AES256_GCM,data:8BX+fhmqQlPbcSe5xGSj8ptUTsuZK3wvjEuAU3mnMf5pLA4JhP22mU5Sst+8GbVG9su6To3qAG+kiX8VoN4SvejXxJ5cIP51UXN7MxDAHqIPIE0x8QMCZbLFWP3hYOSEETLkP5yMrMDl1dwuohJM0FN65+dM7hyJp7Av1K+D8EE=,iv:bfnavm/IdSQGO85/1RT3h6yqVe/IisS3X8MZyZprTJQ=,tag:mcN/p6r+6Ao0+6glGxMvZQ==,type:str]
+    lastmodified: "2024-03-21T14:41:47Z"
+    mac: ENC[AES256_GCM,data:0YutfHotNtBE5EknwqIHQIh6G4JE9ValSG/ma7uRYj/d2FRoiGGiXaqNqakzuGCnTHQMWRVKmtXINyHmSqoO3lcyPPPlq4pvxNRLbMCov/h1V4Rhag4ePa5sRweXxyRLAws8o7FoXDNl/XV0P3Qo63zlOUWRqz3Hc+/jY4hkOoQ=,iv:ONsHusJtBSCUEj8wLd72EzGV0CPpx6Cs7IifoihWMp8=,tag:swTZqYPjpuyfHZOx9CuC2A==,type:str]
     pgp: []
     encrypted_regex: ^(secretName|notarySecretName|harborAdminPassword)$
     version: 3.8.1
