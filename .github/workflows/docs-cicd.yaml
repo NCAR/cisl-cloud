@@ -45,7 +45,7 @@ jobs:
         run: |
           podman build -f docs.Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }} .
       - name: Login to Harbor
-        run: podman login hub.k8s.ucar.edu -u admin -p ${{ secrets.HARBOR_LOGIN  }}
+        run: podman login hub.k8s.ucar.edu -u robot-cislcloudpilot+cislcloudpilot -p ${{ secrets.HARBOR_LOGIN  }}
       - name: Push Podman image to Docker hub
         run: |
           podman push hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }}
