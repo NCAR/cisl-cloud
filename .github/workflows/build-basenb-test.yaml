@@ -30,3 +30,7 @@ jobs:
       - name: Build Podman image
         run: |
           podman build -f configs/jupyter/base-notebook/Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-base:${{ steps.date.outputs.date }} configs/jupyter/base-notebook/. --no-cache --format=docker
+      - name: Create pull request to merge dev in to main
+        run: gh pr create -B main -H dev --title 'Test build successful. Merge tensorflow notebook update from dev into main' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
