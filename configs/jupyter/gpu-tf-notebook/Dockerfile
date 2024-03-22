@@ -181,7 +181,7 @@ RUN mamba install --quiet --yes \
     fix-permissions "/home/${NB_USER}"
 
 ENV CONDA_PREFIX=/opt/base-conda/${CONDA_ENV} \
-    LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CONDA_PREFIX/lib/
+    LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$CONDA_PREFIX/lib/:/opt/conda/lib/:/usr/lib/
 
 # Run conda activate each time a bash shell starts, so users don't have to manually type conda activate
 # Note this is only read by shell, but not by the jupyter notebook - that relies
