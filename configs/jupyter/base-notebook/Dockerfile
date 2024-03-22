@@ -220,11 +220,6 @@ RUN mamba install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
-# Ask dask to read config from ${CONDA_DIR}/etc rather than
-# the default of /etc, since the non-root jovyan user can write
-# to ${CONDA_DIR}/etc but not to /etc
-ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
-
 ###
 # Julia Install
 ###
@@ -278,6 +273,11 @@ RUN julia -e 'import Pkg; Pkg.update()' && \
 # on us starting the correct `python` process, which we do by adding the notebook conda environment's
 # bin to PATH earlier ($NB_PYTHON_PREFIX/bin)
 RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh ; conda activate ${CONDA_ENV}" > /etc/profile.d/init_conda.sh
+
+# Ask dask to read config from ${CONDA_DIR}/etc rather than
+# the default of /etc, since the non-root jovyan user can write
+# to ${CONDA_DIR}/etc but not to /etc
+ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
 
 ###
 # Change the .condarc file now so user envs are created in ~/my-conda-envs
