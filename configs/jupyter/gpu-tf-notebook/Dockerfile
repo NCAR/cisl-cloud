@@ -180,6 +180,7 @@ RUN mamba install --quiet --yes \
     fix-permissions "${CONDA_DIR}" && \
     fix-permissions "/home/${NB_USER}"
 
+# Set the conda prefix and update the path to include shared libraries for nvidia and cuda
 ENV CONDA_PREFIX=/opt/base-conda/${CONDA_ENV} \
     LD_LIBRARY_PATH=${LD_LIBRARY_PATH}:$CONDA_PREFIX/lib/:/opt/conda/lib/:/usr/lib/
 

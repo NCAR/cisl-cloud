@@ -14,21 +14,9 @@ jobs:
         uses: actions/checkout@v3
         with:
           ref: docs
-      - name: Install Python dependencies
-        run: |
-          pip3 install ghp-import
-          pip3 install jupyter-book
-          pip3 install sphinx_pythia_theme
-          pip3 install sphinxcontrib-applehelp==1.0.4
-          pip3 install sphinxcontrib-bibtex==2.5.0
-          pip3 install sphinxcontrib-devhelp==1.0.2
-          pip3 install sphinxcontrib-htmlhelp==2.0.1
-          pip3 install sphinxcontrib-serializinghtml==1.1.5
-          pip3 install sphinxcontrib-qthelp==1.0.3
-          PATH="${PATH}:${HOME}/.local/bin"
       - name: Build book HTML
         run: |
-          jupyter-book build .
+          jupyter-book build cisl-cloud/.
       - name: Push _build/html to gh-pages
         run: |
           sudo chown -R $(whoami):$(whoami) .
@@ -36,7 +24,7 @@ jobs:
           git config --global user.name "$GITHUB_ACTOR"
           git remote set-url origin "https://$GITHUB_ACTOR:${{ secrets.NC_GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
           ls -lrt
-          ghp-import -n -p -f _build/html
+          ghp-import -n -p -f cisl-cloud/_build/html
       # Get the date to apply to image tag
       - name: Get current date
         id: date
