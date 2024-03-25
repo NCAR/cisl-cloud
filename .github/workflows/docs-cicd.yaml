@@ -16,7 +16,7 @@ jobs:
           ref: docs
       - name: Build book HTML
         run: |
-          jupyter-book build cisl-cloud/.
+          jupyter-book build /home/podman/actions-runner/_work/cisl-cloud/cisl-cloud/.
       - name: Push _build/html to gh-pages
         run: |
           sudo chown -R $(whoami):$(whoami) .
@@ -24,7 +24,7 @@ jobs:
           git config --global user.name "$GITHUB_ACTOR"
           git remote set-url origin "https://$GITHUB_ACTOR:${{ secrets.NC_GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY"
           ls -lrt
-          ghp-import -n -p -f cisl-cloud/_build/html
+          ghp-import -n -p -f /home/podman/actions-runner/_work/cisl-cloud/cisl-cloud/_build/html
       # Get the date to apply to image tag
       - name: Get current date
         id: date
