@@ -55,7 +55,7 @@ jobs:
       - name: Update Helm values.yaml
         run: | 
           sed -i '15d' configs/helm-charts/cloud-docs/values.yaml
-          echo "    image: hub.k8s.ucar.edu/docker/cislcloudpilot/docs:${{ steps.date.outputs.date }}" >> configs/helm-charts/cloud-docs/values.yaml
+          echo "    image: hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }}" >> configs/helm-charts/cloud-docs/values.yaml
       - name: Update Helm Chart.yaml
         run: | 
           sed -i '24d' configs/helm-charts/cloud-docs/Chart.yaml
