@@ -73,6 +73,7 @@ RUN apt-get update --yes && \
     vim \
     # Remote Desktop
     dbus-x11 \
+    firefox \
     xfce4 \
     xfce4-panel \
     xfce4-session \
@@ -277,7 +278,7 @@ RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh ; conda activate ${CONDA_ENV}" >
 # Ask dask to read config from ${CONDA_DIR}/etc rather than
 # the default of /etc, since the non-root jovyan user can write
 # to ${CONDA_DIR}/etc but not to /etc
-ENV DASK_ROOT_CONFIG=${CONDA_DIR}/etc
+ENV DASK_ROOT_CONFIG=/opt/base-conda/cisl-cloud-base/etc
 
 ###
 # Change the .condarc file now so user envs are created in ~/my-conda-envs
