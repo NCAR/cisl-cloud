@@ -1,7 +1,7 @@
 # This workflow builds docker images and pushes them to a Docker Hub Repository
 # This workflow is specific to the base-notebook directory and image
 # Set the workflow name
-name: JHub CPU Build Test
+name: JHub RDP Build Test
 
 # Define the trigger that starts the action
 # For this workflow the trigger is on a push that changes anything in the configs/jupyter/base-notebook/ path
@@ -15,7 +15,7 @@ on:
 # Define the actions that are going to take place as part of this workflow    
 jobs:
   # Name the job(s)
-  podman-build-base-notebook:
+  podman-build-rdp-notebook:
     # Define where the job should run in this case it will be run on the latest ubuntu image
     runs-on: self-hosted
     # Set the steps to take in order
