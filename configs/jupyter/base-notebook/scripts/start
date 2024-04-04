@@ -1,13 +1,14 @@
-#!/bin/bash
-# Copyright (c) Jupyter Development Team.
-# Distributed under the terms of the Modified BSD License.
+#!/bin/bash -l
 
-set -e
+# ==== ONLY EDIT WITHIN THIS BLOCK =====
 
-# set default ip to 0.0.0.0
-if [[ "${NOTEBOOK_ARGS} $*" != *"--ip="* ]]; then
-    NOTEBOOK_ARGS="--ip=0.0.0.0 ${NOTEBOOK_ARGS}"
+export PANGEO_ENV="pangeo-notebook"
+if ! [[ -z "${PANGEO_SCRATCH_PREFIX}" ]] && ! [[ -z "${JUPYTERHUB_USER}" ]]; then
+    export PANGEO_SCRATCH="${PANGEO_SCRATCH_PREFIX}/${JUPYTERHUB_USER}/"
 fi
 
-# shellcheck disable=SC1091,SC2086
+# ==== ONLY EDIT WITHIN THIS BLOCK =====
+
 exec "$@"
+
+source /etc/profile.d/init_conda.sh
