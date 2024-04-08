@@ -20,7 +20,7 @@ jobs:
     runs-on: self-hosted
     # Set the steps to take in order
     steps:
-      # Step 1 is to checkout the github repo used to build the Dockerfile
+      # Step 1 is to checkout the github repo used to build the Containerfile
       - name: Check out the repo
         uses: actions/checkout@v4
       # Get the date to apply to image tag
@@ -29,7 +29,7 @@ jobs:
         run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
       - name: Build Podman image
         run: |
-          podman build -f configs/jupyter/gpu-pyt-notebook/Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-pyt:${{ steps.date.outputs.date }} configs/jupyter/gpu-pyt-notebook/. --no-cache --format=docker
+          podman build -f configs/jupyter/gpu-pyt-notebook/Containerfile -t hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-pyt:${{ steps.date.outputs.date }} configs/jupyter/gpu-pyt-notebook/. --no-cache --format=docker
       - name: Create pull request to merge dev in to main
         run: gh pr create -B main -H dev --title 'Test build successful. Merge PyTorch notebook update from dev into main' --body 'Created by Github action'
         env:
