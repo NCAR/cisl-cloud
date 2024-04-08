@@ -120,6 +120,7 @@ dependencies:
   - metpy=1.5.1=pyhd8ed1ab_0
   # Same version as NPL
   - mpi4py=3.1.4=py310h37cc914_0
+  - nb_conda_kernels
   # Not included in NPL
   - nbstripout=0.6.1=pyhd8ed1ab_0
   # Same version as NPL
