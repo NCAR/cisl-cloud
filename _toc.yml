@@ -101,6 +101,7 @@ parts:
         sections:
         - title: Push & Pull Images
           file: how-to/K8s/harbor/push-pull
+        - file: how-to/K8s/harbor/robot-account
         - title: Vulnerability Scan
           file: how-to/K8s/harbor/scanner
       - title: K8s JupyterHub 
