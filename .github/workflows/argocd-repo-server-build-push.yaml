@@ -30,8 +30,8 @@ jobs:
       - name: Build Podman image
         run: |
           podman build -f configs/argocd/Containerfile.repo-server -t hub.k8s.ucar.edu/cislcloudpilot/argo-repo-server:${{ steps.date.outputs.date }} configs/argocd/. --no-cache --format=docker
-          - name: Login to Harbor
-            run: podman login hub.k8s.ucar.edu -u robot-cislcloudpilot+cislcloudpilot -p ${{ secrets.HARBOR_LOGIN  }}
-          - name: Push Podman image to Docker hub
-            run: |
-              podman push hub.k8s.ucar.edu/cislcloudpilot/argo-repo-server:${{ steps.date.outputs.date }}
+      - name: Login to Harbor
+        run: podman login hub.k8s.ucar.edu -u robot-cislcloudpilot+cislcloudpilot -p ${{ secrets.HARBOR_LOGIN  }}
+      - name: Push Podman image to Docker hub
+        run: |
+          podman push hub.k8s.ucar.edu/cislcloudpilot/argo-repo-server:${{ steps.date.outputs.date }}
