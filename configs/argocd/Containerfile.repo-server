@@ -11,10 +11,8 @@ ENV HELM_SECRETS_BACKEND="vals" \
     HELM_SECRETS_VALUES_ALLOW_SYMLINKS=false \
     HELM_SECRETS_VALUES_ALLOW_ABSOLUTE_PATH=false \
     HELM_SECRETS_VALUES_ALLOW_PATH_TRAVERSAL=false \
-    HELM_SECRETS_WRAPPER_ENABLED=false
-
-# Optionally, set default gpg key for sops files
-# ENV HELM_SECRETS_LOAD_GPG_KEYS=/path/to/gpg.key
+    HELM_SECRETS_WRAPPER_ENABLED=false \
+    SOPS_AGE_KEY_FILE="/helm-secrets-private-keys/key.txt"
 
 USER root
 RUN apt-get update && \
