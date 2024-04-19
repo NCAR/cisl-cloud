@@ -21,6 +21,18 @@ This repository is a place for the CCPP team to push code for configurations and
 
 We utilize a GitFlow development strategy where changes are made to feature branches, typically dev for this repository, and pull requests are made to merge changes back in to the main branch. 
 
+## Workflow
+
+GitHub Action Workflows are in place and triggered to build images when changes are made to specific paths in the dev or main branches. These paths are currently:
+
+    configs/argocd/**
+    configs/jupyter/base-notebook/**
+    configs/jupyter/gpu-pyt-notebook/**
+    configs/jupyter/gpu-tf-notebook/**
+    configs/jupyter/rdp-notebook/**
+
+Any changes made to the docs branch will also kick of a GitHub Action workflow. 
+
 ## Docs Branch
 
 All the documentation is hosted out of the docs branch of the repository. Changes made to that branch will trigger a rebuild of the JupyterBook files and a GitHub pages rebuild, in to the gh-pages branch. A new container image will also be created, the associated Helm chart for the cloud hosted version will be updated, and the github-actions bot will open a PR to merge dev in to main on a successful Action run. 
