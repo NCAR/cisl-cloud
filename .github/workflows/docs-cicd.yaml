@@ -54,14 +54,14 @@ jobs:
         run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
       - name: Update Helm values.yaml
         run: | 
-          sed -i '15d' configs/helm-charts/cloud-docs/values.yaml
-          echo "    image: hub.k8s.ucar.edu/docker/cislcloudpilot/docs:${{ steps.date.outputs.date }}" >> configs/helm-charts/cloud-docs/values.yaml
+          sed -i '15d' cluster/helm-charts/cloud-docs/values.yaml
+          echo "    image: hub.k8s.ucar.edu/docker/cislcloudpilot/docs:${{ steps.date.outputs.date }}" >> cluster/helm-charts/cloud-docs/values.yaml
       - name: Update Helm Chart.yaml
         run: | 
-          sed -i '24d' configs/helm-charts/cloud-docs/Chart.yaml
-          echo "appVersion: '${{ steps.date.outputs.date }}'" >> configs/helm-charts/cloud-docs/Chart.yaml
+          sed -i '24d' cluster/helm-charts/cloud-docs/Chart.yaml
+          echo "appVersion: '${{ steps.date.outputs.date }}'" >> cluster/helm-charts/cloud-docs/Chart.yaml
       - name: Run python script to update version by 1
-        run: python configs/helm-charts/cloud-docs/update_ver.py
+        run: python cluster/helm-charts/cloud-docs/update_ver.py
       - name: Commit changes to dev branch
         run: |
           git config --global user.email "$GITHUB_ACTOR@users.noreply.github.com"
