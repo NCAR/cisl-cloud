@@ -88,3 +88,6 @@ sphinx:
         index: page-banner.html
     html_sidebars:
       index: []
+
+  extra_extensions:
+    - sphinxcontrib-googleanalytics

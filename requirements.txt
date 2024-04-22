@@ -1,3 +1,4 @@
 jupyter-book
 sphinx_pythia_theme
 ghp-import
+sphinxcontrib-googleanalytics==0.4
