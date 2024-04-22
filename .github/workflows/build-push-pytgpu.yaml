@@ -4,11 +4,11 @@
 name: PyTorch Build & Push
 
 # Define the trigger that starts the action
-# For this workflow the trigger is on a push that changes anything in the configs/jupyter/base-notebook/ path
+# For this workflow the trigger is on a push that changes anything in the images/jupyter/base-notebook/ path
 on:
   push:
     paths:
-      - configs/jupyter/gpu-pyt-notebook/**
+      - images/jupyter/gpu-pyt-notebook/**
     branches:
       - main
 
@@ -29,7 +29,7 @@ jobs:
         run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
       - name: Build Podman image
         run: |
-          podman build -f configs/jupyter/gpu-pyt-notebook/Containerfile -t hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-pyt:${{ steps.date.outputs.date }} configs/jupyter/gpu-pyt-notebook/. --no-cache --format=docker
+          podman build -f images/jupyter/gpu-pyt-notebook/Containerfile -t hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-pyt:${{ steps.date.outputs.date }} images/jupyter/gpu-pyt-notebook/. --no-cache --format=docker
       - name: Login to Harbor
         run: podman login hub.k8s.ucar.edu -u robot-cislcloudpilot+cislcloudpilot -p ${{ secrets.HARBOR_LOGIN  }}
       - name: Push Podman image to Docker hub
