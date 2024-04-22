@@ -4,7 +4,8 @@ ARG SOPS_VERSION="3.8.1"
 ARG VALS_VERSION="0.24.0"
 ARG HELM_SECRETS_VERSION="4.6.0"
 ARG KUBECTL_VERSION="1.26.1"
-# vals or sops
+
+# sops with age key
 ENV HELM_SECRETS_BACKEND="vals" \
     HELM_SECRETS_HELM_PATH=/usr/local/bin/helm \
     HELM_PLUGINS="/home/argocd/.local/share/helm/plugins/" \
