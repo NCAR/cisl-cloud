@@ -4,7 +4,7 @@
 | **Jupyter Singleuser CPU image build** | ![CPU Image Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-basenb-test-build.yaml/badge.svg) | ![CPU Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-basenb-build-push.yaml/badge.svg) |
 | **Jupyter Tensorflow GPU image builds** | ![Tensorflow Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-tfgpu-test-build.yaml/badge.svg) | ![Tensorflow Image Build & Push](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-tfgpu-build-push.yaml/badge.svg) |
 | **Jupyter PyTorch GPU image builds** | ![PyTorch Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-pytgpu-test-build.yaml/badge.svg) | ![PyTorch Image Build & Push](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-pytgpu-build-push.yaml/badge.svg) |
-
+| **Argo CD image builds** | ![Argo CD Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/argocd-repo-server-test-build.yaml/badge.svg) | ![Argo CD Image Build & Push](https://github.com/NCAR/cisl-cloud/actions/workflows/argocd-repo-server-build-push.yaml/badge.svg) |
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
 
