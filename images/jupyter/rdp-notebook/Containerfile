@@ -58,13 +58,8 @@ RUN echo "Installing Apt-get packages..." \
 ###
 COPY scripts/fix-permissions /usr/local/bin/fix-permissions
 
+# Change permissions on the script so it can be run
 RUN chmod a+rx /usr/local/bin/fix-permissions
-
-# Enable prompt color in the skeleton .bashrc before creating the default NB_USER
-# hadolint ignore=SC2016
-RUN sed -i 's/^#force_color_prompt=yes/force_color_prompt=yes/' /etc/skel/.bashrc
-    # More information in: https://github.com/jupyter/docker-stacks/pull/2047
-    # and docs: https://docs.conda.io/projects/conda/en/latest/dev-guide/deep-dives/activation.html
 
 # Create NB_USER with name jovyan user with UID=1000 and in the 'users' group
 # and make sure these dirs are writable by the `users` group.
@@ -149,10 +144,15 @@ RUN chmod 755 /srv/base-conda/cisl-cloud-base/* && \
 RUN rm -rf /tmp/cisl-cloud-base.yml && \
     rm -rf /tmp/requirements.txt
 
+# Set the default user to jovyan and make home /hom/jovyan
 USER ${NB_USER}
 WORKDIR ${HOME}
 
+# Copy over the start script with the correct permissions assigned
 COPY --chmod=755 /scripts/start /srv/start
 
+# Expose the port Jupyter runs on
 EXPOSE 8888
+
+# The Entrypoint is the /srv/start script
 ENTRYPOINT ["/srv/start"]
