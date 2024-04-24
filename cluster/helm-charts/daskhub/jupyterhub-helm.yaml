@@ -118,7 +118,7 @@ jupyterhub:
             extraVolumeMounts:
                 - name: ENC[AES256_GCM,data:xnlo2JAiNMjeJA==,iv:ykgJ4EMnPksUut3QAzJucva7Gd0sTlcvVOLWM0RYqG4=,tag:d6msfQ6vtE4k0j1ViJDdVg==,type:str]
                   mountPath: ENC[AES256_GCM,data:cb8+tM1LFIRSvPfi0SGEE5rVfg==,iv:xfklzV1jvfOxahYQN2yFRCblYabf7yRbjPUF3izyUKg=,tag:wRmB1uwJaYA5tQ33oAGPbQ==,type:str]
-                  readOnly: ENC[AES256_GCM,data:Dw7NcQ==,iv:nxJnTctuA7LHQqPvU7tCcpyi2R7YMHNRJ6iVTKqwfgg=,tag:bm78KiBh5U3Pn+qQLL2PIg==,type:bool]
+                  readOnly: ENC[AES256_GCM,data:qaU8Iw==,iv:W6aoAp3vMEl44UAnnrF/7cGrhWiIeXsDJR0xuuMY2QQ=,tag:EEwfmol6EeQ95FSV3gh58Q==,type:bool]
                 - name: ENC[AES256_GCM,data:TjGA/CjC4cA=,iv:coPh9oXpE87+BF1seZC7dtuKZ2ue8mKIMXfT9D0Preg=,tag:PW3xwJPUh5PTLQ0jBhuGww==,type:str]
                   mountPath: ENC[AES256_GCM,data:2n/wpwKrQj2rIyxFdL3z,iv:O1ylwEW8pgt1ySGzOhSW+X1g9S0RLqzeVY4SbW3mPgw=,tag:birbwuoZX0/BIEfAhwDJng==,type:str]
                   readOnly: ENC[AES256_GCM,data:qaU8Iw==,iv:W6aoAp3vMEl44UAnnrF/7cGrhWiIeXsDJR0xuuMY2QQ=,tag:EEwfmol6EeQ95FSV3gh58Q==,type:bool]
@@ -127,8 +127,10 @@ jupyterhub:
             # https://ncar-cisl.2i2c.cloud/services/configurator/ by the community
             #
             # pangeo/pangeo-notebook is maintained at: https://github.com/pangeo-data/pangeo-docker-images
-            name: pangeo/pangeo-notebook
-            tag: 2024.01.15
+            #name: pangeo/pangeo-notebook
+            #tag: 2024.01.15
+            name: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-base
+            tag: 2024-04-23.19
         profileList:
             # NOTE: About node sharing
             #
@@ -170,9 +172,6 @@ jupyterhub:
                                 mem_guarantee: 14.469G
                                 cpu_guarantee: 0.5
               kubespawner_override:
-                image: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-base:2024-02-05.19
-                #imagePullSecrets:
-                #    - harbor-registry-secret
                 cpu_limit: null
                 mem_limit: null
             - display_name: NSF NCAR GPU Notebooks
@@ -186,14 +185,14 @@ jupyterhub:
                             display_name: NCAR Tensorflow ML Notebook
                             slug: ncartensor
                             kubespawner_override:
-                                image: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-tf:2024-02-06.17
+                                image: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-tf:2024-04-24.14
                                 #imagePullSecrets:
                                 #    - harbor-registry-secret
                         ncarpytorch:
                             display_name: NCAR Pytorch ML Notebook
                             slug: ncarpytorch
                             kubespawner_override:
-                                image: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-pyt:2023-12-27.01
+                                image: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-pyt:2024-04-23.18
                                 #imagePullSecrets:
                                 #    - harbor-registry-secret
               kubespawner_override:
@@ -408,8 +407,8 @@ sops:
             MUY2T1pxZkI0K0xGc2NkM0x6Yk43eWsKNSbBhulSv22vVHI0sjG1yt4LUtmIa5Vl
             qL10f/b3NP+7yFb44Ac/IBTBsDFR2zfVsEdJfBIg0mxth6fzJgQhFQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-03-21T19:46:29Z"
-    mac: ENC[AES256_GCM,data:eB6Rv+Us1BRZi4JOKQq31xY5YPfLJW6yJ3a6UhvfvexfqbyGeBktOzXdGjY0q5W0vcpkcFRxs24i5ei2Q475Wx2h418ZRzTFwuZCijpiorgEX12rg7fWW4nTbXTSkHMzz2C/bPWITkAvlA4j4wp9DQE30rhAO11gg5Fm1dePj0Y=,iv:NwZEkgWB/TBAX2G6lJTz+zrQNjgySDjFUvEgTyvusmo=,tag:QnEDvE9dpjb/XNyzuKqHaQ==,type:str]
+    lastmodified: "2024-04-24T20:18:30Z"
+    mac: ENC[AES256_GCM,data:yzIVOdlVOrab9Ll5rC93f5swCquB91Bi+pbGt0To3vIbD7U1vcL5L1hMtvSYnFlyxy/uzBHnHuDKaXNUjsBF33a7BtVP0Iixsv/lqZpEp/pF3iNbiBRDpX3sPgk+8ePs1wdd79qwu3UQpINUwKBTnvvfQQM1F2vENlBB5WTSgRY=,iv:wzZ//wf2SsGXbECztg5YFAlPaC2bZsBdbjwgHbr4j0s=,tag:OZT/aABbLEiOveN7azS0Qw==,type:str]
     pgp: []
     encrypted_regex: ^(client_id|client_secret|secretToken|admin_users|oauth_callback_url|allowed_organizations|extraVolumes|extraVolumeMounts|hosts|secretName)$
     version: 3.8.1
