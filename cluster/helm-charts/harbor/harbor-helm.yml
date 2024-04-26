@@ -30,7 +30,7 @@ expose:
             #       # The name of secret which contains keys named:
     ingress:
         hosts:
-            core: ENC[AES256_GCM,data:u/S1j9kdo0bE6xYKfqAfsKPvXJKq,iv:LiCqWJyTpYgWQaty8E5AlTvX6Gk8VBLnex8Uufs7IOA=,tag:2KfUIiSAvFAQs/cHHrJUqQ==,type:str]
+            core: ENC[AES256_GCM,data:udLDy/yOgArkR/9hCAEn4MF5NY3p,iv:1r03IdOEAk54mdRAd45o0+4dyyyf5XAdkwg9quWoxvE=,tag:rfzgzzqH/iOWMt+qvWfIOg==,type:str]
         # set to the type of ingress controller if it has specific requirements.
         # leave as `default` for most ingress controllers.
         # set to `gce` if using the GCE ingress controller
@@ -108,7 +108,7 @@ expose:
 # the IP address of k8s node
 #
 # If Harbor is deployed behind the proxy, set it as the URL of proxy
-externalURL: ENC[AES256_GCM,data:leEjDhg8Gw0vePdq5Fd4/i5A9cLKRGaUjvEIRUM=,iv:eY2MGjOKqNAceS9Vv4bkSxBRtk4PcXlQQw4+zdBlgLQ=,tag:DXAwWp0GZR/GtSjjbdyU1w==,type:str]
+externalURL: ENC[AES256_GCM,data:4YexQloYNA4K7cx93GM9K2ggzF/gUG2evxo5P9I=,iv:2A7SW5US+SgDdyGLMhvn6S5NlNnzloBaJth5vAmrxvc=,tag:beE+GKmOI+k2kyfBbjUhBQ==,type:str]
 # The internal TLS used for harbor components secure communicating. In order to enable https
 # in each components tls cert files need to provided in advance.
 internalTLS:
@@ -123,11 +123,11 @@ internalTLS:
     trustCa: ""
     # core related cert configuration
     core:
-        #ENC[AES256_GCM,data:W5X3JkL9zHRfGtmH0hSwjkn6GBhLy9ceRV6dfnVaty/N,iv:WTkc2kKey5gVaa0ddHW2w8uq20V6iy2TXvG89WeQmLc=,tag:RHwgrfhYSWMMBCnInGrpxQ==,type:comment]
+        # secret name for core's tls certs
         secretName: ""
-        #ENC[AES256_GCM,data:qLCByZCoRb8/j8cdTSptLPBJ5CKRDP+3MyW9VRVRkkuAxMUEqDqlbQ83NM6yxrADKTn9RRKVRxxTo0tIa2x4cOgxU/B6U1AKqgi/GbuT,iv:FEWwzWPGUNJylvFZz0YuiKGY/evRrIjN0mq+ndMmDQM=,tag:sXkRPHnAJ0cm9DCzZboPkA==,type:comment]
+        # Content of core's TLS cert file, only available when `certSource` is "manual"
         crt: ""
-        #ENC[AES256_GCM,data:91ec27JVk9UY51OXAHBxGghWxKLP/sCD2OhkNfVLywkeKsPlYrR4feSr9q40tlrz9f6Sf2/AP51cHjphhneG9QsUxM+oRoIbNDQPoP0=,iv:9w3Z7SoQ8lS7Ee2hBnweLrCHOGuHnk4fzo119t7ZJ3I=,tag:I/jTdSR8WwA6H5Z8Til5Ng==,type:comment]
+        # Content of core's TLS key file, only available when `certSource` is "manual"
         key: ""
     # jobservice related cert configuration
     jobservice:
@@ -193,7 +193,7 @@ persistence:
             storageClass: ""
             subPath: ""
             accessMode: ReadWriteOnce
-            size: 5Gi
+            size: 150Gi
             annotations: {}
         jobservice:
             jobLog:
@@ -334,7 +334,7 @@ logLevel: info
 # key in secret is given via (default to HARBOR_ADMIN_PASSWORD)
 # existingSecretAdminPassword:
 existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
-harborAdminPassword: ENC[AES256_GCM,data:yE/xc/gfy28=,iv:sPaXXKQzP97/j2RZMJLVo9EHLgJDfHU80I/qDV7E+uE=,tag:ZyptpoEDKj0TQ4Os3tEAzw==,type:str]
+harborAdminPassword: ENC[AES256_GCM,data:la3aBa+AL58=,iv:UXG9yuIsvIkqr/7RxRTOcFV2fGwhJLd8Mh3pM2Sx6aQ=,tag:9vXiOqs9kXqca7uR5/hfcQ==,type:str]
 # The name of the secret which contains key named "ca.crt". Setting this enables the
 # download link on portal to download the CA certificate when the certificate isn't
 # generated automatically
@@ -409,56 +409,56 @@ portal:
     priorityClassName: null
 core:
     image:
-        repository: ENC[AES256_GCM,data:S1DZurV5LgOlVDOaH3DdX9K+EOY=,iv:aJHyVRzpPaBxlh4cVp0kabY98Oa3p84i2hAXgrNrEjE=,tag:Qg3+0otQSXhRVAECk02qCg==,type:str]
-        tag: ENC[AES256_GCM,data:ksUuBKk9,iv:XqxQFVXeSUtpV9PE96GTOKBrmKYIfFc5V2sTVlbSRqI=,tag:OjBnE0dvAr6buEc59BwcFw==,type:str]
-    #ENC[AES256_GCM,data:edxk/5tGuRxyycScIJsx2l5jM1Gjha5eO3Kz/NGx/FoTuNYTE+PZJGIdAqWqYEMIZOo8inekQYKZ2A==,iv:xV7CmHUveePg7K4uJ9MaLoQtmFSc98wniw+sM7oxejs=,tag:+b7mY09DIIeQUW9CL+VcGg==,type:comment]
+        repository: goharbor/harbor-core
+        tag: v2.8.4
+    # set the service account to be used, default if left empty
     serviceAccountName: ""
-    #ENC[AES256_GCM,data:bY5MZmePqhDn2rqvuYRrY9y8dyiUHzgCn/F0N1cl+iE=,iv:3l0WDpp6vhmfnlWjKnWuiTG0E12tbxBdYyXkN7DYUbI=,tag:z942z7J4mliIsSG8DMPHug==,type:comment]
-    automountServiceAccountToken: ENC[AES256_GCM,data:lIrjfj8=,iv:oFCryQ/OE/Bd9R7INueBZQb1HalEDjun6EkaFvwHTgI=,tag:+dBsF00zuJltOPylruIXsw==,type:bool]
-    replicas: ENC[AES256_GCM,data:Fw==,iv:Ka57yiqkunfEAVDy7DS77X0hzvUhFyw0zgcXem0U6ho=,tag:GgN+9bd/qjzAFhdoyygZFw==,type:int]
-    revisionHistoryLimit: ENC[AES256_GCM,data:H+Y=,iv:sC/szfFghiX6GHEk1FlO4wog8HDl8TwkHVTiof3PSPU=,tag:fBaI38JDTuOXVRLtyFg0xA==,type:int]
-    #ENC[AES256_GCM,data:9n+wpJrC7a66BXChPW4Pcp65lWxQKQ==,iv:13MklRwbd2aGbHzpZO9Aj34yIEoFfYM9TW+cIJHM4Yc=,tag:hFWHZrsJ4OsiQKrCyuWwKA==,type:comment]
+    # mount the service account token
+    automountServiceAccountToken: false
+    replicas: 1
+    revisionHistoryLimit: 10
+    ## Startup probe values
     startupProbe:
-        enabled: ENC[AES256_GCM,data:OwLNVg==,iv:wThTDPPsnQZRhGjZuoWeeG3bhyH6Imc/xLKzJ9mNQ0c=,tag:h+TwIEHdNAYcOMwuRteBQQ==,type:bool]
-        initialDelaySeconds: ENC[AES256_GCM,data:cbA=,iv:dYl7s25V51p8zMp0al+inAPXJLCmCBCamk1RKglLbRk=,tag:4085UQuwP6fTgbxuv25p7g==,type:int]
-    #ENC[AES256_GCM,data:Td4CgEO/JZaFfY0=,iv:uJPMvlhomxONTQMbGufgmYQSZlTFo4WyU2mejtwo0vU=,tag:JJjx2agr8kv70Vx90uvBfA==,type:comment]
-    #ENC[AES256_GCM,data:ZMBLo+L+KtUjXNs=,iv:01sa1cf1PqnZ4EEVj/Ill0kLBuPsLxh/NJ9I00+K6O0=,tag:cbc51xJMFbLi3MUOt5yVcw==,type:comment]
-    #ENC[AES256_GCM,data:SXSmK38NzXz4yFA1Zg9EEIE=,iv:Gb8uz2YAbh2AfIpQr3X4mlIokATsaxvFb5sf46hc5Lg=,tag:VfvBb69zsa1g4TSDylbYYw==,type:comment]
-    #ENC[AES256_GCM,data:siZp6HBmGsL3H+/SxA==,iv:+fHGaisR7x55r55mISRBl5uLC4Acjdd/PEYYeOG22xk=,tag:9cgZGavyz2G1Zo8yqTWZDw==,type:comment]
+        enabled: true
+        initialDelaySeconds: 10
+    # resources:
+    #  requests:
+    #    memory: 256Mi
+    #    cpu: 100m
     nodeSelector: {}
     tolerations: []
     affinity: {}
-    #ENC[AES256_GCM,data:n+rUqw6RdVDaoJUXPe+NMkwY1saWpSsf5UBMdGGE3a07Jrg=,iv:ydl8n7FL6mbymrAzDNUDIzpsRkl5XisNy1o1IuHdD/A=,tag:C8cWBVso+Hudm3wXgnJCEA==,type:comment]
+    ## Additional deployment annotations
     podAnnotations: {}
-    #ENC[AES256_GCM,data:cwoUMAnaVhys3DiPuPlAK7FmbcCoz1ITQFj7BfWVc0s=,iv:aKAVlfT+XHAYHS4BQZT4O6O0YYF8T+79Mil3yok6x0E=,tag:dYTd8wFUQ+9G1MinreQqvg==,type:comment]
+    ## Additional service annotations
     serviceAnnotations: {}
-    #ENC[AES256_GCM,data:6431tisw7J/3AmixBYL5YxTIN25scIl8OIdaRIvCVx3UHS1ymfcV9ehWh+MexfyYxUSf1TS1JRhCBn6tDmTn/vWXFFc=,iv:wdJE4OCLAy1AO5rK9b9nDHpXsaKJtcd/WonJz883Vbs=,tag:bFaldsREsAnfsX3X6afA/g==,type:comment]
-    #ENC[AES256_GCM,data:BFOVOsY6GllWtemZEa9oIP/OkB6xos2UwqNAgRWvckWny64TmBdyg6w1v/8tpeBwkgvqmw7f/+8+zA==,iv:ZlseQ/CAxcpf3YbzzpKjr7/BZ2oPE4MKcfLR4uLq/L4=,tag:KzDeGYW+Q0rh+t2LHKrVGQ==,type:comment]
-    #ENC[AES256_GCM,data:uufdQC43k7cHn7JqYotYzXQtFEdCvCTvYbnG05Wn,iv:is/M29mE/YZiYWsFfQa9rpwMT1sQ2vRn+g6Tdf55ixE=,tag:k8vlT61ytaVhnITRvkly/Q==,type:comment]
+    # Secret is used when core server communicates with other components.
+    # If a secret key is not specified, Helm will generate one.
+    # Must be a string of 16 chars.
     secret: ""
-    #ENC[AES256_GCM,data:Tt5lTOwWndVHk1R9L5YAlLVdqHKzjPl6jwAsucLz7RGK7KJcd/Sp/bUy7CniLJ/MtEvcZrC+p37us4vQt7KJBDI=,iv:rb04/+lGX5eYArxy8crnmsD9rDDN8ihvESEcr7sPLjY=,tag:ihCY9vVoNgZh9kzxOJTKtg==,type:comment]
-    #ENC[AES256_GCM,data:VB9II6iKKI07FAgoH6Ht6DYjJjtAujfiVrboYEWR46FCBx6bpqAEFwPAY1HsT/0Iz3vwuMT+ugHY3tJf0obO/I8=,iv:HA/IWLCyaBwneG2drqsTX1uPAE9p372jfIU2CUvKTJE=,tag:0rEXj3c6/ymWWY1Q31z+bg==,type:comment]
-    #ENC[AES256_GCM,data:lnb4GtYa4jOncT8UzNBPdhvvwPtqhI+3mZzJta/e5URX+wsL,iv:mjV/voBXEwGUTRXmAS5CnHDmDatYFWZrTI1kRPs+hro=,tag:5yuC9P396xuAAFb8P0SXWg==,type:comment]
-    #ENC[AES256_GCM,data:z+dIO0upzVCDMM+JNxUIx0G99qPbn+Q0mvUi5A==,iv:7VizRiGpMevfb3zjEsBr5UJL5qqz8flHgeFcmt+3GQ8=,tag:Kdado6pGGp01gpr3ARcMzQ==,type:comment]
-    #ENC[AES256_GCM,data:RmTRi7Y442IysBf0KHkx/HpeY1xkCmh9VJxd2g==,iv:6SxTl9kUqD+e+Kg18Crdjs5bJmDIHiZFUnUS6vFpXL8=,tag:5hzvFGnjULWbqu0oXZVKaw==,type:comment]
+    # Fill the name of a kubernetes secret if you want to use your own
+    # TLS certificate and private key for token encryption/decryption.
+    # The secret must contain keys named:
+    # "tls.key" - the private key
+    # "tls.crt" - the certificate
     secretName: ""
-    #ENC[AES256_GCM,data:wdHjKtzsUQF6eHE3W9Dq6lK85mhinOTxQhoaDrXQ8CEwtmvEeC0hqO/KSa219/eKwtRfxI6Ot6tI2+viT2xHNaPod94uctdH9pMANeGWXS1CUllgyePVLZ7814ELpYNOgmMUYjH9bVYtB8MTxvg=,iv:l3u/45Dqhbpjpqn8cFP3QLOSYA7x1DuOdDpqFnHxlfA=,tag:ARTBy807jRFPqASpbagrNA==,type:comment]
-    #ENC[AES256_GCM,data:pS51OVEGEuhBYA6RczGEejY+/Ksuv8f0mVueB2hD9hsBGuimFHOgahWpX5FEeHgdf86HHcadyrHp7q7NM2Sl3CzJdRaFfIOj6ENiO54kBY2FYS3NYlwhIeVH0lJUqJP8+vWVrYQJFyv+Iuxlg8hUHOJWGkc3nw==,iv:47k8rdD9mHraEq0HNx6+S27/f6AO/a/6QdBoI/ORpu8=,tag:yixnIl0fer75xfZ6/cM6yg==,type:comment]
-    #ENC[AES256_GCM,data:WTlqsO5mAbWAkALx/LP1bi+FT3KLoYqJcxI1wN5RfU32mFwP4KFMCdz0jfka6OaaZ+Q3tknxQw==,iv:DVYooyejf/3enKCD9Q5l28C2p+hCnB3zeuRaY0nIE/U=,tag:28pYh8AYcVGVCG7mvNbOkQ==,type:comment]
-    #ENC[AES256_GCM,data:zQ63GhvMlwTLBuZMwlVkYydhTQkOSRVQ4W3FVO0k943Xru52w+mBuMc4Rst+ajCT3nI8Zv8MxmlqRN7iCpQgzfZvHWTmzXZI4j0W9BTq/FTOt+aGgKpLQgwrShA52iybUfF174EEfV53UqP4V06yIUr1lr11ZKpDOFGNYijeYy9eYNRtDBlVtmmp5w3GRqM=,iv:IIiZ1Qq8qGozXUwUQUUJ948loOBF1yAo4Ytiwzafv4I=,tag:9b0LlCynoijw4vZeSW8qew==,type:comment]
+    # If not specifying a preexisting secret, a secret can be created from tokenKey and tokenCert and used instead.
+    # If none of secretName, tokenKey, and tokenCert are specified, an ephemeral key and certificate will be autogenerated.
+    # tokenKey and tokenCert must BOTH be set or BOTH unset.
+    # The tokenKey value is formatted as a multiline string containing a PEM-encoded RSA key, indented one more than tokenKey on the following line.
     tokenKey: ""
-    #ENC[AES256_GCM,data:iFv5g1HmKJgpuKvlxdjNbqYUapveD3EamkylwWz/0CAudpdcVLaDnxhUQ6v+zXFhsGcTL9fGaYkozGLjFhM24n6hLHpcfUEXuqD9OgLToZ6B/iHem6qEzxP/AezFbjXhF+FF8/FUqqIOEPS/qRlkRvr+kDcTJj8EiOs5MAXNXMUqjf+3eNEla17AMKWhoziVDbdW4JsSX2hDI0qlwkeVquh6dOeCx++aHE3KsQHHc096ponuGw7VfxNvR9K/CFaUJ6makg==,iv:F1DeWI0O8dFtgETyswaMoezOLz2Xj5ScY7OcHcVUzuI=,tag:iUNCVdaWtkxgch4Am/sNNg==,type:comment]
+    # If tokenKey is set, the value of tokenCert must be set as a PEM-encoded certificate signed by tokenKey, and supplied as a multiline string, indented one more than tokenCert on the following line.
     tokenCert: ""
-    #ENC[AES256_GCM,data:lJZX0jfRDV7h50ORBn+3mLxriTH0EYMgav0crSHf+D6P1k0Uy/76bwsS2Rn26HOYSPp7B8Jp45oEEJLAPpfVgKNKJpU=,iv:wgu1hFgcmnFjgcde194yByG722IiBxv2nQV2DX1zn9Y=,tag:M1tHFDFHGgDN2cCk5P9ueg==,type:comment]
+    # The XSRF key. Will be generated automatically if it isn't specified
     xsrfKey: ""
-    #ENC[AES256_GCM,data:NImvXfEfRi1u8qDk4hZckY/bqp14osldzhMJApYfXeq0Pll2cGo=,iv:nGMPXBv8XI3Zd3I8XdGZi6HVT7IfqDRJZebZzZPR3Mw=,tag:sE4/xBY2lecKYJ9AGvUjQQ==,type:comment]
+    ## The priority class to run the pod as
     priorityClassName: null
-    #ENC[AES256_GCM,data:ZsYXEv4+1WRJChzp+zkOFC5/MFzoV3yVTorofLh8cYh6ZzgdU09SIDM3rztdKU27d/8EXsj1evAoPtirqOmWofv5orYj,iv:RRzr8LHYIo2aInvdEjKewVOaZkSGp0wB81XHRygIXqg=,tag:CydcQY/rAgeyMVSVCh4eng==,type:comment]
-    #ENC[AES256_GCM,data:E2q+PnzDvQ7oCSxnF0Hns19bjyPx+DH4R3VCAPZssM/o23WTKHF6K3UtbWykefYWr1YO2VzrirCAGaOvoHzZS9GRXVQ=,iv:+ApiLUcYy6jRuw6j4aIRWbBi9cy60le0NAvuHTH9lNI=,tag:77HA5PMCUfPbXhJG8gIgtQ==,type:comment]
-    #ENC[AES256_GCM,data:XWnF78AcSTfR/WgooFdFUHjNgGXXVKFVwGdcGhIMRdFcvw04bVww,iv:/8cbqksZ+yoZpAWSiceJss1N4Miz8hsDQSrUFTlAlPs=,tag:Yt+qoU1X9UO5P5V4ZSCk1A==,type:comment]
+    # The time duration for async update artifact pull_time and repository
+    # pull_count, the unit is second. Will be 10 seconds if it isn't set.
+    # eg. artifactPullAsyncFlushDuration: 10
     artifactPullAsyncFlushDuration: null
     gdpr:
-        deleteUser: ENC[AES256_GCM,data:ZHdHBKU=,iv:1/T25nTPkWOIPFhVsNpJlYKvje09EznA+VIjEGyFTWQ=,tag:GtCbxix9iBz3ugjNnL+loA==,type:bool]
+        deleteUser: false
 jobservice:
     image:
         repository: goharbor/harbor-jobservice
@@ -788,8 +788,8 @@ exporter:
 metrics:
     enabled: false
     core:
-        path: ENC[AES256_GCM,data:mi8fEUzS03o=,iv:TxZYsrI1sC/PLHZpR6htSDhoXz5inVr94WSxep3MDB0=,tag:+fKNBpP+Bz9Ox+gAe3m2Eg==,type:str]
-        port: ENC[AES256_GCM,data:gwiNJw==,iv:CsTXVt6X3Uu6eI/rOp49bR7Z3cAiYFthTNcZtEBs3uI=,tag:fpbuA8Qjp/JCTCaMyJ89lw==,type:int]
+        path: /metrics
+        port: 8001
     registry:
         path: /metrics
         port: 8001
@@ -868,50 +868,50 @@ sops:
         - recipient: age1ucetgj7k3whaqf9nulacsqarur6nrgzuyt59apeptu5cphd6ksdsqpy5he
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBXSllNMmYrMFBBTSt5Rndk
-            UmViRUFGSXZzdHVzd3hpVmI3SW5ONytnbEVJCmVnbEpidzRSVjQ2bUN3dVNJRE9k
-            NHVLNlhZL1RTTEY1c2FoSS9uSzIrMzgKLS0tIDM0TWhqZFU5djFHTGJoMUpsMUpa
-            UUo1OXJnY2N4bnNNK05qa09lZThZamcKHjB70dDcuFO98mqppmpIhMPAs/aB2+A7
-            Ro3DEW8/FDiPNxw0DTwlRRNayVVinJsFf9Wcb+jBfnkG+zwebHdVDw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmN2xqN09vclNCblgzbmti
+            S2N4MXF2amZYcmwzOXNueDB3ZnpTZkE4UFdBCm1hblNDQk10RU0rVWU0NGFyRDBo
+            MmFLcnZiVDhMb0lpd1h6WTFGcys4UzQKLS0tIEdVdFJNWTJwUXdycytVb05DeVNZ
+            ZmRoUDNZMllyRUlxZEpWN29SRUJhSzAKV1q3HLjNQvEHeSXa2TKCF4yovDb2zaph
+            Xzh5YNbXFjAR7gO+VOWZqexRFrfSz/Qm47sV2QWaD3FV1S+WOM8xqQ==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1dnkv8vy8xkl5afwuwl55ycpquy2uk7ypc5ad87sfug2zffp6jgkqwwzglr
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB0WEhYZ2dTcEJQL2dRc2xo
-            MDhGRU1FZ2lsdWNBUDdZbXMrWmhsb0RDUFFJCndXZmFhdk1kaHBMT25EVUhTSU1x
-            cWh6UFRTUVU2QiswVXhYY3Z6NjYzazgKLS0tIE1rYkNvdUVicmJPOTI1aitRWmhv
-            R2Q3TzJvRDl6SnBQeGthdHR6VEYyR1EK5jX5pyPF0eUJ2poLbAw6Dzc0VcuT3Jeq
-            Fxd3MtUSWxx0jpJ10cQwOglLujmn4CJXzJvs2guokBvtpds5hsUZbg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB3MFZPQkJ5K0RKdXNIVElI
+            ekdJRHAwRlZDQU44YjZGcjZIT1p0V3FkMFI4CmxnOERXVkZwTlNZYjRMalY0aVVP
+            bmtYUUtYajdYNUhqc0ZFcVpFWlhsZHcKLS0tIFYvam9rYU1ReVN6U2QrTkxOd1BN
+            MlVzY1dsNjlKSlZKb2dMWWUrb0NrNEEK172p/W9NMpSH9zUOskau1VsH9etDQAZl
+            kF42Zcw2CRucJdExOYuRSOflgTmGT9kniylUwWQcNeoSLEn2bsl+DQ==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1wt75fkqsa2ngrhtmr7ws2ve8v9h2463hryj4jk4k7m5khxmc9pgqgqag8x
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBQdjNBNmNCQmxsVDg2cFNm
-            NFRlWUU5L2QvWTliTHhNUXoyNmlkbGZxS3k0CnZLcDdXU3VGcDhhMWxFKzhCZnc4
-            MXZJYXROVlBwWEFnSDZEaG02VDlWcDQKLS0tIGQ3UXhCd2JXMGsxeWYvYWJ0eDhV
-            NjZPb3VNYklZUFpyT0k3S21VWU8wNXcKDxfYON8whGyMH4ABRyaEhxiTTFwl9nD3
-            PpbYUQ8wFh7bPTPuFT9Go4MgCif5G8NvLhxW1iLciN27NuAHJyamGA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBzT1hsb0o2YzlucmN2cDhL
+            d3BqU2RISVZhczNlNG5oUnBndWdLQ3R6d1FJCkpPZ3gzdHJvbHpPUUoyVE1kZWpR
+            bUdzMFRJSU9OYjZxeGcyOW9VSC83M3MKLS0tIDlVamc2dzlJWjFVOHppK01lbXR4
+            OUxOdXZKNC9OeEJ4RW5ua08zWlcwZ3MKaHTRNy85L4oHFu9k8ySxB3jUtbOrk7Dd
+            lHUUF5RvDwOJDfItlFG9AT5YCDO8p0v7J/S9PEKV9fK4Fim5y0rCKA==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1fqw4znyl0zjpw5ta7ll3auxpzg8dme578jgw43a0dtzjhwjn4qlstaez7c
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBNU09JSWZRK1dMMFNrWVYy
-            OVlBNXh0d2JGODF3bXlpZWxtaWtqb2c2OW0wCmlkMkdUQWdDM1hXMlkxTTIyMkR5
-            OWNacjE0TG9OcXpUWktxM1FYcVZoTTgKLS0tIEJySEMzK0NjbFVqNC9BV1UwcGxv
-            Tkh4TzhZaklsQVlaVUpEeTVGOU51ZlkKoGpURdtQYhFUWeJFi3kqP0uwFj5lfzoG
-            BCQdJLQJfyHC77uKfj6xgY+ZIWoxMEQRT/7ZFxqzFCjp4RDPlf+pzA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBqRnlkcE8rcld2Tm1MUlE5
+            aWltMHNNamxzY2xKdnFBbWVCdkJ5Vk5FVnpRClovQ01WUExWZy9pM0NVeEdjdENK
+            SVBZZVFqKzQrMlFtYUYzL3NDNTFWUmMKLS0tIFJ3NkxjL1QxWXBVM0VucHM0bUFI
+            RUE3dUJkUVpzODNUcFJOb3RMdkdmSVUKJ1Bz2f7csyCO6JYxdV6TeMdb6W1b/7Rq
+            g5eQZKXK+0Qn+D3jswDlVUoB5RWXk7us3+WqEwZqXdTCDUzdAfyn/A==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1m2ay7zlek6d4uctt09vsw5l8gpydjlvu9xemv8pqh97urdmhhyrsh9qe86
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBaMU90aWRvWGlSM0MzODBB
-            dDQvRk1iYVE2VzRSenVYQWl2aHdrZlc1cnhzCjdROWgwM21yS1pFV00vVVd1emFZ
-            dVJtN2hJbEI4L1RvUjJMTTV3eXc2ZVEKLS0tIGZsU3c3S3dlcEZFbTVRcXdjeWVX
-            YmJ6MHJNMzdYU011NjRRWFg1WkFsdUEK6pwqU8wfTxVMEym3tgWQewG3ep2hjyTg
-            U8u6xZ1hc9Ka74J8RrP3qoHTuvpSIroRj3CGX3aSV7QZVn+H0nzP4g==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoT3lUZk16RDdLWGppU2xG
+            VkdpNjkxODNQbVoxbW5Pb0E0ajNNT3VScXlFCkJ2cytyQ1MrcFhpVFI1Q3FCMmxM
+            QnFsZWY2K3ZsN2RoQTVGOG1HN2lZMjQKLS0tIFAxRXpjeERVa2EyZVJoS3F0RVdO
+            bjdhaVdWQ0JpZEdEUDhWV1FFcWt6cEEK9ijfSywok7XRp4IU5y7tfThdg0HGN5sA
+            n69lLG3cyK8aZLKo/2Yh0rp4NBzna1BhfEqzdONQoxD+k9D7lejHLw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-04-24T19:24:55Z"
-    mac: ENC[AES256_GCM,data:f+brLhxwPD0RqM0Sfhd3u+RuIo36Y5Sq8OeKNt3K8lvs3aJp387qOBi1gKsQ6WxPUprwfA+d3HPXEk6pV9WxLwn2Yqzt3oStXV2J54vxFMudz5KQ+400sCxoRw1cBRupLittNBbU8AWd0A8rUMSX7GEHREVL+z+N1n/vLHfacf4=,iv:WMbDHKHOyQOWZ94KL32zEz11/72dsXwxoV3ba8Yh0mw=,tag:awRNL234mXOLYvdyFbBH8A==,type:str]
+    lastmodified: "2024-04-26T15:43:22Z"
+    mac: ENC[AES256_GCM,data:W0lCRRHu0Wb9GJuNZecxmmKFPiy+mVfW3UhszMeizU5wMptvaVNdpkKWF1xbm1S7OquNh2Qi8jHoeZbo8yeBV7llJ3wjJLpyngKXatRPFYGmdiuVjki3/7Fv+sl9RzLt/0lfd9OnzxlcSMskdYDBMwzANK8pYBh85Mn6u8R08/U=,iv:062bsYFPZAjUdaMMaP9GOUTFmGcqSigrgiC9lCfSkLI=,tag:aq8eb9+bZG68gIBwfCoixQ==,type:str]
     pgp: []
-    encrypted_regex: ^(core|externalURL|secretName|harborAdminPassword)$
+    encrypted_regex: ^(hosts|externalURL|harborAdminPassword)$
     version: 3.8.1
