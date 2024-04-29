@@ -1,5 +1,5 @@
 #Harbor - HELM Chart values.yaml
-#After decryption: Update Ln21 to "auto" from "secret", Ln33 with new DNS, Ln44 with ingress annotations, Ln112 - External URL, Ln 356 - Admin Password, Ln612 - ignoreUnfixable - true, Ln636 -  securityCheck: "vuln" to securityCheck: "vuln,config,secret"  ##Do no consider## - in old chart - modified - 21, 29, 34, 37, 38, 128, 363
+#After decryption: Update Ln21 to "auto" from "secret", Ln33 with new DNS, Ln44 with ingress annotations, Ln112 - External URL, Ln 356 - Admin Password, Ln612 - ignoreUnfixable - true, Ln636 -  securityCheck: "vuln" to securityCheck: "vuln,config,secret"  ##Do no consider## - in old chart - modified - 21, 29, 34, 37, 38, 128, 363, Disable Notary - Ln 894
 expose:
     # Set how to expose the service. Set the type as "ingress", "clusterIP", "nodePort" or "loadBalancer"
     # and fill the information in the corresponding section
@@ -30,7 +30,7 @@ expose:
             #       # The name of secret which contains keys named:
     ingress:
         hosts:
-            core: ENC[AES256_GCM,data:udLDy/yOgArkR/9hCAEn4MF5NY3p,iv:1r03IdOEAk54mdRAd45o0+4dyyyf5XAdkwg9quWoxvE=,tag:rfzgzzqH/iOWMt+qvWfIOg==,type:str]
+            core: ENC[AES256_GCM,data:xROmlSGwwAC2nAQZestb+A==,iv:Do2kLi7qWkpfSMvknacfpPiurz4NpOsCp7lHQssWPPU=,tag:MnT4rbObvcsaoKlHUVqBMg==,type:str]
         # set to the type of ingress controller if it has specific requirements.
         # leave as `default` for most ingress controllers.
         # set to `gce` if using the GCE ingress controller
@@ -108,7 +108,7 @@ expose:
 # the IP address of k8s node
 #
 # If Harbor is deployed behind the proxy, set it as the URL of proxy
-externalURL: ENC[AES256_GCM,data:4YexQloYNA4K7cx93GM9K2ggzF/gUG2evxo5P9I=,iv:2A7SW5US+SgDdyGLMhvn6S5NlNnzloBaJth5vAmrxvc=,tag:beE+GKmOI+k2kyfBbjUhBQ==,type:str]
+externalURL: ENC[AES256_GCM,data:OELr6L9XeFOH8RYUkROq4J+buPDV8cXC,iv:p2fhXzHWpRLzAYq4LECWHCwX7gDO+cyge/6i5MmlwIA=,tag:45+/U2buhUsIDHxBfR4YNg==,type:str]
 # The internal TLS used for harbor components secure communicating. In order to enable https
 # in each components tls cert files need to provided in advance.
 internalTLS:
@@ -334,7 +334,7 @@ logLevel: info
 # key in secret is given via (default to HARBOR_ADMIN_PASSWORD)
 # existingSecretAdminPassword:
 existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
-harborAdminPassword: ENC[AES256_GCM,data:la3aBa+AL58=,iv:UXG9yuIsvIkqr/7RxRTOcFV2fGwhJLd8Mh3pM2Sx6aQ=,tag:9vXiOqs9kXqca7uR5/hfcQ==,type:str]
+harborAdminPassword: ENC[AES256_GCM,data:f7JarK68aUz4ob4aJg+tHqJ+soc=,iv:qXOP3zwzYY3WUaIape2ho1QcbIIa8aKHSP2d+HzpTiM=,tag:TzJ6EiMI/PUPszpHm5tfiQ==,type:str]
 # The name of the secret which contains key named "ca.crt". Setting this enables the
 # download link on portal to download the CA certificate when the certificate isn't
 # generated automatically
@@ -859,6 +859,9 @@ cache:
     enabled: false
     # default keep cache for one day.
     expireHours: 24
+#Disabling notary as it is no longer being used.
+notary:
+    enabled: false
 sops:
     kms: []
     gcp_kms: []
@@ -868,50 +871,50 @@ sops:
         - recipient: age1ucetgj7k3whaqf9nulacsqarur6nrgzuyt59apeptu5cphd6ksdsqpy5he
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBmN2xqN09vclNCblgzbmti
-            S2N4MXF2amZYcmwzOXNueDB3ZnpTZkE4UFdBCm1hblNDQk10RU0rVWU0NGFyRDBo
-            MmFLcnZiVDhMb0lpd1h6WTFGcys4UzQKLS0tIEdVdFJNWTJwUXdycytVb05DeVNZ
-            ZmRoUDNZMllyRUlxZEpWN29SRUJhSzAKV1q3HLjNQvEHeSXa2TKCF4yovDb2zaph
-            Xzh5YNbXFjAR7gO+VOWZqexRFrfSz/Qm47sV2QWaD3FV1S+WOM8xqQ==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOYWJPSFZyUEpLKy9NdXQ3
+            Y1dGQVZpVHJhWkNwbS9HNlg4c2tXb2N1YmxvCi8vbXRCZG45WWpVMllTVlhmRnZT
+            bHcvOXArVzYxY0xKdUc5RmNrbFEwZEUKLS0tIFZ2aGQ5QzZYWnpmbVJ4Wm5UUitT
+            R01uNFY0c0lzL0pEcEVxaGhWQmJGM00K6kWJbxKU8i4OFGhtS6SMvlAfPEx8O4GD
+            ECmUxeYwZ/RYpNEyzIwZ89XFAQpgUhLrEiioykf5FyMk1qZmbw0dYA==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1dnkv8vy8xkl5afwuwl55ycpquy2uk7ypc5ad87sfug2zffp6jgkqwwzglr
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB3MFZPQkJ5K0RKdXNIVElI
-            ekdJRHAwRlZDQU44YjZGcjZIT1p0V3FkMFI4CmxnOERXVkZwTlNZYjRMalY0aVVP
-            bmtYUUtYajdYNUhqc0ZFcVpFWlhsZHcKLS0tIFYvam9rYU1ReVN6U2QrTkxOd1BN
-            MlVzY1dsNjlKSlZKb2dMWWUrb0NrNEEK172p/W9NMpSH9zUOskau1VsH9etDQAZl
-            kF42Zcw2CRucJdExOYuRSOflgTmGT9kniylUwWQcNeoSLEn2bsl+DQ==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBtWUJSdyszQ0ZTdVFURWgv
+            eDY4a2ZHQnBYOHNOWCt4clRuMlVYUE9uanpRCjVzSFlOMDAvSmxGcFNmdGQvdVJB
+            RlVxVXRvOFpQOUFmUjAyc2xiNEtnQmMKLS0tIGFQR2lWelJ4ZkdhZGJyUVFSa2k5
+            WUZoNHRUbkRBcUt4cXZsOXpSN3lkK1UKP4M7/+1Fd1/IJOoWPctFy6ESuKDFtN3I
+            jsoAIInw+xIvx17TvaL9sOhQwJPzbxUaGkfXZCLA1AK1mFdtN7vdYw==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1wt75fkqsa2ngrhtmr7ws2ve8v9h2463hryj4jk4k7m5khxmc9pgqgqag8x
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBzT1hsb0o2YzlucmN2cDhL
-            d3BqU2RISVZhczNlNG5oUnBndWdLQ3R6d1FJCkpPZ3gzdHJvbHpPUUoyVE1kZWpR
-            bUdzMFRJSU9OYjZxeGcyOW9VSC83M3MKLS0tIDlVamc2dzlJWjFVOHppK01lbXR4
-            OUxOdXZKNC9OeEJ4RW5ua08zWlcwZ3MKaHTRNy85L4oHFu9k8ySxB3jUtbOrk7Dd
-            lHUUF5RvDwOJDfItlFG9AT5YCDO8p0v7J/S9PEKV9fK4Fim5y0rCKA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2aXdId2tUZ2Z2UHZaZEVm
+            Z3JPb1YxNTVqdExyajNjNG9zWnV2ek9zelE4CnJRL0QrQ0VuY1NNbDR3eitjcmIz
+            Ni9kWlJZV0p3cEg4MDEvUG1SdlhSZkUKLS0tIFFsdDVzRVZ4OHNndnQ2Y1RRYjZS
+            QWFsNVJNNGgyU3IxZWp2WmduUk9QVHcK8IL2m7U3H70xW9vAfQ7/xH2wR/i4Yi50
+            E19rcTKrWFhrRDgI8/3ySIUyl1hF2jQ16Kb5ZB4SPSEMYUAYmY23Dw==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1fqw4znyl0zjpw5ta7ll3auxpzg8dme578jgw43a0dtzjhwjn4qlstaez7c
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBqRnlkcE8rcld2Tm1MUlE5
-            aWltMHNNamxzY2xKdnFBbWVCdkJ5Vk5FVnpRClovQ01WUExWZy9pM0NVeEdjdENK
-            SVBZZVFqKzQrMlFtYUYzL3NDNTFWUmMKLS0tIFJ3NkxjL1QxWXBVM0VucHM0bUFI
-            RUE3dUJkUVpzODNUcFJOb3RMdkdmSVUKJ1Bz2f7csyCO6JYxdV6TeMdb6W1b/7Rq
-            g5eQZKXK+0Qn+D3jswDlVUoB5RWXk7us3+WqEwZqXdTCDUzdAfyn/A==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCcXJXUzc5ZmlTT0ZxYm9Z
+            K0pQSVhVZ2M0UncrdHZ1R2t2dmZjckZad0RBCmM2d2tkblpaOWVUQ2RDNDRvRGE5
+            SE5nK05tNTlOSWpCdCtFSG1uaHQ4OHMKLS0tIHJtTEM4YllZR3M0R29KVFFPSG1i
+            NnRvK0wvbXpnVGM4ekZnVVEyWEFtRTAKU4v9P5XqGjXJxZp4L/WdO/8delfhfvC/
+            m/7LROwNHDsyujCzoIs2WGNJEqL27vlc6Cpj6Yi1TuZE+HfuA3jyQQ==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1m2ay7zlek6d4uctt09vsw5l8gpydjlvu9xemv8pqh97urdmhhyrsh9qe86
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBoT3lUZk16RDdLWGppU2xG
-            VkdpNjkxODNQbVoxbW5Pb0E0ajNNT3VScXlFCkJ2cytyQ1MrcFhpVFI1Q3FCMmxM
-            QnFsZWY2K3ZsN2RoQTVGOG1HN2lZMjQKLS0tIFAxRXpjeERVa2EyZVJoS3F0RVdO
-            bjdhaVdWQ0JpZEdEUDhWV1FFcWt6cEEK9ijfSywok7XRp4IU5y7tfThdg0HGN5sA
-            n69lLG3cyK8aZLKo/2Yh0rp4NBzna1BhfEqzdONQoxD+k9D7lejHLw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBvcmd0UmVGY1V4NUFOUGVt
+            cm1YQXlFOGJNQ3RRVVlTMDVOSW9BRTcvUWdNCldZZDRmcG4wc3B1UWI4Zis3YmpE
+            RDRaRnJoclVhTFJVTHRsam52Mi9MdFEKLS0tIDl2cnVkRDR5TVl4QUpRajcvbzlD
+            elljLzhuNTJoS0UwSk5RRDVtKzR6eWMK64rk86BNw+b9OAylEmPjs4c92pHlB63m
+            2m1kmDVBKqi/v+3Z1w2k72eEDz1nomSBNxHIREmwPTlCTMWOtcELng==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-04-26T15:43:22Z"
-    mac: ENC[AES256_GCM,data:W0lCRRHu0Wb9GJuNZecxmmKFPiy+mVfW3UhszMeizU5wMptvaVNdpkKWF1xbm1S7OquNh2Qi8jHoeZbo8yeBV7llJ3wjJLpyngKXatRPFYGmdiuVjki3/7Fv+sl9RzLt/0lfd9OnzxlcSMskdYDBMwzANK8pYBh85Mn6u8R08/U=,iv:062bsYFPZAjUdaMMaP9GOUTFmGcqSigrgiC9lCfSkLI=,tag:aq8eb9+bZG68gIBwfCoixQ==,type:str]
+    lastmodified: "2024-04-29T19:04:02Z"
+    mac: ENC[AES256_GCM,data:7mzg5JSJM5GVU3/bjnBsNB2Eoof5fInQypt7InC2g/Y41g63x+ZZANWlX60LPBlc/ONjrUa+ENg8eHewwIhk2zIAqortOPs3IfJSo2SWDJ+dAbvGGb7HTvUdDKBFdn1mzdUTa3urSVj5TyN92c900kQPiW9u4z5xGWhTeOTTh9A=,iv:Qy1N81+BHjZ0oeV+2HpJwt0GnLov1Jrfg+nI1tYykss=,tag:/zF39JvZfOiLeimcHjqFrQ==,type:str]
     pgp: []
     encrypted_regex: ^(hosts|externalURL|harborAdminPassword)$
     version: 3.8.1
