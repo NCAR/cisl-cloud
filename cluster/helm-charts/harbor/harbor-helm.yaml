@@ -1,0 +1,100 @@
+#Harbor - HELM Chart values.yaml
+expose:
+    type: ingress
+    tls:
+        enabled: true
+        certSource: secret
+        secret:
+            secretName: harbor-https-auto
+    ingress:
+        hosts:
+            core: ENC[AES256_GCM,data:/UFIbUQBxqzqoHCwMX8C2g==,iv:28IV4b9lcNzSH2JC+tZzL5Y28JixcquwZmeaDNQsI+k=,tag:EC0lpVJaXrsNSVe+7QZWdw==,type:str]
+        controller: default
+        annotations:
+            ingress.kubernetes.io/ssl-redirect: "true"
+            ingress.kubernetes.io/proxy-body-size: "0"
+            nginx.ingress.kubernetes.io/ssl-redirect: "true"
+            nginx.ingress.kubernetes.io/proxy-body-size: "0"
+            cert-manager.io/cluster-issuer: incommon
+            kubernetes.io/ingress.class: nginx
+            kubernetes.io/tls-acme: "true"
+externalURL: ENC[AES256_GCM,data:dza+s2VN2MUEVhmEKpg3WQKvPPTEoLZj,iv:6S2PoX5KlRBP4OEIU+drCSnybDel1OgPxkqmpTLmAqs=,tag:kFw6RQ+y25uLULQ8zWmLeQ==,type:str]
+persistence:
+    enabled: true
+    resourcePolicy: keep
+    persistentVolumeClaim:
+        registry:
+            existingClaim: ""
+            storageClass: ""
+            subPath: ""
+            accessMode: ReadWriteOnce
+            size: 150Gi
+            annotations: {}
+updateStrategy:
+    type: Recreate
+existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
+harborAdminPassword: ENC[AES256_GCM,data:/WxdOJCHsKVoYmPam/CIFP9EXpA=,iv:YXtKwzYP1mCVcEevU8ubJNQP0DwYhGsFosQlZRVOhq4=,tag:qZB1Oib+ubGMiGxZ8zWdOQ==,type:str]
+trivy:
+    enabled: true
+    vulnType: os,library
+    severity: UNKNOWN,LOW,MEDIUM,HIGH,CRITICAL
+    ignoreUnfixed: true
+    securityCheck: vuln,config,secret
+notary:
+    enabled: false
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1ucetgj7k3whaqf9nulacsqarur6nrgzuyt59apeptu5cphd6ksdsqpy5he
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBxOUd0V2NZNW0vUjJjVElV
+            d1hzanRlcGxCUWx1WjNaVVN1alY3RXVyZFNBCi9nN28xZ0NtZ1JtTWtxS1ZnWDhm
+            MHlWV0ZrWWtKNzRYa0J3bExUZ3BOQ3cKLS0tIHZjek85UTR3MzdNL0ZhK092ZFVv
+            MFlvdkZPUHNPNFBqb0MrVVZCWWgyZWMKLD153S4231xsSQxPYocvUWbh5g2Znf39
+            N+L3Zn5A1rSmnpC8v2qDUZJFGup8zNlE/702QbPQg1dlPMuiNWlMmw==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1dnkv8vy8xkl5afwuwl55ycpquy2uk7ypc5ad87sfug2zffp6jgkqwwzglr
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMMDFQNUlZYkFTSHVWbnF3
+            UllTbkJJLzZiMjBiYlE5ZjFZbWNya2JVYXhZClh4dlZ0THN5S2l6cWhlYm5RaUhQ
+            QUFkOUU0RkFmVkl5SGVFb2VHUjhBMU0KLS0tIHVrK0tRZ2NpS2gyTHRSNkxYa2RM
+            SFZ6UmJZdFJjUUxqRkdPa1ZtL2RYdlEKdHmutyPnK0A9b4Xt/RgwKQ0OzPv79RRB
+            lIS1FQlfOSqceM47NxoELv2qtr5j1opzujtGeep8h97QkQrtAlv/FA==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1wt75fkqsa2ngrhtmr7ws2ve8v9h2463hryj4jk4k7m5khxmc9pgqgqag8x
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBtOHZBbzRKM1M1bkdSNjUy
+            S1NrV0d4MFFWb0NocEI0VUdJNlA0ZERUaTBnCjgrQ0pNckovanhMZGNCMUZ3NUtS
+            SzhTU1hFc1FkQ1NrSVgxNHRnd2Nod2sKLS0tIDQzYzJ4Z3FDRDNaR2FwbU9jMm9F
+            WXVRZ1V6aWtrOU1NZUdHTXcxSFlaTXcKFnA7hnbdQlzn0bUIBlZauk6Oa3gnyEvL
+            ujY92U9cwtCgA6FZN3LIsxpGZzcqfL3EP9QO0sVU6I0w6SqUsHoRKg==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1fqw4znyl0zjpw5ta7ll3auxpzg8dme578jgw43a0dtzjhwjn4qlstaez7c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrYXVLZ2F5cisvQVJMNGVa
+            bitGRml0QytnVmd6K0t0NXJhbmk2UEpndENrCkdtNkt5QndvVVFmd2RYcStUbm8w
+            MTZiUnllbzRGVC9INHFFQTkzZVRjY0UKLS0tIHhwYW1CWnZFbDQ3NFNQWVdPYzlw
+            ZzQ5cUlvR3VPU2NqZ2Q0QXdScXlQcE0KV0Z54/1uNI9Y1HmM5kr+wu59RvPpSJ6+
+            8D6fxRF/DsUbq91X9Cq+ockCMrHvSz5SK1DbkJyAzZSX0vVIet6FjA==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1m2ay7zlek6d4uctt09vsw5l8gpydjlvu9xemv8pqh97urdmhhyrsh9qe86
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSArKzVvZmVBVjVMYW1aRUxI
+            WGxIUktLbVlSQzJ3TzJXK3ora0ZjSW5RK1ZZCnJrcUlMNmNOUjBzcUxrZU1USmhL
+            RjNIdTc4ZHRBVGdEQzdhbzhLZ2RxbTAKLS0tIFJZejNudVREMG1BMHhDSGRvZndw
+            UitUcGlqcnJpc1RIdVVJVE5YKzNzS2cKF+ql9HoXhsMfz3Gsc4x4TTpQ/1T1iTP7
+            eyZ/+T17P8S/yhUDUw0Fyt/0jd65PtvenPsBw5IiK9N+Rxw8OMGP6A==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-04-30T22:23:49Z"
+    mac: ENC[AES256_GCM,data:zNGqvjodTnDlnNyGfKFadOAOXxY8ck502vIVP8NzB5DmQKKEPTKPRFV4a/l0qxv6yBFRfbu659Ior8Q3R0ju86G1xkH0mvyhFnnUc1O92cdd9rBx6zMsLpnYXNAm9+feObT0VezUsMdnBEAGiI24lchwUl1I1AD1mYC+YPRfaY8=,iv:q08Nq9LZX88mjMIvW9N6YHPLsn3g56I2AXKpi9IUeCs=,tag:WRgMmWyb52arNke9qsdxnA==,type:str]
+    pgp: []
+    encrypted_regex: ^(hosts|externalURL|harborAdminPassword)$
+    version: 3.8.1
