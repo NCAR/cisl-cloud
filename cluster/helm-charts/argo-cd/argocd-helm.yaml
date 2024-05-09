@@ -1,0 +1,101 @@
+global:
+    domain: ENC[AES256_GCM,data:HzRK//r4IsmoLy8kTKFXOExUaw==,iv:/5AASR9GN+eXjF8DqvQaH7tV4L0axPo7+QN490AHcm8=,tag:8Cf5nwqVfaPWi8zM587Xsg==,type:str]
+certificate:
+    enabled: true
+configs:
+    # General Argo CD configuration
+    ## Ref: https://github.com/argoproj/argo-cd/blob/master/docs/operator-manual/argocd-cm.yaml
+    cm:
+        create: true
+        # Dex configuration
+        dex.config: ENC[AES256_GCM,data:TQIAn5EMhFacsgNUcWyEOt0IBdb4zdqT7MKpRuEjjQxcLirmdqDmFlCYdk6It03ZKTZwUSQKLVAju+rqY2G3A+JJOLtef3tqfJGlGD45iUmIDTFDSj7KJLNfxRTEENBUQUS55F0cAottOZg1C+SoXxUXg7kSHiXcxZLKFVeS8bGNMLUZgY37q6wegr8bJLPFzbTEvWdteIfhvqb8u8N2zWH74JjnKfrl4BBcLSOIPQArr8x4+nMVwaSjfki2I7Z9vvCm77gfOr8q9yZKb2hyRgH2GwYv5Mys3t2a/m1KOciByli773coCq+2eIkGX2JzrpPFLQnUZpFgIxiS6E/Yhk2y1mcO6K4Tj/sBxjMUBbUOVLBf2PY6X1JyYy1Dga6c7n8qsk774KcXYM/8SzhyVKnRTpjJZl6adXICRxWV+BU3K1g3PT++nmGk6i74t6y8LGPlAW26dSwfsgGvDvEALPuBPaCfoHeR6BYy68Xg4AqgcH+hNgyWo3LAvkgOPjr0Jz4r+oIC8xDXXEqbGAg3ICFtDXq+qojjBkrAvvpB49eisDTk9XLgwAWYomJjrY4B1bt5R6nMO4ODi7EurMyUHvZxQ4ochlzKhRUi1Fj94a5MGUpXQU9AaeRuWeYGOCJzX/CX8ln7+lxJTjdbBA7NXngn05j8MWiRZjh7s2MaoUL43x12VAHVL2//iBIl+9cGJ4QkaGMq1I0YYp2oQH0Q6QkAge1w0OrDMUzZxSWb59IhQ5Ect/9lId7RkiUHqoeCd9zqvaTQivI/x++tZ5nqqJ02/Pr7sStsYHBFync1Pq9diA8d1FzTjeaWksrbTccOnEFkfIuGnkLC3XuEkte1nNVgWQjZRIEosTjA9vrGaOi2vWUwpoFkdioLvKNaGmPNw/K7NkunbBP88BwJLeBi9oKZF47Fr1z8aSm8x7DAsmlMocjtC0IKE/rOp3xG6vy0kmWLJg==,iv:Xb+x5r1upXOvsRid6nt4rfMW4aTxp6ODK7qbllhUpig=,tag:KmtWneP2EgCF8RTFwoesAw==,type:str]
+    rbac:
+        create: true
+        annotations: {}
+        policy.default: role:none
+        policy.csv: ENC[AES256_GCM,data:DBHW8gxuxVZGphoGdh8yAsISOeAnpqXZ/DAb8xhJ2dXxs3rCZQ4d1t0YBfiindiNep87P28cGnupm34yHkTJXAx6Ki92bPWvSd4mlSleYIYUUw==,iv:Y4iJuZr9NsSzsFSItR0b/YC6FXwOfQRDOflsKBRv7K4=,tag:dZrPj6sq0zZP0/Ag13EbeA==,type:str]
+        scopes: '[groups, name]'
+        policy.matchMode: glob
+server:
+    config: null
+    #    helm.valuesFileSchemes: >-
+    #      secrets+gpg-import, secrets+gpg-import-kubernetes,
+    #      secrets+age-import, secrets+age-import-kubernetes,
+    #      secrets,secrets+literal,
+    #      https
+    ingress:
+        enabled: true
+        annotations:
+            cert-manager.io/cluster-issuer: incommon
+            nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+            nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+        tls: true
+repoServer:
+    # -- Repo server name
+    name: repo-server
+    image:
+        # -- Repository to use for the repo server
+        # @default -- `""` (defaults to global.image.repository)
+        repository: ""
+        # -- Tag to use for the repo server
+        # @default -- `""` (defaults to global.image.tag)
+        tag: ""
+        # -- Image pull policy for the repo server
+        # @default -- `""` (defaults to global.image.imagePullPolicy)
+        imagePullPolicy: ""
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1ucetgj7k3whaqf9nulacsqarur6nrgzuyt59apeptu5cphd6ksdsqpy5he
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAzTDhXaG9uYjVIUU1FYkdE
+            ZGxrOWtKUVJ2SzFNcWxzMXFjYTliVmFDclhZCkplUmhldkFFbnorMnY3MXdqMkto
+            SE8zZGxYMDRzT3ZteWxpT1ZTNm9FRVkKLS0tIHc4Zmd1V3hDMDZIWEQ4UGJHTFl2
+            bVFMQ0R6VFdzSlgvbFhUVVZzSnVxbFEKuosxO6zxBQ+0KNdfnRapLdOjMaULpEsn
+            udg36tASGImxVAHEKMW0+4gbpVgnht6QlWs/b/z1Na1+E+kogWYNkQ==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1dnkv8vy8xkl5afwuwl55ycpquy2uk7ypc5ad87sfug2zffp6jgkqwwzglr
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBEUmUwWlVvOGFmQlgvRnBD
+            YWJmaTVub3BQc0gvWXBEdllZWFN1MC9TTXhzCi9NNFl0OUtLeTU1YXkvd1FJTkND
+            elhEMm1aTWlqajRzemE3RW5zampoNjQKLS0tIHFXVExjZDZLOGtRWnYxb1hGUTg3
+            RU1oa0tXdXppYzRLc3d3OG4rSVp5N2MK8Crh4422NPPtmLqHio7DQ4SBkZ4YZUFB
+            sZwiMR8F665pV10lCsogOU0/YWda5sLScVZDa0Jo/DDSN/fjKvMVCg==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1wt75fkqsa2ngrhtmr7ws2ve8v9h2463hryj4jk4k7m5khxmc9pgqgqag8x
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2S2VxbEtJb0xBRjlVWVkw
+            MGM2c3NoY3l3cTkzT1piV0d6blU0Z2VDejE4CnRycnp3d3BOOTRSNThJdTlOZlM5
+            SnhTRmU4WWVZZWl5bGcrblU5T0tYaTAKLS0tIHJuYTJIMTdrZ1FwZXFQNlEwZTRu
+            VTFJdHRIT29PMDU0T3M2VXI2aWZaK3cK3SfEw0LggRLz3o7mhYxu52KtATmIycnr
+            bvt6eyVGq+e7FHAdhZi03zQ2AKiFw5xOVHSyC4eMx9RARerUCLDieQ==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1fqw4znyl0zjpw5ta7ll3auxpzg8dme578jgw43a0dtzjhwjn4qlstaez7c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBpRElDSFZKVkxGQ2Y1MWJl
+            cE54Ri9RanoxZnhqcTV2dzBBQnlNd29GbFdvCjdOOFQ1dnNDaEluTzBWVGZZb3c1
+            WVpUOVNENkhKdUhmb3JXd044UFN3Y0kKLS0tIEorU3EybzlZVXR2d09IZkFQbC9i
+            RkZCM3NnWldqZVdtUXpwbGMxYUdVUU0K7KKdYgVbfwlwAMyS+boCTVGiJxLGBA4N
+            AAgw7vlgZL7LxRSjXmtwZNiIS+TB0yLUp01bnrcdHC4EVzyR7d5uwA==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1m2ay7zlek6d4uctt09vsw5l8gpydjlvu9xemv8pqh97urdmhhyrsh9qe86
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBHY2pLeTlOSU5Zdi96M00y
+            NDlaaTFBYk5NZFRYbjJuL2pINUorRUZxcURjClZ0T1JZWDlXaFQ5TlFKVGJ6Ym9h
+            OEN3WGFPbmlZWGIzM0xMcGdVUlozT1UKLS0tIHR2Ym10RHA4THBqU0pnQnBJdmN5
+            UENoWDBPai9PS3FQbm1CbDJhTE9xSzgKgo1WvhxWiMVpgSWMjVii6Ea3vLvG7O5w
+            S5TfBe7YDlhnKPm/QHGQBFSKo5MmTdFqams4u+nchH4iW7Dxi/P2Zw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-05-09T21:06:49Z"
+    mac: ENC[AES256_GCM,data:cKDOVSDQbU7p3lamFgCs3YN7HC+a0fANoClVX119OFkm2VPEHc40Wt3Cj6nMOQ9uBhrJrIN1MfGZmlK5q8xlVn9shbjVXXAEh2bDHfIzCHmcKhxeq/HHJrVTHqHd7hyayfLY5l4lAeIo9P81GwMtLImzSstiZMQkJ4tmjIlrFo0=,iv:OMS8fmxB6uBxKsl6B9SCsHrEpoWY3AiFfJKNWj6sRow=,tag:PM1FBkgax1B/VQ0RBirZug==,type:str]
+    pgp: []
+    encrypted_regex: ^(dex.config|policy.csv|domain)$
+    version: 3.8.1
