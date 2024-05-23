@@ -19,59 +19,59 @@ loki:
         working_directory: /data/loki/boltdb-shipper-compactor
     backend:
         persistence:
-            storageClass: ENC[AES256_GCM,data:x9N6k2gPWjObVNwsIc5I,iv:FMNjouqL0fSMfRdjChEpzrhT76q5hcY90Dn3bThY+w0=,tag:ov6v+pdaPStZlfMfUTBGAA==,type:str]
+            storageClass: ENC[AES256_GCM,data:Q4n1W1iBvInZb2Zq51cZ,iv:qmeyrdrCV/fvxcvBA+17pS6sLnv3AmMymvA1JHLiUiA=,tag:2zF10jXk9LYhaT+PPEtP0A==,type:str]
             enableStatefulSetAutoDeletePVC: false
             size: 10Gi
         extraArgs:
             - -config.expand-env=true
         extraEnv:
-            - name: ENC[AES256_GCM,data:uMjMlTZJzrjN1XDy5V06KizrGsQe,iv:a0YcqZ85ZSwaTTpdq22jZZE/t70Xk0XlpqseByvCbNU=,tag:Bx8NJ6Mo/B2NwOrfGdMgcg==,type:str]
+            - name: ENC[AES256_GCM,data:uAIJD1ud+CgmVqyj1WkSkxHJoobR,iv:MmBG5UdPxvVqg8U6dCcpEjJdAiLmeGFc+lp6O1ggK90=,tag:+RNjbKNmc1DGr0W0eRUOFg==,type:str]
               valueFrom:
                 secretKeyRef:
-                    name: ENC[AES256_GCM,data:rXOAnRjnfSfVj08=,iv:hXuY/KLsCwQUubhApmiM2jy3sozNfZFn1kgVpcTnQHM=,tag:BKV3NSMVRAjLKmPZeXxq4w==,type:str]
+                    name: ENC[AES256_GCM,data:kYqgaE4T2wj6UjY=,iv:WcFyWwztSW95AXzOhXH1aMeNS+je+HiSKE7HpHPZdUA=,tag:xqhWN/Yo3uK/tyvj/9Ncpg==,type:str]
                     key: AWS_ACCESS_KEY_ID
-            - name: ENC[AES256_GCM,data:CaLH6ORcVjVf90y/Jz7LqtmXIaNN6EwDuw==,iv:QIiRKkusePl2crtNP+ZYIl5ZanX4mG+WN2I8JC8or0s=,tag:u9b5WpEXJqgO/Z6FRpsJIw==,type:str]
+            - name: ENC[AES256_GCM,data:/nGXitCeyFNgoxIKNWe2umv7MgI1gcKvRA==,iv:QytNm2GnW6W9mKF+ILb2CWHGACtNd9RQDNVMjXvxrmc=,tag:AFCCyEWO60rkKiOdeF3A+g==,type:str]
               valueFrom:
                 secretKeyRef:
-                    name: ENC[AES256_GCM,data:TCcMLNqX5/0JeqI=,iv:tqgehiFBbKVt1mcui2G7B/VJhfm4nZVcVnd3nb8CaVk=,tag:nEzoLA3Q8JE44WDj3t0pcw==,type:str]
+                    name: ENC[AES256_GCM,data:qXsCoLQz437PCbE=,iv:X5uwjsWWTAIGowyekEzVApQNYXO4ck3ZJENlUCNhhtw=,tag:iXcQO+D2GMb0vFFWcqE0LA==,type:str]
                     key: AWS_SECRET_ACCESS_KEY
     write:
         replicas: 2
         persistence:
-            storageClass: ENC[AES256_GCM,data:9bcAATaFs9kuaF+oYxSJ,iv:13Z4Xmx3jU1ie1iWyJ6EaAQl0M48o0h7JUk+unrw10s=,tag:A2BvPzDGHo7ZAydoCEOx1w==,type:str]
+            storageClass: ENC[AES256_GCM,data:kkOSnlrr2YMcQlv9u8I2,iv:5Zy5HIxmzT1pRt4ATGPdff4iVp9//jMMM49/ORNFpI4=,tag:UhrL4e6vYnddOXWJ1s1ctw==,type:str]
             enableStatefulSetAutoDeletePVC: false
             size: 10Gi
         extraArgs:
             - -config.expand-env=true
         extraEnv:
-            - name: ENC[AES256_GCM,data:D5LGNPQll4rK4RaYzo6S6x2oncQS,iv:T300h5ZD4Ho+QVpHzY3DkFmG1BrEwoZQf8/U/PIvAHM=,tag:LKdOnr1GfKv3cT7Jf3JzlQ==,type:str]
+            - name: ENC[AES256_GCM,data:58YfGNBX/R32RCQWBucmYzti/Rlx,iv:xIL4gNZtFfheKqMuDLAklVN751/4C1QFsR5pMTcTBT4=,tag:4VfGG3JJLhCOxaTCL4C9bA==,type:str]
               valueFrom:
                 secretKeyRef:
-                    name: ENC[AES256_GCM,data:Atxb3hw8CTjubJU=,iv:jsMWFRAwXK/X7aTWsd89cRTNWdErg4JvBbw1kVFlmv4=,tag:7hKi5iX5ZB8rthbOAfIGSg==,type:str]
+                    name: ENC[AES256_GCM,data:0Ojvc0jhze4EClI=,iv:URHa/oghF1mzLeQ3k8iqqgpIxTXmpT1LEeCtwNTtodw=,tag:iRlGzbFlxeCCWpALhU/z2A==,type:str]
                     key: AWS_ACCESS_KEY_ID
-            - name: ENC[AES256_GCM,data:EvFr7gPPw5TySzO/SGqkqs70piAgXEQUNQ==,iv:KW95dR0DkKm8Botgx3puGE3dnUpoC1uK5iL9P552prM=,tag:PxUABfFOUJjY1oht1Ok3XA==,type:str]
+            - name: ENC[AES256_GCM,data:4H02uq1+FHu3c0v3Uvh/1h9mM/O0ZYTTTQ==,iv:xjVNLW37MMpjW6iGf7JxG+ygYHlIRR8pdwkMx1bnjQs=,tag:sijgDn7wFzZ45ICU6FZ5+w==,type:str]
               valueFrom:
                 secretKeyRef:
-                    name: ENC[AES256_GCM,data:mhgKaYjW/sSjAwo=,iv:MfLVAg4on+kzo8WsjerOV4FmDrcGN2itA1WzvBpYR5s=,tag:rSyn+LRhFsafnR9Z7CP7kw==,type:str]
+                    name: ENC[AES256_GCM,data:ZqnquFKLv1OjR8g=,iv:/GwA2zuQpjYn28y23d7+RIfg/siHxB0FGU1H9DkJiug=,tag:yCgUWATzlacaErFlsnbaSg==,type:str]
                     key: AWS_SECRET_ACCESS_KEY
     read:
         replicas: 2
         persistence:
-            storageClass: ENC[AES256_GCM,data:ySEOgWoC716mH8CbtJ8v,iv:VFMygjobujAi6XNI2h9L/amSSNB9LYekSFIVUikyea4=,tag:W2cfbeZClOXdfu3go2udJg==,type:str]
+            storageClass: ENC[AES256_GCM,data:8w8nOjPAK33nJiDIGhzb,iv:JsvZNKCGPELA/jXE7tdlvyNmHy0CGSPP/rAqW6+Xviw=,tag:jdcf+5PMYH7vLR9ehlmOSg==,type:str]
             enableStatefulSetAutoDeletePVC: false
             size: 10Gi
         extraArgs:
             - -config.expand-env=true
         extraEnv:
-            - name: ENC[AES256_GCM,data:lQz/YLutjNpEyshYQjvAQRuUWlTF,iv:DoYoWdykqrc7d66+2JMQKUxBS1mWPNbQ26meLjvwjGc=,tag:qsT5KNdwirVQatlcIrY0MQ==,type:str]
+            - name: ENC[AES256_GCM,data:kc5ViwriL/rGc+FGpDusC62Ex5aN,iv:i7q8iRvd9ipUocGNwb4Zhspa9LK6i4YZDoYGkKeTKec=,tag:QLlcFA3DIoGzLz416UkEdw==,type:str]
               valueFrom:
                 secretKeyRef:
-                    name: ENC[AES256_GCM,data:ZXxWAalXsyBukIo=,iv:jo32NQnEKV0XKc6azt4rcYQ4z42XK4xh3YcsnV1IrU4=,tag:9Z76qyA4pMGjfCLuYIsi5A==,type:str]
+                    name: ENC[AES256_GCM,data:PG0+bhAX7JGoiiY=,iv:Gp4ygQTKiGPLtTrBL/QNl6XHeQjGr6akFSjLdPysEPw=,tag:bylscHQ8MSm7Q4AnETbqCw==,type:str]
                     key: AWS_ACCESS_KEY_ID
-            - name: ENC[AES256_GCM,data:jdhDEg2YWHaUAZ3G89mqgAhU9CuPO/7nPg==,iv:3eKwX4U1GBdjEjS7KVyxGVyzjonGmX6Xm6cJDF0ptuM=,tag:JgJnciFHCtyT3WvRbQ3tVg==,type:str]
+            - name: ENC[AES256_GCM,data:CvGD6h1lhEEQdeSysRtvZzR6slteYS2ekA==,iv:jSKKoTP2DdgdjyLyrzwGAmivFcQ1obp8GV23JLOrIUs=,tag:GH36xWcssEsKRnbk6DidVQ==,type:str]
               valueFrom:
                 secretKeyRef:
-                    name: ENC[AES256_GCM,data:OYbYk+GFGKYja68=,iv:Gm+B11O8YHhH19LwS3QIzxcgttk2UR4lC2mRI2K9I3Y=,tag:i2McQCWQIsbxDDVy6PtzKQ==,type:str]
+                    name: ENC[AES256_GCM,data:kdKi2oUDvnzEVI8=,iv:VPglc8KDlRLGLNwoKfgYnqdFeen6yqF9thN1SCe74nc=,tag:m0MN4dD6RlYbyyVmEOeyRA==,type:str]
                     key: AWS_SECRET_ACCESS_KEY
     config:
         #server:
@@ -92,7 +92,7 @@ loki:
                 shared_store: s3
             aws:
                 s3forcepathstyle: true
-                s3: ENC[AES256_GCM,data:ZZcizaZjyyH8spPsm4/TmYF1oou3DkbhtEiEPXP5HSV500KG0bg78U0FeYjmvGgsBXYfQso1+owttCNo+R7xb+inU9CRcrVaptHcRvWmeE/C8BFW3ooNYZTYbVrbX7c+Rptn3+WzCcwlN37WRdlq/cnvY2ncfgEGjrwCnN5lUTY9ephkpxJJjR3U4/78BrZ3r6oEhft/zGvxtk+vTbC3tQ==,iv:3RI0cbZDwcQftufD1HGmSfF0PZZKR/s2YInq3iDAVk4=,tag:fuQ2PbHKbGtWUiSfigvROw==,type:str]
+                s3: ENC[AES256_GCM,data:xtUcGd4oE8CyeoEscmD2ebzKSMRicwqaIHx+M/vwlqFzX/qETs10EgTHxYwstRP+3kEuYyAq9HYbK6nArFxWxuT4Z5RbxqqBSDI3SHVLUjNyoLfHzQxA7lsj/e6ED6BB4+qiFlArWD+K1QZiDTng95+Hb5QIm4/Ycq112jgMaUwMVIjY3ka7TfiR43mwyXwzOUBO1fvbvi3sK76LUvXFig==,iv:TZGhUErI3/0YHdkDlipBKRxDLYcxBSPel4y612rFX0Q=,tag:mODUBKUsawkf3ib4m5LJTQ==,type:str]
     readinessProbe:
         httpGet:
             path: /ready
@@ -110,7 +110,7 @@ promtail:
     enabled: true
     initContainer:
         # -- Specifies whether the init container for setting inotify max user instances is to be enabled
-        - name: ENC[AES256_GCM,data:/mwPJg==,iv:18LLZ/4AVkmiOsBc+g4zxHA/S12Rd14Mb0/XHAm7hvo=,tag:qySTkAK4NFDN6FoT77eVfg==,type:str]
+        - name: ENC[AES256_GCM,data:mY3h0w==,iv:gS73oWlQY8I02U/i34OeOZmcdAjAQAGwf3Q1661TM+s=,tag:300JSMlIIg+NwE3Vj1ieuw==,type:str]
           # -- Docker registry, image and tag for the init container image
           image: docker.io/busybox:1.33
           # -- Docker image pull policy for the init container image
@@ -131,25 +131,31 @@ fluent-bit:
     enabled: false
 grafana:
     enabled: true
+    grafana.ini:
+        server:
+            domain: ENC[AES256_GCM,data:NlbX9YgbA5eWcGfhKF4adKqr22g=,iv:I/lFJJyrOriYSbOrT45M+GozERKvK3oJlCWUNR5gsrU=,tag:UXqRAwtLala6P/nf8zbAXQ==,type:str]
+        auth.ldap:
+            enabled: true
+            allow_sign_up: true
     logLevel: debug
     # Change this to a secure password
-    adminPassword: ENC[AES256_GCM,data:Swdl2hpOhGTuJw==,iv:t/cY4xOO0UkzU6d8laGCF8PTv0BoEq7l3uIqmIHJsv4=,tag:EFeoyIGcm7vPkYM7JQP3FQ==,type:str]
+    adminPassword: ENC[AES256_GCM,data:izCMlX18BVhmNm71/JI=,iv:3nNRwQArIMcgDj8K6HRVJ3b2wlhx551TfuiZq0sKAAU=,tag:RsV0Wkz8Hs738H1B7QZAPw==,type:str]
     ldap:
         enabled: true
-        existingSecret: ENC[AES256_GCM,data:tfomBRuoPJiPpfxA,iv:42XNc/1suGG+HXwQkz0ogd/tbvtlhAZFdlnyEaHOcFM=,tag:kO9od47Vc0CwF8WOQnFnXA==,type:str]
+        existingSecret: ENC[AES256_GCM,data:j3CHShrgd15JVGw0,iv:Jvp9MvVXFF4VLwHfdBWfQ1fxtrTXZgHb4DrtC663KkQ=,tag:WhTBVtAdoZindt9QMhYjVg==,type:str]
     ingress:
         enabled: true
         hosts:
-            - ENC[AES256_GCM,data:Hr+VJf0Yv5hBtQif+XLOD5bafHc=,iv:eAUjLx/09I68PCsjKb1IR0kk3BTWrm8HutEemdGyy3o=,tag:00RGVwIiv/cOlrKDDRyueA==,type:str]
+            - ENC[AES256_GCM,data:Ao6ZdEdCwI/b50vRDha+HdFmD58=,iv:zDVs7Y8SxQrzthPGT9b9MXIi3qMA1iCuOQOeyIXGXQA=,tag:7CaanccOJy85Nf7wv9JqIg==,type:str]
         annotations:
             nginx.ingress.kubernetes.io/rewrite-target: /
             cert-manager.io/cluster-issuer: incommon
             kubernetes.io/ingress.class: nginx
             kubernetes.io/tls-acme: "true"
         tls:
-            - secretName: ENC[AES256_GCM,data:PfKF/HolBmuyNfL/c/0lP5AcLFhgUAOs,iv:5ZPxKhG84IXWtCP+8OMOtFI1zwZmzG9nsTU5lK/vCDA=,tag:jr20+hHc4wip/el+IuoXyA==,type:str]
+            - secretName: ENC[AES256_GCM,data:mkoDIZC4OeeolrSONB++FuQludgN58H/,iv:egdFge62cPOWMy4i/JkH7Y8prOhEFxkGFF6GsKmBqO8=,tag:/SRkW3EKQfKjfrnqc6twJQ==,type:str]
               hosts:
-                - ENC[AES256_GCM,data:IKtf2vvknCnayl2R0T7Oqq836LA=,iv:6Ruh1n0bfjvs0NpqqhzGMdY92nRvo2HQz+ccVq2B9IU=,tag:mv+nrWkc7pIF7WKeoci0pw==,type:str]
+                - ENC[AES256_GCM,data:+QN9rWKou6SqSBk0CjbKjQhrF4s=,iv:7q0whQfDMdfwHUrYXydJ1DIksWEgx9pS+diX5hx5uJ4=,tag:FkJLWe9/QhpoEgGHhcrK0g==,type:str]
     sidecar:
         datasources:
             label: ""
@@ -229,50 +235,50 @@ sops:
         - recipient: age1ucetgj7k3whaqf9nulacsqarur6nrgzuyt59apeptu5cphd6ksdsqpy5he
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBFT3VwMEsrRGUrY3ZqRkhu
-            L3UxLzgyNzlSR0czK0ZXRmhNS3hvVXFLM3pjCjhzNS9xak54ZHcwUEU0dkdwYWx5
-            SlRiOHBrZm1oZlRjU3ZndXhDbUl5ZkUKLS0tIEp4RW9jMmFCbUxZQ0NyWUc3N2hM
-            elc2cEYzVng1Mkx0TVBQK2dwUEFRVGsKnBpiQ8Bow+Xd5kvOfIBErLLXlmulFBA5
-            IO51N9ngel1c0EeJ6nWC+MdvnYG/ZV07Yzx9QieaQVVQ1oKmbcTwwA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBiaURqTUtXSERlTXNKeW9z
+            clByWnZLTzI2czR2dTEyWlp6UCtUUEdod1I4CnhYOEgwckdSS3VpQ1p0SytYNm1x
+            UzVEVXUxcytaMzQ1M2VHTXdHM2lTdTgKLS0tIEloYjBXdXFraTRTMndqK2FiSG5n
+            WEI2SDl4RjFCUndyYVFrenVDd2FUZUkKavQrckn3wUfq9bWsBM2TMsmIQMYRbdLP
+            hh7ciVtvXiIvQLfonTYV71KaLxfeeKSgrKHjdjw5TMu8EZJWVsxLqQ==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1dnkv8vy8xkl5afwuwl55ycpquy2uk7ypc5ad87sfug2zffp6jgkqwwzglr
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBlaUQzR1BQWjU0MzNsZ2VD
-            bk1IY0RvZXN4dHRxWGZaTlM3Ly9HOGIzWlNNCnJIRUNjYmwrY3lvbXpVd3NCeEl1
-            VXgwL1ZRWmRYM1I2bUtITnJVdDFxVG8KLS0tIG9vU1VsT0hWd3VPbjViYXVhaTEx
-            dVp6ZWVsaFBMLzQzWm96Q1NjTW1kQ3MKqI6hr1K6i++2UDD0/TKYxxETR8so0W7C
-            o/VaEqBpuJUji/GCjNm+yyn8fX7XUYJIjbReVvyyCEp8SZMCFVbA/A==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBYa2RneW1Zc1hmWWtzSUFF
+            Yjg0bUY4bWhxd1dsTU4rNTl5a2tMMld4cTJJCnZtaFV4WVd0RWlTKzRCYkN2bzFS
+            MWZ2WmZ3Qk53cGpEUDhXTzlSNWF2Q3MKLS0tIHZUZm5TbERsV1FLSGpXeHJtbTNK
+            MEFOVkNHcVk4VFk3NFR3MUNjQ0Q4NTAKuu15/tQQT6sM0/F5xs0fhrrTB7+tlmRh
+            SPLb9OaLKXypTWNyjSZmneQ0LhE2XZMHIMD1D/CkI71mOmzzotl+CA==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1wt75fkqsa2ngrhtmr7ws2ve8v9h2463hryj4jk4k7m5khxmc9pgqgqag8x
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrOW5Zd1RORkkrT2FEdGdi
-            OGRSbllrRzArZjJvM2ZRd0VjQlI4emFFVGo0ClY5OWdmV3YvZWFJN3FYaFF5TWhR
-            L2Z6Zit5bXBYL1oxUG5aM0w4Zm4ya2sKLS0tIGVySkMxMmdxMXV4ZlJkSGU5eDlr
-            TmFmbGdFR2srSGxYZTZMbjF3bjgvcHMK7x5ZzC95ikOhwIMmC3IJImSwJi4BBzoB
-            mHSFQxDCjvQENbwQVUzBTJG7jY4X7rYjsHG8Ecuo7G3Si+E6u7onmw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAyS1RWbU5NZEIwNUNDQUpW
+            YTdlWUNnckFtV2xWVy9PK1l3dEszSHM2b3djCmtlWCtZR3V2alFhb2ZtOFRQQzYw
+            NTdoOEpCNFJjQVZFNGdYWmJLS200emsKLS0tIERWeVJTeHJYTml3WWN4ZGVqTG9J
+            K0lsc2JvYWhCYmNjZDFJdGFaQ0RJUTAKwzaPrJC8hMZaivtyxffbz7jki8QVA2qf
+            rMo77Dk3IHmQl3bvGWn0VCTuKowGCE04EkWFnCtQ83nc4nXKhheZAQ==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1fqw4znyl0zjpw5ta7ll3auxpzg8dme578jgw43a0dtzjhwjn4qlstaez7c
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2L291VzZHS2hQYmgwY3Y2
-            dUtjNVlrYndwaW1DaG5tbVZzSFN6MWpmSVVvCkFQSGxSTURBY09SeU90NUFieUFP
-            QzV1bU1XUmpmbVI4SVJtQWM3YkxndU0KLS0tIEVEd1JDTjJNdTk4K01QbFh4Mkt6
-            dkxQOVRHcUs5cWhUWnhxOE9qTi9ydlEKwFkTuJhBc/lB78BdE6UTvZMhvrM6RWWt
-            0plSMtV8CEexg91Bm2VrqbIfjOwWm/yifszc7fUc2QoL8xLnXnqhRg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBCUVBGN2dwdnFaUGRReWh4
+            MURPRUVDbkhhLzlsT01OMzY3VjZMcXg1UDJzCldjZjl2b3psaTNPYTVGaEhLbTZO
+            WDJ6S29tOGxYeUZFVXlJdmZFbzlRTTQKLS0tIEJPUi95OFRMZTlIVWRRTStpbUZJ
+            c2FHcHlBcU1qOWkwOGcxbXVwRFFTTGMKedk3FS3QruvuOnwR59oIFZH9uqWCGfbk
+            DVyIatZx4BfH9JPPgCZA6mloQRtl35Qw9Be1i9yw1KWApOH4nkqS/Q==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age1m2ay7zlek6d4uctt09vsw5l8gpydjlvu9xemv8pqh97urdmhhyrsh9qe86
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBqQlNnSlhHNjhLUmpsb0dI
-            MlpQNCtqeE9MMW9uRHpQOEQ3cmU3QlFzeTNvCmxZZVNjUHI0THFrY1BmejNybnpJ
-            ZXBrVFh0MkN0eitxaFVlaFlGakdqTHcKLS0tIHRSSjdyWXZmM0JkM3M2aDJKSVlT
-            aThHcjFWdXJ0M3dQRzNDSWp5SmwwK1kK9lYxMN5/lQiPrqDscHedkGN5TgrI/YNR
-            rzvKKT/rEAKJsuytXiea9Q7xTrHSoaz8WnUvB4HjquUQlZLprSm/YA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBMN3k0ZlZYd3FsenJvLzBQ
+            YkhqMm1PcnQ4WW95MXVjSi9QRXFyZkc0Znc4CjBpbHFsWGdRbGh1UkNjS0orRkhU
+            TFlEUWdMVndnWWlYakFQSlJEYnZOdGcKLS0tIGZRNm95QjNwZ3pYYU9ibG82bjhM
+            b2tHN3RCNUpqZ3lUYm53MDZ6SnN0eEkKzszfuBqOgeyITOGNQYiyLOiGrPbrBSkC
+            paxm7dossGjkrBG9DifzfQqs+AnwS7Vl3F8aQ1bjenjPqNdYaDa0fA==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-04-09T20:03:37Z"
-    mac: ENC[AES256_GCM,data:dJXfbq2+XyzPUYl3/4mUcN5bg7lS1odUoaO1ffhuRzoZm8Rr5SElONtXbjGuZpjxMEPXE58IRBbJCLQHrCQDwRgcDFaNyTb8g1Uzxrk+YeaGih4atrLKzKm5MQjy7zSejs366dRRlgqzZkjiXlwoOdrEiGhMlVQBsDeiUd65fXc=,iv:JZfVQGS2cxMsgFLBTU5OE1sXIvkYEOkC3y7w8qZQ1vM=,tag:xysG+9WjJCJ9FbNKqfeymw==,type:str]
+    lastmodified: "2024-05-20T19:05:31Z"
+    mac: ENC[AES256_GCM,data:YNAzbIa7R1bT9wR7If2vrN9S90uD3C3Tgz0ThIK83xVv9jiPe1qeNFLjMldpzivbySsl6C3KpbSyuocJtMa/y3qJ+a2i8X+o/NR3cIo/s8SYn8hT/p0Um1Fj36PbRGqRoKsvzFL0yWzgBVxR8cZ67+7nZYf85lVehKrUzToAETU=,iv:TPFmAAtT5YGVfynEowpyHdMU9bSIK6Vg9ZEVv3xsACA=,tag:7TOjjhdA5agGCs77zvwx+w==,type:str]
     pgp: []
-    encrypted_regex: ^(s3|storageClass|secretName|name||existingSecret|hosts|adminPassword)$
+    encrypted_regex: ^(s3|storageClass|secretName|name||existingSecret|hosts|adminPassword|domain)$
     version: 3.8.1
