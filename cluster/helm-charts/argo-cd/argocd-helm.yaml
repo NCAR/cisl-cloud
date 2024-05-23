@@ -13,23 +13,19 @@ configs:
         create: true
         annotations: {}
         policy.default: role:none
-        policy.csv: ENC[AES256_GCM,data:DBHW8gxuxVZGphoGdh8yAsISOeAnpqXZ/DAb8xhJ2dXxs3rCZQ4d1t0YBfiindiNep87P28cGnupm34yHkTJXAx6Ki92bPWvSd4mlSleYIYUUw==,iv:Y4iJuZr9NsSzsFSItR0b/YC6FXwOfQRDOflsKBRv7K4=,tag:dZrPj6sq0zZP0/Ag13EbeA==,type:str]
+        policy.csv: ENC[AES256_GCM,data:N2jk0MYPXt1ILk8THadTVml//By9bPPlyILQjP+1wXQYjtsOKuMuUIWbk2gpzfJfv88p8vaYkUDg2S8yz7drRw//0ZoxzGxvEhdUyqLWem8AuHv9RDcioCxG1IFj9wSUbj56LxMWWpNoU4JhH6BbO6M=,iv:BTlkd6qFpmtb7R7nRP9OMgzSwib+1GXgb5QWPfZ9UtU=,tag:DdXsotz6SJSnijl0doX3wQ==,type:str]
         scopes: '[groups, name]'
         policy.matchMode: glob
 server:
-    config: null
-    #    helm.valuesFileSchemes: >-
-    #      secrets+gpg-import, secrets+gpg-import-kubernetes,
-    #      secrets+age-import, secrets+age-import-kubernetes,
-    #      secrets,secrets+literal,
-    #      https
-    ingress:
-        enabled: true
-        annotations:
-            cert-manager.io/cluster-issuer: incommon
-            nginx.ingress.kubernetes.io/ssl-passthrough: "true"
-            nginx.ingress.kubernetes.io/backend-protocol: HTTPS
-        tls: true
+    config:
+        helm.valuesFileSchemes: secrets+gpg-import, secrets+gpg-import-kubernetes, secrets+age-import, secrets+age-import-kubernetes, secrets,secrets+literal, https
+        ingress:
+            enabled: true
+            annotations:
+                cert-manager.io/cluster-issuer: incommon
+                nginx.ingress.kubernetes.io/ssl-passthrough: "true"
+                nginx.ingress.kubernetes.io/backend-protocol: HTTPS
+            tls: true
 repoServer:
     # -- Repo server name
     name: repo-server
@@ -43,6 +39,96 @@ repoServer:
         # -- Image pull policy for the repo server
         # @default -- `""` (defaults to global.image.imagePullPolicy)
         imagePullPolicy: ""
+    serviceAccount:
+        create: true
+        name: argocd-repo-server
+    rbac:
+        - apiGroups:
+            - ""
+          resources:
+            - secrets
+          verbs:
+            - get
+    env:
+        - name: HELM_PLUGINS
+          value: /custom-tools/helm-plugins/
+        - name: HELM_SECRETS_CURL_PATH
+          value: /custom-tools/curl
+        - name: HELM_SECRETS_SOPS_PATH
+          value: /custom-tools/sops
+        - name: HELM_SECRETS_VALS_PATH
+          value: /custom-tools/vals
+        - name: HELM_SECRETS_KUBECTL_PATH
+          value: /custom-tools/kubectl
+        - name: HELM_SECRETS_BACKEND
+          value: sops
+        # https://github.com/jkroepke/helm-secrets/wiki/Security-in-shared-environments
+        - name: HELM_SECRETS_VALUES_ALLOW_SYMLINKS
+          value: "false"
+        - name: HELM_SECRETS_VALUES_ALLOW_ABSOLUTE_PATH
+          value: "true"
+        - name: HELM_SECRETS_VALUES_ALLOW_PATH_TRAVERSAL
+          value: "false"
+        - name: HELM_SECRETS_WRAPPER_ENABLED
+          value: "true"
+        - name: HELM_SECRETS_DECRYPT_SECRETS_IN_TMP_DIR
+          value: "true"
+        - name: HELM_SECRETS_HELM_PATH
+          value: /usr/local/bin/helm
+          #    - name: HELM_SECRETS_LOAD_GPG_KEYS
+          #      # Multiple keys can be separated by space
+          #      value: /helm-secrets-private-keys/key.asc
+        # For age
+        - name: SOPS_AGE_KEY_FILE
+          value: /helm-secrets-private-keys/key.txt
+    volumes:
+        - name: custom-tools
+          emptyDir: {}
+        # kubectl create secret generic helm-secrets-private-keys --from-file=key.asc=assets/gpg/private2.gpg
+        - name: helm-secrets-private-keys
+          secret:
+            secretName: helm-secrets-private-keys
+    volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+        - mountPath: /usr/local/sbin/helm
+          subPath: helm
+          name: custom-tools
+        - mountPath: /helm-secrets-private-keys/
+          name: helm-secrets-private-keys
+    initContainers:
+        - name: download-tools
+          image: alpine:latest
+          imagePullPolicy: IfNotPresent
+          command:
+            - sh
+            - -ec
+          env:
+            - name: HELM_SECRETS_VERSION
+              value: 4.6.0
+            - name: KUBECTL_VERSION
+              value: 1.28.9
+            - name: VALS_VERSION
+              value: 0.37.1
+            - name: SOPS_VERSION
+              value: 3.8.1
+          args:
+            - |
+              mkdir -p /custom-tools/helm-plugins
+              wget -qO- https://github.com/jkroepke/helm-secrets/releases/download/v${HELM_SECRETS_VERSION}/helm-secrets.tar.gz | tar -C /custom-tools/helm-plugins -xzf-;
+
+              wget -qO /custom-tools/curl https://github.com/moparisthebest/static-curl/releases/latest/download/curl-amd64
+              wget -qO /custom-tools/sops https://github.com/getsops/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux.amd64
+              wget -qO /custom-tools/kubectl https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl
+
+              wget -qO- https://github.com/helmfile/vals/releases/download/v${VALS_VERSION}/vals_${VALS_VERSION}_linux_amd64.tar.gz | tar -xzf- -C /custom-tools/ vals;
+
+              cp /custom-tools/helm-plugins/helm-secrets/scripts/wrapper/helm.sh /custom-tools/helm
+
+              chmod +x /custom-tools/*
+          volumeMounts:
+            - mountPath: /custom-tools
+              name: custom-tools
 sops:
     kms: []
     gcp_kms: []
@@ -94,8 +180,8 @@ sops:
             UENoWDBPai9PS3FQbm1CbDJhTE9xSzgKgo1WvhxWiMVpgSWMjVii6Ea3vLvG7O5w
             S5TfBe7YDlhnKPm/QHGQBFSKo5MmTdFqams4u+nchH4iW7Dxi/P2Zw==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2024-05-09T21:06:49Z"
-    mac: ENC[AES256_GCM,data:cKDOVSDQbU7p3lamFgCs3YN7HC+a0fANoClVX119OFkm2VPEHc40Wt3Cj6nMOQ9uBhrJrIN1MfGZmlK5q8xlVn9shbjVXXAEh2bDHfIzCHmcKhxeq/HHJrVTHqHd7hyayfLY5l4lAeIo9P81GwMtLImzSstiZMQkJ4tmjIlrFo0=,iv:OMS8fmxB6uBxKsl6B9SCsHrEpoWY3AiFfJKNWj6sRow=,tag:PM1FBkgax1B/VQ0RBirZug==,type:str]
+    lastmodified: "2024-05-23T15:38:27Z"
+    mac: ENC[AES256_GCM,data:P7W9BZlbo2ZkYMwaKeWwOOWX4XZvgja4hiA3WddmMnhqc2RnE0rr5ks34iLY25qN0KJcqZqNGDDAOg5b6nDj7n3QEog9zDPsRi8ErEvzpCmBEmo15PwhEp446IPMMg0lXuLp/LMtXNiGf1ByPLA5Doy2tLmng1bB+TJry6gnLmk=,iv:EzalJWn/ZGrRgEvlhm43j0Qjg+zFv+OU9uPQMTcWWQM=,tag:K3O04bwzt+/PJ0BtUHEnOA==,type:str]
     pgp: []
     encrypted_regex: ^(dex.config|policy.csv|domain)$
     version: 3.8.1
