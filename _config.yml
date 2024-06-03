@@ -29,8 +29,6 @@ bibtex_bibfiles:
 #######################################################################################
 # Launch button settings
 
-html:
-  google_analytics_id: G-7W0SHCDV52
 
 sphinx:
   config:
@@ -38,6 +36,8 @@ sphinx:
     html_last_updated_fmt: '%-d %B %Y'
     html_theme: sphinx_pythia_theme
     html_theme_options:
+      analytics:
+        google_analytics_id: G-7W0SHCDV52
       home_page_in_toc: false
       repository_url: https://github.com/NCAR/cisl-cloud # Online location of your book
       repository_branch: docs

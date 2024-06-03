@@ -11,7 +11,7 @@ jobs:
     steps:
       # Step 1 is to checkout the github repo
       - name: Check out the repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: docs
       - name: Build book HTML
@@ -34,7 +34,7 @@ jobs:
           podman build -f docs.Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }} /home/podman/actions-runner/_work/cisl-cloud/cisl-cloud/.
       - name: Login to Harbor
         run: podman login hub.k8s.ucar.edu -u robot-cislcloudpilot+cislcloudpilot -p ${{ secrets.HARBOR_LOGIN  }}
-      - name: Push Podman image to Docker hub
+      - name: Push Podman image to Harbor
         run: |
           podman push hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }}
   update-helm:
@@ -55,7 +55,7 @@ jobs:
       - name: Update Helm values.yaml
         run: | 
           sed -i '15d' cluster/helm-charts/cloud-docs/values.yaml
-          echo "    image: hub.k8s.ucar.edu/docker/cislcloudpilot/docs:${{ steps.date.outputs.date }}" >> cluster/helm-charts/cloud-docs/values.yaml
+          echo "    image: hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }}" >> cluster/helm-charts/cloud-docs/values.yaml
       - name: Update Helm Chart.yaml
         run: | 
           sed -i '24d' cluster/helm-charts/cloud-docs/Chart.yaml
