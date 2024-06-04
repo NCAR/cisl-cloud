@@ -8,6 +8,8 @@ on:
 jobs:
   build-docs:
     runs-on: self-hosted
+    outputs:
+      tagdate: ${{ steps.date.ouputs.date }}
     steps:
       # Step 1 is to checkout the github repo
       - name: Check out the repo
@@ -55,11 +57,11 @@ jobs:
       - name: Update Helm values.yaml
         run: | 
           sed -i '15d' cluster/helm-charts/cloud-docs/values.yaml
-          echo "    image: hub.k8s.ucar.edu/cislcloudpilot/docs:${{ needs.build-docs.outputs.date }}" >> cluster/helm-charts/cloud-docs/values.yaml
+          echo "    image: hub.k8s.ucar.edu/cislcloudpilot/docs:${{ needs.build-docs.outputs.tagdate }}" >> cluster/helm-charts/cloud-docs/values.yaml
       - name: Update Helm Chart.yaml
         run: | 
           sed -i '24d' cluster/helm-charts/cloud-docs/Chart.yaml
-          echo "appVersion: '${{ needs.build-docs.outputs.date }}'" >> cluster/helm-charts/cloud-docs/Chart.yaml
+          echo "appVersion: '${{ needs.build-docs.outputs.tagdate }}'" >> cluster/helm-charts/cloud-docs/Chart.yaml
       - name: Run python script to update version by 1
         run: python cluster/helm-charts/cloud-docs/update_ver.py
       - name: Commit changes to dev branch
