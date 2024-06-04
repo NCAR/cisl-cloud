@@ -55,7 +55,7 @@ NSF UCAR Network Access Required
       </a>
       <a href="how-to/K8s/Hosting/deploy">
       <figure>
-        <img src="_static/argo.png">
+        <img src="_static/argo/argo.png">
         <figcaption style="text-align:center">Argo CD Docs</figcaption>
       </figure>
       </a>
