@@ -48,7 +48,7 @@ NSF UCAR Network Access Required
     <span class="d-flex justify-content-center py-4">
       <a href="https://hub.k8s.ucar.edu/">
       <figure>
-        <img src="_static/harbor.png">
+        <img src="_static/harbor/harbor.png">
         <figcaption style="text-align:center">Harbor Container Registry</figcaption>
         <figcaption style="text-align:center"><a href="how-to/K8s/harbor/harbor-intro.html">Link to Docs</a></figcaption>
       </figure>
