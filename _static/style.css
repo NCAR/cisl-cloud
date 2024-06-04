@@ -3,13 +3,6 @@
 /* Right Side table of contents*/
 /* Done */
 
-.bd-toc {
-    background-color: #323133 !important;
-}
-
-#bd-toc-nav {
-    background-color: #323133 !important;
-}
 .onthispage i, .tocsection {
     color: #ffffff !important;
     font-size: 14px;
@@ -18,7 +11,7 @@
 }
 
 .toc-entry a {
-    color: #ffffff !important;
+    color: #000000 !important;
     font-size: 14px;
     font-weight: 600 !important;
 }

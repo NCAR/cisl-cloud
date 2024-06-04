@@ -55,6 +55,10 @@ sphinx:
         <a href="https://github.com/NicholasCote/jupyterbook-cisl-theme">Copy this JupyterBook layout</a><hr>
         <div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div><br>
         Theme by <a href="https://projectpythia.org/">Project Pythia</a>
+      logo:
+        link: https://ncar.ucar.edu/
+      navbar_start:
+        - navbar-logo
       navbar_links:
         - name: Cloud Docs
           url: main
@@ -84,7 +88,13 @@ sphinx:
           url: https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10903&customfield_10281=CCPP-108
         - name: Report issue
           url: https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10905
+      navbar_end:
+        - navbar-icon-links
       page_layouts:
         index: page-banner.html
+      footer_start:
+        - footer-menu
+        - footer-info
+        - footer-extra
     html_sidebars:
       index: []
