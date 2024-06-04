@@ -28,7 +28,7 @@ jobs:
       # Get the date to apply to image tag
       - name: Get current date
         id: date
-        run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
+        run: echo "date=$(date +'%Y-%m-%d.%H.%M')" >> $GITHUB_OUTPUT
       - name: Build Podman image
         run: |
           podman build -f docs.Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }} /home/podman/actions-runner/_work/cisl-cloud/cisl-cloud/.
@@ -55,11 +55,11 @@ jobs:
       - name: Update Helm values.yaml
         run: | 
           sed -i '15d' cluster/helm-charts/cloud-docs/values.yaml
-          echo "    image: hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }}" >> cluster/helm-charts/cloud-docs/values.yaml
+          echo "    image: hub.k8s.ucar.edu/cislcloudpilot/docs:${{ needs.build-docs.outputs.date }}" >> cluster/helm-charts/cloud-docs/values.yaml
       - name: Update Helm Chart.yaml
         run: | 
           sed -i '24d' cluster/helm-charts/cloud-docs/Chart.yaml
-          echo "appVersion: '${{ steps.date.outputs.date }}'" >> cluster/helm-charts/cloud-docs/Chart.yaml
+          echo "appVersion: '${{ needs.build-docs.outputs.date }}'" >> cluster/helm-charts/cloud-docs/Chart.yaml
       - name: Run python script to update version by 1
         run: python cluster/helm-charts/cloud-docs/update_ver.py
       - name: Commit changes to dev branch
