@@ -9,7 +9,7 @@ jobs:
   build-docs:
     runs-on: self-hosted
     outputs:
-      tagdate: ${{ steps.date.ouputs.date }}
+      tagdate: ${{ steps.tagdate.outputs.date }}
     steps:
       # Step 1 is to checkout the github repo
       - name: Check out the repo
@@ -29,16 +29,16 @@ jobs:
           ghp-import -n -p -f /home/podman/actions-runner/_work/cisl-cloud/cisl-cloud/_build/html
       # Get the date to apply to image tag
       - name: Get current date
-        id: date
+        id: tagdate
         run: echo "date=$(date +'%Y-%m-%d.%H.%M')" >> $GITHUB_OUTPUT
       - name: Build Podman image
         run: |
-          podman build -f docs.Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }} /home/podman/actions-runner/_work/cisl-cloud/cisl-cloud/.
+          podman build -f docs.Dockerfile -t hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.tagdate.outputs.date }} /home/podman/actions-runner/_work/cisl-cloud/cisl-cloud/.
       - name: Login to Harbor
         run: podman login hub.k8s.ucar.edu -u robot-cislcloudpilot+cislcloudpilot -p ${{ secrets.HARBOR_LOGIN  }}
       - name: Push Podman image to Harbor
         run: |
-          podman push hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.date.outputs.date }}
+          podman push hub.k8s.ucar.edu/cislcloudpilot/docs:${{ steps.tagdate.outputs.date }}
   update-helm:
     # Define where the job should run in this case it will be run on the latest ubuntu image
     runs-on: ubuntu-latest
@@ -51,17 +51,18 @@ jobs:
         with:
           ref: dev
       # Get the date to apply to image tag
-      - name: Get current date
-        id: date
-        run: echo "date=$(date +'%Y-%m-%d.%H')" >> $GITHUB_OUTPUT
       - name: Update Helm values.yaml
+        env:
+          OUTPUT1: ${{ needs.build-docs.outputs.tagdate }}
         run: | 
           sed -i '15d' cluster/helm-charts/cloud-docs/values.yaml
-          echo "    image: hub.k8s.ucar.edu/cislcloudpilot/docs:${{ needs.build-docs.outputs.tagdate }}" >> cluster/helm-charts/cloud-docs/values.yaml
+          echo "    image: hub.k8s.ucar.edu/cislcloudpilot/docs:$OUTPUT1" >> cluster/helm-charts/cloud-docs/values.yaml
       - name: Update Helm Chart.yaml
+        env:
+          OUTPUT1: ${{ needs.build-docs.outputs.tagdate }}
         run: | 
           sed -i '24d' cluster/helm-charts/cloud-docs/Chart.yaml
-          echo "appVersion: '${{ needs.build-docs.outputs.tagdate }}'" >> cluster/helm-charts/cloud-docs/Chart.yaml
+          echo "appVersion: '$OUTPUT1'" >> cluster/helm-charts/cloud-docs/Chart.yaml
       - name: Run python script to update version by 1
         run: python cluster/helm-charts/cloud-docs/update_ver.py
       - name: Commit changes to dev branch
