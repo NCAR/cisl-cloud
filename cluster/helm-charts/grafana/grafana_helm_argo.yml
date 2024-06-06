@@ -1,0 +1,81 @@
+grafana.ini:
+    server:
+        domain: ENC[AES256_GCM,data:r4HheygbET2KKrssoXrSzGBGdg8jFUIXXg==,iv:qeOWJnoyYeQADTDVV7eLko5MwPxZfnL73Q27f1icN1w=,tag:i33zc/S1TS5jW/4a2rbw6g==,type:str]
+    auth.ldap:
+        enabled: true
+        allow_sign_up: true
+logLevel: debug
+# Change this to a secure password
+adminPassword: ENC[AES256_GCM,data:3C57rDcwJf4=,iv:jHJ0m6fyOYeV9OQVPoZgwsIQ6m0kwgxKP3G7qciJCh0=,tag:Hn9eseZlqq5xstVJHg8Rmg==,type:str]
+ldap:
+    enabled: true
+    existingSecret: ENC[AES256_GCM,data:z0zacj/QUIjVSP8U05kOdAI=,iv:DwaDs9y7Sfi9+1PyYQvyI1G26IU/dgZqmnf412MzG1I=,tag:vf1/LVjCsWP4Ay732yP/9g==,type:str]
+ingress:
+    enabled: true
+    hosts:
+        - ENC[AES256_GCM,data:k+7I+AhsFUo+8lKW1h4pXnMB02h/1c9F9g==,iv:NvL8wo9Lf0HLdQspHrUdV1j4SBLYLRkjugYiDPkrCQ8=,tag:b5DW/ni1WpQ/gIOzQl5l9w==,type:str]
+    annotations:
+        nginx.ingress.kubernetes.io/rewrite-target: /
+        cert-manager.io/cluster-issuer: incommon
+        kubernetes.io/ingress.class: nginx
+        kubernetes.io/tls-acme: "true"
+    tls:
+        - secretName: grafana-test-k8s-ucar-edu-tls
+          hosts:
+            - ENC[AES256_GCM,data:6RvHD0jko1NSwhLyyx+Xf2kncvVwSiu4EA==,iv:BnfKbQvjRdHpiqJd+81THQ3dxfKFNsUjQ9JQX8QnyMg=,tag:N7reLp4+b9B+NY6lafP79A==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1ucetgj7k3whaqf9nulacsqarur6nrgzuyt59apeptu5cphd6ksdsqpy5he
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAyTWp5MVUvdUhydE0vVWVm
+            QjZwMmwwSDNqSzEzTW14RENUeTdzMUt0aTFVCnhvSUU1ZzI4NUJtekNpMERJb29h
+            dE0vWFE0akVUV2lEaDRMY1Fzc0VyamsKLS0tIFBYZHdpakhXTG8wdUhFUGRxMzM2
+            cWRlbThqRXBDdm1EVEQrKzlzVnFYb2cKxJCqpXdMIEQgVTiynrAWlkn7JGl61acH
+            9ujKTDGsPSIdAreSdpCXP0YG67jqBVeuTi/pl63IAyDs4gPr8w98Lw==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1dnkv8vy8xkl5afwuwl55ycpquy2uk7ypc5ad87sfug2zffp6jgkqwwzglr
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB6V2JJN3hsQmkxU1RPYkZJ
+            bG5ZOW1TWm43Nzd0dUhSdDZTdEZmazByR1dZCnBNbU10YmRZUStuVEhONjNYNU1Y
+            Q2hoZUphWlVXY3Y2YTgzQUhPYkk2S0kKLS0tIEdERnFzd0EySis3VTJXOXE1d2Ey
+            MGxncEUzMW1ERFJib0x6NTJzQytFdXMKoEn3qcrChb6zi12b9TDlX/+Ot7P/ZDab
+            n6PJPmGAoGhD8GlWku4f9Pu1GbRNGGZXBDx3m5KZX0G8f4Z9dq9fQQ==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1wt75fkqsa2ngrhtmr7ws2ve8v9h2463hryj4jk4k7m5khxmc9pgqgqag8x
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBlRXRpR2E1S2o5RTZTSGZH
+            bkN0NjBnL0J5NGlmaHN2aXYwOWk5NnpwMW1NCjJwNFZlRHM4cnh6K09UM2dZNVBY
+            MXU0U2xXaHVBK0g0OHF6blAxaFZOZncKLS0tIDh2UzYwNWNFcm4wL25md203MEY1
+            cExvcVpTRVNIM0dmdENxZkdpLzFOc2sKfcSjqkBFhy1DZpkN8LomwCthO+TnJ6z1
+            Kd8O6l1VnQkvZpyVqKiQ8pIdaOsK7+/m9u/Wg1IsDv8ZRXVWCbcCXQ==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1fqw4znyl0zjpw5ta7ll3auxpzg8dme578jgw43a0dtzjhwjn4qlstaez7c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBnM0tBZ1ZyU1RpN081MFFG
+            T1AwVTZhQmM3djFyWjVwV1JYVkRmT2UxZ1VFCjNtZmppKzZYNVc2U0ZXeFV4ZnlH
+            SjdnZ3BqakNqVlViNXFyVGVLaTZHVHcKLS0tIHhEK1BaZjdlVEZKMFpMYlZrbDhU
+            VnlOVzB6NXkvSXh1aWZrdk9DeVZBUk0KNOB2+1L0DKFrjQLSXY3KeWXS1luSmbyG
+            VYJ8sZEnU0S4P+iAeyCAPmxDIV2g3ixwB+tJ1whGc7Aniz9MYigMkQ==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1m2ay7zlek6d4uctt09vsw5l8gpydjlvu9xemv8pqh97urdmhhyrsh9qe86
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBqeVNuMDR5TEc5a1owd25T
+            SE1ZTldjb25LSUdLWnpOdW5lZ29lOFJNY0dvCkNpU3NpTWN1dHVNQlcwWVI5Uncx
+            MFdnajBqb0l4cVh3aURwL0xoNnpKWDAKLS0tIDJCZHhJdUVidnVjNnhNZUt6R3cz
+            MDc4eFkxSTNBZFBaNXhFQzlzcS84SmMKZ3p1t5fYERToQIwSpPH+jteAPMCCBb1C
+            ByBbcKkPYdoKluNzwBcTvlPXwky+h2NA18zv6et3B+0XC9sxIyYtEg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-06-06T16:10:37Z"
+    mac: ENC[AES256_GCM,data:uUYCmS7CJB81U5IfQ4ZeFheTuYGuoRMKNrlTeeOH9ndZ9/fNE0VKdcwGhGRZLr/SxtnwRIRcgBstRE83olls69MbknTSV/rBkdBfQpiyuGZb7pIK5LLvp09SBeyL6QjAnXQjEC2aaGMX2UZIh8RPEwi8KYAof2oxpkgdeqXv8dk=,iv:qSP1W8TMwOlrI56J4X94xL/+hjqgz43KN7oqVNdS+XQ=,tag:QgDtfs13k17SFeThI/zG1A==,type:str]
+    pgp: []
+    encrypted_regex: ^(domain|name||existingSecret|hosts|adminPassword)$
+    version: 3.8.1
