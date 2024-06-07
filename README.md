@@ -1,10 +1,7 @@
 # CISL Cloud Pilot Project
-| Documentation Website Builds | ![GitHub Pages Status](https://github.com/NCAR/cisl-cloud/actions/workflows/pages/pages-build-deployment/badge.svg) | ![Documentation CI/CD Status](https://github.com/NCAR/cisl-cloud/actions/workflows/docs-cicd.yaml/badge.svg) |
+| GitHub Action Name | Action Status | Action Status |
 |---|---|---|
-| **Jupyter Singleuser CPU image build** | ![CPU Image Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-basenb-test-build.yaml/badge.svg) | ![CPU Image Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-basenb-build-push.yaml/badge.svg) |
-| **Jupyter Tensorflow GPU image builds** | ![Tensorflow Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-tfgpu-test-build.yaml/badge.svg) | ![Tensorflow Image Build & Push](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-tfgpu-build-push.yaml/badge.svg) |
-| **Jupyter PyTorch GPU image builds** | ![PyTorch Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-pytgpu-test-build.yaml/badge.svg) | ![PyTorch Image Build & Push](https://github.com/NCAR/cisl-cloud/actions/workflows/jupyter-pytgpu-build-push.yaml/badge.svg) |
-| **Argo CD image builds** | ![Argo CD Test Build Status](https://github.com/NCAR/cisl-cloud/actions/workflows/argocd-repo-server-test-build.yaml/badge.svg) | ![Argo CD Image Build & Push](https://github.com/NCAR/cisl-cloud/actions/workflows/argocd-repo-server-build-push.yaml/badge.svg) |
+| Documentation Website Builds | ![GitHub Pages Status](https://github.com/NCAR/cisl-cloud/actions/workflows/pages/pages-build-deployment/badge.svg) | ![Documentation CI/CD Status](https://github.com/NCAR/cisl-cloud/actions/workflows/docs-cicd.yaml/badge.svg) |
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
 
@@ -16,22 +13,9 @@ This repository is a place for the CCPP team to push code for configurations and
 
     .github/    # GitHub Actions and Workflows
     cluster/    # Kubernetes cluster & JupyterHub deployment config files
-    images/     # Custom container image files and build instructions
     README.md   # The file you are reading now
 
 We utilize a GitFlow development strategy where changes are made to feature branches, typically dev for this repository, and pull requests are made to merge changes back in to the main branch. 
-
-## Workflow
-
-GitHub Action Workflows are in place and triggered to build images when changes are made to specific paths in the dev or main branches. These paths are currently:
-
-    configs/argocd/**
-    configs/jupyter/base-notebook/**
-    configs/jupyter/gpu-pyt-notebook/**
-    configs/jupyter/gpu-tf-notebook/**
-    configs/jupyter/rdp-notebook/**
-
-Any changes made to the docs branch will also kick of a GitHub Action workflow. 
 
 ## Docs Branch
 
