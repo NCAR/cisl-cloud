@@ -110,7 +110,7 @@ COPY packages/requirements.txt packages/cisl-cloud-base.yml /tmp/
 RUN ${CONDA_DIR}/bin/pip install --no-cache -r requirements.txt
 
 # Copy the condarc file over to define conda congiruation
-COPY --chown="${NB_UID}:${NB_GID}" configs/.condarc "${CONDA_DIR}/.condarc"
+COPY --chown="${NB_UID}:${NB_GID}" configs/.init-condarc "${CONDA_DIR}/.condarc"
 
 # Create the conda envs with mamba to increase installation speed
 RUN mamba env create --name ${CONDA_ENV} -f cisl-cloud-base.yml \
@@ -133,6 +133,9 @@ RUN sed -i 's/c.FileContentsManager.delete_to_trash = False/c.FileContentsManage
 
 # Copy default bashrc
 COPY configs/.bashrc /etc/bash.bashrc
+
+# Copy the final condarc file over to define conda congiruation
+COPY --chown="${NB_UID}:${NB_GID}" configs/.condarc "${CONDA_DIR}/.condarc"
 
 # Make the conda environments we install read only and executable for the user
 # They can run the environments but will get permission denied when trying to make changes
