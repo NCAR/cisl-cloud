@@ -1,0 +1,571 @@
+jupyterhub:
+    hub:
+        services:
+            dask-gateway:
+                display: false
+        networkPolicy:
+            egress:
+                - ports:
+                    - port: 6443
+                - to:
+                    - podSelector:
+                        matchLabels:
+                            app.kubernetes.io/name: dask-gateway
+                  ports:
+                    - port: 8000
+        extraConfig:
+            # Register Dask Gateway service and setup singleuser environment.
+            00-add-dask-gateway-values: |
+                # 1. Sets `DASK_GATEWAY__PROXY_ADDRESS` in the singleuser environment.
+                # 2. Adds the URL for the Dask Gateway JupyterHub service.
+                import os
+
+                # These are set by jupyterhub.
+                release_name = os.environ["HELM_RELEASE_NAME"]
+                release_namespace = os.environ["POD_NAMESPACE"]
+
+                if "PROXY_HTTP_SERVICE_HOST" in os.environ:
+                    # https is enabled, we want to use the internal http service.
+                    gateway_address = "http://{}:{}/services/dask-gateway/".format(
+                        os.environ["PROXY_HTTP_SERVICE_HOST"],
+                        os.environ["PROXY_HTTP_SERVICE_PORT"],
+                    )
+                    print("Setting DASK_GATEWAY__ADDRESS {} from HTTP service".format(gateway_address))
+                else:
+                    gateway_address = "http://proxy-public/services/dask-gateway"
+                    print("Setting DASK_GATEWAY__ADDRESS {}".format(gateway_address))
+
+                # Internal address to connect to the Dask Gateway.
+                c.KubeSpawner.environment.setdefault("DASK_GATEWAY__ADDRESS", gateway_address)
+                # Internal address for the Dask Gateway proxy.
+                c.KubeSpawner.environment.setdefault("DASK_GATEWAY__PROXY_ADDRESS", "gateway://traefik-{}-dask-gateway.{}:80".format(release_name, release_namespace))
+                # Relative address for the dashboard link.
+                c.KubeSpawner.environment.setdefault("DASK_GATEWAY__PUBLIC_ADDRESS", "/services/dask-gateway/")
+                # Use JupyterHub to authenticate with Dask Gateway.
+                c.KubeSpawner.environment.setdefault("DASK_GATEWAY__AUTH__TYPE", "jupyterhub")
+
+                # Adds Dask Gateway as a JupyterHub service to make the gateway available at
+                # {HUB_URL}/services/dask-gateway
+                service_url = "http://traefik-{}-dask-gateway.{}".format(release_name, release_namespace)
+                for service in c.JupyterHub.services:
+                    if service["name"] == "dask-gateway":
+                        if not service.get("url", None):
+                            print("Adding dask-gateway service URL")
+                            service.setdefault("url", service_url)
+                        break
+                else:
+                    print("dask-gateway service not found, this should not happen!")
+        config:
+            JupyterHub:
+                authenticator_class: github
+            GitHubOAuthenticator:
+                client_id: ENC[AES256_GCM,data:4NFs01vQ+bQvz6vnLRVDz/mq/K8=,iv:FFPdBlTt8FOiaNu9pIiysZgy38o4WPvRNzKUoQ6eDUU=,tag:StuWH/H+WuFvOef2omyUbQ==,type:str]
+                client_secret: ENC[AES256_GCM,data:ymtuBHIX3/Z2y+7sKQTRNzI6wDlujwVSTXNrjwLI54uSZSiIfkEMcQ==,iv:df3yuf4oj3bGiei9vLWgsyHE9AXsq8LWQX35+zQMUzY=,tag:PWZSoAGBYv7dlOOE8e4SnA==,type:str]
+                oauth_callback_url: ENC[AES256_GCM,data:Mr2aLwbyIoW5Xkl/BfbzbDeAFFvIKuBIaC4NPa9YrAF3wxKXVa6VHbRxkzxUlCuJQg==,iv:Ifz9DMagNd4USx1YL1A0m1kwJwMvos1kRARm5eoU5R8=,tag:WYfQGv4YXpzsQiqafXg64w==,type:str]
+                allowed_organizations:
+                    - ENC[AES256_GCM,data:4eyR3cfDdfPcX6W0Ck5/dQwXNnWM,iv:nTqcTee8OBw6Zc6DNkmKnBsOeYo9DULv+VBmZYR+a8U=,tag:yudYCKjIQQgHcjRKmbUX3g==,type:str]
+                scope:
+                    - read:org
+            Authenticator:
+                admin_users:
+                    - ENC[AES256_GCM,data:Lek06I1zIstv4g3Cca3sulx60JUmrWJWnAQsYrbOiQ==,iv:u5TwDSDuaG/BGW3i1SK5S5j1NwHdMZ0cFKnY88Xhoas=,tag:/6OLTCujVp8sHr2VsEXPVA==,type:comment]
+                    - ENC[AES256_GCM,data:HhKjCf2DzluVNg==,iv:1f2YX4GeetrZTkApEQvvKe8VqWxIMoXQRHt8L3FYH6M=,tag:Oqz9Y/XzetqRd8EvlE5nCw==,type:str]
+                    - ENC[AES256_GCM,data:pMXZgonFO4Jqx25PtfiexRPNDuFiY0X9g2pKaA1fcX/p0TVP,iv:WLEIAUj8WPw0gizb8sS4nCsHrB92IK0e+Ba7SSjH6QY=,tag:+Evm6vW/9TrxKf70kBgmzA==,type:comment]
+                    - ENC[AES256_GCM,data:PFEYTCdu4vlN6XWy,iv:UFOovcH+akzBjpzm9MmD5frsynagWD4V0Tgy+0FsQqo=,tag:xrWdHA+JifdRNuGTzQR74g==,type:str]
+                    - ENC[AES256_GCM,data:Wqeqb3Wp466tIClYaPjhpLDG5E/FkdekvWnFpVSz6z6PG0tvoxZF/A==,iv:0eNZyWsmF/G3258+4+8MXf1ezwd/4znN2rtCs0iDdgo=,tag:o/rxlZHn51iUwvct7W6OGA==,type:comment]
+                    - ENC[AES256_GCM,data:8Af1L0rgbFw9,iv:nTdnot/OkTPcWh8pYFWVn7M/laHN+N5LowJz/sy0xSM=,tag:AEr4u0xZkWtgiPvQo95ewQ==,type:str]
+                    - ENC[AES256_GCM,data:cD0/66hEyDkjQ9HQ0TdiOkrFbqGII1a3zMTJctAqb93Ccg==,iv:DkTEMkMMHvRwDEQWDJDmZKk1YJG4gdM/EapmyAuO8Pk=,tag:bxF80qPb5dQLnrbKhMZ//Q==,type:comment]
+                    - ENC[AES256_GCM,data:nfGPwhPdXlAaD0u0drw=,iv:ty3a7JeDRnPRwGKYcL4T1vK3tDkcAKTbO7L3XHQenqo=,tag:wnkQhvgUgThkxjiJo+TENg==,type:str]
+    proxy:
+        secretToken: ENC[AES256_GCM,data:UktTwnnzoidEIxCLeKRuG6PMczTnpomNCSg21eFt6aL244uEBTrgg5EbHRYInU2faG4SfS+2jJHWl/4483PhAg==,iv:GzxqNgxzsgq+CLksTAIww5oRGYD2dREF0pqp7fi1L00=,tag:Tzu2NdXshBnE863guWzvUw==,type:str]
+        service:
+            type: ClusterIP
+        chp:
+            networkPolicy:
+                egress:
+                    - to:
+                        - podSelector:
+                            matchLabels:
+                                app.kubernetes.io/name: dask-gateway
+                      ports:
+                        - port: 8000
+    singleuser:
+        networkPolicy:
+            egress:
+                - to:
+                    - podSelector:
+                        matchLabels:
+                            app.kubernetes.io/name: dask-gateway
+                  ports:
+                    - port: 8000
+        extraEnv:
+            DASK_GATEWAY__CLUSTER__OPTIONS__IMAGE: '{{JUPYTER_IMAGE_SPEC}}'
+            # About DASK_ prefixed variables we set:
+            #
+            # 1. k8s native variable expansion is applied with $(MY_ENV) syntax. The
+            #    order variables are defined matters though and we are under the
+            #    mercy of how KubeSpawner renders our passed dictionaries.
+            #
+            # 2. Dask loads local YAML config.
+            #
+            # 3. Dask loads environment variables prefixed DASK_.
+            #    - DASK_ is stripped
+            #    - Capitalization is ignored
+            #    - Double underscore means a nested configuration
+            #    - `ast.literal_eval` is used to parse values
+            #
+            # 4. dask-gateway and dask-distributed looks at its config and expands
+            #    expressions in {} again, sometimes only with the environment
+            #    variables as context but sometimes also with additional variables.
+            #
+            # References:
+            # - K8s expansion:     https://kubernetes.io/docs/tasks/inject-data-application/define-interdependent-environment-variables/
+            # - KubeSpawner issue: https://github.com/jupyterhub/kubespawner/issues/491
+            # - Dask config:       https://docs.dask.org/en/latest/configuration.html
+            # - Exploration issue: https://github.com/2i2c-org/infrastructure/issues/442
+            #
+            # DASK_GATEWAY__CLUSTER__OPTIONS__IMAGE makes the default worker image
+            # match the singleuser image.
+            #      DASK_GATEWAY__CLUSTER__OPTIONS__IMAGE: "$(JUPYTER_IMAGE_SPEC)"
+            # DASK_GATEWAY__CLUSTER__OPTIONS__ENVIRONMENT makes some environment
+            # variables be copied over to the worker nodes from the user nodes.
+            #DASK_GATEWAY__CLUSTER__OPTIONS__ENVIRONMENT: '$"SCRATCH_BUCKET": "$(SCRATCH_BUCKET)", "PANGEO_SCRATCH": "$(PANGEO_SCRATCH)"'
+            # DASK_DISTRIBUTED__DASHBOARD__LINK makes the suggested link to the
+            # dashboard account for the /user/<username>/<server-name> prefix in the path.
+            # JUPYTERHUB_SERVICE_PREFIX has leading and trailing slashes as appropriate
+            #DASK_DISTRIBUTED__DASHBOARD__LINK: "$(JUPYTERHUB_SERVICE_PREFIX)proxy/{port}/status"
+            #DASK_DISTRIBUTED__DASHBOARD_LINK: '/user/{JUPYTERHUB_USER}/proxy/{port}/status'
+            #DASK_DISTRIBUTED__DASHBOARD__LINK: "$(JUPYTERHUB_SERVICE_PREFIX)proxy/{{port}}/status"
+            #DASK_DISTRIBUTED__DASHBOARD__LINK: "{{JUPYTERHUB_SERVICE_PREFIX}}proxy/{{port}}/status"
+            #      DASK_DISTRIBUTED__DASHBOARD_LINK: '/user/{JUPYTERHUB_USER}/proxy/{port}/status'
+            #      DASK_GATEWAY__CLUSTER__OPTIONS__IMAGE: '{JUPYTER_IMAGE_SPEC}'
+            #      DASK_GATEWAY__CLUSTER__OPTIONS__ENVIRONMENT: '{"SCRATCH_BUCKET": "$(SCRATCH_BUCKET)"}'
+            #      DASK_DISTRIBUTED__DASHBOARD_LINK: '/user/{JUPYTERHUB_USER}/proxy/{port}/status'
+            #      DASK_LABEXTENSION__FACTORY__MODULE: 'dask_gateway'
+            #      DASK_LABEXTENSION__FACTORY__CLASS: 'GatewayCluster'
+            # DASK_GATEWAY__CLUSTER__OPTIONS__ENVIRONMENT makes some environment
+            # variables be copied over to the worker nodes from the user nodes.
+            DASK_GATEWAY__CLUSTER__OPTIONS__ENVIRONMENT: '{{"SCRATCH_BUCKET": "$(SCRATCH_BUCKET)", "PANGEO_SCRATCH": "$(PANGEO_SCRATCH)"}}'
+            # DASK_DISTRIBUTED__DASHBOARD__LINK makes the suggested link to the
+            # dashboard account for the /user/<username>/<server-name> prefix in the path.
+            # JUPYTERHUB_SERVICE_PREFIX has leading and trailing slashes as appropriate
+            DASK_DISTRIBUTED__DASHBOARD__LINK: '{{JUPYTERHUB_SERVICE_PREFIX}}proxy/{{port}}/status'
+        storage:
+            extraVolumes:
+                - name: ENC[AES256_GCM,data:MqWYzM6jBpGm0g==,iv:8mSAmKFJO36vx1TuQI1xjON6BQ9eJ7CTa6kFqJUZ04c=,tag:ohfbBmKkzzXtAD3DKnp/lA==,type:str]
+                  nfs:
+                    server: ENC[AES256_GCM,data:4POz2DhfNs6GKQlyKbAEpwk6ABIYFw==,iv:srnFIraFBx38kdI6tHatE05BKV1O2K/y28b9UYzdhR8=,tag:KJFqX8vlltm2m+0XdjZaFQ==,type:str]
+                    path: ENC[AES256_GCM,data:VkXvn1sKw2W09EKixocueNcxnA+xHSHJDbL7R/DYEA==,iv:So+0Kx/hS87oHYk8gwDnPvJ0yUNGzths0dT6riDOBK4=,tag:QcbHy4ttQBP1wQ17aL1uuA==,type:str]
+                    #ENC[AES256_GCM,data:MUWbZ0MP0USQX/kazsZGLJ17vSTBWXc4CppZIASmHJ/aYek=,iv:YJANTCwG2GqxgzdN1hsY71xLejh14A8BYhsB3+tywTU=,tag:P0t+FFaG5x/tEgOCFW914w==,type:comment]
+                    #ENC[AES256_GCM,data:3Oaay4m7dVpb83EoLvBZYw==,iv:wVR+GajwiPxjsywjmCDS7yU3uqiXjCAvUjjAtPA+Xik=,tag:BkcncQKqhoYBC6nHhFk7hw==,type:comment]
+                    #ENC[AES256_GCM,data:KJADtUNN43+s1uFcRceBArJVHl3mulODLTPhrgDqcMX/gIjYczRFZlQ=,iv:sR33tTVYpPU7azjYIJXV8EOphIa1thgkgdHp7W2TkbE=,tag:fzhqRemRZ4o7GQzqoHOdYQ==,type:comment]
+                    #ENC[AES256_GCM,data:jVMKN0OHIIIMHnbVqBajMSjlGmI5p2s7Oz1CquFh4zOEEJbzyTMpnIYqVw==,iv:tGDG8/A+0UKZVvyQoVlJ7s78JI03Y39lHimoDp41Gw0=,tag:Pbs74xCSAExjGxDvwbD3Xw==,type:comment]
+                - name: ENC[AES256_GCM,data:UOAVtREx2ck=,iv:W4DlF95eaG8/FtGcsMfManeD90z268FMLVvbFZmrjfw=,tag:Z7ogmFO/8wFR8sPdJ5Y7NA==,type:str]
+                  nfs:
+                    server: ENC[AES256_GCM,data:MBaf3+DUhdZbRxM27SNiC1Q=,iv:5CW7qDYO+qzpVytcK1wD7B1BI9YYpb6MkKjp6L0UhP8=,tag:XFiRUBYxc2yorT0A4jXtzg==,type:str]
+                    path: ENC[AES256_GCM,data:lNArZSJZJEgIuVY=,iv:oRHqrT8lRhzq50NUknm/eww3uttjeumkvY+t8YVUh6Y=,tag:2OZyUf9UwNmOWrkOm42qiA==,type:str]
+            extraVolumeMounts:
+                - name: ENC[AES256_GCM,data:2yzshnudJZyjPw==,iv:1ai4st8g/rQ3fycTuLcFuyzd66VSEvaAzFGsP7EN9sE=,tag:GCdTnkUmIgSYx/kGarhsnw==,type:str]
+                  mountPath: ENC[AES256_GCM,data:K0dYAohrLzCx2pz2ui2p+jJebw==,iv:dC4tyJ4zNnDQZhni7grd6eI9/a2ZOS6bV5ynME7A1hU=,tag:9XtApNkw3sG/ikbHtyTMhA==,type:str]
+                  readOnly: ENC[AES256_GCM,data:nadq4A==,iv:tL4qrHCtT1mPIsIUbQazYsoHSf2uUORK+6SNTigdxDc=,tag:tQTlErzMNCHB68d09idpmA==,type:bool]
+                  #ENC[AES256_GCM,data:pTArUf8EATZ5m2w6XWfoPX/TqwCXCpBTPlbAE4/pAODDJ34=,iv:sOh//l0wnadHTcPxQyDYQaFuD3L7TmV0DG/6knLfiNw=,tag:s4W0g7htFQJounW1WpdNUA==,type:comment]
+                  #ENC[AES256_GCM,data:Ezot2rSm3m+kNAdaExmAa0ipbld/qQewoihOgGL09BgOOdqYd688faI=,iv:7eJhpw73mzFBZDnjZ5TY7OsyFoWPb8v17yYk+sFTQ6w=,tag:csMM0cNqZ0d9Fol/YzP9nw==,type:comment]
+                  #ENC[AES256_GCM,data:/S1cSOBbCwEqrCVi7biq/MCi5iVKjVqLdZI=,iv:PYXW7AK+ZJCar99hIYvbSJFZl/WCbGH/p7WPRHpwYWs=,tag:xtZ6lWhC6jOb0bbDkPi9sw==,type:comment]
+                - name: ENC[AES256_GCM,data:+5Xv2yKZqQI=,iv:6UypulVr11SsPqcuv/OlC/n4vy0vPC8q/gRKQ5HVUzo=,tag:GR9XtNB1S477UyzlwGp/yQ==,type:str]
+                  mountPath: ENC[AES256_GCM,data:dAJmF9ZRYaQ5FthOvqZh,iv:1JJ/eR8kfEKHyb/e6b0DLSPop6awYUvY27v573dcDJo=,tag:q3HniSq1rDESdiHC1tOW3Q==,type:str]
+                  readOnly: ENC[AES256_GCM,data:uFJ+WA==,iv:OeHggcF3MXv1q+ZbVaawsqIqjyzeyDuSCQsfzCOrk6k=,tag:1eSNRa9MoTWgSzBX2L3HEQ==,type:bool]
+        image:
+            # image choice preliminary and is expected to be setup via
+            # https://ncar-cisl.2i2c.cloud/services/configurator/ by the community
+            #
+            # pangeo/pangeo-notebook is maintained at: https://github.com/pangeo-data/pangeo-docker-images
+            #name: pangeo/pangeo-notebook
+            #tag: "2024.01.15"
+            name: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-base
+            tag: 2024-06-06.17
+        profileList:
+            # NOTE: About node sharing
+            #
+            #       CPU/Memory requests/limits are actively considered still. This
+            #       profile list is setup to involve node sharing as considered in
+            #       https://github.com/2i2c-org/infrastructure/issues/2121.
+            #
+            #       - Memory requests are different from the description, based on:
+            #         whats found to remain allocate in k8s, subtracting 1GiB
+            #         overhead for misc system pods, and transitioning from GB in
+            #         description to GiB in mem_guarantee.
+            #       - CPU requests are lower than the description, with a factor of
+            #         10%.
+            #
+            - display_name: NSF NCAR CPU Notebook
+              description: Start a container with the chosen specifications
+              slug: ncarcpu
+              default: true
+              profile_options:
+                requests:
+                    # NOTE: Node share choices are in active development, see comment
+                    #       next to profileList: above.
+                    display_name: Resource Selection
+                    choices:
+                        mem_1:
+                            default: true
+                            display_name: ~1 GB, ~0.125 CPU
+                            kubespawner_override:
+                                mem_guarantee: 0.904G
+                                cpu_guarantee: 0.013
+                        mem_4:
+                            display_name: ~4 GB, ~0.5 CPU
+                            kubespawner_override:
+                                mem_guarantee: 1.809G
+                                cpu_guarantee: 0.025
+                        mem_16:
+                            display_name: ~16 GB, ~2.0 CPU
+                            kubespawner_override:
+                                mem_guarantee: 14.469G
+                                cpu_guarantee: 0.5
+              kubespawner_override:
+                #image: "hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-base:2024-04-23.19"
+                #imagePullSecrets: ["harbor-k8s-jupyter"]
+                mem_limit: null
+                cpu_limit: null
+                #        node_selector:
+                #          node.kubernetes.io/instance-type: r5.xlarge
+            - display_name: NSF NCAR GPU Notebooks
+              slug: ncargpu
+              description: Start a container with access to GPU hardware
+              profile_options:
+                image:
+                    display_name: Image
+                    choices:
+                        ncartensor:
+                            display_name: NCAR Tensorflow ML Notebook
+                            slug: ncartensor
+                            kubespawner_override:
+                                image: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-tf:2024-04-24.14
+                                #imagePullSecrets: ["harbor-k8s-jupyter"]
+                        ncarpytorch:
+                            display_name: NCAR Pytorch ML Notebook
+                            slug: ncarpytorch
+                            kubespawner_override:
+                                image: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-gpu-pyt:2024-04-23.18
+                                #imagePullSecrets: ["harbor-k8s-jupyter"]
+              kubespawner_override:
+                mem_limit: null
+                mem_guarantee: 14G
+                environment:
+                    #NVIDIA_DRIVER_CAPABILITIES: compute,utility,graphics
+                    NVIDIA_DRIVER_CAPABILITIES: all
+                    ##        node_selector:
+                    ##          node.kubernetes.io/instance-type: g4dn.xlarge
+                extra_pod_config:
+                    runtimeClassName: nvidia
+                extra_resource_limits:
+                    nvidia.com/gpu: "1"
+            - display_name: NSF NCAR Remote Desktop
+              description: Start a container with the chosen specifications
+              slug: ncardesktop
+              profile_options:
+                requests:
+                    # NOTE: Node share choices are in active development, see comment
+                    #       next to profileList: above.
+                    display_name: Resource Selection
+                    choices:
+                        mem_1:
+                            default: true
+                            display_name: ~1 GB, ~0.125 CPU
+                            kubespawner_override:
+                                mem_guarantee: 0.904G
+                                cpu_guarantee: 0.013
+                        mem_4:
+                            display_name: ~4 GB, ~0.5 CPU
+                            kubespawner_override:
+                                mem_guarantee: 1.809G
+                                cpu_guarantee: 0.025
+                        mem_16:
+                            display_name: ~16 GB, ~2.0 CPU
+                            kubespawner_override:
+                                mem_guarantee: 14.469G
+                                cpu_guarantee: 0.5
+              kubespawner_override:
+                image: hub.k8s.ucar.edu/cislcloudpilot/cisl-cloud-rdp:2024-04-23.16
+                #imagePullSecrets: ["harbor-k8s-jupyter"]
+                mem_limit: null
+                cpu_limit: null
+                extra_pod_config:
+                    runtimeClassName: nvidia
+                extra_resource_limits:
+                    nvidia.com/gpu: "1"
+            - display_name: Pangeo Notebook
+              description: Start a container with the chosen specifications on a node of this type
+              slug: pangeo
+              default: false
+              profile_options:
+                requests:
+                    # NOTE: Node share choices are in active development, see comment
+                    #       next to profileList: above.
+                    display_name: Container Selection
+                    choices:
+                        mem_1:
+                            default: true
+                            display_name: ~1 GB, ~0.125 CPU
+                            kubespawner_override:
+                                mem_guarantee: 0.904G
+                                cpu_guarantee: 0.013
+                        mem_4:
+                            display_name: ~4 GB, ~0.5 CPU
+                            kubespawner_override:
+                                mem_guarantee: 1.809G
+                                cpu_guarantee: 0.025
+                        mem_16:
+                            display_name: ~16 GB, ~2.0 CPU
+                            kubespawner_override:
+                                mem_guarantee: 14.469G
+                                cpu_guarantee: 0.5
+              kubespawner_override:
+                cpu_limit: null
+                mem_limit: null
+            - display_name: Pangeo GPU
+              slug: gpu
+              description: Start a container with access to GPU hardware
+              profile_options:
+                image:
+                    display_name: Image
+                    choices:
+                        tensorflow:
+                            display_name: Pangeo Tensorflow ML Notebook
+                            slug: tensorflow
+                            kubespawner_override:
+                                image: pangeo/ml-notebook:2024.01.15
+                        pytorch:
+                            display_name: Pangeo PyTorch ML Notebook
+                            slug: pytorch
+                            kubespawner_override:
+                                image: pangeo/pytorch-notebook:2024.01.15
+              kubespawner_override:
+                mem_limit: null
+                mem_guarantee: 14G
+                environment:
+                    #NVIDIA_DRIVER_CAPABILITIES: compute,utility,graphics
+                    NVIDIA_DRIVER_CAPABILITIES: all
+                    ##        node_selector:
+                    ##          node.kubernetes.io/instance-type: g4dn.xlarge
+                extra_pod_config:
+                    runtimeClassName: nvidia
+                extra_resource_limits:
+                    nvidia.com/gpu: "1"
+    ingress:
+        enabled: true
+        annotations:
+            nginx.ingress.kubernetes.io/proxy-body-size: 600m
+            nginx.org/client-max-body-size: 10m
+            nginx.ingress.kubernetes.io/proxy-read-timeout: "1800"
+            nginx.ingress.kubernetes.io/proxy-send-timeout: "1800"
+            nginx.ingress.kubernetes.io/rewrite-target: /
+            nginx.ingress.kubernetes.io/secure-backends: "true"
+            nginx.ingress.kubernetes.io/ssl-redirect: "true"
+            nginx.ingress.kubernetes.io/websocket-services: proxy-public
+            nginx.org/websocket-services: proxy-public
+            cert-manager.io/cluster-issuer: incommon
+        ingressClassName: nginx
+        hosts:
+            - ENC[AES256_GCM,data:MWHwLbc9mYuAavtnNTjuTZ3ZxTVMqQ==,iv:UdY7q4E1huPpLMefEPoajMejFPVmXHjWiDFzw2b9uYg=,tag:bieBnvI6jhcvtzUjH4/XJA==,type:str]
+        tls:
+            - hosts:
+                - ENC[AES256_GCM,data:YCSAtHi16UoRqBF97JnfALlaNavmtA==,iv:JowoMS8fcsNiGo/bNPHSlnzDMpOTDnUa2QhyP4rUi2Q=,tag:lsqfkbYEA1PqP1YU24amEQ==,type:str]
+              secretName: ENC[AES256_GCM,data:Gtak+zqZoxKivDeiQZ2+zHOcWg==,iv:QeKK+Fx5s2QblPcEj0iWdl+mBULGvZbQusS8rb/WKLI=,tag:fTydbW5NGJPEa5awes2Paw==,type:str]
+dask-gateway:
+    # Enabling dask-gateway will install Dask Gateway as a dependency.
+    enabled: true
+    # Futher Dask Gateway configuration goes here
+    # See https://github.com/dask/dask-gateway/blob/master/resources/helm/dask-gateway/values.yaml
+    gateway:
+        backend:
+            scheduler:
+                extraPodConfig: null
+                #          serviceAccountName: user-sa
+                #          tolerations:
+                #            # Let's put schedulers on notebook nodes, since they aren't ephemeral
+                #            # dask can recover from dead workers, but not dead schedulers
+                #            - key: "hub.jupyter.org/dedicated"
+                #              operator: "Equal"
+                #              value: "user"
+                #              effect: "NoSchedule"
+                #            - key: "hub.jupyter.org_dedicated"
+                #              operator: "Equal"
+                #              value: "user"
+                #              effect: "NoSchedule"
+                #          nodeSelector:
+                #            k8s.dask.org/node-purpose: scheduler
+                cores:
+                    request: 0.01
+                    limit: 1
+                memory:
+                    request: 128M
+                    limit: 1G
+            worker:
+                extraContainerConfig:
+                    securityContext:
+                        runAsGroup: 1000
+                        runAsUser: 1000
+                    volumeMounts:
+                        - name: campaign
+                          mountPath: /glade/campaign
+                          readOnly: true
+                extraPodConfig:
+                    #          serviceAccountName: user-sa
+                    securityContext:
+                        fsGroup: 1000
+                    volumes:
+                        - name: campaign
+                          nfs:
+                            server: gladedm1.ucar.edu
+                            path: /gpfs/csfs1
+        #          tolerations:
+        #            - key: "k8s.dask.org/dedicated"
+        #              operator: "Equal"
+        #              value: "worker"
+        #              effect: "NoSchedule"
+        #            - key: "k8s.dask.org_dedicated"
+        #              operator: "Equal"
+        #              value: "worker"
+        #              effect: "NoSchedule"
+        #          nodeSelector:
+        #            # Dask workers get their own pre-emptible pool
+        #            k8s.dask.org/node-purpose: worker
+        # TODO: figure out a replacement for userLimits.
+        extraConfig:
+            optionHandler: |
+                from dask_gateway_server.options import Options, Integer, Float, String, Mapping
+                import string
+
+                # Escape a string to be dns-safe in the same way that KubeSpawner does it.
+                # Reference https://github.com/jupyterhub/kubespawner/blob/616f72c4aee26c3d2127c6af6086ec50d6cda383/kubespawner/spawner.py#L1828-L1835
+                # Adapted from https://github.com/minrk/escapism to avoid installing the package
+                # in the dask-gateway api pod which would have been problematic.
+                def escape_string_label_safe(to_escape):
+                    safe_chars = set(string.ascii_lowercase + string.digits)
+                    escape_char = "-"
+                    chars = []
+                    for c in to_escape:
+                        if c in safe_chars:
+                            chars.append(c)
+                        else:
+                            # escape one character
+                            buf = []
+                            # UTF-8 uses 1 to 4 bytes per character, depending on the Unicode symbol
+                            # so we need to transform each byte to its hex value
+                            for byte in c.encode("utf8"):
+                                buf.append(escape_char)
+                                # %X is the hex value of the byte
+                                buf.append('%X' % byte)
+                            escaped_hex_char = "".join(buf)
+                            chars.append(escaped_hex_char)
+                    return u''.join(chars)
+
+                def cluster_options(user):
+                    safe_username = escape_string_label_safe(user.name)
+                    def option_handler(options):
+                        if ":" not in options.image:
+                            raise ValueError("When specifying an image you must also provide a tag")
+                        scheduler_extra_pod_annotations = {
+                            "hub.jupyter.org/username": safe_username,
+                            "prometheus.io/scrape": "true",
+                            "prometheus.io/port": "8787",
+                        }
+                        extra_labels = {
+                            "hub.jupyter.org/username": safe_username,
+                        }
+                        return {
+                            "worker_cores_limit": options.worker_cores,
+                            "worker_cores": options.worker_cores,
+                            "worker_memory": "%fG" % options.worker_memory,
+                            "image": options.image,
+                            "scheduler_extra_pod_annotations": scheduler_extra_pod_annotations,
+                            "scheduler_extra_pod_labels": extra_labels,
+                            "worker_extra_pod_labels": extra_labels,
+                            "environment": options.environment,
+                        }
+                    return Options(
+                        Integer("worker_cores", 4, min=1, label="Worker Cores"),
+                        Float("worker_memory", 8, min=1, label="Worker Memory (GiB)"),
+                        # The default image is set via DASK_GATEWAY__CLUSTER__OPTIONS__IMAGE env variable
+                        String("image", label="Image"),
+                        Mapping("environment", {}, label="Environment Variables"),
+                        handler=option_handler,
+                    )
+                c.Backend.cluster_options = cluster_options
+            idle: |
+                # timeout after 30 minutes of inactivity
+                c.KubeClusterConfig.idle_timeout = 1800
+        # Users connect to the Gateway through the JupyterHub service.
+        prefix: /services/dask-gateway
+        auth:
+            # Use JupyterHub to authenticate with Dask Gateway
+            type: jupyterhub
+    traefik:
+        #    nodeSelector:
+        #      k8s.dask.org/node-purpose: core
+        service:
+            # Access Dask Gateway through JupyterHub. To access the Gateway from outside JupyterHub, this must be changed to a `LoadBalancer`.
+            type: ClusterIP
+        dashboard: true
+# A placeholder as global values that can be referenced from the same location
+# of any chart should be possible to provide, but aren't necessarily provided or
+# used.
+#global: {}
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1ucetgj7k3whaqf9nulacsqarur6nrgzuyt59apeptu5cphd6ksdsqpy5he
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSAreFJkT1Bpa1lvSFhEa1lo
+            aEZ5QzBiekt6dHdTRkE4U1BXVmlPMDFtZGhRCkdjSURBZ1cveGIxQW1VQ2JWUi9J
+            Mm9xV1Fib2ZqSWFhZlREdmZBakZNTG8KLS0tIG91YTl2b3hid0Q5aHdMaUk5blZq
+            bWFicjJUcnU3YWRaYlZHL0pnVDlzdW8KQ+0hK9LkS3qALwE7P4xcry/2VmDodg24
+            GIuNdY40NOjqjMOvuQEtukSW0uOEannvgHfRb6ZXG8xH4fsB3tJmQw==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1dnkv8vy8xkl5afwuwl55ycpquy2uk7ypc5ad87sfug2zffp6jgkqwwzglr
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBOaWhmUWVtZWFWMTRtQklx
+            blVndWZ2ekFlN1RCZ2tsSWhvRHpsU0tlbGtnCndqcmgxemZTMmMwVkVhVTNWZkpq
+            Y0xURUVpRi9SL0MwNWdaNUtQU0doYXMKLS0tIGRpSGFDajJUVEw3SXBSUUZSUTRx
+            K3ladVhFMEg2bDhKVm9UVWpTUE85NDAKCY/Vx00B+6gAfBKdOA1xhpZTWyLUiXLX
+            TSvHB+8WvA3tckIh6UgnygdoZM+gUR02vuG7yPKEa0hazPXlN/qe7Q==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1wt75fkqsa2ngrhtmr7ws2ve8v9h2463hryj4jk4k7m5khxmc9pgqgqag8x
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBDd1JZOEVqRzRMRUdiTWpZ
+            NmlROXpTSUlYRzV2YjRlK2RPMkxjbS9Hemg0Cm1PTE96aWR0bUJ3aUJlVDdPRm1F
+            cmpvdERzb1hhQ0wrQXRSSGNITFRKNncKLS0tIHQwakpCSzRyTzhjSlVDWEFRR3I3
+            Y3ZJVWliUStveG02MGlRa0srbGxUUDAKKXxTG6jzVEdjtz2e72qP5WFkMhOZcvAg
+            t1xMdlWkb5LHu3pQ0KAVb3eHtXfYn6SahdSAoxegSfHzNUrbQgz3Aw==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1fqw4znyl0zjpw5ta7ll3auxpzg8dme578jgw43a0dtzjhwjn4qlstaez7c
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBLdDBZNXpHM1p0aFc2WXBL
+            dVB6M3crcUU2RGdFOVZQTERvVk90NS8xNW00CnJwcUxId1NtT1pTMnhtR1B0SzJH
+            WWVNY1FnVFlwUytvaHo2c2ZyNFJseU0KLS0tIHJwT0xDem0zN2ptQzhzNkM2c3lm
+            VCs3elBSM2l4eFFKVzQ0MFNPbG9tNm8K3M/UfI/O8ohuQe7ZYxY8RNjRAQ/vZYXN
+            2fVdlw2XyGE1du3Ou0h8OJbfIf23Mj3p+n14x67/WZqmLMK9z7fk7Q==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1m2ay7zlek6d4uctt09vsw5l8gpydjlvu9xemv8pqh97urdmhhyrsh9qe86
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB4S3hVaW9hYThXSTVlamZw
+            UEIxSEx2UFJZMTltMkNVNnVSck9zQmI0Y3lRCnJlYUJUSElWMS9Yc25XditwWnZN
+            Z3hFK2t3NUx4dmdPZlZxRnhwcmExNlEKLS0tIDc5SWxhTFZ6R0xUMERSYnZ2L3F6
+            Q1pKL1ppdVkzcDRKTmF5RHhmeitTSGMKcNcs5zq0tfbB691vwHpchPyEITYHOOs0
+            XrPezSwfjJfSBrKev22W2DXZMVK0T9q0+g82voQeI5PaLfiFuRo86Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-06-06T18:59:45Z"
+    mac: ENC[AES256_GCM,data:0Xp9JG79ezA+FEI2z+JAC9sd/uQ/6LTTSGwJ5iBk/dMk0ZdWMFW9rwSSZUEpaYAmafL3R34W2HWPFmHSLqVcrAwE/U0gxYzr/sysTkJ6lnwHMTMqQ83G2RNBrm0eS6ENZFA9NnJzujMP1yRMyw0a4xSougGwPD22HaWysNU4J4U=,iv:EfZHGHhp7v+4KEw3WIeqJbwCv4bIv+ki0lV6reYfeMQ=,tag:H1EfIvw8O1ofdGk8rksjAA==,type:str]
+    pgp: []
+    encrypted_regex: ^(client_id|client_secret|secretToken|admin_users|oauth_callback_url|allowed_organizations|extraVolumes|extraVolumeMounts|hosts|secretName)$
+    version: 3.8.1
