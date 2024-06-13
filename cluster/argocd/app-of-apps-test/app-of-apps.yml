@@ -7,8 +7,8 @@ spec:
     name: in-cluster
     namespace: ali-grafana
   source:
-    path: cluster/argocd/app-of-apps-test
-    repoURL: 'https://github.com/NCAR/cisl-cloud'
+    path: apps
+    repoURL: 'https://github.com/NCAR/cisl-cloud/tree/argo-app-of-app/cluster/argocd/app-of-apps-test'
     targetRevision: argo-app-of-app
   project: default
   # syncPolicy:
