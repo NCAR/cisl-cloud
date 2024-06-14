@@ -1,0 +1,17 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/NCAR/cisl-cloud.git
+    targetRevision: HEAD
+
+argo-cd:
+  enable: false
+harbor:
+  enable: false
+ingress-nginx:
+  enable: false
+monitoring:
+  enable: false
+kured:
+  enable: false

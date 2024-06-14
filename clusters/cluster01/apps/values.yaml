@@ -1,0 +1,12 @@
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+  source:
+    repoURL: https://github.com/NCAR/cisl-cloud.git
+    targetRevision: HEAD
+binderhub:
+  enable: false
+jhub-test:
+  enable: false
+jupyterhub:
+  enable: false

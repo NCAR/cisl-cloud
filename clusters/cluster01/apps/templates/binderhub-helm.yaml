@@ -1,0 +1,25 @@
+{{- if .Values.binderhub.enable }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: binderhub
+  namespace: argocd
+spec:
+  destination:
+    namespace: binderhub
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - secrets://clusters/cluster01/values/binderhub-helm.yaml
+    path: clusters/helm-charts/binderhub
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}

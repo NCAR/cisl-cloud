@@ -1,0 +1,25 @@
+{{- if .Values.jupyterhub.enable }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jupyterhub
+  namespace: argocd
+spec:
+  destination:
+    namespace: jupyterhub
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - secrets://clusters/cluster01/values/jupyterhub-helm.yaml
+    path: clusters/helm-charts/daskhub
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}

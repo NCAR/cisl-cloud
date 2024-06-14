@@ -1,0 +1,25 @@
+{{- if .Values.kured.enable }}
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kured
+  namespace: argocd
+spec:
+  destination:
+    namespace: kured
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    helm:
+      valueFiles:
+        - secrets://clusters/cluster01/values/kured-values.yaml
+    path: clusters/helm-charts/kured
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: {{ .Values.spec.source.targetRevision }}
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
+{{- end }}
