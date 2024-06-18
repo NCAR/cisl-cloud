@@ -1,3 +1,4 @@
 docs/_build
 secret.yaml
 .DS_Store
+*.tmp.yaml

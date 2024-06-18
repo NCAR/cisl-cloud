@@ -6,6 +6,8 @@ spec:
     targetRevision: HEAD
 binderhub:
   enable: false
+cloud-docs:
+  enable: false
 jhub-test:
   enable: false
 jupyterhub:
