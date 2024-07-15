@@ -2,9 +2,9 @@
 
 :root {
     --nav-text-color: #000000;
-    --body-background-color: #ffffff;
+    --body-background-color: #dbe2e9;
     --nav-background-color: #ffffff;
-    --main-background-color: #dbe2e9;
+    --main-background-color: #ffffff;
   }
   [data-theme="dark"] {
     --nav-text-color: #ffffff;
