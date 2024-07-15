@@ -2,11 +2,13 @@
 
 :root {
     --nav-text-color: #000000;
+    --body-background-color: #ffffff;
     --nav-background-color: #ffffff;
-    --main-background-color: #ffffff;
+    --main-background-color: #dbe2e9;
   }
   [data-theme="dark"] {
     --nav-text-color: #ffffff;
+    --body-background-color: #14181e; 
     --nav-background-color: #14181e; 
     --main-background-color: #14181e; 
   }
@@ -191,7 +193,7 @@ body {
     background-image: url("NCAR-Waves.png");
     background-position: right top;
     background-repeat: no-repeat;
-    background-color: #dbe2e9;
+    background-color: var(--body-background-color);
 }
 
 /* Main Content */
