@@ -1,7 +1,11 @@
 # CISL Cloud Pilot Project
+
+
 | GitHub Action Name | Action Status | Action Status |
 |---|---|---|
 | Documentation Website Builds | ![GitHub Pages Status](https://github.com/NCAR/cisl-cloud/actions/workflows/pages/pages-build-deployment/badge.svg) | ![Documentation CI/CD Status](https://github.com/NCAR/cisl-cloud/actions/workflows/docs-cicd.yaml/badge.svg) |
+
+Jupyter Image builds have been moved to the [ccpp-jhub-images repository](https://github.com/NCAR/ccpp-jhub-images)
 
 Follow our up to date [Kanban](https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP).
 
