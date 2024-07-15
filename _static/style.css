@@ -1,13 +1,27 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
 
+:root {
+    --nav-text-color: #000000;
+    --nav-background-color: #ffffff;
+    --main-background-color: #ffffff;
+  }
+  [data-theme="dark"] {
+    --nav-text-color: #ffffff;
+    --nav-background-color: #14181e; 
+    --main-background-color: #14181e; 
+  }
+
 /* Right Side table of contents*/
 /* Done */
 
 .onthispage i, .tocsection {
-    color: #000000 !important;
     font-size: 14px;
     font-weight: 600 !important;
     text-transform: uppercase;
+}
+
+.bd-page-width {
+    max-width: 75%;
 }
 
 .toc-entry a {
@@ -22,29 +36,34 @@
 }
 
 .section-nav {
-    color: #ffffff !important;
+    color: var(--nav-text-color) !important;
 }
 
 /* The navbar */
 /* DONE */
 /* The top level navbar */
 #navbar-main {
-    background-color: #ffffff !important;
+    background-color: var(--nav-background-color) !important;
     text-transform: uppercase;
     font-weight: 700;
 }     
 
 /* Links inside the navbar */
 #navbar-main a {
-    color: #000000;
+    color: var(--nav-text-color);
     font-family: 'Poppins', Arial, sans-serif !important;
     font-size: 16px;
     margin: 0;
 }
 
+.chevron {
+    color: var(--nav-text-color);
+}
+
 /* Dropdown buttons inside the navbar */
 .dropbtn {
     border: none;
+    color: var(--nav-text-color);
     outline: none;
     background-color: inherit;
     text-transform: uppercase;
@@ -178,7 +197,7 @@ body {
 /* Main Content */
 
 #main-content {
-    background-color: #ffffff !important;
+    background-color: var(--main-background-color) !important;
 }
 
 /* HEADERS */
