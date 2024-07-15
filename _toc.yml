@@ -141,9 +141,9 @@ parts:
       - file: slas/slas
         sections:
         - title: GLADE
-          file: https://arc.ucar.edu/knowledge_base/68878466
+          url: https://arc.ucar.edu/knowledge_base/68878466
         - title: Stratus
-          file: https://arc.ucar.edu/knowledge_base/70549594
+          url: https://arc.ucar.edu/knowledge_base/70549594
         - title: 2i2c JupyterHub
           url: https://docs.2i2c.org/support/
   - caption: Contact Us
