@@ -1,5 +1,5 @@
-NSF NCAR | CISL Cloud
-=======================
+NSF NCAR CISL Cloud Pilot
+=================================
 
 .. banner::
    :image: images/cirrus.png
@@ -7,9 +7,9 @@ NSF NCAR | CISL Cloud
    :class: dark-banner
 
 
-This is the NSF NCAR | CISL Cloud Gateway. We host dependable storage, compute, and networking resources operated 
+This is the NSF NCAR CISL Cloud Gateway. We host dependable storage, compute, and networking resources operated 
 and maintained by CISL staff that are highly available to the NSF NCAR community. This project and the services run on it
-are still in a introductory pilot phase. As such, there are currently no well defined SLAs as active development is ongoing. 
+are still in a introductory pilot phase. 
 
 .. raw:: html
 
@@ -18,6 +18,76 @@ are still in a introductory pilot phase. As such, there are currently no well de
        Getting Started on the Cloud
      </a>
    </span>
+
+Resources
+------------------------
+
+NSF UCAR Network Access Required
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <span class="d-flex justify-content-center py-4">
+      <figure>
+        <a href="https://hub.k8s.ucar.edu/">
+          <img src="_static/harbor/harbor.png">
+        <figcaption style="text-align:center">Harbor - Container Registry</figcaption>
+        </a>
+        <figcaption style="text-align:center">For more information, see <br> <a href="how-to/harbor/harbor-intro.html">Harbor - Container Registry</a></figcaption>
+      </figure>
+      <figure>
+        <a href="how-to/K8s/Hosting/deploy">
+          <img src="_static/argo/argo.png">
+        </a>
+        <figcaption style="text-align:center">Argo CD</figcaption>
+        <figcaption style="text-align:center">For more information, see <br> <a href="how-to/K8s/Hosting/deploy">Deploy your application</a></figcaption>
+      </figure>
+      <figure>
+      <a href="https://stratus-admin.ucar.edu:10443/asview">
+        <img src="_static/stratus.png">
+        <figcaption style="text-align:center">Stratus Object Storage</figcaption>
+      </a>
+        <figcaption style="text-align:center">For more information, see <br> <a href="how-to/Stratus/stratus-intro.html">Introduction to Stratus</a></figcaption>
+      </figure>
+    </span>
+    <span class="d-flex justify-content-center py-4">
+      <figure>
+      <a href="https://jupyter.k8s.ucar.edu/">
+        <img src="_static/jhub-logo.png">
+        <figcaption style="text-align:center">Kubernetes (K8s) JupyterHub</figcaption>
+      </a>
+        <figcaption style="text-align:center">For more information, see <br> <a href="how-to/k8sJH/k8sJH-intro.html">Using the NSF NCAR K8s JupyterHub</a></figcaption>
+      </figure>
+      <figure>
+      <a href="https://binder.k8s.ucar.edu/">
+        <img src="_static/binder/binder-logo.png">
+        <figcaption style="text-align:center">K8s Binder</figcaption>
+      </a>
+        <figcaption style="text-align:center">For more information, see <br> <a href="how-to/binderhub/binderhub.html">Using the NSF NCAR K8s Binder</a></figcaption>
+      </figure>
+      <figure>
+        <a href="https://jupyterhub.hpc.ucar.edu/">
+          <img src="_static/jhub-logo.png">
+          <figcaption style="text-align:center">HPC JupyterHub</figcaption>
+        </a>
+        <figcaption style="text-align:center">For more information, see <br> <a href="https://arc.ucar.edu/knowledge_base/70549913">JupyterHub at NCAR</a></figcaption>
+      </figure>
+    </span>
+   
+Publicly Accessible
+^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+  <span class="d-flex justify-content-center py-4">
+    <figure>
+      <a href="https://ncar-cisl.2i2c.cloud/">
+        <img src="_static/jhub-logo.png">
+        <figcaption style="text-align:center">2i2c JupyterHub</figcaption>
+      </a>
+        <figcaption style="text-align:center">For more information, see <br> <a href="how-to/2i2cJH/2i2cJH-intro.html">Using the 2i2c JupyterHub</a></figcaption>
+    </figure>
+  </span>
 
 Information
 ------------------------
@@ -37,74 +107,7 @@ the risk of loss but also provides a structured approach to version control, col
 changes. This proactive approach becomes particularly valuable in mitigating potential disruptions, allowing for the seamless 
 reproduction of work in the event of an outage in our pre-production services. 
 
-Resources
-------------------------
 
-NSF UCAR Network Access Required
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-.. raw:: html
-
-    <span class="d-flex justify-content-center py-4">
-      <a href="https://hub.k8s.ucar.edu/">
-      <figure>
-        <img src="_static/harbor/harbor.png">
-        <figcaption style="text-align:center">Harbor Container Registry</figcaption>
-        <figcaption style="text-align:center"><a href="how-to/K8s/harbor/harbor-intro.html">Link to Docs</a></figcaption>
-      </figure>
-      </a>
-      <a href="how-to/K8s/Hosting/deploy">
-      <figure>
-        <img src="_static/argo/argo.png">
-        <figcaption style="text-align:center">Argo CD Docs</figcaption>
-      </figure>
-      </a>
-      <a href="https://stratus-admin.ucar.edu:10443/asview">
-      <figure>
-        <img src="_static/stratus.png">
-        <figcaption style="text-align:center">Stratus Object Storage</figcaption>
-        <figcaption style="text-align:center"><a href="how-to/Stratus/stratus-intro.html">Link to Docs</a></figcaption>
-      </figure>
-      </a>
-    </span>
-    <span class="d-flex justify-content-center py-4">
-      <a href="https://jupyter.k8s.ucar.edu/">
-      <figure>
-        <img src="_static/jhub-logo.png">
-        <figcaption style="text-align:center">K8s JupyterHub</figcaption>
-        <figcaption style="text-align:center"><a href="how-to/k8sJH/k8sJH-intro.html">Link to Docs</a></figcaption>
-      </figure>
-      </a>
-      <a href="https://binder.k8s.ucar.edu/">
-      <figure>
-        <img src="_static/binder/binder-logo.png">
-        <figcaption style="text-align:center">K8s Binder</figcaption>
-        <figcaption style="text-align:center"><a href="how-to/binderhub/binderhub.html">Link to Docs</a></figcaption>
-      </figure>
-      </a>
-      <a href="https://jupyterhub.hpc.ucar.edu/">
-      <figure>
-        <img src="_static/jhub-logo.png">
-        <figcaption style="text-align:center">HPC JupyterHub</figcaption>
-        <figcaption style="text-align:center"><a href="https://arc.ucar.edu/knowledge_base/70549913">Link to Docs</a></figcaption>
-      </figure>
-      </a>
-    </span>
-   
-Publicly Accessible
-^^^^^^^^^^^^^^^^^^^^^^
-
-.. raw:: html
-
-   <span class="d-flex justify-content-center py-4">
-     <a href="https://ncar-cisl.2i2c.cloud/">
-     <figure>
-       <img src="_static/jhub-logo.png">
-       <figcaption style="text-align:center">2i2c JupyterHub</figcaption>
-       <figcaption style="text-align:center"><a href="how-to/2i2cJH/2i2cJH-intro.html">Link to Docs</a></figcaption>
-      </figure>
-     </a>
-   </span>
 
 Documentation
 -------------

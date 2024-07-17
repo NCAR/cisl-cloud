@@ -52,7 +52,7 @@ parts:
           - file: how-to/K8s/Rancher/create-namespace
           - file: how-to/K8s/Rancher/permissions
         - title: Harbor
-          file: how-to/K8s/harbor/install-harbor
+          file: how-to/harbor/install-harbor
         - file: how-to/K8s/Hosting/web-hosting
           title: Host web applications
           sections:
@@ -97,13 +97,13 @@ parts:
           - title: RDA Remote Access
             file: how-to/data-access/rda-remote
       - title: Container Registry
-        file: how-to/K8s/harbor/harbor-intro
+        file: how-to/harbor/harbor-intro
         sections:
         - title: Push & Pull Images
-          file: how-to/K8s/harbor/push-pull
-        - file: how-to/K8s/harbor/robot-account
+          file: how-to/harbor/push-pull
+        - file: how-to/harbor/robot-account
         - title: Vulnerability Scan
-          file: how-to/K8s/harbor/scanner
+          file: how-to/harbor/scanner
       - title: K8s JupyterHub 
         file: how-to/k8sJH/k8sJH-intro
         sections:

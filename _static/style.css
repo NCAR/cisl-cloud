@@ -2,15 +2,31 @@
 
 :root {
     --nav-text-color: #000000;
-    --body-background-color: #dbe2e9;
+    --body-background-color: #C3D7EE;
     --nav-background-color: #ffffff;
     --main-background-color: #ffffff;
+    --right-side-background-color: #ffffff;
+    --left-side-background-color: #ffffff;
+    --search-background-color: #ffffff;
+    --form-background-color: #ffffff;
+    --admonition-background-color: #ffffff;
+    --pre-background-color: #e9ecef;
+    --pre-text-color: #222222;
+    --toca-text-color: #53565A;
   }
   [data-theme="dark"] {
     --nav-text-color: #ffffff;
-    --body-background-color: #14181e; 
-    --nav-background-color: #14181e; 
-    --main-background-color: #14181e; 
+    --body-background-color: #53565A; 
+    --nav-background-color: #3b3b3d; 
+    --main-background-color: #3b3b3d; 
+    --right-side-background-color: #3b3b3d;
+    --left-side-background-color: #3b3b3d;
+    --search-background-color: #3b3b3d;
+    --form-background-color: #3b3b3d;
+    --admonition-background-color: #3b3b3d;
+    --pre-background-color: #29313d;
+    --pre-text-color: #ffffff;
+    --toca-text-color: #ffffff;
   }
 
 /* Right Side table of contents*/
@@ -27,7 +43,7 @@
 }
 
 .toc-entry a {
-    color: #53565A !important;
+    color: var(--toca-text-color) !important;
     font-size: 14px;
     font-weight: 600 !important;
 }
@@ -85,6 +101,8 @@
     height: 42.4px
 }
 
+/* Banner Page */
+
 main.banner-main div.sectionwrapper-2:nth-child(even) {
     background-color: transparent;
 }
@@ -93,7 +111,7 @@ main.banner-main div#main-content {
     background-image: url("NCAR-Waves.png") !important;
     background-position: right top;
     background-repeat: no-repeat;
-    background-color: #dbe2e9 !important;
+    background-color: var(--main-background-color) !important;
 }
 
 .navbar-collapse {
@@ -221,12 +239,13 @@ h3 {
     font-size: 1.5rem !important;
     font-weight: 700;
     color: #007fa3 !important;
+    margin: 0.75rem 0 0 !important;
 }
 
 /* Code Blocks */
-code, .rst-content tt, .rst-content code {
+code, code.literal, .rst-content tt, .rst-content code {
     overflow: scroll;
-    background-color: #e9ecef;
+    background-color: var(--pre-background-color);
     display: inline;
     padding: 4px 0px;
     padding-left: 8px;
@@ -237,8 +256,8 @@ code, .rst-content tt, .rst-content code {
 
 .pre {
     overflow: scroll;
-    background-color: #e9ecef;
-    color: #222222;
+    background-color: var(--pre-background-color);
+    color: var(--pre-text-color);
     display: inline;
     padding: 4px 0px;
     border-radius: 4px;
@@ -301,6 +320,61 @@ th p {
     border-color: #A8C700;
 }
 
-.highlight pre {
+div.highlight pre {
+    background-color: var(--pre-background-color) !important;
+    color: var(--pre-text-color) !important;
     white-space: pre-wrap;
+}
+
+/* Right Sidebar */
+.bd-sidebar-secondary {
+    background-color: var(--right-side-background-color);
+}
+
+/* Left Sidebar */
+.bd-sidebar-primary {
+    background-color: var(--left-side-background-color);
+}
+
+nav.bd-links li > a {
+    color: var(--toca-text-color) !important;
+}
+
+/* Search Bar */
+.bd-search {
+    background-color: var(--search-background-color);
+}
+
+.form-control {
+    background-color: var(--form-background-color);
+}
+
+kbd {
+    background-color: var(--form-background-color);
+}
+
+/* Admonition */
+
+div.admonition {
+    background-color: var(--admonition-background-color);
+}
+
+/* Banner Pages */
+div.section-2{
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+}
+
+main.banner-main div.section-2 h3 {
+    padding: 0.5rem 0 0.5rem 0 !important;
+}
+
+main.banner-main div.section-title{
+    padding: 0 1rem 0.5rem 1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.py-4 {
+    padding-bottom: 0.5rem !important;
+    padding-top: 0.5rem !important;
 }
