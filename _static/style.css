@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
 
 :root {
+    --bot-border-main: #012169;
     --nav-text-color: #000000;
     --body-background-color: #C3D7EE;
     --nav-background-color: #ffffff;
-    --main-background-color: #ffffff;
+    --main-background-color: #C3D7EE;
+    --main-section-background-color: #ffffff;
+    --odd-section-background-color:  #ffffff;
     --right-side-background-color: #ffffff;
     --left-side-background-color: #ffffff;
     --search-background-color: #ffffff;
@@ -13,12 +16,21 @@
     --pre-background-color: #e9ecef;
     --pre-text-color: #222222;
     --toca-text-color: #53565A;
+    --table-p-text-color: #007fa3;
+    --fig-text-color: #53565A;
+    --figa-text-color: #1A658F;
+    --h1-text-color: #1A658F;
+    --h2-text-color: #012169;
+    --h3-text-color: #007fa3;
   }
   [data-theme="dark"] {
+    --bot-border-main: #ced6dd;
     --nav-text-color: #ffffff;
     --body-background-color: #53565A; 
     --nav-background-color: #3b3b3d; 
-    --main-background-color: #3b3b3d; 
+    --main-background-color: #53565A; 
+    --main-section-background-color: #3b3b3d;
+    --odd-section-background-color:  #29313d;
     --right-side-background-color: #3b3b3d;
     --left-side-background-color: #3b3b3d;
     --search-background-color: #3b3b3d;
@@ -27,6 +39,12 @@
     --pre-background-color: #29313d;
     --pre-text-color: #ffffff;
     --toca-text-color: #ffffff;
+    --table-p-text-color: #A8C700;
+    --fig-text-color: #ced6dd;
+    --figa-text-color: #C3D7EE;
+    --h1-text-color: #ffffff;
+    --h2-text-color: #ced6dd;
+    --h3-text-color: #A8C700;
   }
 
 /* Right Side table of contents*/
@@ -103,8 +121,18 @@
 
 /* Banner Page */
 
+main.banner-main div.section-title {
+    border-bottom: 2px solid var(--bot-border-main);
+}
+
 main.banner-main div.sectionwrapper-2:nth-child(even) {
     background-color: transparent;
+    color: var(--fig-text-color) !important;
+}
+
+main.banner-main div.sectionwrapper-2:nth-child(odd) {
+    background-color: var(--odd-section-background-color) !important;
+    color: var(--fig-text-color) !important;
 }
 
 main.banner-main div#main-content {
@@ -112,6 +140,14 @@ main.banner-main div#main-content {
     background-position: right top;
     background-repeat: no-repeat;
     background-color: var(--main-background-color) !important;
+}
+
+html[data-theme=dark] .bd-content img:not(.only-dark,.dark-light) {
+    background-color: transparent !important;
+}
+
+.display-1 {
+    color: #FFFFFF !important;
 }
 
 .navbar-collapse {
@@ -211,13 +247,13 @@ body {
     background-image: url("NCAR-Waves.png");
     background-position: right top;
     background-repeat: no-repeat;
-    background-color: var(--body-background-color);
+    background-color: var(--body-background-color) !important;
 }
 
 /* Main Content */
 
 #main-content {
-    background-color: var(--main-background-color) !important;
+    background-color: var(--main-section-background-color) !important;
 }
 
 /* HEADERS */
@@ -227,18 +263,20 @@ h1 {
     text-align: center;
     font-size: 3rem !important;
     font-weight: 700;
+    color: var(--h1-text-color) !important;
 }
 
 h2 {
     text-align: center;
     font-size: 2.25rem !important;
     font-weight: 600;
+    color: var(--h2-text-color) !important;
 }
 
 h3 {
     font-size: 1.5rem !important;
     font-weight: 700;
-    color: #007fa3 !important;
+    color: var(--h3-text-color) !important;
     margin: 0.75rem 0 0 !important;
 }
 
@@ -311,7 +349,7 @@ th {
   }
 
 th p {
-    color: #000000 !important;
+    color: var(--table-p-text-color) !important;
 }
 
 /* Tabs */
@@ -377,4 +415,14 @@ main.banner-main div.section-title{
 .py-4 {
     padding-bottom: 0.5rem !important;
     padding-top: 0.5rem !important;
+}
+
+/* Figures */
+
+figcaption {
+    color: var(--fig-text-color) !important;
+}
+
+figcaption a {
+    color: var(--figa-text-color) !important;
 }
