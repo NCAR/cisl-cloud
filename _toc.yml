@@ -52,7 +52,10 @@ parts:
           - file: how-to/K8s/Rancher/create-namespace
           - file: how-to/K8s/Rancher/permissions
         - title: Harbor
-          file: how-to/harbor/install-harbor
+          file: how-to/harbor/harbor-intro
+          sections:
+          - file: how-to/harbor/install-harbor
+          - file: how-to/harbor/admin-create-user-project
         - file: how-to/K8s/Hosting/web-hosting
           title: Host web applications
           sections:
