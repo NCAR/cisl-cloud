@@ -72,6 +72,8 @@ parts:
     chapters:
       - title: Getting Started
         file: overview/getting-started
+      - title: GitHub Actions Best Practices 
+        file: how-to/github/gh-best-practices
       - title: Hosting Web Applications 
         file: how-to/K8s/Hosting/web-intro
         sections:
