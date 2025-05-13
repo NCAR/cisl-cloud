@@ -1,24 +1,67 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
 
+:root {
+    --bot-border-main: #012169;
+    --nav-text-color: #000000;
+    --body-background-color: #dbe2ea;
+    --nav-background-color: #ffffff;
+    --main-background-color: #dbe2ea;
+    --main-section-background-color: #ffffff;
+    --odd-section-background-color:  #ffffff;
+    --right-side-background-color: #ffffff;
+    --left-side-background-color: #ffffff;
+    --search-background-color: #ffffff;
+    --form-background-color: #ffffff;
+    --admonition-background-color: #ffffff;
+    --pre-background-color: #e9ecef;
+    --pre-text-color: #222222;
+    --toca-text-color: #53565A;
+    --table-p-text-color: #007fa3;
+    --fig-text-color: #53565A;
+    --figa-text-color: #1A658F;
+    --h1-text-color: #1A658F;
+    --h2-text-color: #012169;
+    --h3-text-color: #007fa3;
+  }
+  [data-theme="dark"] {
+    --bot-border-main: #ced6dd;
+    --nav-text-color: #ffffff;
+    --body-background-color: #53565A; 
+    --nav-background-color: #3b3b3d; 
+    --main-background-color: #53565A; 
+    --main-section-background-color: #3b3b3d;
+    --odd-section-background-color:  #29313d;
+    --right-side-background-color: #3b3b3d;
+    --left-side-background-color: #3b3b3d;
+    --search-background-color: #3b3b3d;
+    --form-background-color: #3b3b3d;
+    --admonition-background-color: #3b3b3d;
+    --pre-background-color: #29313d;
+    --pre-text-color: #ffffff;
+    --toca-text-color: #ffffff;
+    --table-p-text-color: #A8C700;
+    --fig-text-color: #ced6dd;
+    --figa-text-color: #C3D7EE;
+    --h1-text-color: #ffffff;
+    --h2-text-color: #ced6dd;
+    --h3-text-color: #A8C700;
+  }
+
 /* Right Side table of contents*/
 /* Done */
 
-.bd-toc {
-    background-color: #323133 !important;
-}
-
-#bd-toc-nav {
-    background-color: #323133 !important;
-}
 .onthispage i, .tocsection {
-    color: #ffffff !important;
     font-size: 14px;
     font-weight: 600 !important;
     text-transform: uppercase;
 }
 
+.bd-page-width {
+    max-width: 75%;
+}
+
 .toc-entry a {
-    color: #ffffff !important;
+    color: var(--toca-text-color) !important;
     font-size: 14px;
     font-weight: 600 !important;
 }
@@ -29,29 +72,34 @@
 }
 
 .section-nav {
-    color: #ffffff !important;
+    color: var(--nav-text-color) !important;
 }
 
 /* The navbar */
 /* DONE */
 /* The top level navbar */
 #navbar-main {
-    background-color: #ffffff !important;
+    background-color: var(--nav-background-color) !important;
     text-transform: uppercase;
     font-weight: 700;
 }     
 
 /* Links inside the navbar */
 #navbar-main a {
-    color: #000000;
+    color: var(--nav-text-color);
     font-family: 'Poppins', Arial, sans-serif !important;
     font-size: 16px;
     margin: 0;
 }
 
+.chevron {
+    color: var(--nav-text-color);
+}
+
 /* Dropdown buttons inside the navbar */
 .dropbtn {
     border: none;
+    color: var(--nav-text-color);
     outline: none;
     background-color: inherit;
     text-transform: uppercase;
@@ -71,15 +119,35 @@
     height: 42.4px
 }
 
+/* Banner Page */
+
+main.banner-main div.section-title {
+    border-bottom: 2px solid var(--bot-border-main);
+}
+
 main.banner-main div.sectionwrapper-2:nth-child(even) {
     background-color: transparent;
+    color: var(--fig-text-color) !important;
+}
+
+main.banner-main div.sectionwrapper-2:nth-child(odd) {
+    background-color: var(--odd-section-background-color) !important;
+    color: var(--fig-text-color) !important;
 }
 
 main.banner-main div#main-content {
     background-image: url("NCAR-Waves.png") !important;
     background-position: right top;
     background-repeat: no-repeat;
-    background-color: #dbe2e9 !important;
+    background-color: var(--main-background-color) !important;
+}
+
+html[data-theme=dark] .bd-content img:not(.only-dark,.dark-light) {
+    background-color: transparent !important;
+}
+
+.display-1 {
+    color: #FFFFFF !important;
 }
 
 .navbar-collapse {
@@ -106,8 +174,8 @@ main.banner-main div#main-content {
     text-decoration: none;
     font-size: 14px !important;
     font-weight: 600 !important;
+    padding: 0px 20px !important;
     text-transform: capitalize !important;
-    padding: 20px 20px !important;
 }
 
 /* Add a blue color to dropdown links on hover */
@@ -179,13 +247,13 @@ body {
     background-image: url("NCAR-Waves.png");
     background-position: right top;
     background-repeat: no-repeat;
-    background-color: #dbe2e9;
+    background-color: var(--body-background-color) !important;
 }
 
 /* Main Content */
 
 #main-content {
-    background-color: #ffffff !important;
+    background-color: var(--main-section-background-color) !important;
 }
 
 /* HEADERS */
@@ -195,24 +263,27 @@ h1 {
     text-align: center;
     font-size: 3rem !important;
     font-weight: 700;
+    color: var(--h1-text-color) !important;
 }
 
 h2 {
     text-align: center;
     font-size: 2.25rem !important;
     font-weight: 600;
+    color: var(--h2-text-color) !important;
 }
 
 h3 {
     font-size: 1.5rem !important;
     font-weight: 700;
-    color: #007fa3 !important;
+    color: var(--h3-text-color) !important;
+    margin: 0.75rem 0 0 !important;
 }
 
 /* Code Blocks */
-code, .rst-content tt, .rst-content code {
+code, code.literal, .rst-content tt, .rst-content code {
     overflow: scroll;
-    background-color: #e9ecef;
+    background-color: var(--pre-background-color);
     display: inline;
     padding: 4px 0px;
     padding-left: 8px;
@@ -223,8 +294,8 @@ code, .rst-content tt, .rst-content code {
 
 .pre {
     overflow: scroll;
-    background-color: #e9ecef;
-    color: #222222;
+    background-color: var(--pre-background-color);
+    color: var(--pre-text-color);
     display: inline;
     padding: 4px 0px;
     border-radius: 4px;
@@ -245,7 +316,6 @@ code, .rst-content tt, .rst-content code {
     border-radius: 8px;
     display: block;
     padding: .25rem .5rem;
-    cursor: pointer;
 }
 
 /* Navbar Toggler */
@@ -279,11 +349,80 @@ th {
   }
 
 th p {
-    color: #ffffff !important;
+    color: var(--table-p-text-color) !important;
 }
 
 /* Tabs */
 .sd-tab-set  > input:checked + label {
     color: #A8C700;
     border-color: #A8C700;
+}
+
+div.highlight pre {
+    background-color: var(--pre-background-color) !important;
+    color: var(--pre-text-color) !important;
+    white-space: pre-wrap;
+}
+
+/* Right Sidebar */
+.bd-sidebar-secondary {
+    background-color: var(--right-side-background-color);
+}
+
+/* Left Sidebar */
+.bd-sidebar-primary {
+    background-color: var(--left-side-background-color);
+}
+
+nav.bd-links li > a {
+    color: var(--toca-text-color) !important;
+}
+
+/* Search Bar */
+.bd-search {
+    background-color: var(--search-background-color);
+}
+
+.form-control {
+    background-color: var(--form-background-color);
+}
+
+kbd {
+    background-color: var(--form-background-color);
+}
+
+/* Admonition */
+
+div.admonition {
+    background-color: var(--admonition-background-color);
+}
+
+/* Banner Pages */
+div.section-2{
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+}
+
+main.banner-main div.section-2 h3 {
+    padding: 0.5rem 0 0.5rem 0 !important;
+}
+
+main.banner-main div.section-title{
+    padding: 0 1rem 0.5rem 1rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+.py-4 {
+    padding-bottom: 0.5rem !important;
+    padding-top: 0.5rem !important;
+}
+
+/* Figures */
+
+figcaption {
+    color: var(--fig-text-color) !important;
+}
+
+figcaption a {
+    color: var(--figa-text-color) !important;
 }

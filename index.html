@@ -1,147 +1,139 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="./" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NSF NCAR | CISL Cloud &#8212; CISL Cloud Pilot</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+    <title>NSF NCAR CISL Cloud Pilot &#8212; CISL Cloud Pilot</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
-    
-      
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-pythia-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-pythia-theme.min.css?v=e502140d" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css?v=bc89f96c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
-    <link rel="shortcut icon" href="_static/favicon.ico"/>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-7W0SHCDV52"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-7W0SHCDV52');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-7W0SHCDV52');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="icon" href="_static/favicon.ico"/>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="CISL Cloud Pilot" href="main.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="13 May 2025"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="132">
-    <div class="container-fluid" id="shim"></div>
-    <div class="container-fluid" id="banner"></div>
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main"><div class="container-xl">
-
-  <div id="navbar-start">
-    
-    
-
-<a class="navbar-brand" href="#">
-  <img src="_static/NSF-NCAR.png" class="logo" alt="logo">
-</a>
-
-
-    
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
-    <div id="navbar-center" class="mr-auto">
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="https://ncar.ucar.edu/">
+  
+  
+  
+  
+  
+    
+    
       
-      <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
+    
+    
+    <img src="_static/NSF-NCAR.png" class="logo__image only-light" alt="CISL Cloud Pilot - Home"/>
+    <script>document.write(`<img src="_static/NSF-NCAR.png" class="logo__image only-dark" alt="CISL Cloud Pilot - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
 
        
         
             
         
         <li class="nav-item">
-            <a class="nav-link nav-internal" href="main.html">Cloud Docs</a>
+            <a class="nav-link nav-internal" href="https://ncar-hpc-docs.readthedocs.io/en/latest/compute-systems/cirrus/">CIRRUS Docs</a>
         </li>    
-    
-    
-    
-        <div class="dropdown">
-        
-            
-        
-            <li class="nav-item">
-                <button class="dropbtn">
-                        Resources <i class="fa fa-chevron-down" style="color: #000000;"></i>
-                </button>
-            </li>
-            <div class="dropdown-content">
-                
-                    <a class="dropdown-link" href="https://jupyter.k8s.ucar.edu/">
-                        NCAR k8s JupyterHub
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://jupyterhub.hpc.ucar.edu/">
-                        NCAR HPC JupyterHub
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://ncar-cisl.2i2c.cloud/hub/login">
-                        2i2c AWS JupyterHub
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://hub.k8s.ucar.edu/">
-                        Harbor - Container Registry
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://rancher.k8s.ucar.edu/">
-                        Rancher
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17">
-                        Request VM
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://stratus-admin.ucar.edu:10443/asview">
-                        Stratus
-                    </a><br>
-                
-            </div>
-        </div>
     
     
        
@@ -153,167 +145,61 @@ const thebe_selector_output = ".output, .cell_output"
         </li>    
     
     
-       
-        
-            
-        
-        <li class="nav-item">
-            <a class="nav-link nav-internal" href="https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10909&customfield_10281=CCPP-108">New Request</a>
-        </li>    
-    
-    
-       
-        
-            
-        
-        <li class="nav-item">
-            <a class="nav-link nav-internal" href="https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10905">Report issue</a>
-        </li>    
-    
-    
 
-</ul>
-      </div>
+</ul></div>
       
     </div>
-
-    <div id="navbar-end">
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
+    
+    
   </div>
+  
+  
+
+  
+    <button class="sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
-    </nav>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="d-none col-12 col-md-1 col-xl-2 bd-sidebar no-sidebar"></div>
-        
-<main class="col p-0 bd-content banner-main overflow-auto" role="main">
+
+    </header>
+  <div class="container-fluid">
+    <div class="row"><main class="col p-0 bd-content banner-main overflow-auto" role="main">
   <div id="main-content" class="row">
     <div class="col p-0">
-      <div class="container-fluid sectionwrapper-1" style="background-image: url(_images/cirrus.png);"><div class="container section-1"><div class="section dark-banner" id="nsf-ncar-cisl-cloud">
-<h1 class="display-1">NSF NCAR | CISL Cloud<a class="headerlink" href="#nsf-ncar-cisl-cloud" title="Permalink to this headline">¶</a></h1>
-<p>This is the NSF NCAR | CISL Cloud Gateway. We host dependable storage, compute, and networking resources operated
-and maintained by CISL staff that are highly available to the NSF NCAR community. This project and the services run on it
-are still in a introductory pilot phase. As such, there are currently no well defined SLAs as active development is ongoing.</p>
+      <div class="container-fluid sectionwrapper-1" style="background-image: url(_images/cirrus.png);"><div class="container section-1"><section id="nsf-ncar-cisl-cloud-pilot">
+<h1 class="display-1">NSF NCAR CISL Cloud Pilot<a class="headerlink" href="#nsf-ncar-cisl-cloud-pilot" title="Link to this heading">#</a></h1>
+<p>This site is no longer maintained. The Cloud Pilot has moved to production and is called CIRRUS, Cloud Infrastructure for Remote Research, Universities, and Scientists. Use the link below to navigate to the CIRRUS production documentation.</p>
 <span class="d-flex justify-content-center py-4">
-<a class="btn btn-light btn-lg" href="overview/getting-started.html" role="button">
-    Getting Started on the Cloud
+<a class="btn btn-light btn-lg" href="https://ncar-hpc-docs.readthedocs.io/en/latest/compute-systems/cirrus/" role="button">
+    CIRRUS Docs
   </a>
 </span>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-<div class="toctree-wrapper compound">
-</div>
-</div></div><div class="section-banner-caption">Photo by Nick Cote</div></div>
-<div class="container-fluid sectionwrapper-2"><div class="container section-2"><div class="section" id="information">
-<div class="section-title-wrapper"><div class="section-title"><h2 class="display-2">Information<a class="headerlink" href="#information" title="Permalink to this headline">¶</a></h2></div></div>
+</section></div><div class="section-banner-caption">Photo by Nick Cote</div></div>
+<div class="container-fluid sectionwrapper-2"><div class="container section-2"><section id="information">
+<div class="section-title-wrapper"><div class="section-title"><h2 class="display-2">Information<a class="headerlink" href="#information" title="Link to this heading">#</a></h2></div></div>
 <p>Built with <a class="reference external" href="https://jupyterbook.org"><img alt="jbook" src="_images/jupyterbook.svg"/></a></p>
-<p>NSF NCAR received one-time funding to evaluate an on-premise (on-prem) cloud. An on-prem cloud was selected because NSF
-NCAR already has state of the art data centers with staffing in place. An on-prem cloud offers the ability to tailor the environment
-to meet the needs of the scientific community while being fully in control of access and security. Initial use cases were gathered
-from the scientific community. The services provided are tailored to address those use cases. Agile product management methods
-are also being utilized to provide users an interface to the team via a Product Owner while prioritizing and accomplishing work
-on a Kanban board.</p>
-<p>This project is still in a pre-production stage and user data stored on our services is not guaranteed, even with robust architecture.
-Ensuring the safety of important work is paramount, and one effective strategy is to back up crucial data on production
-storage or in code repositories. Leveraging tools such as Git, coupled with our on-prem storage options, not only minimizes
-the risk of loss but also provides a structured approach to version control, collaborative efforts, and efficient tracking of
-changes. This proactive approach becomes particularly valuable in mitigating potential disruptions, allowing for the seamless
-reproduction of work in the event of an outage in our pre-production services.</p>
-</div></div></div>
-<div class="container-fluid sectionwrapper-2"><div class="container section-2"><div class="section" id="resources">
-<div class="section-title-wrapper"><div class="section-title"><h2 class="display-2">Resources<a class="headerlink" href="#resources" title="Permalink to this headline">¶</a></h2></div></div>
-<div class="section" id="nsf-ucar-network-access-required">
-<h3 class="display-3">NSF UCAR Network Access Required<a class="headerlink" href="#nsf-ucar-network-access-required" title="Permalink to this headline">¶</a></h3>
-<span class="d-flex justify-content-center py-4">
-<a href="https://jupyter.k8s.ucar.edu/">
-<figure>
-<img src="_static/jhub-logo.png"/>
-<figcaption style="text-align:center">K8s JupyterHub</figcaption>
-<figcaption style="text-align:center"><a href="how-to/k8sJH/k8sJH-intro.html">Link to Docs</a></figcaption>
-</figure>
-</a>
-<a href="https://stratus-admin.ucar.edu:10443/asview">
-<figure>
-<img src="_static/stratus.png"/>
-<figcaption style="text-align:center">Stratus Object Storage</figcaption>
-<figcaption style="text-align:center"><a href="how-to/Stratus/stratus-intro.html">Link to Docs</a></figcaption>
-</figure>
-</a>
-<a href="https://jupyterhub.hpc.ucar.edu/">
-<figure>
-<img src="_static/jhub-logo.png"/>
-<figcaption style="text-align:center">HPC JupyterHub</figcaption>
-<figcaption style="text-align:center"><a href="https://arc.ucar.edu/knowledge_base/70549913">Link to Docs</a></figcaption>
-</figure>
-</a>
-</span>
-<span class="d-flex justify-content-center py-4">
-<a href="https://hub.k8s.ucar.edu/">
-<figure>
-<img src="_static/harbor.png"/>
-<figcaption style="text-align:center">Harbor Container Registry</figcaption>
-<figcaption style="text-align:center"><a href="how-to/K8s/harbor/harbor-intro.html">Link to Docs</a></figcaption>
-</figure>
-</a>
-<a href="how-to/K8s/Hosting/deploy">
-<figure>
-<img src="_static/argo.png"/>
-<figcaption style="text-align:center">Argo CD Docs</figcaption>
-</figure>
-</a>
-</span></div>
-<div class="section" id="publicly-accessible">
-<h3 class="display-3">Publicly Accessible<a class="headerlink" href="#publicly-accessible" title="Permalink to this headline">¶</a></h3>
-<span class="d-flex justify-content-center py-4">
-<a href="https://ncar-cisl.2i2c.cloud/">
-<figure>
-<img src="_static/jhub-logo.png"/>
-<figcaption style="text-align:center">2i2c JupyterHub</figcaption>
-<figcaption style="text-align:center"><a href="how-to/2i2cJH/2i2cJH-intro.html">Link to Docs</a></figcaption>
-</figure>
-</a>
-</span></div>
-</div></div></div>
-<div class="container-fluid sectionwrapper-2"><div class="container section-2"><div class="section" id="documentation">
-<div class="section-title-wrapper"><div class="section-title"><h2 class="display-2">Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2></div></div>
-<p class="text-center">Click the button below to read the CISL Cloud documentation.</p>
-<span class="d-flex justify-content-center py-4">
-<a class="btn btn-primary btn-lg" href="main.html" role="button">
-    Read the documentation
-  </a>
-</span></div></div></div>
+</section></div></div>
     </div>
   </div>
 </main>
-
-      </div>
     </div>
-  
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
-
-<footer class="footer">
-  <div class="container-fluid m-0 p-0">
-  
-    <div class="footer-item">
+  </div>
     
-    </div>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+     
   
-    <div class="footer-item">
-    <style>
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item"><style>
   @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
 </style>
 <div class="grid-x grid-padding-y footer-menu-tertiary">
@@ -328,11 +214,9 @@ reproduction of work in the event of an outage in our pre-production services.</
           <a href="https://www.ucar.edu" class="custom-footer-link">UCAR Home</a>
       </ul>
   </div>
-</div>
-    </div>
-  
-    <div class="footer-item">
-      <div class="container-fluid footer-info">
+</div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
     <div class="container-xl">
       <div class="d-flex justify-content-center">
         <p class="py-1 m-0">
@@ -340,15 +224,13 @@ reproduction of work in the event of an outage in our pre-production services.</
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 17 January 2024.
+          Last updated on 13 May 2025.
         </p>
       </div>
     </div>
-  </div>
-    </div>
-  
-    <div class="footer-item">
-    <div class="container-fluid footer-extra">
+  </div></div>
+      
+        <div class="footer-item"><div class="container-fluid footer-extra">
     <div class="container">
       <center>
         Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
@@ -369,10 +251,12 @@ reproduction of work in the event of an outage in our pre-production services.</
         </p>
       </div>
     </div>
-  </div>
+  </div></div>
+      
+      </div>
     </div>
   
-  </div>
-</footer>
+
+  </footer>
   </body>
 </html>

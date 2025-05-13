@@ -1,148 +1,139 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Getting Started on the CISL Cloud &#8212; CISL Cloud Pilot</title>
-    
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-pythia-theme.min.css?v=e502140d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
-    
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../_static/style.css?v=bc89f96c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="shortcut icon" href="../_static/favicon.ico"/>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-7W0SHCDV52"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-7W0SHCDV52');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-7W0SHCDV52');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'overview/getting-started';</script>
+    <link rel="icon" href="../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Using the NCAR K8s JupyterHub" href="../how-to/k8sJH/k8sJH-intro.html" />
-    <link rel="prev" title="Update your Argo CD Application" href="../how-to/K8s/argocd/argo-update.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="13 May 2025"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="132">
-    <div class="container-fluid" id="shim"></div>
-    <div class="container-fluid" id="banner"></div>
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main"><div class="container-xl">
-
-  <div id="navbar-start">
-    
-    
-
-<a class="navbar-brand" href="../index.html">
-  <img src="../_static/NSF-NCAR.png" class="logo" alt="logo">
-</a>
-
-
-    
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
-    <div id="navbar-center" class="mr-auto">
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="https://ncar.ucar.edu/">
+  
+  
+  
+  
+  
+    
+    
       
-      <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
+    
+    
+    <img src="../_static/NSF-NCAR.png" class="logo__image only-light" alt="CISL Cloud Pilot - Home"/>
+    <script>document.write(`<img src="../_static/NSF-NCAR.png" class="logo__image only-dark" alt="CISL Cloud Pilot - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
 
        
         
             
         
         <li class="nav-item">
-            <a class="nav-link nav-internal" href="../main.html">Cloud Docs</a>
+            <a class="nav-link nav-internal" href="https://ncar-hpc-docs.readthedocs.io/en/latest/compute-systems/cirrus/">CIRRUS Docs</a>
         </li>    
-    
-    
-    
-        <div class="dropdown">
-        
-            
-        
-            <li class="nav-item">
-                <button class="dropbtn">
-                        Resources <i class="fa fa-chevron-down" style="color: #000000;"></i>
-                </button>
-            </li>
-            <div class="dropdown-content">
-                
-                    <a class="dropdown-link" href="https://jupyter.k8s.ucar.edu/">
-                        NCAR k8s JupyterHub
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://jupyterhub.hpc.ucar.edu/">
-                        NCAR HPC JupyterHub
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://ncar-cisl.2i2c.cloud/hub/login">
-                        2i2c AWS JupyterHub
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://hub.k8s.ucar.edu/">
-                        Harbor - Container Registry
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://rancher.k8s.ucar.edu/">
-                        Rancher
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17">
-                        Request VM
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://stratus-admin.ucar.edu:10443/asview">
-                        Stratus
-                    </a><br>
-                
-            </div>
-        </div>
     
     
        
@@ -154,853 +145,146 @@ const thebe_selector_output = ".output, .cell_output"
         </li>    
     
     
-       
-        
-            
-        
-        <li class="nav-item">
-            <a class="nav-link nav-internal" href="https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10909&customfield_10281=CCPP-108">New Request</a>
-        </li>    
-    
-    
-       
-        
-            
-        
-        <li class="nav-item">
-            <a class="nav-link nav-internal" href="https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10905">Report issue</a>
-        </li>    
-    
-    
 
-</ul>
-      </div>
+</ul></div>
       
     </div>
-
-    <div id="navbar-end">
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
+    
+    
   </div>
+  
+  
+
+  
+    <button class="sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
 </div>
-    </nav>
-    <div class="container-xl">
-      <div class="row">
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
         
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+        
+        
+          
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../main.html">
-   CISL Cloud Pilot
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="services.html">
-   Work in Progress
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/agile.html">
-   Interacting w/ Cloud Team
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/create-tickets.html">
-     Create tickets
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Availability
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../availability/services.html">
-   Services
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../availability/architecture.html">
-   Architecture
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Administer the CISL Cloud
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/jupyter-book/jb-intro.html">
-   Documentation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/jupyter-book/create-jb.html">
-     Getting started
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/jupyter-book/add-jb.html">
-     Add content
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/jupyter-book/k8s-hosting.html">
-     Hosting on k8s
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../how-to/github-strategy.html">
-   GitHub Strategy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../how-to/sops-age/sops-age.html">
-   Encrypting Secrets
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/K8s/k8s-intro.html">
-   Kubernetes (k8s)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/cert-mgr.html">
-     cert-manager
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/ingress.html">
-     Ingress Controller
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/external-dns.html">
-     ExternalDNS
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/k8sJH/customize/custom.html">
-     JupyterHub
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/gpu/gpu-admin.html">
-       Setup GPUs
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/customize/customize-docker.html">
-       Customize Singleuser Image
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/customize/setup-gh-act.html">
-       GitHub Actions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/K8s/Rancher/rancher-intro.html">
-     Rancher (K8s)
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Rancher/get-kubeconfig.html">
-       Get a kubeconfig
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Rancher/cluster-access.html">
-       Accessing a k8s Cluster
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Rancher/create-namespace.html">
-       Create namespace
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Rancher/permissions.html">
-       Permissions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/harbor/install-harbor.html">
-     Harbor
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/K8s/Hosting/web-hosting.html">
-     Host web applications
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Hosting/new-user-deployment.html">
-       New User Deployment
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/Hosting/web-helm.html">
-       Helm &amp; Argo CD
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/K8s/argocd/argo-intro.html">
-     Argo CD
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-    <label for="toctree-checkbox-7">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/K8s/argocd/argo-update.html">
-       Update your Argo CD Application
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Use the CISL Cloud
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Getting Started
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/k8sJH/k8sJH-intro.html">
-   K8s JupyterHub
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/access.html">
-     Requesting Access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/user-info.html">
-     Initial Login
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/customize/env.html">
-     Conda Environments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/base-conda.html">
-     Base Conda Environments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/gpu/gpu-intro.html">
-     GPUs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/k8sJH/customize/github.html">
-     Utilizing GitHub
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/k8sJH/dask/dask-intro.html">
-     Dask
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-    <label for="toctree-checkbox-9">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/dask/dask-local.html">
-       Dask LocalCluster
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/dask/dask-gateway.html">
-       Dask Gateway
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/k8sJH/dask/dask-jobqueue.html">
-       Dask Jobqueue
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/data-access/intro.html">
-   Data Access
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/data-access/glade.html">
-     GLADE
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/Stratus/stratus-intro.html">
-     Object Storage
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-    <label for="toctree-checkbox-11">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/Stratus/stratus-access.html">
-       Access
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/Stratus/jupyter-extension.html">
-       Jupyter S3 Extension
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/Stratus/stratus-cmd.html">
-       Python Examples
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../how-to/data-access/rda.html">
-     RDA
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-    <label for="toctree-checkbox-12">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/data-access/rda-local.html">
-       RDA Local Access
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../how-to/data-access/rda-remote.html">
-       RDA Remote Access
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/K8s/harbor/harbor-intro.html">
-   Container Registry
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/harbor/push-pull.html">
-     Push &amp; Pull Images
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/harbor/scanner.html">
-     Vulnerability Scan
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/K8s/Hosting/web-intro.html">
-   Hosting Web Applications
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/deploy.html">
-     Deploy your application
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/github-actions.html">
-     GitHub Actions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/containerize.html">
-     Containerize Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/K8s/Hosting/book-image.html">
-     Containerize Jupyter Book
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../how-to/vm/vm-intro.html">
-   Virtual Machines
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
-   HPC JupyterHub
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../how-to/2i2cJH/2i2cJH-intro.html">
-   2i2c JupyterHub
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/2i2cJH/access.html">
-     Requesting Access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../how-to/2i2cJH/user-info.html">
-     User Information
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Support Agreements
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../slas/slas.html">
-   SLA’s
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../slas/glade.html">
-     GLADE
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../slas/stratus.html">
-     Stratus
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../slas/ncar-jh.html">
-     NCAR JupyterHub
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference external" href="https://docs.2i2c.org/support/">
-     2i2c JupyterHub
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Contact Us
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../contact.html">
-   Information
-  </a>
- </li>
-</ul>
-
-    </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
-Follow our <a href="https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP">Kanban board</a><br>
-Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><br>
-<a href="https://github.com/NicholasCote/jupyterbook-cisl-theme">Copy this JupyterBook layout</a><hr>
-<div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div><br>
-Theme by <a href="https://projectpythia.org/">Project Pythia</a>
-
-</div>
-
-</div>
-
+    
+      <div class="sidebar-header-items__center">
         
+          
+          
+            <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
 
-        <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main"><div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+       
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/overview/getting-started.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
+            
+        
+        <li class="nav-item">
+            <a class="nav-link nav-internal" href="https://ncar-hpc-docs.readthedocs.io/en/latest/compute-systems/cirrus/">CIRRUS Docs</a>
+        </li>    
+    
+    
+       
+        
+            
+        
+        <li class="nav-item">
+            <a class="nav-link nav-internal" href="https://www2.cisl.ucar.edu/">CISL Home</a>
+        </li>    
+    
+    
 
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/NCAR/cisl-cloud"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Foverview/getting-started.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+</ul></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
     </div>
-</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
 
         </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> On this page
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#documentation">
-   Documentation
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#jupyterhub">
-   JupyterHub
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#authentication">
-     Authentication
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#notebook-server-options">
-     Notebook/Server Options
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#custom-conda-kernels">
-       Custom Conda Kernels
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#cpu-image">
-       CPU Image
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#gpu-images">
-       GPU Images
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#git-extension">
-       Git Extension
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dask-gateway">
-       Dask Gateway
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data-access-file-sharing">
-   Data Access &amp; File Sharing
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#glade">
-     GLADE
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stratus">
-     Stratus
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#nfs-share">
-     NFS Share
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#web-visualizations">
-   Web Visualizations
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-a-container-image">
-     Creating a Container Image
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#hosting-your-container-on-k8s">
-     Hosting your Container on K8s
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#utilizing-ci-cd">
-     Utilizing CI/CD
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#container-registry">
-   Container Registry
-  </a>
- </li>
-</ul>
+        
+        <main id="main-content" class="bd-main" role="main">
+          
 
-            </nav>
-        </div>
-    </div>
-</div>
-          <div id="main-content" class="row">
-            <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-              
-              <div>
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="getting-started-on-the-cisl-cloud">
-<h1>Getting Started on the CISL Cloud<a class="headerlink" href="#getting-started-on-the-cisl-cloud" title="Permalink to this headline">¶</a></h1>
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <section class="tex2jax_ignore mathjax_ignore" id="getting-started-on-the-cisl-cloud">
+<h1>Getting Started on the CISL Cloud<a class="headerlink" href="#getting-started-on-the-cisl-cloud" title="Link to this heading">#</a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This project is still in a pre-production stage and user data stored on our services is not guaranteed. Please utilize code repositories such as GitHub and production storage systems such as GLADE, Stratus, or a public cloud option. This ensures your work is backed up while making it easier to reproduce it quickly in different environments.</p>
 </div>
 <p>The CISL Cloud is built on a container management platform known as Kubernetes(K8s). RKE2 is used to deploy K8s on servers running AlmaLinux. Microservices are utilized to provide a tool set that streamlines common tasks. Examples of common tasks that are eliminated due to these microservices are creating DNS records, assigning TLS certificates, configuring a reverse proxy, load balancing applications, scaling resources, mounting shared volumes, and providing a self healing environment that is highly available.</p>
-<div class="section" id="documentation">
-<h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<section id="documentation">
+<h2>Documentation<a class="headerlink" href="#documentation" title="Link to this heading">#</a></h2>
 <p>This documentation site is meant to include all information you may need to navigate the CISL cloud and the resources hosted on it. If you find anything that is not clear or missing please submit an issue to our GitHub repository via the open issue link that appears when you hover over the GitHub icon at the top of the page. The Report Issue link in the navbar opens a Jira ticket that also can be used to communicate a request for enhancing content.</p>
 <p>This Getting Started guide will provide a high level introduction in to each resource. More in depth details on each resource can be found on this Documentation page.</p>
-</div>
-<div class="section" id="jupyterhub">
-<h2>JupyterHub<a class="headerlink" href="#jupyterhub" title="Permalink to this headline">¶</a></h2>
-<span class="d-flex justify-content-center py-4">
-    <a href="https://jupyter.k8s.ucar.edu/">
-        <figure>
-            <img src="https://ncar.github.io/cisl-cloud/_static/jhub-logo.png">
-            <figcaption style="text-align:center">K8s JupyterHub</figcaption>
-            <figcaption style="text-align:center"><a href="how-to/k8sJH/k8sJH-intro.html">Link to Docs</a></figcaption>
-        </figure>
-    </a>
-</span><p>JupyterHub is utilized to provide a Virtual Development Environment.</p>
-<div class="section" id="authentication">
-<h3>Authentication<a class="headerlink" href="#authentication" title="Permalink to this headline">¶</a></h3>
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BIM9Hq5NZEU?si=6PXcKFM_5-ImtOmW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><p>Authentication to our JupyterHub is currently controlled via GitHub Teams. Information on how to join the GitHub team can be found at this <a class="reference internal" href="../how-to/k8sJH/access.html"><span class="doc std std-doc">how-to request access link</span></a>.</p>
-</div>
-<div class="section" id="notebook-server-options">
-<h3>Notebook/Server Options<a class="headerlink" href="#notebook-server-options" title="Permalink to this headline">¶</a></h3>
-<p>The JupyterHub uses custom notebook images controlled and maintained by the Cloud team. After logging in you will be redirected a page titled <code class="docutils literal notranslate"><span class="pre">Server</span> <span class="pre">Options</span></code>. This is the startup page where you get to chose what resources you want to utilize. We provide a CPU image and two GPU images that can be selected after logging in. All the images provide the same extensions and are setup to provide a cohesive experience while switching between images. The users home directory, <code class="docutils literal notranslate"><span class="pre">/home/jovyan</span></code> for all users, is persistent and retains anything written to it.</p>
-<div class="section" id="custom-conda-kernels">
-<h4>Custom Conda Kernels<a class="headerlink" href="#custom-conda-kernels" title="Permalink to this headline">¶</a></h4>
-<p>The custom images all use a python module called <code class="docutils literal notranslate"><span class="pre">nb_conda_kernels</span></code> that allows any conda environment containing <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code> to be registered as a Jupyter kernel automatically.</p>
-</div>
-<div class="section" id="cpu-image">
-<h4>CPU Image<a class="headerlink" href="#cpu-image" title="Permalink to this headline">¶</a></h4>
-<p>The CPU image is named <code class="docutils literal notranslate"><span class="pre">NSF</span> <span class="pre">NCAR</span> <span class="pre">CPU</span> <span class="pre">Notebook</span></code> and has 3 different resource options for Memory and CPU that can be selected from the dropdown.</p>
-<img src="https://ncar.github.io/cisl-cloud/_static/CPU-opts.png" width="133%">
-<p>By default the CPU image contains 3 prebuilt conda environments, 2 Python and 1 R, that contain a lot of packages typically required to do scientific analysis. These environments are named:</p>
-<ul class="simple">
-<li><p>cisl-cloud-base</p></li>
-<li><p>npl-2023b</p></li>
-<li><p>r-4.3</p></li>
-</ul>
-<p>More details on what are included in these packages can be found at this <a class="reference internal" href="../how-to/k8sJH/base-conda.html"><span class="doc std std-doc">link to the base conda environments documentation</span></a>.</p>
-</div>
-<div class="section" id="gpu-images">
-<h4>GPU Images<a class="headerlink" href="#gpu-images" title="Permalink to this headline">¶</a></h4>
-<p>Two different GPU images are offered. One is built around the <a class="reference external" href="https://www.tensorflow.org/">Tensorflow</a> Python package, the other is built around <a class="reference external" href="https://pytorch.org/">PyTorch</a>.</p>
-<img src="https://ncar.github.io/cisl-cloud/_static/GPU-opts.png" width="133%">
-<p>The GPU images have all the same custom configurations as the CPU image. They contain only 1 custom conda environment by default named:</p>
-<ul class="simple">
-<li><p>cisl-gpu-base</p></li>
-</ul>
-<p>It contains a lot of the same base packages from the <code class="docutils literal notranslate"><span class="pre">cisl-cloud-base</span></code> environment, but adds in the required GPU packages.</p>
-</div>
-<div class="section" id="git-extension">
-<h4>Git Extension<a class="headerlink" href="#git-extension" title="Permalink to this headline">¶</a></h4>
-<p>The best place to start is to get some code in to the notebook in order to run through real life scenarios. Our custom image includes a Git extension that can be used to interact with Git repositories via a UI instead of using only the command line.</p>
-</div>
-<div class="section" id="dask-gateway">
-<h4>Dask Gateway<a class="headerlink" href="#dask-gateway" title="Permalink to this headline">¶</a></h4>
-<p>Dask Gateway can be utilized to provide parallel processing capabilities for Notebooks. More information can be found at this <a class="reference internal" href="../how-to/k8sJH/dask/dask-gateway.html"><span class="doc std std-doc">link to documentation on utilizing Dask Gateway</span></a></p>
-</div>
-</div>
-</div>
-<div class="section" id="data-access-file-sharing">
-<h2>Data Access &amp; File Sharing<a class="headerlink" href="#data-access-file-sharing" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="glade">
-<h3>GLADE<a class="headerlink" href="#glade" title="Permalink to this headline">¶</a></h3>
-<p>Read Only access is provided to GLADE campaign and collections. This is mounted inside all Jupyter environments launched on our JupyterHub on the path <code class="docutils literal notranslate"><span class="pre">/glade/campaign</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">/glade/collections</span></code>. Read Only access to these mounts can also be provided to containerized applications like Web Visualizations and is described in more detail in that section below.</p>
-</div>
-<div class="section" id="stratus">
-<h3>Stratus<a class="headerlink" href="#stratus" title="Permalink to this headline">¶</a></h3>
-<span class="d-flex justify-content-center py-4">
-    <a href="https://stratus-admin.ucar.edu:10443/asview">
-        <figure>
-            <img src="https://ncar.github.io/cisl-cloud/_static/stratus.png">
-            <figcaption style="text-align:center">Stratus Object Storage</figcaption>
-            <figcaption style="text-align:center"><a href="../how-to/Stratus/stratus-intro.html">Link to Docs</a></figcaption>
-        </figure>
-     </a>
-</span><p>CISL has an object storage platform known as Stratus that can be used to store and read objects. Getting an Access ID and a Secret Key can be done by following this <a class="reference internal" href="../how-to/Stratus/stratus-access.html"><span class="doc std std-doc">link to the instructions</span></a>. Buckets can also be configured to allow anonymous users read access so data can be read without keys. There is a S3 Object Storage Browser extension installed in the JupyterHub instance. Directions on how to utilize that extension can be found at this <a class="reference internal" href="../how-to/Stratus/jupyter-extension.html"><span class="doc std std-doc">link to the Jupyter S3 Extension documentation</span></a>. The Object Browser really only lets you browse the contents of buckets tied to the Access ID provided. In order to upload and download objects it’s better to use a python module such as <code class="docutils literal notranslate"><span class="pre">boto3</span></code> or <code class="docutils literal notranslate"><span class="pre">isd_s3</span></code>. If you’d like help getting started with either module a good starting place can be found at this <a class="reference internal" href="../how-to/Stratus/stratus-cmd.html"><span class="doc std std-doc">link to S3 Python Examples</span></a>.</p>
-</div>
-<div class="section" id="nfs-share">
-<h3>NFS Share<a class="headerlink" href="#nfs-share" title="Permalink to this headline">¶</a></h3>
-<p>A shared NFS volume is also mounted in the JupyterHub environment and is found at <code class="docutils literal notranslate"><span class="pre">/home/jovyan/shared</span></code>. As of right now it is only read-only and nothing is being stored on it. This is expected to change as more users come on board and we get ideas on what use cases this would satisfy. Some examples of current ideas for this space would be sharing scripts, notebooks, and other files that would be useful to the community as a whole.</p>
-</div>
-</div>
-<div class="section" id="web-visualizations">
-<h2>Web Visualizations<a class="headerlink" href="#web-visualizations" title="Permalink to this headline">¶</a></h2>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Some of the topics discussed here may be outside of your realm of expertise. The Cloud team is here to help you through all of these steps. If you have an application you want to host on the cloud but have no idea on how to get started please follow this <a class="reference internal" href="../how-to/create-tickets.html"><span class="doc std std-doc">link to instructions on creating a ticket for the team to assist you</span></a>.</p>
-</div>
-<p>Hosting Interactive Web Visualizations, and any other containerized application, is made easy with Kubernetes. There are a number of different frameworks when it comes to running a web application. Whether it’s a Python based application like Flask, Django, FastAPI, Bokeh, Panel, or HTML with JavaScript, running a containerized version of your application opens up the ability to run it easily in a variety of places. The following guide assumes that you are already familiar with creating applications with some of the web frameworks listed above.</p>
-<div class="section" id="creating-a-container-image">
-<h3>Creating a Container Image<a class="headerlink" href="#creating-a-container-image" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="getting-help">
+<h2>Getting Help<a class="headerlink" href="#getting-help" title="Link to this heading">#</a></h2>
+<p>There are links in the Navigation bar at the top of the screen for <code class="docutils literal notranslate"><span class="pre">NEW</span> <span class="pre">REQUEST</span></code> and <code class="docutils literal notranslate"><span class="pre">REPORT</span> <span class="pre">ISSUE</span></code> that will open a form to create a new request or bug report respectively. More information on how to fill out the forms can be found at this <a class="reference internal" href="../how-to/create-tickets.html"><span class="doc std std-doc">link on creating tickets</span></a>. If you encounter issues please feel free to contact the teams Product Owner, <em><strong><a class="reference external" href="mailto:ncote&#37;&#52;&#48;ucar&#46;edu">Nick Cote</a></strong></em>, directly.</p>
+</section>
+<section id="hosting">
+<h2>Hosting<a class="headerlink" href="#hosting" title="Link to this heading">#</a></h2>
+<p>Hosting containerized applications is made easy with Kubernetes. Shared services are utilized to provide complex system configurations with lines of text in yaml files. Provide unique values for the application, including a URL, and K8s will provision a HTTPS endpoint for the application with valid, auto renewing, certificates. A central storage orchestrator provides persistent volumes and access to mount other file systems. More details can be found at this <a class="reference internal" href="../availability/architecture.html"><span class="doc std std-doc">link to the K8s architecture documentation</span></a>.</p>
+<section id="creating-a-container-image">
+<h3>Creating a Container Image<a class="headerlink" href="#creating-a-container-image" title="Link to this heading">#</a></h3>
+<p>There are a number of different frameworks when it comes to running a web application. Whether it’s a Python based application like Flask, Django, FastAPI, Bokeh, Panel, or HTML, JavaScript, running a containerized version of your application opens up the ability to run it easily in a variety of places. The following guide assumes that you are already familiar with creating applications with some of the web frameworks listed above.</p>
 <p>If you are able to run your application locally and access via a web browser, via <code class="docutils literal notranslate"><span class="pre">http://localhost:5001</span></code> or <code class="docutils literal notranslate"><span class="pre">http://127.0.0.1:5001</span></code> for instance, it shouldn’t be too hard to create a container image for your application. Regardless of whether you use Docker, Podman, or something else, the first place to start when containerizing an application is to create a set of instructions on how to build your application in a file known as a Dockerfile. The instructions are going to vary based on the requirements of the application being built so it’s difficult to provide an example that covers everything required for your specific application. There are a set of examples provided at this <a class="reference internal" href="../how-to/K8s/Hosting/containerize.html"><span class="doc std std-doc">link on containerizing a python app</span></a>. It will walk you through creating a basic Dockerfile, building that image locally, and finally testing it by running it locally as well. If you need any help containerizing a specific application please reach out to the team at the following <a class="reference external" href="mailto:cisl-on-prem-cloud&#37;&#52;&#48;ucar&#46;edu">email link</a>.</p>
-</div>
-<div class="section" id="hosting-your-container-on-k8s">
-<h3>Hosting your Container on K8s<a class="headerlink" href="#hosting-your-container-on-k8s" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="hosting-your-container-on-k8s">
+<h3>Hosting your Container on K8s<a class="headerlink" href="#hosting-your-container-on-k8s" title="Link to this heading">#</a></h3>
 <p>Now that you have a working container image of your application that you’ve tested locally and confirmed it works it’s ready to be hosted on our K8s platform. This is accomplished by creating a collection of yaml files known as Helm charts to deploy and manage our K8s applications. We have a few different Helm templates that can be used to create your own Helm chart for your applications and requirements. As of right now we have the following templates in GitHub:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://github.com/NicholasCote/web-app-helm">Standalone Web Application</a></p></li>
@@ -1013,34 +297,149 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 <p class="admonition-title">Note</p>
 <p>As of right now we only can host applications on the internal UCAR network on the <code class="docutils literal notranslate"><span class="pre">*.k8s.ucar.edu</span></code> domain. We are actively working on public access and will provide an update when this functionality is live. Switching your application from internal to external network access is like flipping a switch so don’t wait for external access to make sure your application works properly.</p>
 </div>
-</div>
-<div class="section" id="utilizing-ci-cd">
-<h3>Utilizing CI/CD<a class="headerlink" href="#utilizing-ci-cd" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="utilizing-ci-cd">
+<h3>Utilizing CI/CD<a class="headerlink" href="#utilizing-ci-cd" title="Link to this heading">#</a></h3>
 <span class="d-flex justify-content-center py-4">
     <a href="how-to/K8s/Hosting/deploy">
         <figure>
-            <img src="https://ncar.github.io/cisl-cloud/_static/argo.png">
+            <img src="https://ncar.github.io/cisl-cloud/_static/argo/argo.png">
             <figcaption style="text-align:center">Argo CD Docs</figcaption>
         </figure>
     </a>
 </span><p>Once the initial Dockerfile and Helm chart has been created it’s possible to setup a full CI/CD workflow to deploy your application when new changes are pushed to GitHub. A tool called Argo CD is utilized to automatically sync any changes made to the Helm chart in your GitHub repository to K8s and more information on Argo CD can be found at this <a class="reference internal" href="../how-to/K8s/Hosting/deploy.html"><span class="doc std std-doc">link to the Argo CD documentation</span></a>. The Cloud team will have to be engaged to help you setup the Argo CD piece initially. Follow this <a class="reference internal" href="../how-to/create-tickets.html"><span class="doc std std-doc">link to instructions on creating a ticket</span></a> for the team to assist you with Argo CD. We will also make sure your application deploys correctly as part of the initial deployment. GitHub actions is then utilized to run jobs that will create a new container image for your application, push that to a container registry, and update the <code class="docutils literal notranslate"><span class="pre">values.yaml</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">Chart.yaml</span></code> files. Now when changes are pushed to your GitHub repository a GitHub workflow is kicked off that will update your application image, update the Helm chart, Argo CD will see the change to the Helm chart, and then it will sync it automatically. Your application is now utilizing a full CI/CD workflow to deploy changes. You can also set this up to deploy a development version of your application to test changes before merging the changes to the main branch and updating the production version of your application.</p>
+</section>
+<section id="kubectl-access">
+<h3>kubectl Access<a class="headerlink" href="#kubectl-access" title="Link to this heading">#</a></h3>
+<p>A kubeconfig file is available if kubectl, or Helm, access to resources is required. The CISL On-Premise Cloud utilizes <a class="reference external" href="https://www.rancher.com/">Rancher</a> as an open source container management platform built. Access provided to general users is limited with Role Based Access Controls (RBAC) and operations can only be run against objects inside the project and namespaces configured for their resources. More information on getting a kubeconfig file can be found in the Administrators guide at this <a class="reference internal" href="../how-to/K8s/Rancher/rancher-intro.html"><span class="doc std std-doc">link to the Rancher documentation</span></a>. Access to Rancher, and the kubeconfig file, will require a ticket to be opened with the CISL Cloud Team by utilizing the New Request link at the top of the page.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Permissions are restricted. Access to Custom Resource Definitions (CRDs) are not available and this will prevent you from installing anything that requires it’s own API server as part of the installation. JupyterHub for instance requires a custom CRD and general users are not able to deploy it on their own. More details on the JupyterHub provided by the CISL Cloud Team can be found below. If you hit a permissions issue that is blocking your work please submit a ticket to the Cloud Team.</p>
 </div>
+</section>
+</section>
+<section id="data-access-file-sharing">
+<h2>Data Access &amp; File Sharing<a class="headerlink" href="#data-access-file-sharing" title="Link to this heading">#</a></h2>
+<section id="glade">
+<h3>GLADE<a class="headerlink" href="#glade" title="Link to this heading">#</a></h3>
+<p>Read Only access is provided to GLADE campaign and collections. This is mounted inside all Jupyter environments launched on our JupyterHub on the path <code class="docutils literal notranslate"><span class="pre">/glade/campaign</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">/glade/collections</span></code>. Read Only access to these mounts can also be provided to containerized applications like Web Visualizations and is described in more detail in that section.</p>
+</section>
+<section id="stratus">
+<h3>Stratus<a class="headerlink" href="#stratus" title="Link to this heading">#</a></h3>
+<span class="d-flex justify-content-center py-4">
+    <a href="https://stratus-admin.ucar.edu:10443/asview">
+        <figure>
+            <img src="https://ncar.github.io/cisl-cloud/_static/stratus.png">
+            <figcaption style="text-align:center">Stratus Object Storage</figcaption>
+            <figcaption style="text-align:center"><a href="../how-to/Stratus/stratus-intro.html">Link to Docs</a></figcaption>
+        </figure>
+     </a>
+</span><div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The videos on this page require you to be logged in to YouTube with your UCAR email address. They are only available to UCAR employees. If there is a message stating the videos are private please log in to YouTube with you UCAR email address and reload the page.</p>
 </div>
-<div class="section" id="container-registry">
-<h2>Container Registry<a class="headerlink" href="#container-registry" title="Permalink to this headline">¶</a></h2>
+<section id="request-access">
+<h4>Request Access<a class="headerlink" href="#request-access" title="Link to this heading">#</a></h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7XZkNEwNdtw?si=xIZ-6uga30TAI_wC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><p>CISL has an object storage platform known as Stratus that can be used to store and read objects. Getting an Access ID and a Secret Key can be done by following this <a class="reference internal" href="../how-to/Stratus/stratus-access.html"><span class="doc std std-doc">link to the instructions</span></a>. Buckets can also be configured to allow anonymous users read access so data can be read without keys.</p>
+</section>
+<section id="jupyterhub-s3-extension">
+<h4>JupyterHub S3 Extension<a class="headerlink" href="#jupyterhub-s3-extension" title="Link to this heading">#</a></h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FCZyTmXsT_Y?si=1VLgycoUdvBRLo_E" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><p>There is a S3 Object Storage Browser extension installed in the JupyterHub instance. Directions on how to utilize that extension can be found at this <a class="reference internal" href="../how-to/Stratus/jupyter-extension.html"><span class="doc std std-doc">link to the Jupyter S3 Extension documentation</span></a>. The Object Browser really only lets you browse the contents of buckets tied to the Access ID provided.</p>
+</section>
+<section id="python-examples">
+<h4>Python Examples<a class="headerlink" href="#python-examples" title="Link to this heading">#</a></h4>
+<p>In order to upload and download objects it’s sometimes more convenient to use a python module such as <code class="docutils literal notranslate"><span class="pre">boto3</span></code> or <code class="docutils literal notranslate"><span class="pre">isd_s3</span></code>. If you’d like help getting started with either module a good starting place can be found at this <a class="reference internal" href="../how-to/Stratus/stratus-cmd.html"><span class="doc std std-doc">link to S3 Python Examples</span></a>.</p>
+</section>
+</section>
+<section id="nfs-share">
+<h3>NFS Share<a class="headerlink" href="#nfs-share" title="Link to this heading">#</a></h3>
+<p>A shared NFS volume is also mounted in the JupyterHub environment and is found at <code class="docutils literal notranslate"><span class="pre">/home/jovyan/shared</span></code>. As of right now it is only read-only and nothing is being stored on it. This is expected to change as more users come on board and we get ideas on what use cases this would satisfy. Some examples of current ideas for this space would be sharing scripts, notebooks, and other files that would be useful to the community as a whole.</p>
+</section>
+</section>
+<section id="container-registry">
+<h2>Container Registry<a class="headerlink" href="#container-registry" title="Link to this heading">#</a></h2>
 <span class="d-flex justify-content-center py-4">
     <a href="https://hub.k8s.ucar.edu/">
         <figure>
-            <img src="https://ncar.github.io/cisl-cloud/_static/harbor.png">
+            <img src="https://ncar.github.io/cisl-cloud/_static/harbor/harbor.png">
             <figcaption style="text-align:center">Harbor Container Registry</figcaption>
             <figcaption style="text-align:center"><a href="how-to/K8s/harbor/harbor-intro.html">Link to Docs</a></figcaption>
         </figure>
     </a>
-</span><p>We utilize <a class="reference external" href="https://goharbor.io/">Harbor</a> to provide a local container registry that takes advantage of high speed networks. More details on incorporating Harbor in to containerization workflows can be found at this <a class="reference internal" href="../how-to/K8s/harbor/push-pull.html"><span class="doc std std-doc">link on how-to push and pull images</span></a>.</p>
-<p>Harbor also includes <a class="reference external" href="https://trivy.dev/">Trivy</a>, an image scanner that provides reports on any vulnerabilities an image contains. The information returned in the vulnerability reports can be used to patch software and eliminate security flaws contained in images. Information on how to utilize this in Harbor to secure your images can be found at this <a class="reference internal" href="../how-to/K8s/harbor/scanner.html"><span class="doc std std-doc">link on how-to run an image scan</span></a>.</p>
+</span><p>We utilize <a class="reference external" href="https://goharbor.io/">Harbor</a> to provide a local container registry that takes advantage of high speed networks. For more information, see <a class="reference internal" href="../how-to/harbor/push-pull.html"><span class="doc std std-doc">Image Management</span></a>.</p>
+<p>Harbor also includes <a class="reference external" href="https://trivy.dev/">Trivy</a>, an image scanner that provides reports on any vulnerabilities an image contains. The information returned in the vulnerability reports can be used to patch software and eliminate security flaws contained in images. For more information, see <a class="reference internal" href="../how-to/harbor/scanner.html"><span class="doc std std-doc">Scan Image for Vulnerabilities</span></a>.</p>
 <p>Credentials to Access Harbor will be your CIT sso username and password. There is no need to specify a domain.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Access to Harbor is controlled with an LDAP group. If you are denied access you are most likely not a member of that group. Please use this <a class="reference internal" href="../how-to/create-tickets.html"><span class="doc std std-doc">link to submit a ticket</span></a> and specify you want access to Harbor.</p>
 </div>
+<p>Harbor can also be used as a proxy to pull and then host images directly from <a class="reference external" href="http://docker.io">docker.io</a>, <a class="reference external" href="http://quay.io">quay.io</a>, <a class="reference external" href="http://ghcr.io">ghcr.io</a>, and <a class="reference external" href="http://registry.k8s.io">registry.k8s.io</a>. An example command of how you would pull the hello-world image hosted on Docker hub through Harbor can be seen below:</p>
+<p><code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">pull</span> <span class="pre">hub.k8s.ucar.edu/docker/library/hello-world:latest</span></code></p>
+<p>If that image is already stored on Harbor it will be pulled directly from Harbor. If it is not it will be proxied through Harbor and then stored for future use. The Trivy scanner can then be used to evaluate vulnerabilities on images pulled through the Harbor Proxy.</p>
+</section>
+<section id="jupyterhub">
+<h2>JupyterHub<a class="headerlink" href="#jupyterhub" title="Link to this heading">#</a></h2>
+<span class="d-flex justify-content-center py-4">
+    <a href="https://jupyter.k8s.ucar.edu/">
+        <figure>
+            <img src="https://ncar.github.io/cisl-cloud/_static/jhub-logo.png">
+            <figcaption style="text-align:center">K8s JupyterHub</figcaption>
+            <figcaption style="text-align:center"><a href="how-to/k8sJH/k8sJH-intro.html">Link to Docs</a></figcaption>
+        </figure>
+    </a>
+</span><p>The CISL On-prem Cloud provides a JupyterHub for a customizable Virtual Development Environment with access to GLADE, GPUs, and parallel processing with Dask Gateway.</p>
+<section id="authentication">
+<h3>Authentication<a class="headerlink" href="#authentication" title="Link to this heading">#</a></h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/BIM9Hq5NZEU?si=6PXcKFM_5-ImtOmW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><p>Authentication to our JupyterHub is currently controlled via GitHub Teams. Information on how to join the GitHub team can be found at this <a class="reference internal" href="../how-to/k8sJH/access.html"><span class="doc std std-doc">how-to request access link</span></a>.</p>
+</section>
+<section id="notebook-server-options">
+<h3>Notebook/Server Options<a class="headerlink" href="#notebook-server-options" title="Link to this heading">#</a></h3>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_bSH_TAre-8?si=4VWI7-qrrJwyGyEU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><p>The JupyterHub uses custom notebook images controlled and maintained by the Cloud team. After logging in you will be redirected a page titled <code class="docutils literal notranslate"><span class="pre">Server</span> <span class="pre">Options</span></code>. This is the startup page where you get to chose what resources you want to utilize. We provide a CPU image and two GPU images that can be selected after logging in. All the images provide the same extensions and are setup to provide a cohesive experience while switching between images. The users home directory, <code class="docutils literal notranslate"><span class="pre">/home/jovyan</span></code> for all users, is persistent and retains anything written to it.</p>
+<section id="cpu-image">
+<h4>CPU Image<a class="headerlink" href="#cpu-image" title="Link to this heading">#</a></h4>
+<p>The CPU image is named <code class="docutils literal notranslate"><span class="pre">NSF</span> <span class="pre">NCAR</span> <span class="pre">CPU</span> <span class="pre">Notebook</span></code> and has 3 different resource options for Memory and CPU that can be selected from the dropdown.</p>
+<img src="https://ncar.github.io/cisl-cloud/_static/K8sJHub/CPU-opts.png" width="133%">
+<p>By default the CPU image contains 3 prebuilt conda environments, 2 Python and 1 R, that contain a lot of packages typically required to do scientific analysis. These environments are named:</p>
+<ul class="simple">
+<li><p>cisl-cloud-base</p></li>
+<li><p>npl-2023b</p></li>
+<li><p>r-4.3</p></li>
+</ul>
+<p>More details on what are included in these packages can be found at this <a class="reference internal" href="../how-to/k8sJH/base-conda.html"><span class="doc std std-doc">link to the base conda environments documentation</span></a>.</p>
+</section>
+<section id="gpu-images">
+<h4>GPU Images<a class="headerlink" href="#gpu-images" title="Link to this heading">#</a></h4>
+<p>Two different GPU images are offered. One is built around the <a class="reference external" href="https://www.tensorflow.org/">Tensorflow</a> Python package, the other is built around <a class="reference external" href="https://pytorch.org/">PyTorch</a>.</p>
+<img src="https://ncar.github.io/cisl-cloud/_static/K8sJHub/GPU-opts.png" width="133%">
+<p>The GPU images have all the same custom configurations as the CPU image. They contain only 1 custom conda environment by default named:</p>
+<ul class="simple">
+<li><p>cisl-gpu-base</p></li>
+</ul>
+<p>It contains a lot of the same base packages from the <code class="docutils literal notranslate"><span class="pre">cisl-cloud-base</span></code> environment, but adds in the required GPU packages.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The next 2 examples use code that can be cloned from the following repository : <a class="github reference external" href="https://github.com/NicholasCote/CISL-CCPP-Tutorial">NicholasCote/CISL-CCPP-Tutorial</a></p>
 </div>
+</section>
+<section id="git-extension">
+<h4>Git Extension<a class="headerlink" href="#git-extension" title="Link to this heading">#</a></h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/TZEWiWE7f0E?si=_3W0dlzyQkUwSvLX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><p>The best place to start is to get some code in to the notebook in order to run through real life scenarios. Our custom image includes a Git extension that can be used to interact with Git repositories via a UI instead of using only the command line.</p>
+</section>
+<section id="custom-conda-kernels">
+<h4>Custom Conda Kernels<a class="headerlink" href="#custom-conda-kernels" title="Link to this heading">#</a></h4>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/NQQx0j3jID0?si=3ZJXvUaME0iyYrwA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe><p>The custom images all use a python module called <code class="docutils literal notranslate"><span class="pre">nb_conda_kernels</span></code> that allows any conda environment containing <code class="docutils literal notranslate"><span class="pre">ipykernel</span></code> to be registered as a Jupyter kernel automatically.</p>
+</section>
+<section id="dask-gateway">
+<h4>Dask Gateway<a class="headerlink" href="#dask-gateway" title="Link to this heading">#</a></h4>
+<p>Dask Gateway can be utilized to provide parallel processing capabilities for Notebooks. More information can be found at this <a class="reference internal" href="../how-to/k8sJH/dask/dask-gateway.html"><span class="doc std std-doc">link to documentation on utilizing Dask Gateway</span></a></p>
+</section>
+</section>
+</section>
+<section id="binder">
+<h2>Binder<a class="headerlink" href="#binder" title="Link to this heading">#</a></h2>
+<p><a class="reference external" href="https://mybinder.readthedocs.io/en/latest/index.html">Binder</a> is a tool that enables sharing of custom computing environments from code repository contents by utilizing containers. There is an instance of Binder, and an associated BinderHub, that can be accessed via the link present in the Resources dropdown at the top of this documentation.</p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1062,42 +461,340 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
     </script>
     <script>kernelName = 'python3'</script>
 
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+</div>
+                  </footer>
+                
               </div>
-              <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../how-to/K8s/argocd/argo-update.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Update your Argo CD Application</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../how-to/k8sJH/k8sJH-intro.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using the NCAR K8s JupyterHub</p>
+
+              
+              
+                
+                  <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-help">Getting Help</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hosting">Hosting</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#creating-a-container-image">Creating a Container Image</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hosting-your-container-on-k8s">Hosting your Container on K8s</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#utilizing-ci-cd">Utilizing CI/CD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kubectl-access">kubectl Access</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-access-file-sharing">Data Access &amp; File Sharing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#glade">GLADE</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stratus">Stratus</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#request-access">Request Access</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterhub-s3-extension">JupyterHub S3 Extension</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-examples">Python Examples</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nfs-share">NFS Share</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#container-registry">Container Registry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jupyterhub">JupyterHub</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#authentication">Authentication</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notebook-server-options">Notebook/Server Options</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cpu-image">CPU Image</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#gpu-images">GPU Images</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#git-extension">Git Extension</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-conda-kernels">Custom Conda Kernels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#dask-gateway">Dask Gateway</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binder">Binder</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.k8s.ucar.edu/v2/gh/NCAR/cisl-cloud/docs?urlpath=lab/tree/overview/getting-started.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://jupyter.k8s.ucar.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/NCAR/cisl-cloud&urlpath=lab/tree/cisl-cloud/overview/getting-started.ipynb&branch=docs" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/cisl-cloud" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Foverview/getting-started.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/overview/getting-started.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
 </div>
             </div>
-          </div>
-        </main>
 
-      </div>
-    </div>
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
-
-<footer class="footer">
-  <div class="container-fluid m-0 p-0">
-  
-    <div class="footer-item">
+  <div class="footer-item">
     
-    </div>
+<p class="component-author">
+By The CISL Cloud Pilot Team
+</p>
+
+  </div>
   
-    <div class="footer-item">
-    <style>
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 13 May 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item"><style>
   @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
 </style>
 <div class="grid-x grid-padding-y footer-menu-tertiary">
@@ -1112,11 +809,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
           <a href="https://www.ucar.edu" class="custom-footer-link">UCAR Home</a>
       </ul>
   </div>
-</div>
-    </div>
-  
-    <div class="footer-item">
-      <div class="container-fluid footer-info">
+</div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
     <div class="container-xl">
       <div class="d-flex justify-content-center">
         <p class="py-1 m-0">
@@ -1124,15 +819,13 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 17 January 2024.
+          Last updated on 13 May 2025.
         </p>
       </div>
     </div>
-  </div>
-    </div>
-  
-    <div class="footer-item">
-    <div class="container-fluid footer-extra">
+  </div></div>
+      
+        <div class="footer-item"><div class="container-fluid footer-extra">
     <div class="container">
       <center>
         Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
@@ -1153,10 +846,12 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         </p>
       </div>
     </div>
-  </div>
+  </div></div>
+      
+      </div>
     </div>
   
-  </div>
-</footer>
+
+  </footer>
   </body>
 </html>

@@ -1,148 +1,139 @@
 
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="../../../" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <title>Using LocalCluster with Dask &#8212; CISL Cloud Pilot</title>
-    
-  <link href="../../../_static/css/theme.css" rel="stylesheet">
-  <link href="../../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../../_static/styles/bootstrap.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../../../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=3ee479438cf8b5e0d341" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
-    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-pythia-theme.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b76e3c8a" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-pythia-theme.min.css?v=e502140d" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
-    <link rel="stylesheet" type="text/css" href="../../../_static/style.css" />
-    
-  <link rel="preload" as="script" href="../../../_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-design.min.css?v=87e54e7c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/style.css?v=bc89f96c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341" />
+  <script src="../../../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=3ee479438cf8b5e0d341"></script>
 
-    <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-    <script src="../../../_static/jquery.js"></script>
-    <script src="../../../_static/underscore.js"></script>
-    <script src="../../../_static/doctools.js"></script>
-    <script src="../../../_static/clipboard.min.js"></script>
-    <script src="../../../_static/copybutton.js"></script>
+    <script src="../../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../../_static/design-tabs.js"></script>
-    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
-    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+    <script src="../../../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-7W0SHCDV52"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-7W0SHCDV52');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-7W0SHCDV52');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'how-to/k8sJH/dask/dask-local';</script>
+    <link rel="icon" href="../../../_static/favicon.ico"/>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
-    <link rel="next" title="Using GatewayCluster with Dask" href="dask-gateway.html" />
-    <link rel="prev" title="Dask Introduction" href="dask-intro.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+    <meta name="docbuild:last-update" content="13 May 2025"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="132">
-    <div class="container-fluid" id="shim"></div>
-    <div class="container-fluid" id="banner"></div>
-    <nav class="navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main"><div class="container-xl">
-
-  <div id="navbar-start">
-    
-    
-
-<a class="navbar-brand" href="../../../index.html">
-  <img src="../../../_static/NSF-NCAR.png" class="logo" alt="logo">
-</a>
-
-
-    
-  </div>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapsible" aria-controls="navbar-collapsible" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
   
-  <div id="navbar-collapsible" class="col-lg-9 collapse navbar-collapse">
-    <div id="navbar-center" class="mr-auto">
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div class="pst-scroll-pixel-helper"></div>
+    <header class="bd-header navbar navbar-dark navbar-expand-lg bg-dark fixed-top bd-navbar shadow" id="navbar-main">
+<div class="bd-header__inner bd-page-width">
+  <button class="sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+   
+
+<a class="navbar-brand logo" href="https://ncar.ucar.edu/">
+  
+  
+  
+  
+  
+    
+    
       
-      <div class="navbar-center-item">
-        <ul id="navbar-main-elements" class="navbar-nav">
+    
+    
+    <img src="../../../_static/NSF-NCAR.png" class="logo__image only-light" alt="CISL Cloud Pilot - Home"/>
+    <script>document.write(`<img src="../../../_static/NSF-NCAR.png" class="logo__image only-dark" alt="CISL Cloud Pilot - Home"/>`);</script>
+  
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
 
        
         
             
         
         <li class="nav-item">
-            <a class="nav-link nav-internal" href="../../../main.html">Cloud Docs</a>
+            <a class="nav-link nav-internal" href="https://ncar-hpc-docs.readthedocs.io/en/latest/compute-systems/cirrus/">CIRRUS Docs</a>
         </li>    
-    
-    
-    
-        <div class="dropdown">
-        
-            
-        
-            <li class="nav-item">
-                <button class="dropbtn">
-                        Resources <i class="fa fa-chevron-down" style="color: #000000;"></i>
-                </button>
-            </li>
-            <div class="dropdown-content">
-                
-                    <a class="dropdown-link" href="https://jupyter.k8s.ucar.edu/">
-                        NCAR k8s JupyterHub
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://jupyterhub.hpc.ucar.edu/">
-                        NCAR HPC JupyterHub
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://ncar-cisl.2i2c.cloud/hub/login">
-                        2i2c AWS JupyterHub
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://hub.k8s.ucar.edu/">
-                        Harbor - Container Registry
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://rancher.k8s.ucar.edu/">
-                        Rancher
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17">
-                        Request VM
-                    </a><br>
-                
-                    <a class="dropdown-link" href="https://stratus-admin.ucar.edu:10443/asview">
-                        Stratus
-                    </a><br>
-                
-            </div>
-        </div>
     
     
        
@@ -154,647 +145,118 @@ const thebe_selector_output = ".output, .cell_output"
         </li>    
     
     
-       
-        
-            
-        
-        <li class="nav-item">
-            <a class="nav-link nav-internal" href="https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10909&customfield_10281=CCPP-108">New Request</a>
-        </li>    
-    
-    
-       
-        
-            
-        
-        <li class="nav-item">
-            <a class="nav-link nav-internal" href="https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10905">Report issue</a>
-        </li>    
-    
-    
 
-</ul>
-      </div>
+</ul></div>
       
     </div>
-
-    <div id="navbar-end">
-      
-      <div class="navbar-end-item">
-        <ul id="navbar-icon-links" class="navbar-nav" aria-label="Icon Links">
-      </ul>
-      </div>
-      
-    </div>
+    
+    
   </div>
+  
+  
+
+  
 </div>
-    </nav>
-    <div class="container-xl">
-      <div class="row">
+
+    </header>
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
         
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+        
+        
+          
+        
+        <div class="bd-sidebar-primary bd-sidebar">
+          
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-        <form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search the docs ..." aria-label="Search the docs ..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../main.html">
-   CISL Cloud Pilot
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../overview/services.html">
-   Work in Progress
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../agile.html">
-   Interacting w/ Cloud Team
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../create-tickets.html">
-     Create tickets
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Availability
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../availability/services.html">
-   Services
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../availability/architecture.html">
-   Architecture
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Administer the CISL Cloud
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../jupyter-book/jb-intro.html">
-   Documentation
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../jupyter-book/create-jb.html">
-     Getting started
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../jupyter-book/add-jb.html">
-     Add content
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../jupyter-book/k8s-hosting.html">
-     Hosting on k8s
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../github-strategy.html">
-   GitHub Strategy
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../sops-age/sops-age.html">
-   Encrypting Secrets
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../K8s/k8s-intro.html">
-   Kubernetes (k8s)
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/Hosting/cert-mgr.html">
-     cert-manager
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/Hosting/ingress.html">
-     Ingress Controller
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/Hosting/external-dns.html">
-     ExternalDNS
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../customize/custom.html">
-     JupyterHub
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-    <label for="toctree-checkbox-4">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../gpu/gpu-admin.html">
-       Setup GPUs
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../customize/customize-docker.html">
-       Customize Singleuser Image
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../customize/setup-gh-act.html">
-       GitHub Actions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../../K8s/Rancher/rancher-intro.html">
-     Rancher (K8s)
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-    <label for="toctree-checkbox-5">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Rancher/get-kubeconfig.html">
-       Get a kubeconfig
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Rancher/cluster-access.html">
-       Accessing a k8s Cluster
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Rancher/create-namespace.html">
-       Create namespace
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Rancher/permissions.html">
-       Permissions
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/harbor/install-harbor.html">
-     Harbor
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../../K8s/Hosting/web-hosting.html">
-     Host web applications
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-    <label for="toctree-checkbox-6">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Hosting/new-user-deployment.html">
-       New User Deployment
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/Hosting/web-helm.html">
-       Helm &amp; Argo CD
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../../K8s/argocd/argo-intro.html">
-     Argo CD
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-    <label for="toctree-checkbox-7">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../K8s/argocd/argo-update.html">
-       Update your Argo CD Application
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Use the CISL Cloud
- </span>
-</p>
-<ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../overview/getting-started.html">
-   Getting Started
-  </a>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="../k8sJH-intro.html">
-   K8s JupyterHub
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="../access.html">
-     Requesting Access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../user-info.html">
-     Initial Login
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../customize/env.html">
-     Conda Environments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../base-conda.html">
-     Base Conda Environments
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../gpu/gpu-intro.html">
-     GPUs
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../customize/github.html">
-     Utilizing GitHub
-    </a>
-   </li>
-   <li class="toctree-l2 current active has-children">
-    <a class="reference internal" href="dask-intro.html">
-     Dask
-    </a>
-    <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-    <label for="toctree-checkbox-9">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul class="current">
-     <li class="toctree-l3 current active">
-      <a class="current reference internal" href="#">
-       Dask LocalCluster
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="dask-gateway.html">
-       Dask Gateway
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="dask-jobqueue.html">
-       Dask Jobqueue
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../data-access/intro.html">
-   Data Access
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../data-access/glade.html">
-     GLADE
-    </a>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../../Stratus/stratus-intro.html">
-     Object Storage
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/>
-    <label for="toctree-checkbox-11">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../Stratus/stratus-access.html">
-       Access
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../Stratus/jupyter-extension.html">
-       Jupyter S3 Extension
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../Stratus/stratus-cmd.html">
-       Python Examples
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toctree-l2 has-children">
-    <a class="reference internal" href="../../data-access/rda.html">
-     RDA
-    </a>
-    <input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/>
-    <label for="toctree-checkbox-12">
-     <i class="fas fa-chevron-down">
-     </i>
-    </label>
-    <ul>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../data-access/rda-local.html">
-       RDA Local Access
-      </a>
-     </li>
-     <li class="toctree-l3">
-      <a class="reference internal" href="../../data-access/rda-remote.html">
-       RDA Remote Access
-      </a>
-     </li>
-    </ul>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../K8s/harbor/harbor-intro.html">
-   Container Registry
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-13" name="toctree-checkbox-13" type="checkbox"/>
-  <label for="toctree-checkbox-13">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/harbor/push-pull.html">
-     Push &amp; Pull Images
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/harbor/scanner.html">
-     Vulnerability Scan
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../K8s/Hosting/web-intro.html">
-   Hosting Web Applications
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-14" name="toctree-checkbox-14" type="checkbox"/>
-  <label for="toctree-checkbox-14">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/Hosting/deploy.html">
-     Deploy your application
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../github-actions.html">
-     GitHub Actions
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/Hosting/containerize.html">
-     Containerize Python
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../K8s/Hosting/book-image.html">
-     Containerize Jupyter Book
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../../vm/vm-intro.html">
-   Virtual Machines
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference external" href="https://arc.ucar.edu/knowledge_base/70549913">
-   HPC JupyterHub
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../2i2cJH/2i2cJH-intro.html">
-   2i2c JupyterHub
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-15" name="toctree-checkbox-15" type="checkbox"/>
-  <label for="toctree-checkbox-15">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../2i2cJH/access.html">
-     Requesting Access
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../2i2cJH/user-info.html">
-     User Information
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Support Agreements
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../../../slas/slas.html">
-   SLA’s
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-16" name="toctree-checkbox-16" type="checkbox"/>
-  <label for="toctree-checkbox-16">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../slas/glade.html">
-     GLADE
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../slas/stratus.html">
-     Stratus
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../../../slas/ncar-jh.html">
-     NCAR JupyterHub
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference external" href="https://docs.2i2c.org/support/">
-     2i2c JupyterHub
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Contact Us
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../../../contact.html">
-   Information
-  </a>
- </li>
-</ul>
-
-    </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  <p style="font-weight: 700;text-decoration: underline;color: red;">This site is currently in active development.</p>
-Follow our <a href="https://jira.ucar.edu/secure/RapidBoard.jspa?rapidView=220&projectKey=CCPP">Kanban board</a><br>
-Visit our <a href="https://github.com/NCAR/cisl-cloud">GitHub Repo</a><br>
-<a href="https://github.com/NicholasCote/jupyterbook-cisl-theme">Copy this JupyterBook layout</a><hr>
-<div>Powered by <a href="https://jupyterbook.org">Jupyter Book</a></div><br>
-Theme by <a href="https://projectpythia.org/">Project Pythia</a>
-
-</div>
-
-</div>
-
+    
+      <div class="sidebar-header-items__center">
         
+          
+          
+            <div class="navbar-item"><ul id="navbar-main-elements" class="navbar-nav">
 
-        <main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main"><div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
+       
         
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../../_sources/how-to/k8sJH/dask/dask-local.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
+            
+        
+        <li class="nav-item">
+            <a class="nav-link nav-internal" href="https://ncar-hpc-docs.readthedocs.io/en/latest/compute-systems/cirrus/">CIRRUS Docs</a>
+        </li>    
+    
+    
+       
+        
+            
+        
+        <li class="nav-item">
+            <a class="nav-link nav-internal" href="https://www2.cisl.ucar.edu/">CISL Home</a>
+        </li>    
+    
+    
 
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/NCAR/cisl-cloud"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/k8sJH/dask/dask-local.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+</ul></div>
+          
+        
+      </div>
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
     </div>
-</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
 
         </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-        </div>
-    </div>
-</div>
-          <div id="main-content" class="row">
-            <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-              
-              <div>
+        
+        <main id="main-content" class="bd-main" role="main">
+          
+
+            <div class="bd-content">
+
+              <div class="bd-article-container">
+
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="using-localcluster-with-dask">
-<h1>Using LocalCluster with Dask<a class="headerlink" href="#using-localcluster-with-dask" title="Permalink to this headline">¶</a></h1>
+                  
+                  
+<div id="searchbox"></div>
+                  <article class="bd-article">
+                    
+  <section class="tex2jax_ignore mathjax_ignore" id="using-localcluster-with-dask">
+<h1>Using LocalCluster with Dask<a class="headerlink" href="#using-localcluster-with-dask" title="Link to this heading">#</a></h1>
 <p>In Python you can utilize dask to create a cluster for parallel processing that shares resources with the system the code is running on. <a class="reference external" href="https://docs.dask.org/en/stable/deploying-python.html#localcluster">LocalCluster</a> is the best way to get started using Dask. It allows time to understand the different components involved in implementing parallel computing. Python’s standard interpreter, CPython, is single threaded and only runs on a single CPU core. Your computer likely has multiple CPU cores available and tools like Dask LocalCluster can be used to take advantage of more CPU cores. By starting here you will understand when LocalCluster is no longer enough and more resources are required to scale your application or analysis. An example of how to accomplish this in your Python code can be seen below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">dask.distributed</span> <span class="kn">import</span> <span class="n">Client</span><span class="p">,</span> <span class="n">LocalCluster</span>
 
@@ -807,9 +269,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
 </pre></div>
 </div>
 <p>This will start 4 Dask workers and a scheduler on local resources. If you run this Python code on the NCAR JupyterHub instance you will see a Widget that you can expand and explore your cluster options. An example of this can be seen in the image below:</p>
-<img src="https://ncar.github.io/cisl-cloud/_static/dask-local.png"/><p>On the NCAR JupyterHub the dashboard links will take you to a Dask dashboard page. The URL can also be copied and pasted in to the Dask extension on the left as seen below.</p>
-<img src="https://ncar.github.io/cisl-cloud/_static/dask-extension.png"><p>Each box can be dragged in to your workspace and arranged as different tiles alongside your notebook. This enables you to monitor Dask resources while watching your notebooks run.</p>
-</div>
+<img src="https://ncar.github.io/cisl-cloud/_static/K8sJHub/dask-local.png"/><p>On the NCAR JupyterHub the dashboard links will take you to a Dask dashboard page. The URL can also be copied and pasted in to the Dask extension on the left as seen below.</p>
+<img src="https://ncar.github.io/cisl-cloud/_static/K8sJHub/dask-extension.png"><p>Each box can be dragged in to your workspace and arranged as different tiles alongside your notebook. This enables you to monitor Dask resources while watching your notebooks run.</p>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -831,42 +293,290 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
     </script>
     <script>kernelName = 'python3'</script>
 
+                  </article>
+
+                
+                
+
+                
+                
+                  <footer class="prev-next-footer">
+                    
+<div class="prev-next-area">
+</div>
+                  </footer>
+                
               </div>
-              <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="dask-intro.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Dask Introduction</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="dask-gateway.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Using GatewayCluster with Dask</p>
+
+              
+              
+                
+              
+
+
+                
+                <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://binder.k8s.ucar.edu/v2/gh/NCAR/cisl-cloud/docs?urlpath=lab/tree/how-to/k8sJH/dask/dask-local.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://jupyter.k8s.ucar.edu/hub/user-redirect/git-pull?repo=https%3A//github.com/NCAR/cisl-cloud&urlpath=lab/tree/cisl-cloud/how-to/k8sJH/dask/dask-local.ipynb&branch=docs" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onJupyterHub"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../../../_static/images/logo_jupyterhub.svg">
+  </span>
+<span class="btn__text-container">JupyterHub</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/NCAR/cisl-cloud" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/NCAR/cisl-cloud/issues/new?title=Issue%20on%20page%20%2Fhow-to/k8sJH/dask/dask-local.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../../_sources/how-to/k8sJH/dask/dask-local.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
 </div>
             </div>
-          </div>
-        </main>
 
-      </div>
-    </div>
+            <footer class="bd-footer-content">
+              
+<div class="bd-footer-content__inner container">
   
-  <script src="../../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
-
-<footer class="footer">
-  <div class="container-fluid m-0 p-0">
-  
-    <div class="footer-item">
+  <div class="footer-item">
     
-    </div>
+<p class="component-author">
+By The CISL Cloud Pilot Team
+</p>
+
+  </div>
   
-    <div class="footer-item">
-    <style>
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    <p class="last-updated">
+  Last updated on 13 May 2025.
+  <br/>
+</p>
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+            </footer>
+
+        </main>
+    </div>
+  </div>
+    
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../../_static/scripts/bootstrap.js?digest=3ee479438cf8b5e0d341"></script>
+<script src="../../../_static/scripts/pydata-sphinx-theme.js?digest=3ee479438cf8b5e0d341"></script>
+
+  <footer class="bd-footer">
+     
+  
+  
+  
+  
+    <div class="footer-items__start">
+      <div class="container-fluid m-0 p-0">
+      
+        <div class="footer-item"><style>
   @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
 </style>
 <div class="grid-x grid-padding-y footer-menu-tertiary">
@@ -881,11 +591,9 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
           <a href="https://www.ucar.edu" class="custom-footer-link">UCAR Home</a>
       </ul>
   </div>
-</div>
-    </div>
-  
-    <div class="footer-item">
-      <div class="container-fluid footer-info">
+</div></div>
+      
+        <div class="footer-item">  <div class="container-fluid footer-info">
     <div class="container-xl">
       <div class="d-flex justify-content-center">
         <p class="py-1 m-0">
@@ -893,15 +601,13 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         
           By The CISL Cloud Pilot Team.
         
-          Last updated on 17 January 2024.
+          Last updated on 13 May 2025.
         </p>
       </div>
     </div>
-  </div>
-    </div>
-  
-    <div class="footer-item">
-    <div class="container-fluid footer-extra">
+  </div></div>
+      
+        <div class="footer-item"><div class="container-fluid footer-extra">
     <div class="container">
       <center>
         Theme by <a href="https://projectpythia.org">Project Pythia</a>. All code
@@ -922,10 +628,12 @@ Theme by <a href="https://projectpythia.org/">Project Pythia</a>
         </p>
       </div>
     </div>
-  </div>
+  </div></div>
+      
+      </div>
     </div>
   
-  </div>
-</footer>
+
+  </footer>
   </body>
 </html>
