@@ -53,34 +53,10 @@ sphinx:
       navbar_start:
         - navbar-logo
       navbar_links:
-        - name: Cloud Docs
-          url: main
-        - name: Resources
-          url: overview/services
-          dropdown: true 
-          dropdown_links:
-          - name: 'Harbor - Container Registry'
-            url: https://hub.k8s.ucar.edu/
-          - name: Stratus Object Storage
-            url: https://stratus-admin.ucar.edu:10443/asview
-          - name: 'NCAR K8s JupyterHub'
-            url: https://jupyter.k8s.ucar.edu/
-          - name: 'NCAR K8s Binder'
-            url: https://binder.k8s.ucar.edu/
-          - name: Rancher
-            url: https://rancher.k8s.ucar.edu/
-          - name: 'NCAR HPC JupyterHub'
-            url: https://jupyterhub.hpc.ucar.edu/
-          - name: Request VM
-            url: https://ithelp.ucar.edu/servicedesk/customer/portal/2/create/17
-          - name: '2i2c AWS JupyterHub'
-            url: https://ncar-cisl.2i2c.cloud/hub/login
+        - name: CIRRUS Docs
+          url: https://ncar-hpc-docs.readthedocs.io/en/latest/compute-systems/cirrus/
         - name: CISL Home
           url: https://www2.cisl.ucar.edu/
-        - name: New Request
-          url: https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10903&customfield_10281=CCPP-108
-        - name: Report issue
-          url: https://jira.ucar.edu/secure/CreateIssueDetails!init.jspa?pid=18470&issuetype=10905
       navbar_end:
         - navbar-icon-links
       page_layouts:
